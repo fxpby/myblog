@@ -12,9 +12,11 @@ module.exports = {
 			// 		{ text: 'Vue', link: '/note/vue/' }
 			// 	]
 			// },
-			{ text: '博文', link: '/note/' },
-			{ text: '算法', link: '/algorithm/' },
-			{ text: 'Github', link: 'https://github.com/fxpby/' }
+			{ text: '博文', link: '/note/HTML/Semantics' },
+			{ text: '算法', link: '/algorithm/leetcode/twosum' }
+			// ,
+			// { text: 'SQL', link: '/sql/' },
+			// { text: 'Github', link: 'https://github.com/fxpby/' }
 		],
 		sidebar: {
 			'/note/':[
@@ -22,8 +24,8 @@ module.exports = {
 					title: 'HTML',
 					collapsable: false,
 					children: [
-						['/note/HTML/weight','权重'],
-						['/note/HTML/negativeMargin','负margin']
+						// ['/note/HTML/negativeMargin','负margin'],
+						['/note/HTML/Semantics','HTML5语义化']
 					]
 				},
 				{
@@ -33,14 +35,28 @@ module.exports = {
 						['/note/CSS/BFC','BFC'],
 						['/note/CSS/HCenter','水平居中'],
 						['/note/CSS/VCenter','垂直居中'],
-						['/note/CSS/Flex','Flex布局']
+						['/note/CSS/HVCenter','水平垂直居中'],
+						['/note/CSS/Flex','Flex布局'],
+						['/note/CSS/weight','权重']
+					]
+				},
+				{
+					title: 'ES6',
+					collapsable: false,
+					children: [
+						['/note/ES6/es6','es6']
 					]
 				},
 				{
 					title: 'JavaScript',
 					collapsable: false,
 					children: [
-						['/note/JavaScript/closure','闭包']
+						// ['/note/JavaScript/closure','闭包'],
+						['/note/JavaScript/RegExp','正则'],
+						['/note/JavaScript/this','this词法'],
+						['/note/JavaScript/Hoisting','变量提升'],
+						['/note/JavaScript/Copy','深拷贝和浅拷贝']
+
 					]
 				},
 				{
@@ -60,14 +76,23 @@ module.exports = {
 			],
 			'/algorithm/':[
 				{
-					title: '算法',
+					title: 'leetcode',
 					collapsable: false,
 					children: [
-						['/algorithm/eg/eg1','eg1'],
-						['/algorithm/eg/eg2','eg2']
+						['/algorithm/leetcode/twosum','两数之和']
 					]
 				}
-			]		
+			]
+			// ,
+			// '/sql/':[
+			// 	{
+			// 		title: 'sql',
+			// 		collapsable: false,
+			// 		children: [
+			// 			['/sql/searchdata/','查询数据']
+			// 		]
+			// 	}
+			// ]	
 		},
 		sidebarDepth: 2, // e'b将同时提取markdown中h2 和 h3 标题，显示在侧边栏上。 
 		lastUpdated: 'Last Updated', // 文档更新时间：每个文件git最后提交的时间 
