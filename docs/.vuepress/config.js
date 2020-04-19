@@ -1,5 +1,6 @@
 module.exports = {
 	base: '/myblog/',
+	title: "fxpby's blog",
 	themeConfig: {
 		nav: [
 			{ text: '首页', link: '/' },
@@ -25,7 +26,9 @@ module.exports = {
 					collapsable: false,
 					children: [
 						// ['/note/HTML/negativeMargin','负margin'],
-						['/note/HTML/Semantics','HTML5语义化']
+						['/note/HTML/Semantics','HTML5语义化'],
+						['/note/HTML/HTML5DOM','HTML5 DOM']
+
 					]
 				},
 				{
@@ -55,7 +58,7 @@ module.exports = {
 						['/note/JavaScript/RegExp','正则'],
 						['/note/JavaScript/this','this词法'],
 						['/note/JavaScript/Hoisting','变量提升'],
-						['/note/JavaScript/Copy','深拷贝和浅拷贝']
+						['/note/JavaScript/Copy','深拷贝']
 
 					]
 				},
@@ -70,7 +73,17 @@ module.exports = {
 					title: 'Vue',
 					collapsable: false,
 					children: [
-						['/note/vue/first','开始']
+						['/note/vue/ref','ref与$refs'],
+						['/note/vue/set','$set的使用'],
+						['/note/vue/watch','watch监听'],
+						['/note/vue/emit','子组件调用父组件方法']
+					]
+				},
+				{
+					title: 'npm',
+					collapsable: false,
+					children: [
+						['/note/npm/init','修改elementUI上传npm总结']
 					]
 				}
 			],
