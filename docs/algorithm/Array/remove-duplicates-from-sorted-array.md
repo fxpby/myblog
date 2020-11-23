@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-23 23:53:37
- * @LastEditTime: 2020-11-24 00:05:04
+ * @LastEditTime: 2020-11-24 00:43:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \myblog\docs\algorithm\Array\remove-duplicates-from-sorted-array.md
@@ -46,6 +46,9 @@ eg2:
  * @return {number}
  */
 var removeDuplicates = function(nums) {
+   if(nums.length === 0) {
+        return 0
+   }
    for(let i = 0; i < nums.length - 1; i++) {
        if(nums[i] === nums[i + 1]) {
            nums.splice(i, 1)
@@ -53,5 +56,48 @@ var removeDuplicates = function(nums) {
        }
    }
    return nums.length
+};
+```
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function(nums) {
+   if(nums.length === 0) {
+        return 0
+   }
+   nums.forEach((e, i, nums) => {
+       if(e === nums[i + 1]) {
+           nums.splice(i, 1)
+           i--
+           removeDuplicates(nums)
+       }
+   })
+   return nums.length
+};
+```
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function(nums) {
+    if(nums.length === 0) {
+        return 0
+    }
+    let arr = 1
+    for(let i = 0; i < nums.length - 1; i++) {
+        if(nums[i] !== nums[arr]) {
+            nums[i + 1] = nums[arr]
+            arr++
+        } else {
+            nums.splice(i, 1)
+            i--
+        }
+    }
+    return nums.length
 };
 ```
