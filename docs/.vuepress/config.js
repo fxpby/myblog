@@ -13,7 +13,8 @@ module.exports = {
 			// 		{ text: 'Vue', link: '/note/vue/' }
 			// 	]
 			// },
-			{ text: '博文', link: '/note/HTML/Semantics' },
+			{ text: '博文', link: '/note/npm/init' },
+			{ text: '数据结构', link: '/dataStructures/array/array' },
 			{ text: '算法', link: '/algorithm/leetcode/twosum' }
 			// ,
 			// { text: 'SQL', link: '/sql/' },
@@ -85,6 +86,92 @@ module.exports = {
 					children: [
 						['/note/npm/init','修改elementUI上传npm总结']
 					]
+				},
+				{
+					title: '重学JS',
+					collapsable: false,
+					children: [
+						['/note/restartJS/dataType','数据类型']
+					]
+				}
+			],
+			'/dataStructures/':[
+				{
+					title: '数组',
+					collapsable: false,
+					children: [
+						['/dataStructures/array/array','数组']
+					]
+				},
+				{
+					title: '栈',
+					collapsable: false,
+					children: [
+						['/dataStructures/stack/stack-array','栈']
+					]
+				},
+				{
+					title: '队列',
+					collapsable: false,
+					children: [
+						['/dataStructures/queue/queue','队列'],
+						['/dataStructures/queue/deque','双端队列'],
+						['/dataStructures/queue/hotpotato','循环队列 - 击鼓传花'],
+						['/dataStructures/queue/palindromeChecker','回文检查器']
+					]
+				},
+				{
+					title: '链表',
+					collapsable: false,
+					children: [
+						['/dataStructures/linkedList/linkedlist','单向链表'],
+						['/dataStructures/linkedList/doublyLinkedList','双向链表'],
+						['/dataStructures/linkedList/circularLinkedList','循环链表'],
+						['/dataStructures/linkedList/sortedLinkedList','有序链表']
+					]
+				},
+				{
+					title: '集合',
+					collapsable: false,
+					children: [
+						['/dataStructures/set/set','集合']
+					]
+				},
+				{
+					title: '字典',
+					collapsable: false,
+					children: [
+						['/dataStructures/dictionary/dictionary','字典']
+					]
+				},
+				{
+					title: '散列表',
+					collapsable: false,
+					children: [
+						['/dataStructures/hashtable/hashtable','散列表'],
+						['/dataStructures/hashtable/hashtableSeparateChaining','散列表 - 链地址法']
+					]
+				},
+				{
+					title: '树',
+					collapsable: false,
+					children: [
+						['/dataStructures/tree/binarySearchTree','二叉搜索树']
+					]
+				},
+				{
+					title: '二叉堆',
+					collapsable: false,
+					children: [
+						['/dataStructures/heap/heap','二叉堆']
+					]
+				},
+				{
+					title: '图',
+					collapsable: false,
+					children: [
+						['/dataStructures/graph/graph','图']
+					]
 				}
 			],
 			'/algorithm/':[
@@ -110,6 +197,17 @@ module.exports = {
 		sidebarDepth: 2, // e'b将同时提取markdown中h2 和 h3 标题，显示在侧边栏上。 
 		lastUpdated: 'Last Updated', // 文档更新时间：每个文件git最后提交的时间 
 		lastUpdated: true
-	}
+	},
+	head: [
+		['script', {}, `
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?560be5dada9664ddc2907a2c2e79f23b";
+				var s = document.getElementsByTagName("script")[0]; 
+				s.parentNode.insertBefore(hm, s);
+			})();
+		`]
+	]
 };
 

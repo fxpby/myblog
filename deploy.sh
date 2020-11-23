@@ -15,4 +15,4 @@ git add -A
 git commit -m 'deploy'
 git push -f https://github.com/fxpby/myblog.git master:gh-pages
 
-cd -
+# cd -

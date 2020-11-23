@@ -50,7 +50,7 @@ export default {xxx}
 {"xxx": "./packages/xxx/index.js"}
 ```
 
-### 3.打包
+## 打包
 
 ``` bash
 # 在element目录下执行
@@ -59,7 +59,7 @@ npm run dist
 
 这样就生成了lib文件夹，此时就可以直接复制该文件夹，去其他项目里找到`node_modules/element-ui/lib`文件夹进行替换了
 
-### 4.npm上传
+## npm上传
 
 这个地方踩了一些坑，下面说详细步骤：
 
