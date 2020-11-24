@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-23 23:53:37
- * @LastEditTime: 2020-11-24 00:43:37
+ * @LastEditTime: 2020-11-25 00:58:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \myblog\docs\algorithm\Array\remove-duplicates-from-sorted-array.md
@@ -38,8 +38,6 @@ eg2:
 
 * 思路：遍历数组，若当前项和下一项相同，删除当前项，再和删除后的下一项进行比较
 
-* 性能分析：
-
 ```js
 /**
  * @param {number[]} nums
@@ -59,25 +57,7 @@ var removeDuplicates = function(nums) {
 };
 ```
 
-```js
-/**
- * @param {number[]} nums
- * @return {number}
- */
-var removeDuplicates = function(nums) {
-   if(nums.length === 0) {
-        return 0
-   }
-   nums.forEach((e, i, nums) => {
-       if(e === nums[i + 1]) {
-           nums.splice(i, 1)
-           i--
-           removeDuplicates(nums)
-       }
-   })
-   return nums.length
-};
-```
+### 方法二
 
 ```js
 /**
@@ -88,16 +68,37 @@ var removeDuplicates = function(nums) {
     if(nums.length === 0) {
         return 0
     }
-    let arr = 1
-    for(let i = 0; i < nums.length - 1; i++) {
-        if(nums[i] !== nums[arr]) {
-            nums[i + 1] = nums[arr]
-            arr++
-        } else {
-            nums.splice(i, 1)
-            i--
+    let i = 0
+    for(let j = 1; j < nums.length; j++) {
+        if(nums[i] !== nums[j]){
+            if(j - i > 1){
+              nums[i + 1] = nums[j]
+            }
+            i++
         }
     }
-    return nums.length
+    return i + 1
+};
+```
+
+### 方法三
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function(nums) {
+   if(nums.length === 0) {
+        return 0
+   }
+   let l = nums.length
+   for(let i = 0; i < l; i++) {
+       const left = nums.shift()
+       if(left !== nums[nums.length - 1]) {
+           nums.push(left)
+       }
+   }
+   return nums.length
 };
 ```

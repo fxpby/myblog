@@ -15,7 +15,7 @@ module.exports = {
 			// },
 			{ text: '博文', link: '/note/npm/init' },
 			{ text: '数据结构', link: '/dataStructures/array/array' },
-			{ text: '算法', link: '/algorithm/leetcode/twosum' }
+			{ text: '算法', link: '/algorithm/array/twosum' }
 			// ,
 			// { text: 'SQL', link: '/sql/' },
 			// { text: 'Github', link: 'https://github.com/fxpby/' }
@@ -179,7 +179,9 @@ module.exports = {
 					title: 'leetcode',
 					collapsable: false,
 					children: [
-						['/algorithm/leetcode/twosum','两数之和']
+						['/algorithm/array/twosum','两数之和'],
+						['/algorithm/array/remove-duplicates-from-sorted-array','删除排序数组中的重复项'],
+						['/algorithm/array/remove-element','移除指定元素']
 					]
 				}
 			]
