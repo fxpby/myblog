@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>修改elementUI源码并打包上传至npm总结 | fxpby&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?560be5dada9664ddc2907a2c2e79f23b";
+				var s = document.getElementsByTagName("script")[0]; 
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/myblog/assets/css/0.styles.dca02e74.css" as="style"><link rel="preload" href="/myblog/assets/js/app.67f47e85.js" as="script"><link rel="preload" href="/myblog/assets/js/2.5a9f1cd1.js" as="script"><link rel="preload" href="/myblog/assets/js/54.21a87e96.js" as="script"><link rel="prefetch" href="/myblog/assets/js/10.3d28348a.js"><link rel="prefetch" href="/myblog/assets/js/11.6d1efe6b.js"><link rel="prefetch" href="/myblog/assets/js/12.039d4441.js"><link rel="prefetch" href="/myblog/assets/js/13.120600ee.js"><link rel="prefetch" href="/myblog/assets/js/14.d12fa43f.js"><link rel="prefetch" href="/myblog/assets/js/15.9b49dcf6.js"><link rel="prefetch" href="/myblog/assets/js/16.c108b475.js"><link rel="prefetch" href="/myblog/assets/js/17.2bbc7ec8.js"><link rel="prefetch" href="/myblog/assets/js/18.77f06f98.js"><link rel="prefetch" href="/myblog/assets/js/19.4f67f875.js"><link rel="prefetch" href="/myblog/assets/js/20.62894280.js"><link rel="prefetch" href="/myblog/assets/js/21.14bf4752.js"><link rel="prefetch" href="/myblog/assets/js/22.083f0aa8.js"><link rel="prefetch" href="/myblog/assets/js/23.3560bb45.js"><link rel="prefetch" href="/myblog/assets/js/24.08b6282b.js"><link rel="prefetch" href="/myblog/assets/js/25.94ec88c4.js"><link rel="prefetch" href="/myblog/assets/js/26.7f985b64.js"><link rel="prefetch" href="/myblog/assets/js/27.72a9cd34.js"><link rel="prefetch" href="/myblog/assets/js/28.fc8e8e56.js"><link rel="prefetch" href="/myblog/assets/js/29.a0c8983a.js"><link rel="prefetch" href="/myblog/assets/js/3.169dfbbb.js"><link rel="prefetch" href="/myblog/assets/js/30.28ef4891.js"><link rel="prefetch" href="/myblog/assets/js/31.1c1f49c1.js"><link rel="prefetch" href="/myblog/assets/js/32.f54c55f9.js"><link rel="prefetch" href="/myblog/assets/js/33.c73513f7.js"><link rel="prefetch" href="/myblog/assets/js/34.64bf40cb.js"><link rel="prefetch" href="/myblog/assets/js/35.9adb18c9.js"><link rel="prefetch" href="/myblog/assets/js/36.0672bc74.js"><link rel="prefetch" href="/myblog/assets/js/37.fbe73f9d.js"><link rel="prefetch" href="/myblog/assets/js/38.77e7027d.js"><link rel="prefetch" href="/myblog/assets/js/39.bc323e2f.js"><link rel="prefetch" href="/myblog/assets/js/4.ba3164ba.js"><link rel="prefetch" href="/myblog/assets/js/40.0a7ac213.js"><link rel="prefetch" href="/myblog/assets/js/41.61d663ef.js"><link rel="prefetch" href="/myblog/assets/js/42.585a0896.js"><link rel="prefetch" href="/myblog/assets/js/43.ca141492.js"><link rel="prefetch" href="/myblog/assets/js/44.e8a29eb8.js"><link rel="prefetch" href="/myblog/assets/js/45.532a79cd.js"><link rel="prefetch" href="/myblog/assets/js/46.8d3d0d30.js"><link rel="prefetch" href="/myblog/assets/js/47.82bf604e.js"><link rel="prefetch" href="/myblog/assets/js/48.994be237.js"><link rel="prefetch" href="/myblog/assets/js/49.08cce5cb.js"><link rel="prefetch" href="/myblog/assets/js/5.75a3592b.js"><link rel="prefetch" href="/myblog/assets/js/50.1767dcf4.js"><link rel="prefetch" href="/myblog/assets/js/51.f705c77d.js"><link rel="prefetch" href="/myblog/assets/js/52.c94358d2.js"><link rel="prefetch" href="/myblog/assets/js/53.4c8a778d.js"><link rel="prefetch" href="/myblog/assets/js/55.c493230f.js"><link rel="prefetch" href="/myblog/assets/js/56.1faeb287.js"><link rel="prefetch" href="/myblog/assets/js/57.4a53ec81.js"><link rel="prefetch" href="/myblog/assets/js/58.56892b31.js"><link rel="prefetch" href="/myblog/assets/js/59.c2ec9e2a.js"><link rel="prefetch" href="/myblog/assets/js/6.0377ba0c.js"><link rel="prefetch" href="/myblog/assets/js/60.ee803e45.js"><link rel="prefetch" href="/myblog/assets/js/61.c6be55d5.js"><link rel="prefetch" href="/myblog/assets/js/62.76728588.js"><link rel="prefetch" href="/myblog/assets/js/63.ac9ca9f7.js"><link rel="prefetch" href="/myblog/assets/js/64.9a163f04.js"><link rel="prefetch" href="/myblog/assets/js/65.6c04dcbb.js"><link rel="prefetch" href="/myblog/assets/js/66.7a3f4d6f.js"><link rel="prefetch" href="/myblog/assets/js/67.d8ea371c.js"><link rel="prefetch" href="/myblog/assets/js/7.e59ee139.js"><link rel="prefetch" href="/myblog/assets/js/8.46bfc7f6.js"><link rel="prefetch" href="/myblog/assets/js/9.3d516e5b.js">
+    <link rel="stylesheet" href="/myblog/assets/css/0.styles.dca02e74.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myblog/" class="home-link router-link-active"><!----> <span class="site-name">fxpby's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/myblog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/myblog/note/npm/init.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  博文
+</a></div><div class="nav-item"><a href="/myblog/dataStructures/array/array.html" class="nav-link">
+  数据结构
+</a></div><div class="nav-item"><a href="/myblog/algorithm/array/twosum.html" class="nav-link">
+  算法
+</a></div><div class="nav-item"><a href="/myblog/exercise/BitCounting.html" class="nav-link">
+  副本打怪
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/myblog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/myblog/note/npm/init.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  博文
+</a></div><div class="nav-item"><a href="/myblog/dataStructures/array/array.html" class="nav-link">
+  数据结构
+</a></div><div class="nav-item"><a href="/myblog/algorithm/array/twosum.html" class="nav-link">
+  算法
+</a></div><div class="nav-item"><a href="/myblog/exercise/BitCounting.html" class="nav-link">
+  副本打怪
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>HTML</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/myblog/note/HTML/Semantics.html" class="sidebar-link">HTML5语义化</a></li><li><a href="/myblog/note/HTML/HTML5DOM.html" class="sidebar-link">HTML5 DOM</a></li><li><a href="/myblog/note/HTML/favicon.html" class="sidebar-link">favicon</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>CSS</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/myblog/note/CSS/BFC.html" class="sidebar-link">BFC</a></li><li><a href="/myblog/note/CSS/HCenter.html" class="sidebar-link">水平居中</a></li><li><a href="/myblog/note/CSS/VCenter.html" class="sidebar-link">垂直居中</a></li><li><a href="/myblog/note/CSS/HVCenter.html" class="sidebar-link">水平垂直居中</a></li><li><a href="/myblog/note/CSS/Flex.html" class="sidebar-link">Flex布局</a></li><li><a href="/myblog/note/CSS/weight.html" class="sidebar-link">权重</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>ES6</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/myblog/note/ES6/es6.html" class="sidebar-link">es6</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>JavaScript</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/myblog/note/JavaScript/RegExp.html" class="sidebar-link">正则</a></li><li><a href="/myblog/note/JavaScript/this.html" class="sidebar-link">this词法</a></li><li><a href="/myblog/note/JavaScript/Hoisting.html" class="sidebar-link">变量提升</a></li><li><a href="/myblog/note/JavaScript/Copy.html" class="sidebar-link">深拷贝</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Node.js</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/myblog/note/node.js/npm.html" class="sidebar-link">安装npm</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Vue</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/myblog/note/vue/ref.html" class="sidebar-link">ref与$refs</a></li><li><a href="/myblog/note/vue/set.html" class="sidebar-link">$set的使用</a></li><li><a href="/myblog/note/vue/watch.html" class="sidebar-link">watch监听</a></li><li><a href="/myblog/note/vue/emit.html" class="sidebar-link">子组件调用父组件方法</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>npm</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/myblog/note/npm/init.html" aria-current="page" class="active sidebar-link">修改elementUI上传npm总结</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/note/npm/init.html#修改elementui源码" class="sidebar-link">修改elementUI源码</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/note/npm/init.html#_1-克隆elementui官方仓库到本地" class="sidebar-link">1.克隆elementUI官方仓库到本地</a></li><li class="sidebar-sub-header"><a href="/myblog/note/npm/init.html#_2-以新建组件为例" class="sidebar-link">2.以新建组件为例</a></li></ul></li><li class="sidebar-sub-header"><a href="/myblog/note/npm/init.html#打包" class="sidebar-link">打包</a></li><li class="sidebar-sub-header"><a href="/myblog/note/npm/init.html#npm上传" class="sidebar-link">npm上传</a></li></ul></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>重学JS</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/myblog/note/restartJS/dataType.html" class="sidebar-link">数据类型</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="修改elementui源码并打包上传至npm总结"><a href="#修改elementui源码并打包上传至npm总结" class="header-anchor">#</a> 修改elementUI源码并打包上传至npm总结</h1> <blockquote><p>第一次尝试修改elementUI源码，打包后上传到npm，在网上参考了很多篇文章，但是或多或少都不够详细，我这小菜鸟也踩了一些坑，记录一下。</p></blockquote> <h2 id="修改elementui源码"><a href="#修改elementui源码" class="header-anchor">#</a> 修改elementUI源码</h2> <p>项目中遇到组件库达不到想要的需求，那么就需要重新写组件或者改源码了。</p> <h3 id="_1-克隆elementui官方仓库到本地"><a href="#_1-克隆elementui官方仓库到本地" class="header-anchor">#</a> 1.克隆elementUI官方仓库到本地</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># fork一份并克隆仓库</span>
+<span class="token function">git</span> clone https://github.com/ElemeFE/element.git
+
+<span class="token comment"># 进入本地库，安装依赖</span>
+<span class="token builtin class-name">cd</span> element
+<span class="token function">npm</span> <span class="token function">install</span>
+
+<span class="token comment"># 默认在http://localhost:8585打开本地的element首页</span>
+<span class="token function">npm</span> run dev
+</code></pre></div><h3 id="_2-以新建组件为例"><a href="#_2-以新建组件为例" class="header-anchor">#</a> 2.以新建组件为例</h3> <p>element文件夹中packages文件夹就是我们要新增或修改组件的目录文件夹</p> <p><img src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/element%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%841.png" alt="目录结构1"></p> <p>其中的theme-chalk文件夹，里面存放的是样式相关的scss文件</p> <p><img src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/themechalk.png" alt="目录结构2"></p> <ul><li><p>在packages文件夹中新建xxx文件夹(新增的组建名)并新增 xxx/src/main.vue 文件</p></li> <li><p>新增 xxx/index.js文件</p></li> <li><p>在 element/src/index.js文件中新增</p></li></ul> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> xxx <span class="token keyword">from</span> <span class="token string">'../packages/xxx/index.js'</span><span class="token punctuation">;</span>  
+<span class="token keyword">const</span> components <span class="token operator">=</span> <span class="token punctuation">[</span>xxx<span class="token punctuation">]</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>xxx<span class="token punctuation">}</span>
+</code></pre></div><ul><li><p>在packages/theme-chalk/xxx.scss中加入相关样式</p></li> <li><p>在element/components.json中加入</p></li></ul> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token punctuation">{</span><span class="token string">&quot;xxx&quot;</span><span class="token operator">:</span> <span class="token string">&quot;./packages/xxx/index.js&quot;</span><span class="token punctuation">}</span>
+</code></pre></div><h2 id="打包"><a href="#打包" class="header-anchor">#</a> 打包</h2> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 在element目录下执行</span>
+<span class="token function">npm</span> run dist
+</code></pre></div><p>这样就生成了lib文件夹，此时就可以直接复制该文件夹，去其他项目里找到<code>node_modules/element-ui/lib</code>文件夹进行替换了</p> <h2 id="npm上传"><a href="#npm上传" class="header-anchor">#</a> npm上传</h2> <p>这个地方踩了一些坑，下面说详细步骤：</p> <ul><li><p>用编辑器的全局搜索功能，搜索<code>element-ui</code>, 并替换名称为自己的npm包名，切记这个包名不可以和npm里现有的包名重复</p></li> <li><p>修改element/types/index.d.ts文件</p></li></ul> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// 因为刚才全局替换名称了，所以这里要改回去</span>
+<span class="token keyword">export</span> <span class="token operator">*</span> <span class="token keyword">from</span> <span class="token string">'./element-ui'</span>
+
+<span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> ElementUI <span class="token keyword">from</span> <span class="token string">'./element-ui'</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> ElementUI
+</code></pre></div><ul><li>现在再次运行命令，生成新的lib目录</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 在element目录下执行</span>
+<span class="token function">npm</span> run dist
+</code></pre></div><ul><li><p>修改element文件夹中package.json中的包名和版本号</p></li> <li><p>初始化</p></li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> init
+</code></pre></div><ul><li>登陆账号,没有的话，需要注册，注册完需要邮箱验证，需要邮箱验证，需要邮箱验证</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> login
+<span class="token comment"># 依次输入用户名、密码、邮箱。。。</span>
+</code></pre></div><ul><li>上传</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> publish
+</code></pre></div><ul><li>依赖安装</li></ul> <ol><li><p>已经装了element-ui依赖的话，需要修改package.json中dependencies的&quot;element-ui&quot;: &quot;^2.4.11&quot;修改为：&quot;你的包名&quot;: &quot;^你的版本号&quot;<br>
+然后再进行依赖安装
+<code>npm install</code></p></li> <li><p>没装过的话，直接
+<code>npm install 你的包名</code>
+就可以了</p></li></ol> <p>正常情况下这样就可以了，但也有可能遇到一些奇怪的问题：</p> <ul><li><p>上传不成功： 排除包名重复的话，可能就是需要番羽墙了</p></li> <li><p>上传成功了，但是在npm里面搜不到。这个我也不知道为什么，他过了一会儿就有了。<br>
+令人郁闷的是打开那个链接后，我看到了<code>{&quot;error&quot;:&quot;Service Unavailable&quot;}</code>, 503报错。折腾了半天还是报这个，但是发现包可以npm install下来，也就是不影响使用。<br>
+发了邮件询问，收到了回复，不报503了
+<img src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/npm503reply.png" alt="目录结构2"></p></li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/myblog/note/vue/emit.html" class="prev">
+        子组件调用父组件方法
+      </a></span> <span class="next"><a href="/myblog/note/restartJS/dataType.html">
+        数据类型
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/myblog/assets/js/app.67f47e85.js" defer></script><script src="/myblog/assets/js/2.5a9f1cd1.js" defer></script><script src="/myblog/assets/js/54.21a87e96.js" defer></script>
+  </body>
+</html>
