@@ -13,7 +13,7 @@ module.exports = {
 			// 		{ text: 'Vue', link: '/note/vue/' }
 			// 	]
 			// },
-			{ text: '博文', link: '/note/npm/init' },
+			{ text: '博文', link: '/note/HTML/favicon' },
 			{ text: '数据结构', link: '/dataStructures/array/array' },
 			{ text: '算法', link: '/algorithm/array/twosum' }
 			// ,
@@ -26,7 +26,7 @@ module.exports = {
 					title: 'HTML',
 					collapsable: false,
 					children: [
-						// ['/note/HTML/negativeMargin','负margin'],
+						['/note/HTML/favicon','favicon相关粗略总结'],
 						['/note/HTML/Semantics','HTML5语义化'],
 						['/note/HTML/HTML5DOM','HTML5 DOM']
 
