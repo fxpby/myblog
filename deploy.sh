@@ -13,6 +13,8 @@ cd docs/.vuepress/dist
 git init
 git add -A
 git commit -m 'deploy'
+git config --local user.name "fxpby"
+git config --local user.email "fxpby@outlook.com"
 git push -f https://github.com/fxpby/myblog.git master:gh-pages
 
 # cd -
