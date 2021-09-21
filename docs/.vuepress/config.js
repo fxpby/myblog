@@ -15,7 +15,8 @@ module.exports = {
 			// },
 			{ text: '博文', link: '/note/HTML/favicon' },
 			{ text: '数据结构', link: '/dataStructures/array/array' },
-			{ text: '算法', link: '/algorithm/array/twosum' }
+			{ text: '算法', link: '/algorithm/array/twosum' },
+			{ text: '副本打怪', link: '/exercise/BitCounting' },
 			// ,
 			// { text: 'SQL', link: '/sql/' },
 			// { text: 'Github', link: 'https://github.com/fxpby/' }
@@ -26,10 +27,10 @@ module.exports = {
 					title: 'HTML',
 					collapsable: false,
 					children: [
-						['/note/HTML/favicon','favicon相关粗略总结'],
+						// ['/note/HTML/negativeMargin','负margin'],
 						['/note/HTML/Semantics','HTML5语义化'],
-						['/note/HTML/HTML5DOM','HTML5 DOM']
-
+						['/note/HTML/HTML5DOM','HTML5 DOM'],
+						['/note/HTML/favicon','favicon相关粗略总结']
 					]
 				},
 				{
@@ -60,7 +61,6 @@ module.exports = {
 						['/note/JavaScript/this','this词法'],
 						['/note/JavaScript/Hoisting','变量提升'],
 						['/note/JavaScript/Copy','深拷贝']
-
 					]
 				},
 				{
@@ -93,7 +93,15 @@ module.exports = {
 					children: [
 						['/note/restartJS/dataType','数据类型']
 					]
-				}
+				},
+				// {
+				// 	title: '浏览器兼容性',
+				// 	collapsable: false,
+				// 	children: [
+				// 		['/note/BrowserCompatibility/zone','Invalid Date'],
+				// 		['/note/BrowserCompatibility/ie11','IE11相关踩坑']
+				// 	]
+				// }
 			],
 			'/dataStructures/':[
 				{
@@ -181,7 +189,18 @@ module.exports = {
 					children: [
 						['/algorithm/array/twosum','两数之和'],
 						['/algorithm/array/remove-duplicates-from-sorted-array','删除排序数组中的重复项'],
-						['/algorithm/array/remove-element','移除指定元素']
+						['/algorithm/array/remove-element','移除指定元素'],
+						['/algorithm/array/search-insert-position','搜索插入位置'],
+					]
+				}
+			],
+			'/exercise/':[
+				{
+					title: 'codewar',
+					collapsable: false,
+					children: [
+						['/exercise/BitCounting','Bit Counting'],
+						['/exercise/WhoLikesIt','Who likes it'],
 					]
 				}
 			]
@@ -198,7 +217,7 @@ module.exports = {
 		},
 		sidebarDepth: 2, // e'b将同时提取markdown中h2 和 h3 标题，显示在侧边栏上。 
 		lastUpdated: 'Last Updated', // 文档更新时间：每个文件git最后提交的时间 
-		lastUpdated: true
+		lastUpdated: false
 	},
 	head: [
 		['script', {}, `
