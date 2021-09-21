@@ -64,6 +64,13 @@ module.exports = {
 					]
 				},
 				{
+					title: '前端工程化',
+					collapsable: false,
+					children: [
+						['/note/front-end-engineering/travis-ci-for-vuepress','初探Travis CI: 实现VuePress自动化部署']
+					]
+				},
+				{
 					title: 'Node.js',
 					collapsable: false,
 					children: [
