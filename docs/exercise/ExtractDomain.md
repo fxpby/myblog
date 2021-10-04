@@ -27,7 +27,7 @@ domainName("www.xakep.ru") == "xakep"
 一般我们在购买域名之后会给域名做解析，拿阿里云的域名解析举栗了：  
 ![域名解析](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/exercise/extractDomain/%E8%A7%A3%E6%9E%90.png)
 我们看到这里有一个**主机记录**，鼠标移上去看一下：  
-![主机记录](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/exercise/extractDomain/%E4%B8%BB%E6%9C%BA%E8%AE%B0%E5%BD%95.png)
+![主机记录](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/exercise/extractDomain/%E4%B8%BB%E6%9C%BA%E8%AE%B0%E5%BD%95.png)  
 看完后我们知道了这个解析是可以配置的，比如我们设置`www`，那么访问`www.xx.xx`即可，如果设置了`@`，那么直接访问`xx.xx`即可。
 
 一个域名我们可以设置很多个解析，每个解析对应不同的ip地址，即我们有一个域名`olumel.top`, 可以设置`www.olumel.top`解析到ip1，`cute.olumel.top`解析到ip2, `cool.olumel.top`到ip3...
