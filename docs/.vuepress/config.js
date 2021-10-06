@@ -209,6 +209,7 @@ module.exports = {
 						['/exercise/BitCounting','Bit Counting'],
 						['/exercise/WhoLikesIt','Who likes it'],
 						['/exercise/ExtractDomain','Extract the domain name from a URL'],
+						['/exercise/CountingDuplicates','Counting Duplicates'],
 					]
 				}
 			]
