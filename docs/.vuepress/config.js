@@ -58,7 +58,7 @@ module.exports = {
             ["/note/JavaScript/data-element", "数据类型"],
             [
               "/note/JavaScript/compare-value",
-              "typeof intanceof..查看值的类型",
+              "typeof instanceof..查看值的类型",
             ],
             ["/note/JavaScript/RegExp", "正则"],
             ["/note/JavaScript/this", "this词法"],
