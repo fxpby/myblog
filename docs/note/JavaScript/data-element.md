@@ -26,7 +26,23 @@ typeof 对 undefined 和 undeclared（未声明 变量都返回 undefined
 
 ### number
 
+- NaN: not a number, 数学运算的操作数不是数字类型就无法返回一个有效的数字，这时返回值未NaN.
+  - 和自身不相等
+  - 可使用Number.isNaN()判断一个数字是否为NaN
 
+- Infinity
+
+- 零值
+  - SameValueZero TODO
+
+e.g.
+
+```js
+let a = 1 / 'a' // NaN
+a == NaN // false
+a === NaN // false
+a !== a // true
+```
 
 ## 引用类型
 

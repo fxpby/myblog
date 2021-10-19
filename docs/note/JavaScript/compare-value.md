@@ -1,4 +1,6 @@
-# typeof、intanceof ...查看值的类型
+# typeof、instanceof ...查看值的类型
+
+typeof 对 undefined 和 undeclared 变量都返回 undefined
 
 > function 也是Javascript的一个内置类型，然而查阅规范就会知道它实际上时object的一个“子类型”。具体来说，函数时“可调用对象”。它有一个内部属性[[Call]], 该属性使其可以被调用。 --你不知道的JavaScript
 
