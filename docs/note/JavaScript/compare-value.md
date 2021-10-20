@@ -10,6 +10,7 @@ typeof false // "boolean"
 typeof null // "object"
 typeof function(){} // "function"
 typeof [1, 2] // "object"
+typeof NaN // "number"
 ```
 
 typeof 对 undefined 和 undeclared 变量都返回 undefined
