@@ -32,17 +32,58 @@ typeof null === "object" // true
 
 - Infinity
 
+  ```js
+  1 / 0 // Infinity
+  1 / -0 // -Infinity
+  -1 / 0 // -Infinity
+  -1 / -0 // Infinity
+  Infinity / Infinity // NaN
+  ```
+
 - 零值
-  - SameValueZero TODO
 
-e.g.
+  - 加法和减法运算不会得到负零
 
-```js
-let a = 1 / 'a' // NaN
-a == NaN // false
-a === NaN // false
-a !== a // true
-```
+  ```js
+  0 / -1 // -0
+  0 * -1 // -0
+  let a = -0
+  a.toString() // 0
+  JSON.parse(a) // 0
+  ```
+
+  有些数据需要数字的符号位去表示特殊信息，比如运动方向
+
+  - SameValue 和 SameValueZero
+    - 在判断`+0`、`-0`和`NaN`时，SameValue和`===`表现不一样，ES6中的Object.is内部使用了SameValue，includes则使用了SameValueZero
+
+    ```js
+    NaN == NaN // false
+    NaN === NaN // false
+    Object.is(NaN, NaN) // true => SameValue(NaN, NaN)
+    +0 === -0 // true
+    Object.is(+0, -0) // false => SameValue(+0, -0)
+    [+0].includes(-0) // true => SameValueZero(+0, -0)
+    ```
+
+- 0.1 + 0.2 !== 0.3
+  - 二进制浮点数中的0.1和0.2并不是十分精确
+  - 机器精度 Number.EPSILON, 可以比较两个数字是否相等（在指定的误差范围内）
+
+  ```js
+  function numbersCloseEnoughToEqual(n1, n2) {
+    return Math.abs(n1 - n2) < Number.EPSILON
+  }
+  ```
+
+  e.g.
+
+  ```js
+  let a = 1 / 'a' // NaN
+  a == NaN // false
+  a === NaN // false
+  a !== a // true
+  ```
 
 ### string
 

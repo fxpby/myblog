@@ -1,4 +1,16 @@
 # typeof、instanceof ...查看值的类型
+# typeof
+
+```js
+typeof undeclared // "undefined"
+typeof undefined // "undefined"
+typeof 123.1 // "number"
+typeof "hello world" // "string"
+typeof false // "boolean"
+typeof null // "object"
+typeof function(){} // "function"
+typeof [1, 2] // "object"
+```
 
 typeof 对 undefined 和 undeclared 变量都返回 undefined
 
