@@ -26,11 +26,25 @@ typeof null === "object" // true
 
 ### number
 
-- NaN: not a number, 数学运算的操作数不是数字类型就无法返回一个有效的数字，这时返回值未NaN.
-  - 和自身不相等
-  - 使用Number.isNaN()判断一个值是否为NaN
+#### NaN
 
-- Infinity
+not a number, 数学运算的操作数不是数字类型就无法返回一个有效的数字，这时返回值未NaN.
+
+- 和自身不相等
+- 使用Number.isNaN()判断一个值是否为NaN
+
+  ```js
+  let a = 1 / 'a' // NaN
+  a == NaN // false
+  a === NaN // false
+  a !== a // true
+  ```
+
+#### Infinity 无穷数
+
+如果某个计算得到的数值结果超过了JavaScript可以表示的范围，就会转换为一个特殊的无穷值，有正无穷大和负无穷大
+
+- isFinite() 检测是否为常规数字  
 
   ```js
   1 / 0 // Infinity
@@ -40,9 +54,9 @@ typeof null === "object" // true
   Infinity / Infinity // NaN
   ```
 
-- 零值
+#### 零值
 
-  - 加法和减法运算不会得到负零
+- 加法和减法运算不会得到负零
 
   ```js
   0 / -1 // -0
@@ -52,19 +66,19 @@ typeof null === "object" // true
   JSON.parse(a) // 0
   ```
 
-  有些数据需要数字的符号位去表示特殊信息，比如运动方向
+有些数据需要数字的符号位去表示特殊信息，比如运动方向
 
-  - SameValue 和 SameValueZero
-    - 在判断`+0`、`-0`和`NaN`时，SameValue和`===`表现不一样，ES6中的Object.is内部使用了SameValue，includes则使用了SameValueZero
+- SameValue 和 SameValueZero
+  - 在判断`+0`、`-0`和`NaN`时，SameValue和`===`表现不一样，ES6中的Object.is内部使用了SameValue，includes则使用了SameValueZero
 
-    ```js
-    NaN == NaN // false
-    NaN === NaN // false
-    Object.is(NaN, NaN) // true => SameValue(NaN, NaN)
-    +0 === -0 // true
-    Object.is(+0, -0) // false => SameValue(+0, -0)
-    [+0].includes(-0) // true => SameValueZero(+0, -0)
-    ```
+  ```js
+  NaN == NaN // false
+  NaN === NaN // false
+  Object.is(NaN, NaN) // true => SameValue(NaN, NaN)
+  +0 === -0 // true
+  Object.is(+0, -0) // false => SameValue(+0, -0)
+  [+0].includes(-0) // true => SameValueZero(+0, -0)
+  ```
 
 - 0.1 + 0.2 !== 0.3
   - 二进制浮点数中的0.1和0.2并不是十分精确
@@ -76,29 +90,55 @@ typeof null === "object" // true
   }
   ```
 
-  e.g.
-
-  ```js
-  let a = 1 / 'a' // NaN
-  a == NaN // false
-  a === NaN // false
-  a !== a // true
-  ```
-
 ### string
+
+#### 访问字符
+
+历史原因，下面这种`str[2]`写法在某个老版本的IE中是不合法的，现在貌似没有这个问题了，放心使用吧
+
+- 区别: 如果找不到字符，[]返回undefined，charAt()返回空字符串
+
+```js
+let str = "olu cool"
+str[2] // "u"
+str.charAt(2) // "u"
+str[9] // undefined
+str.charAt(9) // ""
+```
+
+使用for..of遍历字符
+
+```js
+let str = "olu cool"
+for(let item of str) {
+  console.log(item)
+}
+```
+
+#### 字符串不可更改
+
+字符串的成员函数不会改变其原始值，而是创建并返回一个新的字符串，数组的成员函数都是在原始值上进行操作
+
+```js
+let str = "olu cool"
+str[2] = "aha"
+str // "olu cool"
+```
 
 ### boolean
 
-- fasly 假值
-  - false
-  - null
-  - undefined
-  - ""
-  - 0
-  - NaN
+#### fasly 假值
 
-- truthy 真值
-  - 除了上述`fasly`的值，包括{}、[]、"false"、"0"
+- false
+- null
+- undefined
+- ""
+- 0
+- NaN
+
+#### truthy 真值
+
+- 除了上述`fasly`的值，包括{}、[]、"false"、"0"
 
 - 逻辑运算符（&&、!、!!）的运算值看其是真值/假值
 
