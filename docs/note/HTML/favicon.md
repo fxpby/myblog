@@ -42,9 +42,13 @@ svg矢量图的优点很多，但是其兼容性相比较而言差很多。如�
 
 ### 选择什么尺寸，为什么
 
-尽管国内很多网站都是只有一个尺寸的favicon.ico，但是多浏览一些网站，这里就拿凹凸实验室举栗了`https://aotu.io/`，![凹凸实验室](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/auto-favicon-info.png)
-我们可以看到凹凸实验室`rel="shortcut icon"`的link标签引入了一个64x64,大小为33.3kb的ico图片，然后引入了3个分别为16x16/32x32/48x48的png图片，再往下看有一个manifest.json文件，这个文件是PWA应用的配置文件，用来告知浏览器关于PWA应用的一些相关信息，里面的icons可以看到有8张不同尺寸的png图片。
-![凹凸实验室的manifest.json](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/aotu-manifest-info.png)
+尽管国内很多网站都是只有一个尺寸的favicon.ico，但是多浏览一些网站，这里就拿凹凸实验室举栗了`https://aotu.io/`，
+
+![凹凸实验室](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/auto-favicon-info.png)  
+
+我们可以看到凹凸实验室`rel="shortcut icon"`的link标签引入了一个64x64,大小为33.3kb的ico图片，然后引入了3个分别为16x16/32x32/48x48的png图片，再往下看有一个manifest.json文件，这个文件是PWA应用的配置文件，用来告知浏览器关于PWA应用的一些相关信息，里面的icons可以看到有8张不同尺寸的png图片。  
+
+![凹凸实验室的manifest.json](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/aotu-manifest-info.png)  
 
 再继续往下看，看到了很多不同尺寸的`rel="apple-touch-icon"`link标签，ios移动设备将web应用程序或者网页链接添加到主屏幕，需要指定一个链接图标，苹果的官方文档中说明需要在根目录中放置png格式图片作为图标。通常情况下我们需要给不同分辨率的设备设置图标，查阅相关资料总结如下：
 
@@ -107,11 +111,11 @@ svg矢量图的优点很多，但是其兼容性相比较而言差很多。如�
 
 ### References
 
-> https://en.wikipedia.org/wiki/Favicon
-> https://stackoverflow.com/questions/1344122/favicon-png-vs-favicon-ico-why-should-i-use-png-instead-of-ico
-> https://www.emergeinteractive.com/insights/detail/the-essentials-of-favicons
-> https://css-tricks.com/svg-favicons-and-all-the-fun-things-we-can-do-with-them
-> https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/pinnedTabs/pinnedTabs.html
-> https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html
-> https://webhint.io/docs/user-guide/hints/hint-apple-touch-icons/
-> https://sympli.io/blog/heres-everything-you-need-to-know-about-favicons-in-2020/
+> <https://en.wikipedia.org/wiki/Favicon>
+> <https://stackoverflow.com/questions/1344122/favicon-png-vs-favicon-ico-why-should-i-use-png-instead-of-ico>
+> <https://www.emergeinteractive.com/insights/detail/the-essentials-of-favicons>
+> <https://css-tricks.com/svg-favicons-and-all-the-fun-things-we-can-do-with-them>
+> <https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/pinnedTabs/pinnedTabs.html>
+> <https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html>
+> <https://webhint.io/docs/user-guide/hints/hint-apple-touch-icons/>
+> <https://sympli.io/blog/heres-everything-you-need-to-know-about-favicons-in-2020/>

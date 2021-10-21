@@ -75,6 +75,10 @@ module.exports = {
               "/note/front-end-engineering/travis-ci-for-vuepress",
               "初探Travis CI: 实现VuePress自动化部署",
             ],
+            [
+              "/note/front-end-engineering/github-action-for-vuepress",
+              "初探GitHub Actions: 实现VuePress自动化部署",
+            ],
           ],
         },
         {
