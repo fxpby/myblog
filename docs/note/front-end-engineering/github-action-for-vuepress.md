@@ -52,7 +52,7 @@ name填写ACCESS_TOKEN, value填写刚才保存的token
 
 ### 创建xx.yml文件
 
-项目中自己手动新建. 文件名随意起,github会自动运行workflows目录下所有的yml文件, 其中workflow中的一些配置比较重要:
+项目中自己手动新建.yml 文件名随意起,github会自动运行workflows目录下所有的yml文件, 其中workflow中的一些配置比较重要:
 
 - name: workflow 的名称。如果省略该字段，默认为当前 workflow 的文件名
 
