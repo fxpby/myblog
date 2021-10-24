@@ -1,4 +1,4 @@
-# typeof、instanceof ...查看值的类型
+# typeof/instanceof/{}.toString 检查类型
 
 ## typeof
 
