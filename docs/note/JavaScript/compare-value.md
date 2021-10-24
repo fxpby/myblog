@@ -116,4 +116,117 @@ arr instanceof Object // true
 
 因为arr也属于Object类, 在原型上Array是继承Object的
 
+instanceof在检查的时候会考虑原型链, 还可以通过静态方法`Symbol.hasInstance`设置自定义逻辑
+
+```js
+// 设置 instanceof 检查
+// 假设 有 canDrinkWater 属性的都是 Person
+class Person {
+  static [Symbol.hasInstance](obj) {
+    if (obj.canDrinkWater) {
+      return true
+    }
+  }
+}
+
+let obj = {
+  canDrinkWater: true
+}
+
+obj instanceof Person // true
+```
+
+class 没有Symbol.hasInstance的话，会检查Class.prototype是否等于对象的原型链中的原型之一
+
+也就是顺着原型链一个一个往上比较往上找
+
+```js
+obj.__proto__ === Class.prototype ?
+obj.__proto__.__proto__ === Class.prototype ?
+obj.__proto__.__proto__.__proto__ === Class.prototype
+...
+// 找到符合的就返回 true
+// 到了原型链尾端还没有找到的话，返回 false
+```
+
+```js
+class Person {}
+class Tom extends Person {}
+
+let tom = new Tom()
+
+tom instanceof Person // true
+
+tom.__proto__ // Tom {}
+Person.prototype // Person {}
+tom.__proto__.__proto__ // Person {}
+```
+
+### Object.prototype.isPrototypeOf()
+
+- isPrototypeOf() 方法用于测试一个对象是否存在于另一个对象的原型链上。
+- prototypeObj.isPrototypeOf(object)
+
+> isPrototypeOf() 与 instanceof 运算符不同。在表达式 "object instanceof AFunction"中，object 的原型链是针对 AFunction.prototype 进行检查的，而不是针对 AFunction 本身。 -- MDN
+
+```js
+function Person() {}
+let tom = new Person()
+tom instanceof Person // true
+Person.prototype.isPrototypeOf(tom) // true
+
+// 修改 prototype
+Person.prototype = {}
+
+tom instanceof Person // false
+Person.prototype.isPrototypeOf(tom) // false
+```
+
+```js
+function A() {}
+function B() {}
+
+A.prototype = B.prototype = {}
+
+let a = new A()
+
+a instanceof B // true
+```
+
 对于 instanceof , 真正决定类型的是prototype, 而不是构造函数
+
+### 手写实现instanceof
+
+```js
+const testInstanceof = (obj, target) => {
+  if (typeof target !== 'object') {
+    return false
+  }
+  if (obj.__proto__ === null) {
+    return false
+  }
+  if (obj.__proto__ !== target.prototype) {
+    return estInstanceof(obj.__proto__, target)
+  } else {
+    return true
+  }
+}
+```
+
+## Object.prototype.toString
+
+- 将一个普通对象转化为字符串
+- 用于检查基本数据类型、内建对象和包含Symbol.toStringTag属性的对象
+
+### Symbol.toStringTag
+
+- 可以使用特殊的对象属性 Symbol.toStringTag 自定义对象的 toString 方法的行为
+
+```js
+let olu = {
+  [Symbol.toStringTag]: "Olu"
+}
+Object.prototype.toString.call(olu) // "[object Olu]"
+```
+
+哈哈，感觉这个比 typeof 厉害
