@@ -58,7 +58,7 @@ module.exports = {
             ["/note/JavaScript/data-element", "数据类型"],
             [
               "/note/JavaScript/compare-value",
-              "typeof instanceof..查看值的类型",
+              "typeof/instanceof/{}.toString 检查类型",
             ],
             ["/note/JavaScript/type-transform", "类型转换"],
             // ["/note/JavaScript/RegExp", "正则"],

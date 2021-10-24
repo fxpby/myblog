@@ -44,7 +44,7 @@ console.log(fn.length) // 4
 
 > 数组也是object的一个“子类型”，数组的元素按数字顺序来进行索引（而非像普通对象那样通过字符串键值），其length属性是元素的个数
 
-### 手写 typeof
+### 手写 伪typeof
 
 undeclared 无法实现
 
@@ -76,9 +76,9 @@ function falseTypeof(val) {
 }
 ```
 
-### V8实现
+### v8实现
 
-蛮复杂的, 上连接
+很好奇v8是怎么实现的, 搜了下大佬们的文章, 上连接
 
 > <https://zhuanlan.zhihu.com/p/143590829>
 
@@ -87,3 +87,33 @@ function falseTypeof(val) {
 刚才看到了typeof对一些基本类型值比较有用, 那么引用类型怎么办呢, 别慌, 有instanceof在呢
 
 如果是给定引用类型的实例, instanceof 返回true. 检测基本类型值, 返回 false
+
+举个栗子:
+
+```js
+//  结合class
+class Person {}
+let Tom = new Person()
+
+Tom instanceof Person // true
+```
+
+```js
+// 结合构造函数
+function Person() {}
+let Tom = new Person()
+
+Tom instanceof Person // true
+```
+
+```js
+// 结合内建class
+let arr = [1, 2]
+
+arr instanceof Array // true
+arr instanceof Object // true
+```
+
+因为arr也属于Object类, 在原型上Array是继承Object的
+
+对于 instanceof , 真正决定类型的是prototype, 而不是构造函数
