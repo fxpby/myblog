@@ -38,6 +38,9 @@ not a number, 数学运算的操作数不是数字类型就无法返回一个有
   a == NaN // false
   a === NaN // false
   a !== a // true
+
+  let b = 'olu'
+  Number.isNaN(b) // false
   ```
 
 #### Infinity 无穷数
