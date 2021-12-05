@@ -112,13 +112,77 @@ jobs:
 
 ## 集成 GitHub Actions 部署到阿里云
 
+服务器购买流程和基础初始化配置这里就不啰嗦了 🦜
+域名购买备案和解析配置，nginx配置，https证书配置都不是本文的核心内容，这里就直入正题了🐎
+
+### 创建阿里云密钥对
+
+进入控制台 - 云服务器 ECS - 左侧列表 - 网络与安全 - 找到密钥对
+
+![create-key-pair](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/front-end-enginerring/create-key-pair.png)
+
+接下来我们创建 SSH 密钥对，然后绑定上 ECS 服务器， 并且将私钥下载保存好， 复制下来去GitHub用
+
+name填写`SERVER_SSH_KEY`(随意), value填写刚才的私钥
+
+![new-secret](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/front-end-enginerring/new-secret.png)
+
+### 创建配置.yml文件
+
+```yml
+name: Deploy to aliyun
+on:
+  #监听push操作
+  push:
+    branches:
+      # master分支，你也可以改成其他分支
+      - master
+jobs:
+  build:
+    # runs-on 指定job任务运行所需要的虚拟机环境(必填字段)
+    runs-on: ubuntu-latest
+    steps:
+      # 使用action库  actions/checkout获取源码
+      - name: Checkout 🐤
+        uses: actions/checkout@v2
+      # 安装Node13
+      - name: use Node.js 14.15.1 🐣
+        # 使用action库  actions/setup-node安装node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.15.1'
+      # 安装依赖
+      - name: npm install 🐥
+        run: npm install
+      # 打包
+      - name: npm build 🎄
+        run: npm run docs:build
+      # 部署到阿里云
+      - name: Deploy to Aliyun 🚀
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+          # 私钥
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          # scp参数
+          ARGS: "-avzr --delete"
+          # 源目录，编译后生成的文件目录
+          SOURCE: "/docs/.vuepress/dist"
+          # 服务器ip：换成你的服务器IP
+          REMOTE_HOST: "xxx.xxx.xxx.xxx"
+          # 用户
+          REMOTE_USER: "root"
+          # 目标地址 你在服务器上部署代码的地方
+          TARGET: "/xxx/xxx/xxx"
+
+```
+
 ## 测试
 
 修改代码，push上去, 可以看到构建日志, 不到两分钟,也是很快的~
 
 ![build-status](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/front-end-enginerring/build-status.png)
 
-![workflows](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/front-end-enginerring/workflows.png)
+![test-workflows](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/front-end-enginerring/test-workflow.png)
 
 ## Reference
 
