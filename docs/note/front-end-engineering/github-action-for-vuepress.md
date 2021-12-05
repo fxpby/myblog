@@ -12,7 +12,7 @@
 
 actions见名知意是一堆动作, 这一系列的动作包括了pull代码, 测试代码, 编译代码, 登陆服务器, 发布第三方服务等操作, GitHub把这些行为叫做actions
 
-## 集成 GitHub Actions
+## 集成 GitHub Actions 部署到 GitHub Page
 
 ### 设置github
 
@@ -109,6 +109,8 @@ jobs:
           FOLDER: docs/.vuepress/dist
 
 ```
+
+## 集成 GitHub Actions 部署到阿里云
 
 ## 测试
 
