@@ -1,7 +1,7 @@
 ---
 home: true
 lang: zh-CN
-heroText: Fxpby's blog
+heroText: fxpby和olu是好朋友
 heroImage: /headImg.jpg
 tagline: Welcome to my blog
 actionText: 开始 →

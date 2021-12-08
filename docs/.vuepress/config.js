@@ -1,6 +1,6 @@
 module.exports = {
   base: "/myblog/",
-  title: "fxpby's blog",
+  title: "fxpby和olu是好朋友",
   themeConfig: {
     nav: [
       { text: "首页", link: "/" },
