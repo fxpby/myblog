@@ -11,5 +11,4 @@ features:
   details: 记录自己日常所得，整理归纳。
 - title: For Me - 关于我
   details: 对前端充满好奇心🧐，keep learning😋 1037345919@qq.com
-footer: Copyright © 2021 olumel.top | 津ICP备2021008930号-1
 ---
