@@ -5,7 +5,7 @@ heroText: fxpby和olu是好朋友
 heroImage: /headImg.jpg
 tagline: Welcome to my blog
 actionText: 开始 →
-actionLink: /note/
+actionLink: /note/HTML/favicon
 features:
 - title: A Blog - 博客
   details: 记录自己日常所得，整理归纳。
