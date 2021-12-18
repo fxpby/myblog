@@ -197,7 +197,14 @@ module.exports = {
       ],
       "/leetcode/": [
         {
-          title: "leetcode",
+          title: "栈",
+          collapsable: false,
+          children: [
+            ["/leetcode/stack/valid-parentheses", "20.有效的括号"],
+          ],
+        },
+        {
+          title: "数组",
           collapsable: false,
           children: [
             ["/leetcode/array/twosum", "两数之和"],
