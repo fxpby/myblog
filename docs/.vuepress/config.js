@@ -14,8 +14,8 @@ module.exports = {
       // 	]
       // },
       { text: "博文", link: "/note/HTML/favicon" },
-      { text: "数据结构", link: "/dataStructures/array/array" },
-      { text: "算法", link: "/algorithm/array/twosum" },
+      { text: "数据结构和算法", link: "/dataStructures/array/array" },
+      { text: "力扣", link: "/leetcode/array/twosum" },
       { text: "副本打怪", link: "/exercise/BitCounting" },
       // ,
       // { text: 'SQL', link: '/sql/' },
@@ -119,6 +119,16 @@ module.exports = {
       ],
       "/dataStructures/": [
         {
+          title: "时间复杂度",
+          collapsable: false,
+          children: [["/dataStructures/timeComplexity/timeComplexity", "时间复杂度"]],
+        },
+        {
+          title: "空间复杂度",
+          collapsable: false,
+          children: [["/dataStructures/spaceComplexity/spaceComplexity", "空间复杂度"]],
+        },
+        {
           title: "数组",
           collapsable: false,
           children: [["/dataStructures/array/array", "数组"]],
@@ -185,18 +195,18 @@ module.exports = {
           children: [["/dataStructures/graph/graph", "图"]],
         },
       ],
-      "/algorithm/": [
+      "/leetcode/": [
         {
           title: "leetcode",
           collapsable: false,
           children: [
-            ["/algorithm/array/twosum", "两数之和"],
+            ["/leetcode/array/twosum", "两数之和"],
             [
-              "/algorithm/array/remove-duplicates-from-sorted-array",
+              "/leetcode/array/remove-duplicates-from-sorted-array",
               "删除排序数组中的重复项",
             ],
-            ["/algorithm/array/remove-element", "移除指定元素"],
-            ["/algorithm/array/search-insert-position", "搜索插入位置"],
+            ["/leetcode/array/remove-element", "移除指定元素"],
+            ["/leetcode/array/search-insert-position", "搜索插入位置"],
           ],
         },
       ],

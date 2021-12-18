@@ -206,7 +206,7 @@ const testInstanceof = (obj, target) => {
     return false
   }
   if (obj.__proto__ !== target.prototype) {
-    return estInstanceof(obj.__proto__, target)
+    return testInstanceof(obj.__proto__, target)
   } else {
     return true
   }
