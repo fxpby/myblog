@@ -10,12 +10,12 @@
 
 ```js
 function decToBinary(dec) {
-  const stacks = []
-  while (dec) {
-    stacks.push(dec % 2)
-    dec = parseInt(dec / 2)
+  const stack = []
+  while (dec > 0) {
+    stack.push(dec % 2)
+    dec = parseInt(dec / 2, 10)
   }
-  return Number(stacks.reverse().join(''))
+  return Number(stack.reverse().join(''))
 }
 ```
 

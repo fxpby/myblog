@@ -7,7 +7,7 @@
 -->
 # 栈
 
-## 1.创建一个基于Javascript对象的Stack类
+## 一、创建一个基于Javascript对象的Stack类
 
 ``` javascript
 class Stack {
@@ -93,5 +93,37 @@ toString () {
     str += `${this.items[i]}`
   }
   return str
+}
+```
+
+## 二、创建一个基于Javascript数组的Stack类
+
+```js
+class Stack {
+  constructor() {
+    this.stack = []
+  }
+
+  size() {
+    return this.stack.length
+  }
+
+  push() {
+    const args = [].slice.call(arguments)
+    this.stack = [...this.stack, ...args]
+    return this.stack.length
+  }
+
+  pop() {
+    return this.stack.splice(this.size() - 1, 1)[0]
+  }
+
+  peek() {
+    return this.stack[this.size() - 1]
+  }
+
+  isEmpty() {
+    return this.size() === 0
+  }
 }
 ```
