@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>237. 删除链表中的节点 | fxpby和olu是好朋友</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?560be5dada9664ddc2907a2c2e79f23b";
+				var s = document.getElementsByTagName("script")[0]; 
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/myblog/assets/css/0.styles.dca02e74.css" as="style"><link rel="preload" href="/myblog/assets/js/app.8de721d2.js" as="script"><link rel="preload" href="/myblog/assets/js/2.d3850362.js" as="script"><link rel="preload" href="/myblog/assets/js/40.5160a54f.js" as="script"><link rel="prefetch" href="/myblog/assets/js/10.17ccb7e7.js"><link rel="prefetch" href="/myblog/assets/js/11.9fc263b7.js"><link rel="prefetch" href="/myblog/assets/js/12.e1b2b508.js"><link rel="prefetch" href="/myblog/assets/js/13.9baea70b.js"><link rel="prefetch" href="/myblog/assets/js/14.b3fd0561.js"><link rel="prefetch" href="/myblog/assets/js/15.508dbd23.js"><link rel="prefetch" href="/myblog/assets/js/16.8a7510e1.js"><link rel="prefetch" href="/myblog/assets/js/17.f795a767.js"><link rel="prefetch" href="/myblog/assets/js/18.fd251b89.js"><link rel="prefetch" href="/myblog/assets/js/19.bb2e47e8.js"><link rel="prefetch" href="/myblog/assets/js/20.61ddb9a6.js"><link rel="prefetch" href="/myblog/assets/js/21.aee57649.js"><link rel="prefetch" href="/myblog/assets/js/22.89f311c0.js"><link rel="prefetch" href="/myblog/assets/js/23.e02bf0a7.js"><link rel="prefetch" href="/myblog/assets/js/24.2200b9dc.js"><link rel="prefetch" href="/myblog/assets/js/25.8f57f753.js"><link rel="prefetch" href="/myblog/assets/js/26.a0a6b8f8.js"><link rel="prefetch" href="/myblog/assets/js/27.e0db11a6.js"><link rel="prefetch" href="/myblog/assets/js/28.8dae3eb7.js"><link rel="prefetch" href="/myblog/assets/js/29.0f186c51.js"><link rel="prefetch" href="/myblog/assets/js/3.2b3277fc.js"><link rel="prefetch" href="/myblog/assets/js/30.35f92ead.js"><link rel="prefetch" href="/myblog/assets/js/31.fc1113d6.js"><link rel="prefetch" href="/myblog/assets/js/32.00d6ccb1.js"><link rel="prefetch" href="/myblog/assets/js/33.e042ba9c.js"><link rel="prefetch" href="/myblog/assets/js/34.8d35c1ec.js"><link rel="prefetch" href="/myblog/assets/js/35.d550050c.js"><link rel="prefetch" href="/myblog/assets/js/36.4ecb621d.js"><link rel="prefetch" href="/myblog/assets/js/37.92534c00.js"><link rel="prefetch" href="/myblog/assets/js/38.64c88db8.js"><link rel="prefetch" href="/myblog/assets/js/39.5ee25c1e.js"><link rel="prefetch" href="/myblog/assets/js/4.73160a8c.js"><link rel="prefetch" href="/myblog/assets/js/41.ad303ef0.js"><link rel="prefetch" href="/myblog/assets/js/42.77d27fef.js"><link rel="prefetch" href="/myblog/assets/js/43.de744465.js"><link rel="prefetch" href="/myblog/assets/js/44.ad91045f.js"><link rel="prefetch" href="/myblog/assets/js/45.cacd47e0.js"><link rel="prefetch" href="/myblog/assets/js/46.24e827f8.js"><link rel="prefetch" href="/myblog/assets/js/47.8a716423.js"><link rel="prefetch" href="/myblog/assets/js/48.4b471d12.js"><link rel="prefetch" href="/myblog/assets/js/49.df5542a5.js"><link rel="prefetch" href="/myblog/assets/js/5.11196358.js"><link rel="prefetch" href="/myblog/assets/js/50.208f6eb0.js"><link rel="prefetch" href="/myblog/assets/js/51.cd72cd7f.js"><link rel="prefetch" href="/myblog/assets/js/52.28b52b59.js"><link rel="prefetch" href="/myblog/assets/js/53.da36dc9b.js"><link rel="prefetch" href="/myblog/assets/js/54.a384c571.js"><link rel="prefetch" href="/myblog/assets/js/55.629e388e.js"><link rel="prefetch" href="/myblog/assets/js/56.1ea6ee41.js"><link rel="prefetch" href="/myblog/assets/js/57.5035600e.js"><link rel="prefetch" href="/myblog/assets/js/58.a2943eaf.js"><link rel="prefetch" href="/myblog/assets/js/59.4f8207ae.js"><link rel="prefetch" href="/myblog/assets/js/6.b492a800.js"><link rel="prefetch" href="/myblog/assets/js/60.c2789ef4.js"><link rel="prefetch" href="/myblog/assets/js/61.d77bfb94.js"><link rel="prefetch" href="/myblog/assets/js/62.a620dd73.js"><link rel="prefetch" href="/myblog/assets/js/63.5918d443.js"><link rel="prefetch" href="/myblog/assets/js/64.7dff623a.js"><link rel="prefetch" href="/myblog/assets/js/65.0e3dc2ea.js"><link rel="prefetch" href="/myblog/assets/js/66.2fc3c951.js"><link rel="prefetch" href="/myblog/assets/js/67.91660087.js"><link rel="prefetch" href="/myblog/assets/js/68.c41d85f5.js"><link rel="prefetch" href="/myblog/assets/js/69.508f23b4.js"><link rel="prefetch" href="/myblog/assets/js/7.708cf71a.js"><link rel="prefetch" href="/myblog/assets/js/70.7ae078c7.js"><link rel="prefetch" href="/myblog/assets/js/71.1272921f.js"><link rel="prefetch" href="/myblog/assets/js/72.1d897e27.js"><link rel="prefetch" href="/myblog/assets/js/73.eafdb728.js"><link rel="prefetch" href="/myblog/assets/js/74.977e9398.js"><link rel="prefetch" href="/myblog/assets/js/75.766484b6.js"><link rel="prefetch" href="/myblog/assets/js/76.dbfaf88c.js"><link rel="prefetch" href="/myblog/assets/js/77.e686c6ac.js"><link rel="prefetch" href="/myblog/assets/js/78.8adb348f.js"><link rel="prefetch" href="/myblog/assets/js/79.ae23f943.js"><link rel="prefetch" href="/myblog/assets/js/8.d2bdc705.js"><link rel="prefetch" href="/myblog/assets/js/80.7264f8f3.js"><link rel="prefetch" href="/myblog/assets/js/81.8724e7bf.js"><link rel="prefetch" href="/myblog/assets/js/9.37e1cb64.js">
+    <link rel="stylesheet" href="/myblog/assets/css/0.styles.dca02e74.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myblog/" class="home-link router-link-active"><!----> <span class="site-name">fxpby和olu是好朋友</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/myblog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/myblog/note/HTML/favicon.html" class="nav-link">
+  博文
+</a></div><div class="nav-item"><a href="/myblog/dataStructures/array/array.html" class="nav-link">
+  数据结构和算法
+</a></div><div class="nav-item"><a href="/myblog/leetcode/array/twosum.html" class="nav-link">
+  力扣
+</a></div><div class="nav-item"><a href="/myblog/exercise/BitCounting.html" class="nav-link">
+  副本打怪
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/myblog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/myblog/note/HTML/favicon.html" class="nav-link">
+  博文
+</a></div><div class="nav-item"><a href="/myblog/dataStructures/array/array.html" class="nav-link">
+  数据结构和算法
+</a></div><div class="nav-item"><a href="/myblog/leetcode/array/twosum.html" class="nav-link">
+  力扣
+</a></div><div class="nav-item"><a href="/myblog/exercise/BitCounting.html" class="nav-link">
+  副本打怪
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>栈</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/myblog/leetcode/stack/valid-parentheses.html" class="sidebar-link">20.有效的括号</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>队列</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/myblog/leetcode/queue/number-of-recent-calls.html" class="sidebar-link">933.最近的请求次数</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>链表</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/myblog/leetcode/linkedList/delete-node-in-a-linked-list.html" aria-current="page" class="active sidebar-link">237.删除链表中的节点</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/leetcode/linkedList/delete-node-in-a-linked-list.html#题目描述" class="sidebar-link">题目描述</a></li><li class="sidebar-sub-header"><a href="/myblog/leetcode/linkedList/delete-node-in-a-linked-list.html#解题方法" class="sidebar-link">解题方法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/leetcode/linkedList/delete-node-in-a-linked-list.html#替换节点" class="sidebar-link">替换节点</a></li></ul></li></ul></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>数组</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/myblog/leetcode/array/twosum.html" class="sidebar-link">两数之和</a></li><li><a href="/myblog/leetcode/array/remove-duplicates-from-sorted-array.html" class="sidebar-link">删除排序数组中的重复项</a></li><li><a href="/myblog/leetcode/array/remove-element.html" class="sidebar-link">移除指定元素</a></li><li><a href="/myblog/leetcode/array/search-insert-position.html" class="sidebar-link">搜索插入位置</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_237-删除链表中的节点"><a href="#_237-删除链表中的节点" class="header-anchor">#</a> 237. 删除链表中的节点</h1> <h2 id="题目描述"><a href="#题目描述" class="header-anchor">#</a> 题目描述</h2> <p>请编写一个函数，用于 删除单链表中某个特定节点 。在设计函数时需要注意，你无法访问链表的头节点 head ，只能直接访问 要被删除的节点 。</p> <p>题目数据保证需要删除的节点 不是末尾节点 。</p> <p>Write a function to delete a node in a singly-linked list. You will not be given access to the head of the list, instead you will be given access to the node to be deleted directly.</p> <p>It is guaranteed that the node to be deleted is not a tail node in the list.</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 🌰 1</span>
+Input<span class="token operator">:</span> head <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">,</span> node <span class="token operator">=</span> <span class="token number">5</span>
+Output<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">]</span>
+Explanation<span class="token operator">:</span> You are given the second node <span class="token keyword">with</span> value <span class="token number">5</span><span class="token punctuation">,</span> the linked list should become <span class="token number">4</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token number">1</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token number">9</span> after calling your <span class="token keyword">function</span><span class="token punctuation">.</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 🌰 2</span>
+Input<span class="token operator">:</span> head <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">,</span> node <span class="token operator">=</span> <span class="token number">1</span>
+Output<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">]</span>
+Explanation<span class="token operator">:</span> You are given the third node <span class="token keyword">with</span> value <span class="token number">1</span><span class="token punctuation">,</span> the linked list should become <span class="token number">4</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token number">5</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token number">9</span> after calling your <span class="token keyword">function</span><span class="token punctuation">.</span>
+</code></pre></div><p>提示：</p> <p>链表中节点的数目范围是 [2, 1000]
+-1000 &lt;= Node.val &lt;= 1000
+链表中每个节点的值都是唯一的
+需要删除的节点 node 是 链表中的一个有效节点 ，且 不是末尾节点</p> <p>Constraints:</p> <p>The number of the nodes in the given list is in the range [2, 1000].
+-1000 &lt;= Node.val &lt;= 1000
+The value of each node in the list is unique.
+The node to be deleted is in the list and is not a tail node</p> <h2 id="解题方法"><a href="#解题方法" class="header-anchor">#</a> 解题方法</h2> <h3 id="替换节点"><a href="#替换节点" class="header-anchor">#</a> 替换节点</h3> <ul><li><p>思路
+拿不到删除节点的前一节点，拿不到前一节点的next，无法和后一节点建立联系，所以可以替换要删除的节点为后一节点</p></li> <li><p>步骤
+替换要删除的节点值为后一节点值</p></li> <li><p>复杂度分析</p> <ul><li>时间复杂度：O(1)</li> <li>空间复杂度：O(1)</li></ul></li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */</span>
+<span class="token comment">/**
+ * @param {ListNode} node
+ * @return {void} Do not return anything, modify node in-place instead.
+ */</span>
+<span class="token keyword">var</span> <span class="token function-variable function">deleteNode</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    node<span class="token punctuation">.</span>val <span class="token operator">=</span> node<span class="token punctuation">.</span>next<span class="token punctuation">.</span>val
+    node<span class="token punctuation">.</span>next <span class="token operator">=</span> node<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/myblog/leetcode/queue/number-of-recent-calls.html" class="prev">
+        933.最近的请求次数
+      </a></span> <span class="next"><a href="/myblog/leetcode/array/twosum.html">
+        两数之和
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/myblog/assets/js/app.8de721d2.js" defer></script><script src="/myblog/assets/js/2.d3850362.js" defer></script><script src="/myblog/assets/js/40.5160a54f.js" defer></script>
+  </body>
+</html>
