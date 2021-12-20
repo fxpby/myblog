@@ -211,6 +211,13 @@ module.exports = {
           ],
         },
         {
+          title: "链表",
+          collapsable: false,
+          children: [
+            ["/leetcode/linkedList/delete-node-in-a-linked-list", "237.删除链表中的节点"],
+          ],
+        },
+        {
           title: "数组",
           collapsable: false,
           children: [
