@@ -204,6 +204,13 @@ module.exports = {
           ],
         },
         {
+          title: "队列",
+          collapsable: false,
+          children: [
+            ["/leetcode/queue/number-of-recent-calls", "933.最近的请求次数"],
+          ],
+        },
+        {
           title: "数组",
           collapsable: false,
           children: [
