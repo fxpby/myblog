@@ -215,6 +215,7 @@ module.exports = {
           collapsable: false,
           children: [
             ["/leetcode/linkedList/delete-node-in-a-linked-list", "237.删除链表中的节点"],
+            ["/leetcode/linkedList/reverse-linked-list", "206.反转单链表"],
           ],
         },
         {
