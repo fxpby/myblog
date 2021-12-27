@@ -78,7 +78,7 @@ var reverseList = function(head) {
  * @return {ListNode}
  */
 var reverseList = function(head) {
-  if (head === null || head.next === next) {
+  if (head === null || head.next === null) {
     return head
   }
   let newHead = new reverseList(head.next)
