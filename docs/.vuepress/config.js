@@ -214,8 +214,11 @@ module.exports = {
           title: "链表",
           collapsable: false,
           children: [
-            ["/leetcode/linkedList/delete-node-in-a-linked-list", "237.删除链表中的节点"],
+            ["/leetcode/linkedList/add-two-numberst", "2.两数相加"],
+            ["/leetcode/linkedList/linked-list-cycle", "141.环形链表"],
+            ["/leetcode/linkedList/remove-duplicates-from-sorted-list", "83.删除排序链表中的重复元素"],
             ["/leetcode/linkedList/reverse-linked-list", "206.反转单链表"],
+            ["/leetcode/linkedList/delete-node-in-a-linked-list", "237.删除链表中的节点"],
           ],
         },
         {
