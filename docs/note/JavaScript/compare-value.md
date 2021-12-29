@@ -197,9 +197,11 @@ a instanceof B // true
 
 ### 手写实现instanceof
 
+#### 方法一：递归
+
 ```js
 const testInstanceof = (obj, target) => {
-  if (typeof target !== 'object') {
+  if (typeof target !== 'function') {
     return false
   }
   if (obj.__proto__ === null) {
@@ -210,6 +212,25 @@ const testInstanceof = (obj, target) => {
   } else {
     return true
   }
+}
+```
+
+#### 方法二：链表
+
+```js
+const testInstanceof = (obj, target) => {
+  if (typeof target !== 'function') {
+    return false
+  }
+
+  let p = obj
+  while(p) {
+    if(p.__proto__ === target.prototype) {
+      return true
+    }
+    p = p.__proto__
+  }
+  return false
 }
 ```
 
