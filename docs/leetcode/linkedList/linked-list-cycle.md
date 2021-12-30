@@ -34,6 +34,10 @@
   - 若快指针指向null，判定没有环
   - 若快慢指针相遇，判定有环
 
+- 复杂度分析
+  - 时间复杂度：O(N)
+  - 空间复杂度：O(1)
+
 ```js
 /**
  * Definition for singly-linked list.
