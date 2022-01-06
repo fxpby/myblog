@@ -85,3 +85,35 @@ olu.getWeight();
 ## 多态
 
 同一接口不同实现
+
+```js
+class People {
+  constructor(name) {
+    this.name = name
+  }
+  printName() {
+    console.log(`my name is ${this.name}`)
+  }
+}
+
+class Student extends People {
+  constructor(name) {
+    super(name)
+  }
+  printName() {
+    console.log(`student name is ${this.name}`)
+  }
+}
+
+class Worker extends People {
+  constructor(name) {
+    super(name)
+  }
+  printName() {
+    console.log(`worker name is ${this.name}`)
+  }
+}
+
+const olu = new Worker('olu')
+olu.printName()
+```
