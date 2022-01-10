@@ -1,6 +1,6 @@
 # UML类图
 
-## ✏️类图
+## ✏️概述
 
 To specify the visibility of a class member (i.e. any attribute or method), these notations may be placed before the member's name, but it is optional:
 
@@ -22,7 +22,7 @@ class 类图{
 }
 ```
 
-## 🌰举例
+### 🌰举例
 
 ```js
 class People {
@@ -56,4 +56,54 @@ class People{
     +eat () void
     +speak () void
 }
+```
+
+## 关系
+
+- 泛化（继承）
+- 关联（引用）
+
+### 🌰举例
+
+```js
+class People {
+  constructor(name, house) {
+    this.name = name;
+    this.house = house
+  }
+
+  sayHi() {
+
+  }
+}
+
+class A extends People {
+  constructor(name, house) {
+    super(name, house)
+  }
+  sayHi() {
+    console.log('hello, I am A')
+  }
+}
+
+class B extends People {
+  constructor(name, house) {
+    super(name, house)
+  }
+  sayHi() {
+    console.log('hello, I am B')
+  }
+}
+
+class House {
+  constructor(city) {
+    this.city = city
+  }
+  showCity() {
+    console.log(`house is in ${city}`)
+  }
+}
+
+const houseA = new House('China')
+const olu = new A('olu', houseA)
 ```
