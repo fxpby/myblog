@@ -107,3 +107,26 @@ class House {
 const houseA = new House('China')
 const olu = new A('olu', houseA)
 ```
+
+```mermaid
+classDiagram
+People --> House
+A --|> People
+B --|> People
+
+class People{
+    + name：String
+    + house: House
+    +sayHi () void
+}
+class House{
+    + city: String
+    +showCity () void
+}
+class A{
+    +sayHi () void
+}
+class B{
+    +sayHi () void
+}
+```
