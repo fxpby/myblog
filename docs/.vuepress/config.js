@@ -14,6 +14,7 @@ module.exports = {
       // 	]
       // },
       { text: "博文", link: "/note/HTML/favicon" },
+      { text: "设计模式", link: "/designPattern/uml/uml" },
       { text: "数据结构和算法", link: "/dataStructures/array/array" },
       { text: "力扣", link: "/leetcode/array/twosum" },
       { text: "副本打怪", link: "/exercise/BitCounting" },
@@ -116,6 +117,17 @@ module.exports = {
         // 		['/note/BrowserCompatibility/ie11','IE11相关踩坑']
         // 	]
         // }
+      ],
+      "/designPattern/": [
+        {
+          title: "设计模式",
+          collapsable: false,
+          children: [
+            ["/designPattern/uml/uml", "uml 类图"],
+            ["/designPattern/object-oriented/object-oriented", "面向对象"],
+            ["/designPattern/design-principle/design-principle", "设计原则"],
+          ],
+        },
       ],
       "/dataStructures/": [
         {
