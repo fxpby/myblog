@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "vuepress": "^1.8.2",
+    "vuepress-plugin-mermaidjs": "^1.9.0",
     "webpack-dev-middleware": "5.1.0"
   },
   "resolutions": {
