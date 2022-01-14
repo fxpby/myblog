@@ -138,3 +138,22 @@ class B{
 - 车辆进入前，显示每层的空余车位数量
 - 车辆进入时，摄像头可以识别车牌号和时间
 - 车辆出来时，出口显示器显示车牌号和停车时长
+
+```mermaid
+classDiagram
+
+class Park{
+    + floors: Array<Floor>
+    + house: House
+    +sayHi () void
+}
+class Floor{
+    + places: Array<Place>
+    +showEmptyPlaceNum () Number
+}
+class Place{
+    + empty: Boolean
+    +in () void
+    +out () void
+}
+```
