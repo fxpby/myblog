@@ -21,7 +21,7 @@ class 类图{
 }
 ```
 
-### 🌰举例
+### 🍉举例
 
 ```js
 class People {
@@ -44,6 +44,7 @@ class People {
 }
 ```
 
+类图：
 
 ```mermaid
 classDiagram
@@ -63,7 +64,7 @@ class People{
 - 泛化（继承）
 - 关联（引用）
 
-### 🌰举例
+### 🍊举例
 
 ```js
 class People {
@@ -108,6 +109,8 @@ const houseA = new House('China')
 const olu = new A('olu', houseA)
 ```
 
+类图：
+
 ```mermaid
 classDiagram
 People --> House
@@ -131,7 +134,7 @@ class B{
 }
 ```
 
-### 实例分析
+### 🏄实例分析
 
 - 某停车场，分三层，每层 100 车位
 - 每个车位都能监控到车辆的驶入和离开
