@@ -9,6 +9,8 @@ To specify the visibility of a class member (i.e. any attribute or method), thes
 - `#` Protected
 - `~` Package/Internal
 
+类图：
+
 ```mermaid
 classDiagram
 class 类图{
