@@ -227,8 +227,6 @@ class Park {
     place.out()
     delete this.carList[car.num]
   }
-
-  
 }
 
 class Car {
