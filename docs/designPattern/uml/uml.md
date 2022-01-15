@@ -222,14 +222,11 @@ class Park {
     } else {
       this.in(car)
     }
-    
   }
 
   // 通过显示器展示信息
   out(car) {
     const showInfo = this.carList[car.num]
-    console.log(showInfo, car, this.carList)
-
     const place = showInfo.place
     this.screen.show(car, showInfo.inTime)
     place.out()
