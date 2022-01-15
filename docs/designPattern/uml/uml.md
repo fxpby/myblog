@@ -11,7 +11,6 @@ To specify the visibility of a class member (i.e. any attribute or method), thes
 
 ```mermaid
 classDiagram
-class 类图
 class 类图{
     + public 属性名A：类型
     # protected 属性名B：类型
