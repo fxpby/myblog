@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>单例模式 | fxpby和olu是好朋友</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?560be5dada9664ddc2907a2c2e79f23b";
+				var s = document.getElementsByTagName("script")[0]; 
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/myblog/assets/css/0.styles.5bfde816.css" as="style"><link rel="preload" href="/myblog/assets/js/app.384e2a82.js" as="script"><link rel="preload" href="/myblog/assets/js/2.1c972ee0.js" as="script"><link rel="preload" href="/myblog/assets/js/33.df4592f8.js" as="script"><link rel="prefetch" href="/myblog/assets/js/10.f9798e4c.js"><link rel="prefetch" href="/myblog/assets/js/11.c642d6d7.js"><link rel="prefetch" href="/myblog/assets/js/12.dfe30de5.js"><link rel="prefetch" href="/myblog/assets/js/13.81124e99.js"><link rel="prefetch" href="/myblog/assets/js/14.428da2de.js"><link rel="prefetch" href="/myblog/assets/js/15.8d3ccfe3.js"><link rel="prefetch" href="/myblog/assets/js/16.ddd0f032.js"><link rel="prefetch" href="/myblog/assets/js/17.8d2de989.js"><link rel="prefetch" href="/myblog/assets/js/18.167ce214.js"><link rel="prefetch" href="/myblog/assets/js/19.6a72701a.js"><link rel="prefetch" href="/myblog/assets/js/20.a484bfbf.js"><link rel="prefetch" href="/myblog/assets/js/21.d3bad550.js"><link rel="prefetch" href="/myblog/assets/js/22.c44c5dba.js"><link rel="prefetch" href="/myblog/assets/js/23.31a06299.js"><link rel="prefetch" href="/myblog/assets/js/24.10ac72c9.js"><link rel="prefetch" href="/myblog/assets/js/25.2c457ba9.js"><link rel="prefetch" href="/myblog/assets/js/26.1db92fb6.js"><link rel="prefetch" href="/myblog/assets/js/27.b3c109e7.js"><link rel="prefetch" href="/myblog/assets/js/28.44a81dfa.js"><link rel="prefetch" href="/myblog/assets/js/29.a76a60dd.js"><link rel="prefetch" href="/myblog/assets/js/3.357c82aa.js"><link rel="prefetch" href="/myblog/assets/js/30.fc75af79.js"><link rel="prefetch" href="/myblog/assets/js/31.5b90306d.js"><link rel="prefetch" href="/myblog/assets/js/32.f2f958b8.js"><link rel="prefetch" href="/myblog/assets/js/34.46bd67a6.js"><link rel="prefetch" href="/myblog/assets/js/35.93b0003c.js"><link rel="prefetch" href="/myblog/assets/js/36.62df397b.js"><link rel="prefetch" href="/myblog/assets/js/37.d7e5f047.js"><link rel="prefetch" href="/myblog/assets/js/38.0ef70ece.js"><link rel="prefetch" href="/myblog/assets/js/39.3be5d083.js"><link rel="prefetch" href="/myblog/assets/js/4.6d9364b0.js"><link rel="prefetch" href="/myblog/assets/js/40.bde9c23b.js"><link rel="prefetch" href="/myblog/assets/js/41.6c920d58.js"><link rel="prefetch" href="/myblog/assets/js/42.ccabf865.js"><link rel="prefetch" href="/myblog/assets/js/43.cd6124c5.js"><link rel="prefetch" href="/myblog/assets/js/44.906f88a2.js"><link rel="prefetch" href="/myblog/assets/js/45.9d4b3b76.js"><link rel="prefetch" href="/myblog/assets/js/46.1cb39fcc.js"><link rel="prefetch" href="/myblog/assets/js/47.0bd858a5.js"><link rel="prefetch" href="/myblog/assets/js/48.cde9ae7f.js"><link rel="prefetch" href="/myblog/assets/js/49.588b8930.js"><link rel="prefetch" href="/myblog/assets/js/5.d6779902.js"><link rel="prefetch" href="/myblog/assets/js/50.d6f5ed81.js"><link rel="prefetch" href="/myblog/assets/js/51.a9ea4b24.js"><link rel="prefetch" href="/myblog/assets/js/52.910ec401.js"><link rel="prefetch" href="/myblog/assets/js/53.7869a664.js"><link rel="prefetch" href="/myblog/assets/js/54.9278dcca.js"><link rel="prefetch" href="/myblog/assets/js/55.fcb13f17.js"><link rel="prefetch" href="/myblog/assets/js/56.72d03401.js"><link rel="prefetch" href="/myblog/assets/js/57.f54d1038.js"><link rel="prefetch" href="/myblog/assets/js/58.45ac3901.js"><link rel="prefetch" href="/myblog/assets/js/59.e54b2965.js"><link rel="prefetch" href="/myblog/assets/js/6.04fdf567.js"><link rel="prefetch" href="/myblog/assets/js/60.59c0130a.js"><link rel="prefetch" href="/myblog/assets/js/61.c4e083d2.js"><link rel="prefetch" href="/myblog/assets/js/62.37f4c800.js"><link rel="prefetch" href="/myblog/assets/js/63.d7e3498a.js"><link rel="prefetch" href="/myblog/assets/js/64.62b37b74.js"><link rel="prefetch" href="/myblog/assets/js/65.38bad419.js"><link rel="prefetch" href="/myblog/assets/js/66.d404eb21.js"><link rel="prefetch" href="/myblog/assets/js/67.8463caf9.js"><link rel="prefetch" href="/myblog/assets/js/68.440a4b4c.js"><link rel="prefetch" href="/myblog/assets/js/69.5cfa02f8.js"><link rel="prefetch" href="/myblog/assets/js/7.357d4e7d.js"><link rel="prefetch" href="/myblog/assets/js/70.7a88a560.js"><link rel="prefetch" href="/myblog/assets/js/71.6b95eeff.js"><link rel="prefetch" href="/myblog/assets/js/72.567ef0f0.js"><link rel="prefetch" href="/myblog/assets/js/73.5a18237c.js"><link rel="prefetch" href="/myblog/assets/js/74.4c4b9999.js"><link rel="prefetch" href="/myblog/assets/js/75.2f801857.js"><link rel="prefetch" href="/myblog/assets/js/76.84133580.js"><link rel="prefetch" href="/myblog/assets/js/77.9345dba9.js"><link rel="prefetch" href="/myblog/assets/js/78.56535ab0.js"><link rel="prefetch" href="/myblog/assets/js/79.197498d1.js"><link rel="prefetch" href="/myblog/assets/js/8.943546d6.js"><link rel="prefetch" href="/myblog/assets/js/80.a1944ea1.js"><link rel="prefetch" href="/myblog/assets/js/81.a1f32902.js"><link rel="prefetch" href="/myblog/assets/js/82.23673409.js"><link rel="prefetch" href="/myblog/assets/js/83.3dd0667a.js"><link rel="prefetch" href="/myblog/assets/js/84.f3e2564f.js"><link rel="prefetch" href="/myblog/assets/js/85.094d1be6.js"><link rel="prefetch" href="/myblog/assets/js/86.64dd4204.js"><link rel="prefetch" href="/myblog/assets/js/87.cb808324.js"><link rel="prefetch" href="/myblog/assets/js/88.5415bcef.js"><link rel="prefetch" href="/myblog/assets/js/89.3304824e.js"><link rel="prefetch" href="/myblog/assets/js/9.48e3239d.js"><link rel="prefetch" href="/myblog/assets/js/90.d2af3c19.js"><link rel="prefetch" href="/myblog/assets/js/91.6e635e6a.js">
+    <link rel="stylesheet" href="/myblog/assets/css/0.styles.5bfde816.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myblog/" class="home-link router-link-active"><!----> <span class="site-name">fxpby和olu是好朋友</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/myblog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/myblog/note/HTML/favicon.html" class="nav-link">
+  博文
+</a></div><div class="nav-item"><a href="/myblog/designPattern/uml/uml.html" class="nav-link">
+  设计模式
+</a></div><div class="nav-item"><a href="/myblog/dataStructures/array/array.html" class="nav-link">
+  数据结构和算法
+</a></div><div class="nav-item"><a href="/myblog/leetcode/array/twosum.html" class="nav-link">
+  力扣
+</a></div><div class="nav-item"><a href="/myblog/exercise/BitCounting.html" class="nav-link">
+  副本打怪
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/myblog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/myblog/note/HTML/favicon.html" class="nav-link">
+  博文
+</a></div><div class="nav-item"><a href="/myblog/designPattern/uml/uml.html" class="nav-link">
+  设计模式
+</a></div><div class="nav-item"><a href="/myblog/dataStructures/array/array.html" class="nav-link">
+  数据结构和算法
+</a></div><div class="nav-item"><a href="/myblog/leetcode/array/twosum.html" class="nav-link">
+  力扣
+</a></div><div class="nav-item"><a href="/myblog/exercise/BitCounting.html" class="nav-link">
+  副本打怪
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>设计模式</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/myblog/designPattern/uml/uml.html" class="sidebar-link">uml 类图</a></li><li><a href="/myblog/designPattern/object-oriented/object-oriented.html" class="sidebar-link">面向对象</a></li><li><a href="/myblog/designPattern/design-principle/design-principle.html" class="sidebar-link">设计原则</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="单例模式"><a href="#单例模式" class="header-anchor">#</a> 单例模式</h1> <h2 id="🎺介绍"><a href="#🎺介绍" class="header-anchor">#</a> 🎺介绍</h2> <ul><li>系统中唯一被使用</li> <li>一个类只能初始化一个实例</li></ul> <h2 id="⛹示例"><a href="#⛹示例" class="header-anchor">#</a> ⛹示例</h2> <h3 id="♨-java-示例"><a href="#♨-java-示例" class="header-anchor">#</a> ♨ java 示例</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SingleObject</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 私有构造函数，只能内部 new，外部不能 new</span>
+  <span class="token keyword">private</span> <span class="token class-name">SingleObject</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 唯一被 new 出来的对象</span>
+  <span class="token keyword">private</span> <span class="token class-name">SingleObject</span> instance <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 获取对象的唯一接口</span>
+  <span class="token keyword">private</span> <span class="token class-name">SingleObject</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>instance <span class="token operator">==</span><span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 只能 new 一次哦</span>
+      instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SingleObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> instance<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 对象方法</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">login</span><span class="token punctuation">(</span>username<span class="token punctuation">,</span> password<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>'hello world'<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SingletonPatternDemo</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 不合法的构造函数</span>
+    <span class="token comment">// 编译时报错，构造函数 SingleObject() 是私有的不可见的</span>
+    <span class="token comment">// SingleObject object = new SingleObject();</span>
+
+    <span class="token comment">// 获取唯一可用的对象</span>
+    <span class="token class-name">SingleObject</span> object <span class="token operator">=</span> <span class="token class-name">SingleObject</span><span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    object<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="🦏-js-示例"><a href="#🦏-js-示例" class="header-anchor">#</a> 🦏 js 示例</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">SingleObject</span> <span class="token punctuation">{</span>
+  <span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'login~'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+SingleObject<span class="token punctuation">.</span>getInstance <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> instance
+  <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>instance<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SingleObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> instance
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> o1 <span class="token operator">=</span> SingleObject<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+o1<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> o2 <span class="token operator">=</span> SingleObject<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+o2<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>o1 <span class="token operator">===</span> o2<span class="token punctuation">)</span> <span class="token comment">// true</span>
+</code></pre></div><h2 id="🚴‍♂️应用场景"><a href="#🚴‍♂️应用场景" class="header-anchor">#</a> 🚴‍♂️应用场景</h2> <h3 id="jquery"><a href="#jquery" class="header-anchor">#</a> jQuery</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// jQuery 只有一个 $</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span>jQuery <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> window<span class="token punctuation">.</span>jQuery
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 初始化...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="模拟登录框"><a href="#模拟登录框" class="header-anchor">#</a> 模拟登录框</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">LoginForm</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token string">'hide'</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">===</span> <span class="token string">'show'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'warning: 已经显示'</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token string">'show'</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'show success'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">===</span> <span class="token string">'hide'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'warning: 已经隐藏'</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token string">'hide'</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'hide success'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+LoginForm<span class="token punctuation">.</span>getInstance <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> instance
+  <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>instance<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LoginForm</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> instance
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> o1 <span class="token operator">=</span> LoginForm<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+o1<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> o2 <span class="token operator">=</span> LoginForm<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+o2<span class="token punctuation">.</span><span class="token function">hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>o1 <span class="token operator">===</span> o2<span class="token punctuation">)</span> <span class="token comment">// true</span>
+</code></pre></div><h3 id="vuex-和-redux-的-store"><a href="#vuex-和-redux-的-store" class="header-anchor">#</a> vuex 和 redux 的 store</h3> <h2 id="设计原则验证"><a href="#设计原则验证" class="header-anchor">#</a> 设计原则验证</h2> <ul><li>符合单一职责原则，只实例化唯一对象</li> <li>没法具体开放封闭原则，但不违背开放封闭原则</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/myblog/assets/js/app.384e2a82.js" defer></script><script src="/myblog/assets/js/2.1c972ee0.js" defer></script><script src="/myblog/assets/js/33.df4592f8.js" defer></script>
+  </body>
+</html>
