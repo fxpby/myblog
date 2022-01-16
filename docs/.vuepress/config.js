@@ -126,6 +126,8 @@ module.exports = {
             ["/designPattern/uml/uml", "uml 类图"],
             ["/designPattern/object-oriented/object-oriented", "面向对象"],
             ["/designPattern/design-principle/design-principle", "设计原则"],
+            ["/designPattern/factory-pattern/base", "工厂模式"],
+            ["/designPattern/singleton-pattern/base", "单例"],
           ],
         },
       ],
