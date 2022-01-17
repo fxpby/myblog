@@ -46,11 +46,11 @@ module.exports = {
             ["/note/CSS/weight", "权重"],
           ],
         },
-        {
-          title: "ES6",
-          collapsable: false,
-          children: [["/note/ES6/es6", "es6"]],
-        },
+        // {
+        //   title: "ES6",
+        //   collapsable: false,
+        //   children: [["/note/ES6/es6", "es6"]],
+        // },
         {
           title: "JavaScript",
           collapsable: false,
@@ -82,11 +82,11 @@ module.exports = {
             ],
           ],
         },
-        {
-          title: "Node.js",
-          collapsable: false,
-          children: [["/note/node.js/npm", "安装npm"]],
-        },
+        // {
+        //   title: "Node.js",
+        //   collapsable: false,
+        //   children: [["/note/node.js/npm", "安装npm"]],
+        // },
         {
           title: "Vue",
           collapsable: false,
@@ -128,6 +128,7 @@ module.exports = {
             ["/designPattern/design-principle/design-principle", "设计原则"],
             ["/designPattern/factory-pattern/base", "工厂模式"],
             ["/designPattern/singleton-pattern/base", "单例模式"],
+            ["/designPattern/adapter-pattern/base", "适配器模式"],
           ],
         },
       ],
