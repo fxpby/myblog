@@ -129,6 +129,7 @@ module.exports = {
             ["/designPattern/factory-pattern/base", "工厂模式"],
             ["/designPattern/singleton-pattern/base", "单例模式"],
             ["/designPattern/adapter-pattern/base", "适配器模式"],
+            ["/designPattern/decorator-pattern/base", "装饰器模式"],
           ],
         },
       ],
