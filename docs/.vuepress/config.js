@@ -131,6 +131,7 @@ module.exports = {
             ["/designPattern/adapter-pattern/base", "适配器模式"],
             ["/designPattern/decorator-pattern/base", "装饰器模式"],
             ["/designPattern/proxy-pattern/base", "代理模式"],
+            ["/designPattern/facade-pattern/base", "外观模式"],
           ],
         },
       ],
