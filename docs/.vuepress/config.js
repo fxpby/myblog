@@ -296,6 +296,12 @@ module.exports = {
     ],
   ],
   plugins: [
-    'vuepress-plugin-mermaidjs'
+    ['vuepress-plugin-mermaidjs'],
+    [
+      '@vuepress/google-analytics',
+      {
+        'ga': 'UA-217600182-1'
+      }
+    ]
   ],
 };
