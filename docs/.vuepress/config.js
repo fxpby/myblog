@@ -133,6 +133,7 @@ module.exports = {
             ["/designPattern/proxy-pattern/base", "代理模式"],
             ["/designPattern/facade-pattern/base", "外观模式"],
             ["/designPattern/observer-pattern/base", "观察者模式"],
+            ["/designPattern/iterator-pattern/base", "迭代器模式"],
           ],
         },
       ],
