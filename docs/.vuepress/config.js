@@ -134,6 +134,7 @@ module.exports = {
             ["/designPattern/facade-pattern/base", "外观模式"],
             ["/designPattern/observer-pattern/base", "观察者模式"],
             ["/designPattern/iterator-pattern/base", "迭代器模式"],
+            ["/designPattern/state-pattern/base", "状态模式"],
           ],
         },
       ],
