@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>原型模式 Prototype Pattern | fxpby和olu是好朋友</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?560be5dada9664ddc2907a2c2e79f23b";
+				var s = document.getElementsByTagName("script")[0]; 
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+    <script>var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?cd09cc141cdd07e547a366648c6dd0c4";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();</script>
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/myblog/assets/css/0.styles.5bfde816.css" as="style"><link rel="preload" href="/myblog/assets/js/app.854d6bb3.js" as="script"><link rel="preload" href="/myblog/assets/js/2.104b70c8.js" as="script"><link rel="preload" href="/myblog/assets/js/38.57819d79.js" as="script"><link rel="prefetch" href="/myblog/assets/js/10.0304c28f.js"><link rel="prefetch" href="/myblog/assets/js/11.37e44b6b.js"><link rel="prefetch" href="/myblog/assets/js/12.2effc060.js"><link rel="prefetch" href="/myblog/assets/js/13.15b7f676.js"><link rel="prefetch" href="/myblog/assets/js/14.14d557a2.js"><link rel="prefetch" href="/myblog/assets/js/15.c2be8e41.js"><link rel="prefetch" href="/myblog/assets/js/16.38de50f1.js"><link rel="prefetch" href="/myblog/assets/js/17.40a4913e.js"><link rel="prefetch" href="/myblog/assets/js/18.8e654123.js"><link rel="prefetch" href="/myblog/assets/js/19.7a93097b.js"><link rel="prefetch" href="/myblog/assets/js/20.927ede75.js"><link rel="prefetch" href="/myblog/assets/js/21.48933ad0.js"><link rel="prefetch" href="/myblog/assets/js/22.73159ea6.js"><link rel="prefetch" href="/myblog/assets/js/23.ac59b78d.js"><link rel="prefetch" href="/myblog/assets/js/24.75e0212a.js"><link rel="prefetch" href="/myblog/assets/js/25.f5466d6b.js"><link rel="prefetch" href="/myblog/assets/js/26.a4fa50fd.js"><link rel="prefetch" href="/myblog/assets/js/27.431210e3.js"><link rel="prefetch" href="/myblog/assets/js/28.981c14da.js"><link rel="prefetch" href="/myblog/assets/js/29.5d040aca.js"><link rel="prefetch" href="/myblog/assets/js/3.2bf676f1.js"><link rel="prefetch" href="/myblog/assets/js/30.5d719838.js"><link rel="prefetch" href="/myblog/assets/js/31.1e0c1ca6.js"><link rel="prefetch" href="/myblog/assets/js/32.fc7b54de.js"><link rel="prefetch" href="/myblog/assets/js/33.f96313b8.js"><link rel="prefetch" href="/myblog/assets/js/34.e6fc4e0d.js"><link rel="prefetch" href="/myblog/assets/js/35.1f83b084.js"><link rel="prefetch" href="/myblog/assets/js/36.23ddd49b.js"><link rel="prefetch" href="/myblog/assets/js/37.fc0970ad.js"><link rel="prefetch" href="/myblog/assets/js/39.17cc24f4.js"><link rel="prefetch" href="/myblog/assets/js/4.95285c79.js"><link rel="prefetch" href="/myblog/assets/js/40.f3944de5.js"><link rel="prefetch" href="/myblog/assets/js/41.38c6e83e.js"><link rel="prefetch" href="/myblog/assets/js/42.fccc783a.js"><link rel="prefetch" href="/myblog/assets/js/43.3e4d14fd.js"><link rel="prefetch" href="/myblog/assets/js/44.363d708c.js"><link rel="prefetch" href="/myblog/assets/js/45.ffda87d0.js"><link rel="prefetch" href="/myblog/assets/js/46.bbb79551.js"><link rel="prefetch" href="/myblog/assets/js/47.2f72aa35.js"><link rel="prefetch" href="/myblog/assets/js/48.c1a7ca63.js"><link rel="prefetch" href="/myblog/assets/js/49.ff1996e3.js"><link rel="prefetch" href="/myblog/assets/js/5.eb255f8f.js"><link rel="prefetch" href="/myblog/assets/js/50.588d6fa2.js"><link rel="prefetch" href="/myblog/assets/js/51.6b04c90a.js"><link rel="prefetch" href="/myblog/assets/js/52.a06783a7.js"><link rel="prefetch" href="/myblog/assets/js/53.d07742df.js"><link rel="prefetch" href="/myblog/assets/js/54.7ce530ea.js"><link rel="prefetch" href="/myblog/assets/js/55.ff66c4f5.js"><link rel="prefetch" href="/myblog/assets/js/56.1df0a831.js"><link rel="prefetch" href="/myblog/assets/js/57.9e1d7819.js"><link rel="prefetch" href="/myblog/assets/js/58.0584594c.js"><link rel="prefetch" href="/myblog/assets/js/59.9af8997a.js"><link rel="prefetch" href="/myblog/assets/js/6.204643fa.js"><link rel="prefetch" href="/myblog/assets/js/60.8e93f90a.js"><link rel="prefetch" href="/myblog/assets/js/61.d1d88209.js"><link rel="prefetch" href="/myblog/assets/js/62.c00b564e.js"><link rel="prefetch" href="/myblog/assets/js/63.be6cc1de.js"><link rel="prefetch" href="/myblog/assets/js/64.73a43ed0.js"><link rel="prefetch" href="/myblog/assets/js/65.361ccfc3.js"><link rel="prefetch" href="/myblog/assets/js/66.aeb6ff33.js"><link rel="prefetch" href="/myblog/assets/js/67.9dd5233b.js"><link rel="prefetch" href="/myblog/assets/js/68.ee083ea5.js"><link rel="prefetch" href="/myblog/assets/js/69.30a45907.js"><link rel="prefetch" href="/myblog/assets/js/7.c7a31542.js"><link rel="prefetch" href="/myblog/assets/js/70.0fd52995.js"><link rel="prefetch" href="/myblog/assets/js/71.cb755673.js"><link rel="prefetch" href="/myblog/assets/js/72.6ba1480a.js"><link rel="prefetch" href="/myblog/assets/js/73.3a718f11.js"><link rel="prefetch" href="/myblog/assets/js/74.65f42d1b.js"><link rel="prefetch" href="/myblog/assets/js/75.790819af.js"><link rel="prefetch" href="/myblog/assets/js/76.feab9e55.js"><link rel="prefetch" href="/myblog/assets/js/77.bb4c74a6.js"><link rel="prefetch" href="/myblog/assets/js/78.0d44a753.js"><link rel="prefetch" href="/myblog/assets/js/79.13531507.js"><link rel="prefetch" href="/myblog/assets/js/8.dab1786b.js"><link rel="prefetch" href="/myblog/assets/js/80.81dc24d0.js"><link rel="prefetch" href="/myblog/assets/js/81.0416ed77.js"><link rel="prefetch" href="/myblog/assets/js/82.155b2fbb.js"><link rel="prefetch" href="/myblog/assets/js/83.9fd0824b.js"><link rel="prefetch" href="/myblog/assets/js/84.de41a9a7.js"><link rel="prefetch" href="/myblog/assets/js/85.66a03df8.js"><link rel="prefetch" href="/myblog/assets/js/86.86c79cb0.js"><link rel="prefetch" href="/myblog/assets/js/87.8aa0db62.js"><link rel="prefetch" href="/myblog/assets/js/88.8189371c.js"><link rel="prefetch" href="/myblog/assets/js/89.e56f2008.js"><link rel="prefetch" href="/myblog/assets/js/9.7415d993.js"><link rel="prefetch" href="/myblog/assets/js/90.370b8943.js"><link rel="prefetch" href="/myblog/assets/js/91.f3c7e6ff.js"><link rel="prefetch" href="/myblog/assets/js/92.2da4aea8.js"><link rel="prefetch" href="/myblog/assets/js/93.39d6dd8e.js"><link rel="prefetch" href="/myblog/assets/js/94.d2c2e77a.js"><link rel="prefetch" href="/myblog/assets/js/95.79bb68ab.js"><link rel="prefetch" href="/myblog/assets/js/96.2c7c4f41.js"><link rel="prefetch" href="/myblog/assets/js/97.2961c107.js"><link rel="prefetch" href="/myblog/assets/js/98.cfa3682d.js"><link rel="prefetch" href="/myblog/assets/js/99.728b7929.js">
+    <link rel="stylesheet" href="/myblog/assets/css/0.styles.5bfde816.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myblog/" class="home-link router-link-active"><!----> <span class="site-name">fxpby和olu是好朋友</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/myblog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/myblog/note/HTML/favicon.html" class="nav-link">
+  博文
+</a></div><div class="nav-item"><a href="/myblog/designPattern/uml/uml.html" class="nav-link">
+  设计模式
+</a></div><div class="nav-item"><a href="/myblog/dataStructures/array/array.html" class="nav-link">
+  数据结构和算法
+</a></div><div class="nav-item"><a href="/myblog/leetcode/array/twosum.html" class="nav-link">
+  力扣
+</a></div><div class="nav-item"><a href="/myblog/exercise/BitCounting.html" class="nav-link">
+  副本打怪
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/myblog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/myblog/note/HTML/favicon.html" class="nav-link">
+  博文
+</a></div><div class="nav-item"><a href="/myblog/designPattern/uml/uml.html" class="nav-link">
+  设计模式
+</a></div><div class="nav-item"><a href="/myblog/dataStructures/array/array.html" class="nav-link">
+  数据结构和算法
+</a></div><div class="nav-item"><a href="/myblog/leetcode/array/twosum.html" class="nav-link">
+  力扣
+</a></div><div class="nav-item"><a href="/myblog/exercise/BitCounting.html" class="nav-link">
+  副本打怪
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>设计模式</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/myblog/designPattern/uml/uml.html" class="sidebar-link">uml 类图</a></li><li><a href="/myblog/designPattern/object-oriented/object-oriented.html" class="sidebar-link">面向对象</a></li><li><a href="/myblog/designPattern/design-principle/design-principle.html" class="sidebar-link">设计原则</a></li><li><a href="/myblog/designPattern/factory-pattern/base.html" class="sidebar-link">工厂模式</a></li><li><a href="/myblog/designPattern/singleton-pattern/base.html" class="sidebar-link">单例模式</a></li><li><a href="/myblog/designPattern/adapter-pattern/base.html" class="sidebar-link">适配器模式</a></li><li><a href="/myblog/designPattern/decorator-pattern/base.html" class="sidebar-link">装饰器模式</a></li><li><a href="/myblog/designPattern/proxy-pattern/base.html" class="sidebar-link">代理模式</a></li><li><a href="/myblog/designPattern/facade-pattern/base.html" class="sidebar-link">外观模式</a></li><li><a href="/myblog/designPattern/observer-pattern/base.html" class="sidebar-link">观察者模式</a></li><li><a href="/myblog/designPattern/iterator-pattern/base.html" class="sidebar-link">迭代器模式</a></li><li><a href="/myblog/designPattern/state-pattern/base.html" class="sidebar-link">状态模式</a></li><li><a href="/myblog/designPattern/prototype-pattern/base.html" aria-current="page" class="active sidebar-link">原型模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/designPattern/prototype-pattern/base.html#介绍" class="sidebar-link">介绍</a></li><li class="sidebar-sub-header"><a href="/myblog/designPattern/prototype-pattern/base.html#示例" class="sidebar-link">示例</a></li><li class="sidebar-sub-header"><a href="/myblog/designPattern/prototype-pattern/base.html#应用" class="sidebar-link">应用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/designPattern/prototype-pattern/base.html#object-create" class="sidebar-link">Object.create</a></li></ul></li><li class="sidebar-sub-header"><a href="/myblog/designPattern/prototype-pattern/base.html#总结" class="sidebar-link">总结</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="原型模式-prototype-pattern"><a href="#原型模式-prototype-pattern" class="header-anchor">#</a> 原型模式 Prototype Pattern</h1> <h2 id="介绍"><a href="#介绍" class="header-anchor">#</a> 介绍</h2> <ul><li>clone 自己，生成一个新对象</li></ul> <h2 id="示例"><a href="#示例" class="header-anchor">#</a> 示例</h2> <p>如果想创建许多对象有相同属性的话，使用 ES6 class 来创建多个实例是很有用的。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">Dog</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+  <span class="token punctuation">}</span>
+
+  <span class="token function">bark</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Woof~</span><span class="token template-punctuation string">`</span></span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> dog1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dog</span><span class="token punctuation">(</span><span class="token string">&quot;Max&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> dog2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dog</span><span class="token punctuation">(</span><span class="token string">&quot;Spot&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> dog3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dog</span><span class="token punctuation">(</span><span class="token string">&quot;Boom&quot;</span><span class="token punctuation">)</span>
+</code></pre></div><p>需要注意的是构造器包含一个 <code>name</code> 属性，并且这个类自己包含 <code>bark</code> 属性，在使用 ES6 class 的时候，上面的例子中的 <code>bark</code> 就自动添加到原型上了.</p> <div class="language-js extra-class"><pre class="language-js"><code>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token class-name">Dog</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span>
+<span class="token comment">// {constructor: f Dog(name), bark: f bark()}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>dog1<span class="token punctuation">.</span>__proto__<span class="token punctuation">)</span>
+<span class="token comment">// {constructor: f Dog(name), bark: f bark()}</span>
+
+<span class="token class-name">Dog</span><span class="token punctuation">.</span>prototype <span class="token operator">===</span> dog1<span class="token punctuation">.</span>__proto__ <span class="token comment">// true</span>
+</code></pre></div><p>我们可以利用原型模式一次性的添加属性到原型上，影响所有实例而不是每一次都创建重复属性。就像下面这样，狗狗不止会叫，还会玩耍，我们可以添加 <code>play</code> 属性到原型上。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">Dog</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+  <span class="token punctuation">}</span>
+
+  <span class="token function">bark</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Woof~</span><span class="token template-punctuation string">`</span></span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> dog1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dog</span><span class="token punctuation">(</span><span class="token string">&quot;Max&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> dog2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dog</span><span class="token punctuation">(</span><span class="token string">&quot;Spot&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> dog3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dog</span><span class="token punctuation">(</span><span class="token string">&quot;Boom&quot;</span><span class="token punctuation">)</span>
+
+<span class="token class-name">Dog</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">play</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'playing with olu~'</span><span class="token punctuation">)</span>
+dog1<span class="token punctuation">.</span><span class="token function">play</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="应用"><a href="#应用" class="header-anchor">#</a> 应用</h2> <h3 id="object-create"><a href="#object-create" class="header-anchor">#</a> Object.create</h3> <p>Object.create 方法可以创建新对象。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> dog <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">bark</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Woof</span><span class="token template-punctuation string">`</span></span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> pet1 <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>dog<span class="token punctuation">)</span>
+
+pet1<span class="token punctuation">.</span><span class="token function">bark</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// Woof</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>pet1<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// [] 直接访问 pet1 的属性</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>pet1<span class="token punctuation">.</span>__proto__<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// ['bark'] 在 pet1 原型上的属性</span>
+</code></pre></div><p>尽管 pet1 自己没有任何属性，但是它通过自己的原型链获取到了属性，通过 dog 对象作为 pet1 的原型，我们可以访问 bark 属性。
+Object.create 是一种简单的方式让对象从其他对象上继承属性，新对象可以顺着原型链获取到属性。</p> <h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <p>原型模式可以让我们很简洁的去继承其他对象的属性，原型链允许我们访问哪些没有直接定义在对象自己身上的属性，我们可以避免重复的方法和属性，进而减少内存占用。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/myblog/designPattern/state-pattern/base.html" class="prev">
+        状态模式
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/myblog/assets/js/app.854d6bb3.js" defer></script><script src="/myblog/assets/js/2.104b70c8.js" defer></script><script src="/myblog/assets/js/38.57819d79.js" defer></script>
+  </body>
+</html>
