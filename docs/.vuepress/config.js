@@ -136,6 +136,7 @@ module.exports = {
             ["/designPattern/iterator-pattern/base", "迭代器模式"],
             ["/designPattern/state-pattern/base", "状态模式"],
             ["/designPattern/prototype-pattern/base", "原型模式"],
+            ["/designPattern/bridge-pattern/base", "桥接模式"],
           ],
         },
       ],
