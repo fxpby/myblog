@@ -7,4 +7,4 @@
 ## 部署相关
 
 - 静态文件生成： vuepress
-- 持续集成自动化部署： travis-ci  
+- 持续集成自动化部署： Github Actions

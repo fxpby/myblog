@@ -14,6 +14,7 @@ module.exports = {
       // 	]
       // },
       { text: "博文", link: "/note/HTML/favicon" },
+      { text: "设计模式", link: "/designPattern/uml/uml" },
       { text: "数据结构和算法", link: "/dataStructures/array/array" },
       { text: "力扣", link: "/leetcode/array/twosum" },
       { text: "副本打怪", link: "/exercise/BitCounting" },
@@ -45,11 +46,11 @@ module.exports = {
             ["/note/CSS/weight", "权重"],
           ],
         },
-        {
-          title: "ES6",
-          collapsable: false,
-          children: [["/note/ES6/es6", "es6"]],
-        },
+        // {
+        //   title: "ES6",
+        //   collapsable: false,
+        //   children: [["/note/ES6/es6", "es6"]],
+        // },
         {
           title: "JavaScript",
           collapsable: false,
@@ -81,11 +82,11 @@ module.exports = {
             ],
           ],
         },
-        {
-          title: "Node.js",
-          collapsable: false,
-          children: [["/note/node.js/npm", "安装npm"]],
-        },
+        // {
+        //   title: "Node.js",
+        //   collapsable: false,
+        //   children: [["/note/node.js/npm", "安装npm"]],
+        // },
         {
           title: "Vue",
           collapsable: false,
@@ -116,6 +117,29 @@ module.exports = {
         // 		['/note/BrowserCompatibility/ie11','IE11相关踩坑']
         // 	]
         // }
+      ],
+      "/designPattern/": [
+        {
+          title: "设计模式",
+          collapsable: false,
+          children: [
+            ["/designPattern/uml/uml", "uml 类图"],
+            ["/designPattern/object-oriented/object-oriented", "面向对象"],
+            ["/designPattern/design-principle/design-principle", "设计原则"],
+            ["/designPattern/factory-pattern/base", "工厂模式"],
+            ["/designPattern/singleton-pattern/base", "单例模式"],
+            ["/designPattern/adapter-pattern/base", "适配器模式"],
+            ["/designPattern/decorator-pattern/base", "装饰器模式"],
+            ["/designPattern/proxy-pattern/base", "代理模式"],
+            ["/designPattern/facade-pattern/base", "外观模式"],
+            ["/designPattern/observer-pattern/base", "观察者模式"],
+            ["/designPattern/iterator-pattern/base", "迭代器模式"],
+            ["/designPattern/state-pattern/base", "状态模式"],
+            ["/designPattern/prototype-pattern/base", "原型模式"],
+            ["/designPattern/bridge-pattern/base", "桥接模式"],
+            ["/designPattern/composite-pattern/base", "组合模式"],
+          ],
+        },
       ],
       "/dataStructures/": [
         {
@@ -214,7 +238,7 @@ module.exports = {
           title: "链表",
           collapsable: false,
           children: [
-            ["/leetcode/linkedList/add-two-numberst", "2.两数相加"],
+            ["/leetcode/linkedList/add-two-numbers", "2.两数相加"],
             ["/leetcode/linkedList/linked-list-cycle", "141.环形链表"],
             ["/leetcode/linkedList/remove-duplicates-from-sorted-list", "83.删除排序链表中的重复元素"],
             ["/leetcode/linkedList/reverse-linked-list", "206.反转单链表"],
@@ -276,5 +300,25 @@ module.exports = {
 			})();
 		`,
     ],
+    [
+      "script",
+      {},
+      `var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?cd09cc141cdd07e547a366648c6dd0c4";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();`
+    ]
+  ],
+  plugins: [
+    ['vuepress-plugin-mermaidjs'],
+    [
+      '@vuepress/google-analytics',
+      {
+        'ga': 'UA-217600182-1'
+      }
+    ]
   ],
 };
