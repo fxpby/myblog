@@ -138,6 +138,7 @@ module.exports = {
             ["/designPattern/prototype-pattern/base", "原型模式"],
             ["/designPattern/bridge-pattern/base", "桥接模式"],
             ["/designPattern/composite-pattern/base", "组合模式"],
+            ["/designPattern/flyweight-pattern/base", "享元模式"],
           ],
         },
       ],
