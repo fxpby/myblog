@@ -102,6 +102,94 @@ macroCommand.execute()
 
 ### 扫描文件夹
 
+文件和文件夹之间的关系比较适合用组合模式来描述，因为文件夹里既可以有文件也可以有文件夹，最终结果是组合成一棵树🌲，这样我们可以提出两个场景
+
+- 我们选择部分文件或文件夹统一复制到某个目录下时，不需要考虑它的文件类型，只需要进行 Ctrl + C，Ctrl + V
+- 我们用杀毒软件扫描文件夹时，一般不会关心里面有多少文件夹或文件，我们只需要操作最外层的文件夹进行扫描
+
+```js
+// 文件夹
+class Folder {
+  constructor(name) {
+    this.name = name
+    this.parent = null
+    this.files = []
+  }
+
+  add(file) {
+    if (this.files.includes(file)) {
+      throw new Error(`文件夹: ${this.name}已有重复`)
+    }
+
+    file.parent = this
+    this.files.push(file)
+  }
+
+  remove() {
+    if (!this.parent) {
+      return
+    }
+    const idx = this.parent.files.findIndex(file => file === this)
+    if (idx > -1) {
+      this.parent.files.splice(idx, 1)
+    }
+  }
+
+  scan() {
+    console.log(`开始扫描文件夹：${this.name}`)
+    this.files.forEach(file => {
+      file.scan()
+    })
+  }
+}
+
+// 文件
+class File {
+  constructor(name) {
+    this.name = name
+    this.parent = null
+  }
+
+  add() {
+    throw new Error(`文件下无法添加文件哦`)
+  }
+
+  remove() {
+    if (!this.parent) {
+      return
+    }
+    const idx = this.parent.files.findIndex(file => file === this)
+    if (idx > -1) {
+      this.parent.files.splice(idx, 1)
+    }
+  }
+
+  scan() {
+    console.log(`开始扫描文件：${this.name}`)
+  }
+}
+
+// 创建 文件夹-文件组合树
+const folder = new Folder('学习资料')
+const folder1 = new Folder('JavaScript')
+const folder2 = new Folder('CSS')
+const file1 = new File('JavaScript 高级程序设计')
+const file2 = new File('JavaScript 数据结构和算法')
+const file3 = new File('CSS 新世界')
+const file4 = new File('代码整洁之道')
+folder1.add(file1)
+folder1.add(file2)
+folder2.add(file3)
+folder.add(file4)
+folder.add(folder1)
+folder.add(folder2)
+
+folder.scan()
+console.log(`删除 JavaScript 文件夹并再扫描一下`)
+folder1.remove()
+folder.scan()
+```
+
 ## 应用场景
 
 ### 虚拟 DOM 中的 vnode (数据类型简单)
