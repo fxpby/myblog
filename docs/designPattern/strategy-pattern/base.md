@@ -226,6 +226,136 @@ console.log(calculateBonus('B', 10000))
 
 这样代码结构变得更简洁了呢，舒适！
 
+## 多态在策略模式的体现
+
+### 使用策略模式实现缓存动画
+
+#### 实现动画效果的原理
+
+使用 JavaScript 实现动画效果的原理和动画片的制作类似，动画片是把一些差距不大的原画以较快的帧数播放，来达到视觉上的动画效果。在 JavaScript 中，可以通过连续改变元素的某个 CSS 属性，比如 left、top、background-position 来实现动画效果
+
+#### 思路和准备工作
+
+目标是编写一个动画类和缓动算法，让小球以各种各样的缓动效果在页面中运动。运动开始之前需要提前记录一些有用信息：
+
+- 动画开始时，小球所在的原始位置
+- 小球移动的目标位置
+- 动画开始时的准确时间点
+- 小球持续运动的时间
+
+我们可以用 setInterval 创建一个定时器，定时器每隔 19ms 循环一次。在定时器的每一帧里，我们需要把动画已消耗的时间、小球原始位置、小球目标位置和动画持续的总时间等信息传入缓动算法。算法通过这些参数，计算出小球当前应该所在的位置，最后再更新 dom 元素的 CSS 属性，使小球运动起来。
+
+#### 让小球运动起来
+
+先了解一下常见的缓动算法，算法接受 4 个参数，这 4 个参数的含义分别是：
+
+- 动画已消耗的时间
+- 小球原始位置
+- 小球目标位置
+- 动画持续的总时间。
+
+返回值是动画元素应该处在的当前位置。
+
+```js
+const tween = {
+  linear: (t, b, c, d) => {
+    return c * t / d + b
+  },
+  easeIn: (t, b, c, d) => {
+    return c * (t /= d) * t + b
+  },
+  strongEaseIn: (t, b, c, d) => {
+    return c * (t /= d) * t * t * t * t + b
+  },
+  strongEaseOut: (t, b, c, d) => {
+    return c * ((t = t / d - 1) * t * t * t * t + 1) + b
+  },
+  sineaseIn: (t, b, c, d) => {
+    return c * (t /= d) * t * t + b
+  },
+  sineaseOut: (t, b, c, d) => {
+    return c * ((t = t / d - 1) * t * t + 1) + b
+  }
+}
+```
+
+```html
+<div id="wrapper" style="position: absolute; background: green;"> 我是 div </div>
+```
+
+接下来定义 Animate 类，Animate 的构造函数接受一个参数，即将运动起来的 dom 节点。
+
+```js
+class Animate {
+  constructor(dom) {
+    // 进行运动的 dom 节点
+    this.dom = dom;
+    // 动画开始时间
+    this.startTime = 0
+    // 动画开始时，dom 节点的位置，即 dom 的初始位置
+    this.startPos = 0
+    // 动画结束时，dom 节点的位置，即 dom 的目标位置
+    this.endPos = 0
+    // dom 节点需要被改变的 css 属性名
+    this.propertyName = null
+    // 缓动算法
+    this.easing = null
+    // 动画持续时间
+    this.duration = null
+  }
+
+  /**
+   * 启动动画，在动画启动的瞬间，记录一些信息，供缓动算法以后用来计算小球的当前位置
+   * @param {string} propertyName 要改变的 css 属性名
+   * @param {number} endPos 小球运动的目标位置
+   * @param {number} duration 动画持续时间
+   * @param {string} easing 缓动算法
+   */
+  start(propertyName, endPos, duration, easing) {
+    // 动画启动时间
+    this.startTime = new Date
+    this.startPos = this.dom.getBoundingClientRect()[propertyName]
+    this.propertyName = propertyName
+    this.endPos = endPos
+    this.duration = duration
+    this.easing = tween[easing]
+
+    // 启动定时器，开始执行动画
+    const timeId = setInterval(() => {
+      // 如果动画已经结束，清除定时器
+      if (this.step() === false) {
+        clearInterval(timeId)
+      }
+    }, 19)
+  }
+
+  // 小球运动的每一帧要做的事情，调用更新 css 属性的方法
+  step() {
+    // 获取当前时间
+    const t = new Date
+    // 如果当前时间大于动画开始时间加上动画持续时间之和，说明动画已经结束，需要修正小球位置。
+    // 因为这一帧开始之后，小球的位置已经接近了目标文职，但可能不完全等于目标位置。
+    if (t >= this.startTime + this.duration) {
+      // 更新小球的 css 属性值
+      this.update(this.endPos)
+      // 通知 start 方法清除定时器
+      return false
+    }
+    // 小球的当前位置
+    const pos = this.easing(t - this.startTime, this.startPos,this.endPos - this.startPos, this.duration)
+    this.update(pos)
+  }
+
+  update(pos) {
+    this.dom.style[this.propertyName] = pos + 'px'
+  }
+}
+
+const div = document.getElementById('wrapper')
+const animate = new Animate(div)
+animate.start('left', 500, 1000, 'strongEaseOut')
+```
+
 ## 设计原则验证
 
 - 不同策略，分开处理，而不是混合在一起
