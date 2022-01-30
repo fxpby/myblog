@@ -140,6 +140,7 @@ module.exports = {
             ["/designPattern/composite-pattern/base", "组合模式"],
             ["/designPattern/flyweight-pattern/base", "享元模式"],
             ["/designPattern/strategy-pattern/base", "策略模式"],
+            ["/designPattern/template-method-pattern/base", "模板方法模式"],
           ],
         },
       ],
