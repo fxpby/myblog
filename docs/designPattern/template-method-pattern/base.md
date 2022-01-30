@@ -181,3 +181,158 @@ tea.init()
 ```
 
 上面的 `init` 方法就是 `模板方法`, 因为该方法中封装了子类的框架算法，它作为一个算法的模板，知道子类以何种顺序去执行某些方法。
+
+### 钩子方法
+
+上面咖啡和茶的例子中，我们通过模板方法模式在父类中封装了子类地方算法框架。但是如果有一些特殊情况，比如有的子类不需要加调料，olu 喝咖啡就很少加奶，喝茶也不会加柠檬。这时 `Beverage` 父类规定好的 4 个冲泡饮料步骤就有冲突了，我们的子类需要摆脱父类的约束。
+
+`钩子方法（hook` 可以解决这个问题，是否需要“挂钩”来放置钩子可以由子类自行决定。钩子方法的返回结果决定了模板方法后面的执行。放置钩子是隔离变化的常见手段。
+
+在这个例子中我们把挂钩的名字定位 customerWantsCondiments, 并放入 Beverage 类，得到一杯不需要牛奶的美式咖啡☕️
+
+```js
+class Beverage {
+  boilWater() {
+    console.log('把水煮沸')
+  }
+
+  // 空方法，由子类重写
+  brew() {
+    throw new Error(`子类必须重写 brew 方法`)
+  }
+
+  // 空方法， 由子类重写
+  pourInCup() {
+    throw new Error(`子类必须重写 pourInCup 方法`)
+  }
+
+  // 空方法， 由子类重写
+  addCondiments() {
+    throw new Error(`子类必须重写 addCondiments 方法`)
+  }
+
+  customerWantsCondiments() {
+    return true // 默认需要调料
+  }
+
+  init() {
+    this.boilWater()
+    this.brew()
+    this.pourInCup()
+    if (this.customerWantsCondiments()) {
+      this.addCondiments()
+    }
+  }
+}
+
+class CoffeeWithHook extends Beverage {
+  constructor() {
+    super()
+  }
+
+  brew() {
+    console.log('用热水冲泡咖啡')
+  }
+
+  pourInCup() {
+    console.log('把咖啡倒进杯子')
+  }
+
+  addCondiments() {
+    console.log('加牛奶🥛')
+  }
+
+  customerWantsCondiments() {
+    return window.confirm('需要加奶吗')
+  }
+}
+
+const coffeeWithHook = new CoffeeWithHook()
+coffeeWithHook.init()
+```
+
+### JavaScript 中继承不是必须的
+
+```js
+class Beverage {
+  constructor(param) {
+    this.param = param || {}
+  }
+
+  boilWater() {
+    console.log('把水煮沸')
+  }
+
+  brew() {
+    if (this.param.brew) {
+      return this.param.brew()
+    }
+    throw new Error('子类必须传递 brew 方法')
+  }
+
+  pourInCup() {
+    if (this.param.pourInCup) {
+      return this.param.pourInCup()
+    }
+    throw new Error('子类必须传递 pourInCup 方法')
+  }
+
+  addCondiments() {
+    if (this.param.addCondiments) {
+      return this.param.addCondiments()
+    }
+    throw new Error('子类必须传递 addCondiments 方法')
+  }
+
+  customerWantsCondiments() {
+    if (this.param.customerWantsCondiments) {
+      return this.param.customerWantsCondiments()
+    }
+    return true
+  }
+
+  init () {
+    this.boilWater()
+    this.brew()
+    this.pourInCup()
+    if (this.customerWantsCondiments()) {
+      this.addCondiments()
+    }
+  }
+}
+
+
+const coffeeWithHook = new Beverage({
+  brew: () => {
+    console.log('用热水冲泡咖啡')
+  },
+  pourInCup: () => {
+    console.log('把咖啡倒进杯子')
+  },
+  addCondiments: () => {
+    console.log('加牛奶🥛')
+  },
+  customerWantsCondiments: () => {
+    return window.confirm('需要加奶吗')
+  }
+})
+
+coffeeWithHook.init()
+
+const teaWithHook = new Beverage({
+  brew: () => {
+    console.log('用热水浸泡茶叶')
+  },
+  pourInCup: () => {
+    console.log('把茶水倒进杯子')
+  },
+  addCondiments: () => {
+    console.log('加柠檬🍋')
+  },
+  customerWantsCondiments: () => {
+    return window.confirm('需要加柠檬吗')
+  }
+})
+
+teaWithHook.init()
+```
