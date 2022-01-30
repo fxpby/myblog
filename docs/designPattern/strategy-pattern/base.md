@@ -195,6 +195,37 @@ console.log(bonus.getBonus())
 
 我们先创建了一个 bonus 对象，给它设置了一些原始工资数额，再传入某个计算奖金的策略对象进行保存，调用 getBonus 方法计算奖金，其实 bonus 对象本身没有能力计算，而是把请求委托给之前保存好的策略对象。
 
+#### JavaScript 版本的策略模式
+
+上面是传统的面向对象语言的实现，JavaScript 中，函数也是对象，我们更直接的做法就是把 strategy 直接定义为函数。
+
+```js
+const strategies = {
+  "S": salary => {
+    return salary * 4
+  },
+  "A": salary => {
+    return salary * 3
+  },
+  "B": salary => {
+    return salary * 2
+  }
+}
+```
+
+Context 也没有必要用 Bonus 类来表示，依然用 calculateBonus 函数充当 Context 来接受用户的请求。
+
+```js
+const calculateBonus = (level, salary) => {
+  return strategies[level](salary)
+}
+
+console.log(calculateBonus('S', 6000))
+console.log(calculateBonus('B', 10000))
+```
+
+这样代码结构变得更简洁了呢，舒适！
+
 ## 设计原则验证
 
 - 不同策略，分开处理，而不是混合在一起
