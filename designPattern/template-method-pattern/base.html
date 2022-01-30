@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>模板方法模式 | fxpby和olu是好朋友</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?560be5dada9664ddc2907a2c2e79f23b";
+				var s = document.getElementsByTagName("script")[0]; 
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+    <script>var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?cd09cc141cdd07e547a366648c6dd0c4";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();</script>
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/myblog/assets/css/0.styles.5bfde816.css" as="style"><link rel="preload" href="/myblog/assets/js/app.03051393.js" as="script"><link rel="preload" href="/myblog/assets/js/2.104b70c8.js" as="script"><link rel="preload" href="/myblog/assets/js/46.26786966.js" as="script"><link rel="prefetch" href="/myblog/assets/js/10.0304c28f.js"><link rel="prefetch" href="/myblog/assets/js/100.83729c43.js"><link rel="prefetch" href="/myblog/assets/js/101.7913b482.js"><link rel="prefetch" href="/myblog/assets/js/102.794a4815.js"><link rel="prefetch" href="/myblog/assets/js/103.f84eb918.js"><link rel="prefetch" href="/myblog/assets/js/104.c8eca788.js"><link rel="prefetch" href="/myblog/assets/js/11.37e44b6b.js"><link rel="prefetch" href="/myblog/assets/js/12.2effc060.js"><link rel="prefetch" href="/myblog/assets/js/13.15b7f676.js"><link rel="prefetch" href="/myblog/assets/js/14.14d557a2.js"><link rel="prefetch" href="/myblog/assets/js/15.c2be8e41.js"><link rel="prefetch" href="/myblog/assets/js/16.38de50f1.js"><link rel="prefetch" href="/myblog/assets/js/17.40a4913e.js"><link rel="prefetch" href="/myblog/assets/js/18.8e654123.js"><link rel="prefetch" href="/myblog/assets/js/19.7a93097b.js"><link rel="prefetch" href="/myblog/assets/js/20.927ede75.js"><link rel="prefetch" href="/myblog/assets/js/21.48933ad0.js"><link rel="prefetch" href="/myblog/assets/js/22.73159ea6.js"><link rel="prefetch" href="/myblog/assets/js/23.ac59b78d.js"><link rel="prefetch" href="/myblog/assets/js/24.75e0212a.js"><link rel="prefetch" href="/myblog/assets/js/25.f5466d6b.js"><link rel="prefetch" href="/myblog/assets/js/26.a4fa50fd.js"><link rel="prefetch" href="/myblog/assets/js/27.431210e3.js"><link rel="prefetch" href="/myblog/assets/js/28.981c14da.js"><link rel="prefetch" href="/myblog/assets/js/29.5d040aca.js"><link rel="prefetch" href="/myblog/assets/js/3.2bf676f1.js"><link rel="prefetch" href="/myblog/assets/js/30.5d719838.js"><link rel="prefetch" href="/myblog/assets/js/31.bf3f6eb0.js"><link rel="prefetch" href="/myblog/assets/js/32.8c11851e.js"><link rel="prefetch" href="/myblog/assets/js/33.dacffac7.js"><link rel="prefetch" href="/myblog/assets/js/34.1f0629cc.js"><link rel="prefetch" href="/myblog/assets/js/35.a8b9d2a3.js"><link rel="prefetch" href="/myblog/assets/js/36.be313616.js"><link rel="prefetch" href="/myblog/assets/js/37.bcdf74a8.js"><link rel="prefetch" href="/myblog/assets/js/38.a34f0687.js"><link rel="prefetch" href="/myblog/assets/js/39.74f0d475.js"><link rel="prefetch" href="/myblog/assets/js/4.3c4dd6b3.js"><link rel="prefetch" href="/myblog/assets/js/40.ab7a5fda.js"><link rel="prefetch" href="/myblog/assets/js/41.362c38e0.js"><link rel="prefetch" href="/myblog/assets/js/42.e3dae943.js"><link rel="prefetch" href="/myblog/assets/js/43.f2ca5524.js"><link rel="prefetch" href="/myblog/assets/js/44.8f9c3455.js"><link rel="prefetch" href="/myblog/assets/js/45.cdc59786.js"><link rel="prefetch" href="/myblog/assets/js/47.f3fb2f32.js"><link rel="prefetch" href="/myblog/assets/js/48.17ce3a19.js"><link rel="prefetch" href="/myblog/assets/js/49.f54947bb.js"><link rel="prefetch" href="/myblog/assets/js/5.eb255f8f.js"><link rel="prefetch" href="/myblog/assets/js/50.7b681a38.js"><link rel="prefetch" href="/myblog/assets/js/51.2e682749.js"><link rel="prefetch" href="/myblog/assets/js/52.1a7faaf3.js"><link rel="prefetch" href="/myblog/assets/js/53.ab7eb027.js"><link rel="prefetch" href="/myblog/assets/js/54.c317a53b.js"><link rel="prefetch" href="/myblog/assets/js/55.d1178180.js"><link rel="prefetch" href="/myblog/assets/js/56.1dd2366b.js"><link rel="prefetch" href="/myblog/assets/js/57.e1d29923.js"><link rel="prefetch" href="/myblog/assets/js/58.726e2e9b.js"><link rel="prefetch" href="/myblog/assets/js/59.609cf731.js"><link rel="prefetch" href="/myblog/assets/js/6.204643fa.js"><link rel="prefetch" href="/myblog/assets/js/60.77c50c18.js"><link rel="prefetch" href="/myblog/assets/js/61.44ae7d02.js"><link rel="prefetch" href="/myblog/assets/js/62.ec54c958.js"><link rel="prefetch" href="/myblog/assets/js/63.bb2d1522.js"><link rel="prefetch" href="/myblog/assets/js/64.c28d3b4c.js"><link rel="prefetch" href="/myblog/assets/js/65.d4834f08.js"><link rel="prefetch" href="/myblog/assets/js/66.e5a3d770.js"><link rel="prefetch" href="/myblog/assets/js/67.1b5cffd9.js"><link rel="prefetch" href="/myblog/assets/js/68.5f018fc0.js"><link rel="prefetch" href="/myblog/assets/js/69.5f421603.js"><link rel="prefetch" href="/myblog/assets/js/7.c7a31542.js"><link rel="prefetch" href="/myblog/assets/js/70.9ec67a64.js"><link rel="prefetch" href="/myblog/assets/js/71.a832acc2.js"><link rel="prefetch" href="/myblog/assets/js/72.667cac21.js"><link rel="prefetch" href="/myblog/assets/js/73.3a0c97a9.js"><link rel="prefetch" href="/myblog/assets/js/74.91f708fd.js"><link rel="prefetch" href="/myblog/assets/js/75.27626e8e.js"><link rel="prefetch" href="/myblog/assets/js/76.72802ee9.js"><link rel="prefetch" href="/myblog/assets/js/77.1c193e1c.js"><link rel="prefetch" href="/myblog/assets/js/78.82200d01.js"><link rel="prefetch" href="/myblog/assets/js/79.5b6b6e6e.js"><link rel="prefetch" href="/myblog/assets/js/8.dab1786b.js"><link rel="prefetch" href="/myblog/assets/js/80.a2f38f0e.js"><link rel="prefetch" href="/myblog/assets/js/81.791aa4a7.js"><link rel="prefetch" href="/myblog/assets/js/82.0bb02e5f.js"><link rel="prefetch" href="/myblog/assets/js/83.9e433d08.js"><link rel="prefetch" href="/myblog/assets/js/84.3ba62d4d.js"><link rel="prefetch" href="/myblog/assets/js/85.45e2623e.js"><link rel="prefetch" href="/myblog/assets/js/86.3dd9fc7b.js"><link rel="prefetch" href="/myblog/assets/js/87.2251ac75.js"><link rel="prefetch" href="/myblog/assets/js/88.709c2f1e.js"><link rel="prefetch" href="/myblog/assets/js/89.be4e167f.js"><link rel="prefetch" href="/myblog/assets/js/9.7415d993.js"><link rel="prefetch" href="/myblog/assets/js/90.e241243a.js"><link rel="prefetch" href="/myblog/assets/js/91.9459e9df.js"><link rel="prefetch" href="/myblog/assets/js/92.75df0218.js"><link rel="prefetch" href="/myblog/assets/js/93.4313f399.js"><link rel="prefetch" href="/myblog/assets/js/94.7bb033d0.js"><link rel="prefetch" href="/myblog/assets/js/95.49679599.js"><link rel="prefetch" href="/myblog/assets/js/96.402c6206.js"><link rel="prefetch" href="/myblog/assets/js/97.6091f650.js"><link rel="prefetch" href="/myblog/assets/js/98.35d2900e.js"><link rel="prefetch" href="/myblog/assets/js/99.1ba46f58.js">
+    <link rel="stylesheet" href="/myblog/assets/css/0.styles.5bfde816.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myblog/" class="home-link router-link-active"><!----> <span class="site-name">fxpby和olu是好朋友</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/myblog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/myblog/note/HTML/favicon.html" class="nav-link">
+  博文
+</a></div><div class="nav-item"><a href="/myblog/designPattern/uml/uml.html" class="nav-link">
+  设计模式
+</a></div><div class="nav-item"><a href="/myblog/dataStructures/array/array.html" class="nav-link">
+  数据结构和算法
+</a></div><div class="nav-item"><a href="/myblog/leetcode/array/twosum.html" class="nav-link">
+  力扣
+</a></div><div class="nav-item"><a href="/myblog/exercise/BitCounting.html" class="nav-link">
+  副本打怪
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/myblog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/myblog/note/HTML/favicon.html" class="nav-link">
+  博文
+</a></div><div class="nav-item"><a href="/myblog/designPattern/uml/uml.html" class="nav-link">
+  设计模式
+</a></div><div class="nav-item"><a href="/myblog/dataStructures/array/array.html" class="nav-link">
+  数据结构和算法
+</a></div><div class="nav-item"><a href="/myblog/leetcode/array/twosum.html" class="nav-link">
+  力扣
+</a></div><div class="nav-item"><a href="/myblog/exercise/BitCounting.html" class="nav-link">
+  副本打怪
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>设计模式</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/myblog/designPattern/uml/uml.html" class="sidebar-link">uml 类图</a></li><li><a href="/myblog/designPattern/object-oriented/object-oriented.html" class="sidebar-link">面向对象</a></li><li><a href="/myblog/designPattern/design-principle/design-principle.html" class="sidebar-link">设计原则</a></li><li><a href="/myblog/designPattern/factory-pattern/base.html" class="sidebar-link">工厂模式</a></li><li><a href="/myblog/designPattern/singleton-pattern/base.html" class="sidebar-link">单例模式</a></li><li><a href="/myblog/designPattern/adapter-pattern/base.html" class="sidebar-link">适配器模式</a></li><li><a href="/myblog/designPattern/decorator-pattern/base.html" class="sidebar-link">装饰器模式</a></li><li><a href="/myblog/designPattern/proxy-pattern/base.html" class="sidebar-link">代理模式</a></li><li><a href="/myblog/designPattern/facade-pattern/base.html" class="sidebar-link">外观模式</a></li><li><a href="/myblog/designPattern/observer-pattern/base.html" class="sidebar-link">观察者模式</a></li><li><a href="/myblog/designPattern/iterator-pattern/base.html" class="sidebar-link">迭代器模式</a></li><li><a href="/myblog/designPattern/state-pattern/base.html" class="sidebar-link">状态模式</a></li><li><a href="/myblog/designPattern/prototype-pattern/base.html" class="sidebar-link">原型模式</a></li><li><a href="/myblog/designPattern/bridge-pattern/base.html" class="sidebar-link">桥接模式</a></li><li><a href="/myblog/designPattern/composite-pattern/base.html" class="sidebar-link">组合模式</a></li><li><a href="/myblog/designPattern/flyweight-pattern/base.html" class="sidebar-link">享元模式</a></li><li><a href="/myblog/designPattern/strategy-pattern/base.html" class="sidebar-link">策略模式</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="模板方法模式"><a href="#模板方法模式" class="header-anchor">#</a> 模板方法模式</h1> <h2 id="介绍"><a href="#介绍" class="header-anchor">#</a> 介绍</h2> <ul><li>只需要使用继承就可以实现</li> <li>子类实现中的相同部分被上移到父类中，将不同的部分留待子类实现，体现泛化的思想</li></ul> <h3 id="构成"><a href="#构成" class="header-anchor">#</a> 构成</h3> <ul><li>抽象父类</li> <li>具体的实现子类</li></ul> <p>通常在抽象父类中封装子类的算法框架，包括实现一些公共方法以及封装子类中所有方法的执行顺序。子类通过继承这个抽象类，也就继承了整个算法结构，并且可以选择重写父类的方法。</p> <h2 id="示例"><a href="#示例" class="header-anchor">#</a> 示例</h2> <h3 id="coffee-or-tea"><a href="#coffee-or-tea" class="header-anchor">#</a> Coffee or Tea</h3> <h4 id="☕️泡一杯拿铁"><a href="#☕️泡一杯拿铁" class="header-anchor">#</a> ☕️泡一杯拿铁</h4> <p>泡拿铁的步骤如下</p> <ol><li>把水煮沸</li> <li>用热水冲泡咖啡</li> <li>把咖啡倒进杯子</li> <li>加牛奶</li> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">Coffee</span> <span class="token punctuation">{</span>
+  <span class="token function">boilWater</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'把水煮沸'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">brewCoffee</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'用热水冲泡咖啡'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">pourInCup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'把咖啡倒进杯子'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">addMilk</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'加牛奶🥛'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">boilWater</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">brewCoffee</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">pourInCup</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">addMilk</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> coffee <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Coffee</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+coffee<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">Coffee</span> <span class="token punctuation">{</span>
+  <span class="token function">boilWater</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'把水煮沸'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">brewCoffee</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'用热水冲泡咖啡'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">pourInCup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'把咖啡倒进杯子'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">addMilk</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'加牛奶🥛'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">boilWater</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">brewCoffee</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">pourInCup</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">addMilk</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> coffee <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Coffee</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+coffee<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="🍵泡一壶茶"><a href="#🍵泡一壶茶" class="header-anchor">#</a> 🍵泡一壶茶</h4> <p>泡壶茶的步骤如下：</p> <ol><li>把水煮沸</li> <li>用沸水浸泡茶叶</li> <li>把茶水倒进杯子</li> <li>加柠檬</li> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">Tea</span> <span class="token punctuation">{</span>
+  <span class="token function">boilWater</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'把水煮沸'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">brewTea</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'用热水浸泡茶叶'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">pourInCup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'把茶水倒进杯子'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">addLemon</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'加柠檬🍋'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">boilWater</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">brewTea</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">pourInCup</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">addLemon</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> tea <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Tea</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+tea<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">Tea</span> <span class="token punctuation">{</span>
+  <span class="token function">boilWater</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'把水煮沸'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">brewTea</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'用热水浸泡茶叶'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">pourInCup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'把茶水倒进杯子'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">addLemon</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'加柠檬🍋'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">boilWater</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">brewTea</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">pourInCup</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">addLemon</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> tea <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Tea</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+tea<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="分离共同点"><a href="#分离共同点" class="header-anchor">#</a> 分离共同点</h4> <p>我们发现拿铁和茶的冲泡过程好像差不多嘛，不同点只有 3 个：</p> <ul><li>原料不同，咖啡和茶，可以抽象为“饮料”</li> <li>泡的方式不同，咖啡是冲泡，茶叶是浸泡。都可以抽象为“泡”</li> <li>加入的调理不同，咖啡是牛奶，茶叶是柠檬，都可以抽象为“调料”</li></ul> <p>这样抽象完成后就得到了下面的步骤👇🏻</p> <ol><li>把水煮沸</li> <li>用热水<strong>泡饮料</strong></li> <li>把<strong>饮料</strong>倒进杯子</li> <li>加<strong>调料</strong></li></ol> <p>让我们忘记刚才创建的 Coffee 类和 Tea 类，使用抽象类 Beverage</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">Beverage</span> <span class="token punctuation">{</span>
+  <span class="token function">boilWater</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'把水煮沸'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 空方法，由子类重写</span>
+  <span class="token function">brew</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token comment">// 空方法， 由子类重写</span>
+  <span class="token function">pourInCup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token comment">// 空方法， 由子类重写</span>
+  <span class="token function">addCondiments</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">boilWater</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">brew</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">pourInCup</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">addCondiments</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="创建-coffee-子类和-tea-子类"><a href="#创建-coffee-子类和-tea-子类" class="header-anchor">#</a> 创建 Coffee 子类和 Tea 子类</h4> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">Coffee</span> <span class="token keyword">extends</span> <span class="token class-name">Beverage</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">brew</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'用热水冲泡咖啡'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">pourInCup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'把咖啡倒进杯子'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">addCondiments</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'加牛奶🥛'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Tea</span> <span class="token keyword">extends</span> <span class="token class-name">Beverage</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">brew</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'用热水浸泡茶叶'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">pourInCup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'把茶水倒进杯子'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">addCondiments</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'加柠檬🍋'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> coffee <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Coffee</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+coffee<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> tea <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Tea</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+tea<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><p>上面的 <code>init</code> 方法就是 <code>模板方法</code>, 因为该方法中封装了子类的框架算法，它作为一个算法的模板，知道子类以何种顺序去执行某些方法。</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/myblog/assets/js/app.03051393.js" defer></script><script src="/myblog/assets/js/2.104b70c8.js" defer></script><script src="/myblog/assets/js/46.26786966.js" defer></script>
+  </body>
+</html>
