@@ -144,6 +144,7 @@ module.exports = {
             ["/designPattern/chain-of-responsibility-pattern/base", "职责链模式"],
             ["/designPattern/command-pattern/base", "命令模式"],
             ["/designPattern/memento-pattern/base", "备忘录模式"],
+            ["/designPattern/mediator-pattern/base", "中介者模式"],
           ],
         },
       ],
