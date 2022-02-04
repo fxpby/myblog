@@ -7,6 +7,37 @@
 
 ## 示例
 
+### 请假审批
+
+olu 平日上班请假需要审批，组长审批 => 经理审批 => 总监审批
+
+```js
+class Action {
+  constructor(name) {
+    this.name = name
+    this.nextAction = null
+  }
+
+  setNextAction(action) {
+    this.nextAction = action
+  }
+
+  handle() {
+    console.log(`${this.name} 审批`)
+    if (this.nextAction !== null) {
+      this.nextAction.handle()
+    }
+  }
+}
+
+const leader1 = new Action('组长')
+const leader2 = new Action('经理')
+const leader3 = new Action('总监')
+leader1.setNextAction(leader2)
+leader2.setNextAction(leader3)
+leader1.handle()
+```
+
 ### 售卖电脑
 
 假设有一个负责售卖电脑的电商网站，经过分别交纳 500 元定金和 200 元定金的两轮预定后（订单已经生成），现在已经到了正式购买的阶段。
@@ -166,3 +197,8 @@ chainOrder500.passRequest(1, false, 500)
 ```
 
 这样就不会违背开放封闭原则了，我们如果需要改动相关业务逻辑，只需要新增、修改或者移除节点顺序。
+
+## 设计原则验证
+
+- 发起者于各个处理者进行隔离
+- 符合开放封闭原则
