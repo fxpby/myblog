@@ -143,6 +143,7 @@ module.exports = {
             ["/designPattern/template-method-pattern/base", "模板方法模式"],
             ["/designPattern/chain-of-responsibility-pattern/base", "职责链模式"],
             ["/designPattern/command-pattern/base", "命令模式"],
+            ["/designPattern/memento-pattern/base", "备忘录模式"],
           ],
         },
       ],
