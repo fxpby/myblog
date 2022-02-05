@@ -7,6 +7,51 @@
 
 ## 示例
 
+### 战场传递命令
+
+在一些战争电影里，将军发号施令向来不是扯着嗓子喊给千军万马的士兵们的，一般都是有发号专员，比如小号手，通过吹响号角，传递战斗信号。
+
+```js
+// 接收者
+class Receiver {
+  exec() {
+    console.log('执行命令')
+  }
+}
+
+// 命令者
+class Command {
+  constructor(receiver) {
+    this.receiver = receiver
+  }
+
+  cmd() {
+    console.log('触发命令')
+    this.receiver.exec()
+  }
+}
+
+// 触发者
+class Invoker {
+  constructor(command) {
+    this.command = command
+  }
+
+  invoke() {
+    console.log('开始调用')
+    this.command.cmd()
+  }
+}
+
+// 士兵
+const soldier = new Receiver()
+// 小号手
+const trumpeter = new Command(soldier)
+// 将军
+const general = new Invoker(trumpeter)
+general.invoke()
+```
+
 ### 菜单程序
 
 假设编写一个用户界面程序，界面中有数十个 button，因为项目复杂，所以让部分程序员负责绘制 button，其余负责编写 button 点击行为逻辑，行为都被封装在对象中。绘制 button 的同学不知道这个按钮将来的行为逻辑是什么，可能用来刷新菜单，也可能用来增加子菜单。
