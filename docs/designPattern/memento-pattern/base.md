@@ -39,6 +39,7 @@ class CareTaker {
 class Editor {
   constructor() {
     this.content = null
+    this.careTaker = new CareTaker()
   }
 
   setContent(content) {
@@ -49,30 +50,28 @@ class Editor {
     return this.content
   }
 
-  saveContentToMemento() {
-    return new Memento(this.content)
+  save() {
+    this.careTaker.add(new Memento(this.content))
   }
 
-  getContentFromMemento(memento) {
-    this.content = memento.getContent()
+  restore(index) {
+    const memento = this.careTaker.get(index)
+    return memento && memento.getContent()
   }
 }
 
 const editor = new Editor()
-const careTaker = new CareTaker()
 editor.setContent('今天天气不错')
 editor.setContent('我也这么觉得')
 // 存储备忘录
-careTaker.add(editor.saveContentToMemento())
+editor.save()
 editor.setContent('明天天气怎么样')
-careTaker.add(editor.saveContentToMemento())
+editor.save()
 editor.setContent('好像也还阔以')
 
 console.log(editor.getContent())
-editor.getContentFromMemento(careTaker.get(1))
-console.log(editor.getContent())
-editor.getContentFromMemento(careTaker.get(0))
-console.log(editor.getContent())
+console.log(editor.restore(1))
+console.log(editor.restore(0))
 ```
 
 ## 设计原则验证
