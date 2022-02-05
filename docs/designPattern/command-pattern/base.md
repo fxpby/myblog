@@ -142,3 +142,8 @@ setCommand(btn1, refreshMenuBarCommand)
 setCommand(btn2, addSubMenuCommand)
 setCommand(btn3, delSubMenuCommand)
 ```
+
+## 设计原则验证
+
+- 命令对象于执行对象分开，解耦
+- 符合开放封闭原则
