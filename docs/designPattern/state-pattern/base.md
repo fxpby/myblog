@@ -280,7 +280,7 @@ class Light {
 const light = new Light()
 light.init()
 ```
- 
+
 ### 交通信号灯不同颜色的变化
 
 类图：
