@@ -145,6 +145,7 @@ module.exports = {
             ["/designPattern/command-pattern/base", "命令模式"],
             ["/designPattern/memento-pattern/base", "备忘录模式"],
             ["/designPattern/mediator-pattern/base", "中介者模式"],
+            ["/designPattern/comprehensive-application/case1", "综合实践-模拟购物车"],
           ],
         },
       ],
