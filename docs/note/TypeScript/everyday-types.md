@@ -140,3 +140,26 @@ foo5(123)
 foo5('233')
 foo5([1, 2, 3])
 ```
+
+## Type Aliases
+
+使用类型别名给类型起一个新的名字，使用 `type` 创建类型别名，常用于联合类型
+
+```ts
+type Point = {
+  x: number
+  y: string
+}
+
+function foo7(x: Point) {
+  console.log(x)
+}
+foo7({x: 123, y: '233'})
+
+type Id = number | string
+function foo8(id: Id) {
+  console.log(id)
+}
+foo8(233)
+foo8('233')
+```
