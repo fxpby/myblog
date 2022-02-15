@@ -163,3 +163,67 @@ function foo8(id: Id) {
 foo8(233)
 foo8('233')
 ```
+
+类型别名 type 不能通过同名方式去拓展, 可以使用`&`符号拓展合并
+
+```ts
+type Animal1 = {
+  name: string
+}
+type Bear1 = Animal1 & {
+  age: number
+}
+const bear1: Bear1 = {
+  name: 'weini',
+  age: 23
+}
+console.log(bear1.name, bear1.age)
+```
+
+## Interfaces
+
+使用接口定义对象的类型
+
+```ts
+interface Point1 {
+  x: number,
+  y: string
+}
+function foo9(pt: Point1) {
+  console.log(pt)
+}
+foo9({x: 233, y: '233'})
+```
+
+接口是可以拓展继承的
+
+```ts
+interface Animal {
+  name: string
+}
+
+interface Bear extends Animal {
+  age: number
+}
+
+const bear: Bear = {
+  name: 'weini',
+  age: 23
+}
+console.log(bear.name, bear.age)
+```
+
+向现有的接口添加新字段（可同名方式拓展）
+
+```ts
+interface MyWindow {
+  count: number;
+}
+interface MyWindow {
+  title: string;
+}
+const window: MyWindow = {
+  count: 1,
+  title: '233'
+}
+```
