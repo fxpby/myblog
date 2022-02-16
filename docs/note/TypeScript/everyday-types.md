@@ -243,3 +243,29 @@ const myCanvas2 = <HTMLCanvasElement>document.getElementById("main_canvas");
 const testAssert = ('abcd' as any) as number
 const testAssert2 = ('abcd' as unknown) as number
 ```
+
+## null and undefined
+
+- null 不存在
+- undefined 未初始化的值
+
+确定值类型不可能为 `null` or `undefined` 才可以使用 `!`
+
+```ts
+const val1: undefined = undefined
+const val2: null = null
+
+function foo10(x: string | null) {
+  if (x === null) {
+    throw new Error(`x is null`)
+  } else {
+    x.toLowerCase()
+  }
+}
+
+// 参数 x 可能为空
+function foo11(x?: number | null) {
+  // 不做显示检查，从类型中删除 null 和 undefined
+  x!.toFixed()
+}
+```
