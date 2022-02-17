@@ -269,3 +269,40 @@ function foo11(x?: number | null) {
   x!.toFixed()
 }
 ```
+
+## Enums
+
+枚举类型的值可以是`数字类型`也可以是`字符串类型`
+
+```ts
+enum Direction {
+  Up = 1,
+  Down,
+  Left,
+  Right,
+}
+
+console.log(Direction.Up, Direction.Down) // 1 2
+```
+
+```ts
+enum Direction {
+  Up = 3,
+  Down,
+  Left,
+  Right,
+}
+
+console.log(Direction.Up, Direction.Down) // 3 4
+```
+
+枚举成员必须具有初始化表达式，不能包含计算成员。下面这样会报错
+
+```ts
+enum Direction2 {
+  Up = 'olu'.length,
+  Down,
+  Left,
+  Right,
+}
+```
