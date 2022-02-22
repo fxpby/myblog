@@ -1,5 +1,17 @@
 # typeof 类型守卫
 
+`typeof` 返回字符串
+
+- object
+- string
+- number
+- bigint
+- symbol
+- undefined
+- function
+
+检查 `typeof` 返回值是一种`类型保护`
+
 ## 类型缩小
 
 将类型细化为比声明更具体的类型的过程
