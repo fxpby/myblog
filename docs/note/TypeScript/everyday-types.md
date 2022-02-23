@@ -306,3 +306,12 @@ enum Direction2 {
   Right,
 }
 ```
+
+## bigint
+
+非常大的整数
+
+```ts
+const onehundred: bigint = BigInt(100)
+const anotherHundred: bigint = 100n
+```
