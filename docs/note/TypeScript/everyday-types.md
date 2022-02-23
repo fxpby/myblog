@@ -315,3 +315,12 @@ enum Direction2 {
 const onehundred: bigint = BigInt(100)
 const anotherHundred: bigint = 100n
 ```
+
+## symbol
+
+全局唯一引用
+
+```ts
+const name1 = Symbol('name')
+const name2 = Symbol('name2')
+```
