@@ -29,3 +29,46 @@ function padLeft(padding: number | string, input: string): string {
 ```
 
 ## 真值缩小
+
+先了解一下 typerscript 中的 fasly 假值
+
+- 0
+- NaN
+- "" (空字符串)
+- 0n (bigint 的零)
+- null
+- undefined
+
+下面的例子就是利用条件判断去进行真值缩小
+
+```ts
+function printAll(strs: string | string[] | null) {
+  if (strs && typeof strs === 'object') {
+    strs.forEach(s => {
+      console.log(s)
+    })
+  } else if (typeof strs === 'string') {
+    console.log(strs.concat('hello'))
+  } else {
+    // ...
+  }
+}
+
+function getUserOnlineMessage(numUsersOnline: number) {
+  if (numUsersOnline) {
+    return `现在共有 ${numUsersOnline} 人在线`
+  }
+  return `现在没有人在线`
+}
+
+function multiplyAll(values: number[] | undefined, factor: number) {
+  if (!values) {
+    return values
+  } else {
+    return values.map(x => {
+      return x * factor
+    })
+  }
+}
+console.log(multiplyAll([2, 3, 4], 3))
+```
