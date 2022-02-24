@@ -27,3 +27,5 @@ function padLeft(padding: number | string, input: string): string {
   }
 }
 ```
+
+## 真值缩小
