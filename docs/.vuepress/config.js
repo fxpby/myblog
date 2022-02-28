@@ -20,7 +20,7 @@ module.exports = {
       { text: "副本打怪", link: "/exercise/BitCounting" },
       // ,
       // { text: 'SQL', link: '/sql/' },
-      // { text: 'Github', link: 'https://github.com/fxpby/' }
+      { text: 'Github', link: 'https://github.com/fxpby/' }
     ],
     sidebar: {
       "/note/": [
