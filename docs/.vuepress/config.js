@@ -47,11 +47,6 @@ module.exports = {
             ["/note/CSS/weight", "权重"],
           ],
         },
-        // {
-        //   title: "ES6",
-        //   collapsable: false,
-        //   children: [["/note/ES6/es6", "es6"]],
-        // },
         {
           title: "JavaScript",
           collapsable: false,
