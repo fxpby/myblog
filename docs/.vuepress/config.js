@@ -62,6 +62,15 @@ module.exports = {
           ],
         },
         {
+          title: "TypeScript",
+          collapsable: false,
+          children: [
+            ["/note/TypeScript/everyday-types", "数据类型"],
+            ["/note/TypeScript/tsconfig", "tsconfig.json 配置"],
+            ["/note/TypeScript/typeof-guard", "typeof 类型守卫"],
+          ],
+        },
+        {
           title: "前端工程化",
           collapsable: false,
           children: [
