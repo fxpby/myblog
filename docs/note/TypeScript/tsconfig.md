@@ -21,6 +21,8 @@
 - `strictPropertyInitialization`: 确保类的非undefined属性已经在构造函数里初始化。若要令此选项生效，需要同时启用--strictNullChecks
 - `alwaysStrict`: 以严格模式解析并为每个源文件生成 "use strict"语句
 
+示例:
+
 ```json
 {
   "compilerOptions": {
