@@ -7,7 +7,7 @@
 
 ## 示例
 
-### 服装厂模特拍广告
+### 👩🏼‍🤝‍🧑🏻服装厂模特拍广告
 
 假设有一个服装工厂，目前有 50 种男士服装和 50 种女士服装。为了推销商品，工厂决定生产一些塑料模特来穿服装拍广告照片。正常情况需要 50 个男模特和 50 个女模特，然后每一位穿一件服装来拍照，如下👇🏻
 
@@ -62,7 +62,7 @@ for(let j = 0; j <= 50; j += 1 ) {
 }
 ```
 
-### 图书馆入库书籍
+### 📚图书馆入库书籍
 
 图书馆同样的书（ISBN号相同）可能存有很多本，我们不希望每次入库一本书都创建一个新的 book 实例，我们只想为ISBN号相同的书创建一个 book 实例。
 
@@ -88,10 +88,9 @@ const createBook = (title, author, isbn) => {
     return book
   }
 
-  const book = new Book(title, author, isbn)
   isbnNumbers.add(isbn)
 
-  return book
+  return new Book(title, author, isbn)
 }
 ```
 
@@ -173,6 +172,122 @@ console.log(`Total amount of books: ${isbnNumbers.size}`)
 
 // Total amount of copies: 5
 // Total amount of books: 3
+```
+
+### 💻文件上传
+
+假设文件只有浏览器插件和表单上传两种方式，用户选择文件之后，插件和表单都会通知调用 Window 下的一个全局函数，叫做 startUpload, 用户选择的文件列表被组合成一个数组 files 塞入参数列表中。
+
+```js
+let id = 0;
+window.startUpload = (uploadType, files) => {
+  files.forEach(file => {
+    const uploadObj = new Upload(uploadType, file.fileName, file.fileSize)
+    uploadObj.init(id++)
+  })
+}
+
+class Upload {
+  constructor(uploadType, fileName, fileSize) {
+    this.uploadType = uploadType
+    this.fileName = fileName
+    this.fileSize = fileSize
+    this.dom = null
+  }
+
+  init(id) {
+    this.id = id
+    this.dom = document.createElement("div")
+    this.dom.innerHTML = `
+      <span> 文件名称： ${this.fileName}, 文件大小：${this.fileSize} kb </span> <button class="del-file"> 删除 </button>
+    `
+    this.dom.querySelector('.del-file').onclick = () => {this.delFile()}
+    document.body.appendChild(this.dom)
+  }
+
+  delFile() {
+    // 文件小于 3000 kb 时，直接删除
+    if (this.fileSize < 3000) {
+      return this.dom.parentNode.removeChild(this.dom)
+    }
+
+    // 提示框提示删除
+    if (window.confirm('确定要删除该文件吗？'+ this.fileName)) {
+      return this.dom.parentNode.removeChild(this.dom)
+    }
+  }
+}
+
+// 创建 3 个插件上传对象和 3 个表单上传对象
+startUpload('plugin', [
+  {
+    fileName: '1.txt',
+    fileSize: 1000
+  },
+  {
+    fileName: '2.txt',
+    fileSize: 3000,
+  },
+  {
+    fileName: '3.txt',
+    fileSize: 5000,
+  }
+])
+
+startUpload('form', [
+  {
+    fileName: '4.txt',
+    fileSize: 1000
+  },
+  {
+    fileName: '5.txt',
+    fileSize: 3000,
+  },
+  {
+    fileName: '6.txt',
+    fileSize: 5000,
+  }
+])
+```
+
+上段代码中，需要上传多少文件，就创建了多少个 upload 对象。
+
+首先需要判断一下是内部状态还是外部状态
+
+- 内部状态储存于对象内部
+- 内部状态可以被一些对象共享
+- 内部状态独立于具体的场景，通常不会改变
+- 外部状态取决于具体的场景，并根据场景而变化，外部状态不能被共享
+
+在这个上传的例子中，`uploadType` 是 `Upload` 所必需依赖的属性（不同类型的上传方式原理不同）; `fileName` 和 `fileSize` 是不会被共享的，所以划分为外部状态
+
+下面使用享元模式重构一下：
+
+```js
+class Upload {
+  constructor(uploadType) {
+    this.uploadType = uploadType
+  }
+
+  delFile(id) {
+    uploadManager.setExternalState(id, this)
+    // 文件小于 3000 kb 时，直接删除
+    if (this.fileSize < 3000) {
+      return this.dom.parentNode.removeChild(this.dom)
+    }
+
+    // 提示框提示删除
+    if (window.confirm('确定要删除该文件吗？'+ this.fileName)) {
+      return this.dom.parentNode.removeChild(this.dom)
+    }
+  }
+}
+
+class uploadManager {
+  constructor() {
+    this.uploadDatabase = {}
+  }
+}
 ```
 
 ## 设计原则验证
