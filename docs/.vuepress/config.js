@@ -4,15 +4,6 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: "首页", link: "/" },
-      // {
-      // 	text: '笔记', items: [
-      // 		{ text: 'HTML', link: '/note/HTML/' },
-      // 		{ text: 'CSS', link: '/note/CSS/' },
-      // 		{ text: 'JavaScript', link: '/note/JavaScript/' },
-      // 		{ text: 'node.js', link: '/note/node.js/' },
-      // 		{ text: 'Vue', link: '/note/vue/' }
-      // 	]
-      // },
       { text: "博文", link: "/note/HTML/favicon" },
       { text: "设计模式", link: "/designPattern/uml/uml" },
       { text: "数据结构和算法", link: "/dataStructures/array/array" },
