@@ -55,4 +55,3 @@ var isValid = function(s) {
 js解释器用栈来控制函数调用
 
 ![js-callStack](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/datastructures-algorithm/jsCallStack.gif)
-
