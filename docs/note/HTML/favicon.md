@@ -107,7 +107,7 @@ svg矢量图的优点很多，但是其兼容性相比较而言差很多。如�
 * 为windows应用配置browserconfig.xml文件(windows8.1+)
 * PWA应用配置`manifest.json`文件
 
-最后提供一个favicon的检查工具https://realfavicongenerator.net/
+最后提供一个favicon的检查工具<https://realfavicongenerator.net/>
 
 ### References
 
