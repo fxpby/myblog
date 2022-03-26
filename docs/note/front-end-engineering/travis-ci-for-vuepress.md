@@ -80,7 +80,7 @@ deploy:
 
 点击我们右上角的个人头像，点击`Settings`
 
-![](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/front-end-enginerring/github-setting.png)
+![settings](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/front-end-enginerring/github-setting.png)
 
 来到`Developer settings`，点击`Personal access tokens`， 再点击`Generate new token`
 
@@ -93,7 +93,6 @@ deploy:
 ![select oauth](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/front-end-enginerring/select-access.png)
 
 ![access-tokens](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/front-end-enginerring/access-tokens.png)
-
 
 ### 配置Travis CI
 
