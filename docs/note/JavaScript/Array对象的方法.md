@@ -259,7 +259,7 @@ t2
 
 ## Array.prototype方法
 
-### indexOf() 
+### indexOf()
 
 + 返回在该数组中第一个找到的位置元素，找不到返回-1
 
