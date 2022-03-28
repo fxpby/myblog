@@ -24,7 +24,6 @@ console.log(obj2); //{a:2}
 //obj1,obj2是保存在栈中的指针,指向同一个存储在堆内存中的对象，当通过变量obj1操作堆内存的对象时，obj2也会一起改变
 ```
 
-
 ## 二、深拷贝的常用方式
 
 ### JSON.parser(JSON.stringfy(obj))
@@ -43,7 +42,6 @@ console.log(d); //{a: 1, b: 2}
 ```
 
 > 如果obj里面有undefined、symbol或者function时，不会被拷贝。只有可以转成 JSON 格式的对象才能使用这种方法
-
 
 ### Object.assign()
 
