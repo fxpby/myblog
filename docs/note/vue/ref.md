@@ -94,6 +94,7 @@ export default {
 + 父组件向子组件动态传值举例
 
 父组件：
+
 ```vue
 <template>
   <div id="app">
@@ -124,6 +125,7 @@ export default {
 ```
 
 子组件：
+
 ```vue
 <template>
   <div class="child">
