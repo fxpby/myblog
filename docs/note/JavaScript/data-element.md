@@ -8,7 +8,7 @@
 - string 字符串
 - boolean 布尔值
 - symbol 符号
-- bigInt 
+- bigInt
 
 ### null
 
