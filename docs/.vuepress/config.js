@@ -118,6 +118,17 @@ module.exports = {
         // 	]
         // }
       ],
+      "/http/": [
+        {
+          title: "HTTP",
+          collapsable: false,
+          children: [
+            ["/http/http-history", "http 历史"],
+            ["/http/OSI", "网络协议分层"],
+            ["/http/shake-hands", "三次握手"],
+          ],
+        },
+      ],
       "/designPattern/": [
         {
           title: "设计模式",
