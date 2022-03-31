@@ -6,6 +6,7 @@ module.exports = {
       { text: "首页", link: "/" },
       { text: "博文", link: "/note/HTML/favicon" },
       { text: "设计模式", link: "/designPattern/uml/uml" },
+      { text: "HTTP", link: "/http/http-history" },
       { text: "数据结构和算法", link: "/dataStructures/array/array" },
       { text: "力扣", link: "/leetcode/array/twosum" },
       { text: "副本打怪", link: "/exercise/BitCounting" },
