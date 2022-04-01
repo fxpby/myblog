@@ -10,7 +10,6 @@ module.exports = {
       { text: "数据结构和算法", link: "/dataStructures/array/array" },
       { text: "力扣", link: "/leetcode/array/twosum" },
       { text: "副本打怪", link: "/exercise/BitCounting" },
-      // ,
       // { text: 'SQL', link: '/sql/' },
       { text: 'Github', link: 'https://github.com/fxpby/' }
     ],
