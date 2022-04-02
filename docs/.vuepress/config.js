@@ -18,7 +18,6 @@ module.exports = {
           title: "HTML",
           collapsable: false,
           children: [
-            // ['/note/HTML/negativeMargin','负margin'],
             ["/note/HTML/attrs", "HTML 属性和 DOM 属性关系"],
             ["/note/HTML/Semantics", "HTML5语义化"],
             ["/note/HTML/HTML5DOM", "HTML5 DOM"],
