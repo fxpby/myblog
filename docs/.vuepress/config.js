@@ -101,13 +101,6 @@ module.exports = {
           children: [["/note/npm/init", "修改elementUI上传npm总结"]],
         },
         // {
-        // 	title: '重学JS',
-        // 	collapsable: false,
-        // 	children: [
-        // 		['/note/restartJS/dataType','数据类型']
-        // 	]
-        // },
-        // {
         // 	title: '浏览器兼容性',
         // 	collapsable: false,
         // 	children: [
