@@ -40,7 +40,6 @@ module.exports = {
           title: "JavaScript",
           collapsable: false,
           children: [
-            // ['/note/JavaScript/closure','闭包'],
             ["/note/JavaScript/data-element", "数据类型"],
             [
               "/note/JavaScript/compare-value",
