@@ -45,7 +45,6 @@ module.exports = {
               "/note/JavaScript/compare-value",
               "typeof/instanceof/{}.toString 检查类型",
             ],
-            // ["/note/JavaScript/type-transform", "类型转换"],
             ["/note/JavaScript/Copy", "深拷贝"],
           ],
         },
