@@ -12,8 +12,13 @@
 `SYN=1` 的报文段不能携带数据，需要消耗掉一个序号，会让下一次传输的 `packet seq` 增加 `1`，`ACK` 的传输不会让下一次的传输 `packet seq` 增加 `1`
 客户端进程处于 SYN-SENT（同步已发送）状态
 
-> SYN: 同步序列编号（Synchronize Sequence Numbers）, 是一个标志位，代表创建请求的数据包
-> ACK: acknowledgement 确认号
+> SYN: 同步序列编号（Synchronize Sequence Numbers）, 是一个标志位，代表创建请求的数据包(建立连接)
+> ACK: 表示响应
+> FIN(Finish): 表示关闭连接
+> RST(Reset): 表示连接重置
+> PSH(Push): 推送位，有 DATA 数据传输，到达对端时，接收端不将该数据进行队列处理，将这个报文及缓存区之间缓存尚未交付的数据一并交付给进程
+> URG(Urgent): 紧急位，紧急数据需要直接交付给接收端的进程，不进入缓存
+> Ack: acknowledgement 确认号
 
 ### 第二次握手
 
