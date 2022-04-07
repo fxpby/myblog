@@ -141,5 +141,11 @@ btn.addEventListener('click', () => {
   link.href = URL.createObjectURL(blobURL)
   document.body.appendChild(link)
   link.click()
+
+  // 删除DOM、释放对象URL
+  setTimeout(() => {
+    document.body.removeChild(link);
+    URL.revokeObjectURL(blobURL);
+  }, 200)
 })
 ```
