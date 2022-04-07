@@ -1,4 +1,4 @@
-# URI、URL、URN、Data URI、Blob URL 和 Object URL
+# URI、URL、URN、Data URI、Object URL 和 Blob URL
 
 ## URI
 
@@ -78,5 +78,68 @@ Uniform Resource Name 统一资源名称，是 `URI` 的历史名字，已经被
 
 - 存储图片，减少 HTTP 请求
 - 本地读取文件，图片预览
-
 - 前端文件下载
+
+## Object URL 和 Blob URL
+
+允许 Blob、File、MediaSource 做为 URL 源，可以用于导航（例如 img src）或者本地下载，这些 URL 只能在浏览器内部生成，且只能在当前会话中使用
+
+```html
+<input type="file" name="file" id="file" />
+```
+
+```js
+document.getElementById("file").addEventListener("change", (ev) => {
+  const url = URL.createObjectURL(ev.target.files[0]);
+  console.log(url) 
+  // 'blob:http://localhost:5500/3708d657-3b56-434a-958f-8a353d595c07'
+  const img = document.createElement("img");
+  img.src = url;
+  img.addEventListener("load", () => {
+    document.body.appendChild(img);
+  });
+});
+```
+
+- `URL.createObjectURL()`
+`URL.createObjectURL()` 静态方法会创建一个 `DOMString`，其中包含一个表示参数中给出的对象的`URL`。这个 `URL` 的生命周期和创建它的窗口中的 `document` 绑定。这个新的 `URL 对象`表示指定的 `File 对象`或 `Blob 对象`
+
+- `URL.revokeObjectURL()`
+`URL.revokeObjectURL()` 静态方法用来释放一个之前已经存在的、通过调用 `URL.createObjectURL()` 创建的 `URL 对象`。当你结束使用某个`URL 对象`之后，应该通过调用这个方法来让浏览器知道不用在内存中继续保留对这个文件的引用了
+
+### Blob URL 对比 Data URI 的优点
+
+- 体积更小
+  - Blob URL 使用二进制
+  - Data URI 为 Base64、URI 编码
+- 速度更快
+  - Blob 只是字节序列，浏览器将其识别为字节流
+  - Data URI 具有解码开销
+- 异步加载
+  - Blob URL 加载文件为同步
+  - FileReader 加载文件为 Data URI 为异步
+
+### 练手：将对象下载为一个 `xxx.json` 文件
+
+```html
+<button id="btn">点我下载 json 文件</button>
+```
+
+```js
+const btn = document.getElementById('btn')
+btn.addEventListener('click', () => {
+  const data = JSON.stringify({name: 'olu', age: 18})
+  const blobURL = new Blob([data], {type: 'text/json'})
+  const link = document.createElement('a')
+  link.style.display = 'none'
+  link.download = `xxx.json`
+  /** 
+   * 使用 Blob 创建一个指向类型化数组的URL
+   * 会产生一个类似 blob:d3958f5c-0777-0845-9dcf-2cb28783acaf 这样的URL字符串
+   * 可以像使用普通 URL 那样使用它，比如用在 img.src 上
+  **/
+  link.href = URL.createObjectURL(blobURL)
+  document.body.appendChild(link)
+  link.click()
+})
+```
