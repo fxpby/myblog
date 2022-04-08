@@ -1,4 +1,4 @@
-# URI、URL、URN、Data URI、Object URL 和 Blob URL
+# URI、URL、URN、Data URI、Object URL/Blob URL
 
 ## URI
 
@@ -23,6 +23,9 @@ Uniform Resource Locator 统一资源定位符
 
 `protocol://<user>:<password>@<host>:<port>/<url-path>`
 
+> 没有port 默认 80 端口
+> url-path: /[路径]?[查询参数]#[片段ID]
+
 ### Specific Schemes
 
 - ftp                     File Transfer protocol
@@ -42,7 +45,8 @@ Uniform Resource Locator 统一资源定位符
 
 Uniform Resource Name 统一资源名称，是 `URI` 的历史名字，已经被 `URI` 取代
 
-不包含任何协议
+- 在资源移动之后还能够被找到
+- 不包含任何协议
 
 ## Data URI
 
@@ -66,7 +70,7 @@ Uniform Resource Name 统一资源名称，是 `URI` 的历史名字，已经被
 ### 缺点
 
 - 文件体积增大
-  `Data URI` 使用 `Base64` 编码，将会比原文件大 1.37 倍+814 字节（头部）
+  `Data URI` 使用 `Base64` 编码，每个 char 在 JavaScript 中占用两个字节, 最终将会比原文件大 1.37 倍+814 字节（头部）
 - 阻塞渲染
   阻塞页面继续解析和渲染
 - 图片无法使用 HTTP 缓存
@@ -80,7 +84,7 @@ Uniform Resource Name 统一资源名称，是 `URI` 的历史名字，已经被
 - 本地读取文件，图片预览
 - 前端文件下载
 
-## Object URL 和 Blob URL
+## Object URL / Blob URL
 
 允许 `Blob`、`File`、`MediaSource` 做为 `URL 源`，可以用于导航（例如 `img src`）或者本地下载，这些 `URL` 只能在浏览器内部生成，且只能在当前会话中使用
 
