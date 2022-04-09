@@ -1,4 +1,4 @@
-# URI、URL、URN、Data URI、Object URL/Blob URL
+# URI、URL、URN、Data URI 和 Object URL/Blob URL
 
 ## URI
 
@@ -23,7 +23,7 @@ Uniform Resource Locator 统一资源定位符
 
 `protocol://<user>:<password>@<host>:<port>/<url-path>`
 
-> 没有port 默认 80 端口
+> 没有port 默认 80 端口  
 > url-path: /[路径]?[查询参数]#[片段ID]
 
 ### Specific Schemes
