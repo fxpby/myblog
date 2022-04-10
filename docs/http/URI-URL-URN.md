@@ -12,7 +12,7 @@ Uniform Resource Identifier 统一资源标志符
 
 ![uri](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/http/uri-eg2.png)
 
-> authority: 用户认证
+> authority: 用户认证  
 > fragment: 片段标识符，hash 参数
 
 ## URL
