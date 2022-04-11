@@ -46,6 +46,7 @@ module.exports = {
               "typeof/instanceof/{}.toString 检查类型",
             ],
             ["/note/JavaScript/Copy", "深拷贝"],
+            ["/note/JavaScript/throttle-debounce", "节流和防抖"],
           ],
         },
         {
