@@ -117,6 +117,7 @@ module.exports = {
             ["/http/OSI", "网络协议分层"],
             ["/http/shake-hands", "三次握手"],
             ["/http/URI-URL-URN", "URI、URL、URN、Data URI 和 Object URL/Blob URL"],
+            ["/http/http-message", "http 报文"],
           ],
         },
       ],
