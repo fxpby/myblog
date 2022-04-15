@@ -99,14 +99,6 @@ module.exports = {
           collapsable: false,
           children: [["/note/npm/init", "修改elementUI上传npm总结"]],
         },
-        // {
-        // 	title: '浏览器兼容性',
-        // 	collapsable: false,
-        // 	children: [
-        // 		['/note/BrowserCompatibility/zone','Invalid Date'],
-        // 		['/note/BrowserCompatibility/ie11','IE11相关踩坑']
-        // 	]
-        // }
       ],
       "/http/": [
         {
