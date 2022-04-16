@@ -84,16 +84,16 @@ module.exports = {
         //   collapsable: false,
         //   children: [["/note/node.js/npm", "安装npm"]],
         // },
-        {
-          title: "Vue",
-          collapsable: false,
-          children: [
-            ["/note/vue/ref", "ref与$refs"],
-            ["/note/vue/set", "$set的使用"],
-            ["/note/vue/watch", "watch监听"],
-            ["/note/vue/emit", "子组件调用父组件方法"],
-          ],
-        },
+        // {
+        //   title: "Vue",
+        //   collapsable: false,
+        //   children: [
+        //     ["/note/vue/ref", "ref与$refs"],
+        //     ["/note/vue/set", "$set的使用"],
+        //     ["/note/vue/watch", "watch监听"],
+        //     ["/note/vue/emit", "子组件调用父组件方法"],
+        //   ],
+        // },
         {
           title: "npm",
           collapsable: false,
