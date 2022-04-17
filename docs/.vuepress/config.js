@@ -47,6 +47,7 @@ module.exports = {
             ],
             ["/note/JavaScript/Copy", "深拷贝"],
             ["/note/JavaScript/throttle-debounce", "节流和防抖"],
+            ["/note/JavaScript/out-script", "异步脚本"],
           ],
         },
         {
