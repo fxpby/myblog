@@ -32,7 +32,7 @@ module.exports = {
             ["/note/CSS/HCenter", "水平居中"],
             ["/note/CSS/VCenter", "垂直居中"],
             ["/note/CSS/HVCenter", "水平垂直居中"],
-            ["/note/CSS/Flex", "Flex布局"],
+            // ["/note/CSS/Flex", "Flex布局"],
             ["/note/CSS/weight", "权重"],
           ],
         },
