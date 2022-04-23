@@ -90,6 +90,7 @@ module.exports = {
           collapsable: false,
           children: [
             ["/note/vue/源码-src", "源码学习 - 准备工作"],
+            ["/note/vue/源码-构建", "源码学习 - 构建"],
             // ["/note/vue/ref", "ref与$refs"],
             // ["/note/vue/set", "$set的使用"],
             // ["/note/vue/watch", "watch监听"],
