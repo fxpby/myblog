@@ -15,6 +15,13 @@ module.exports = {
     sidebar: {
       "/note/": [
         {
+          title: "浏览器",
+          collapsable: false,
+          children: [
+            ["/note/browser/layout-paint", "浏览器的重排和重绘"],
+          ],
+        },
+        {
           title: "HTML",
           collapsable: false,
           children: [
