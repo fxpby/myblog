@@ -35,6 +35,7 @@ module.exports = {
           title: "CSS",
           collapsable: false,
           children: [
+            ["/note/CSS/box-model", "盒模型"],
             ["/note/CSS/BFC", "BFC"],
             ["/note/CSS/HCenter", "水平居中"],
             ["/note/CSS/VCenter", "垂直居中"],
