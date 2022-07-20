@@ -28,13 +28,13 @@ jobs:
 
       # Runs a single command using the runners shell
       # - name: Install and Build 🎄
-      # run: npm install && npm run docs:build
+      # run: npm install && npm run build
 
       # Runs a set of commands using the runners shell
       - name: Install and Build 🎄
         run: |
           npm install
-          npm run docs:build
+          npm run build
           
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
