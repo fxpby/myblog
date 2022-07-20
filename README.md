@@ -1,10 +1,41 @@
-# fxpby的个人博客
+# Website
 
-[![Build Status](https://app.travis-ci.com/fxpby/myblog.svg?branch=master)](https://app.travis-ci.com/fxpby/myblog)
+This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
-若博客内容有误或有修改建议交流，恳请提issue或邮箱联系（1037345919@qq.com），感谢🙏🙏🙏
+### Installation
 
-## 部署相关
+```
+$ yarn
+```
 
-- 静态文件生成： vuepress
-- 持续集成自动化部署： Github Actions
+### Local Development
+
+```
+$ yarn start
+```
+
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+
+### Build
+
+```
+$ yarn build
+```
+
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
+
+### Deployment
+
+Using SSH:
+
+```
+$ USE_SSH=true yarn deploy
+```
+
+Not using SSH:
+
+```
+$ GIT_USER=<Your GitHub username> yarn deploy
+```
+
+If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.

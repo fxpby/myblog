@@ -14,11 +14,11 @@ jobs:
       - name: Checkout 🐤
         uses: actions/checkout@v2
       # 安装Node13
-      - name: use Node.js 14.15.1 🐣
+      - name: use Node.js 16.15.1 🐣
         # 使用action库  actions/setup-node安装node
         uses: actions/setup-node@v1
         with:
-          node-version: '14.15.1'
+          node-version: '16.15.1'
       # 安装依赖
       - name: npm install 🐥
         run: npm install
@@ -34,7 +34,7 @@ jobs:
           # scp参数
           ARGS: "-avzr --delete"
           # 源目录，编译后生成的文件目录
-          SOURCE: "/docs/.vuepress/dist"
+          SOURCE: "/build"
           # 服务器ip：换成你的服务器IP
           REMOTE_HOST: "120.55.99.110"
           # 用户
