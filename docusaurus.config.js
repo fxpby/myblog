@@ -56,11 +56,16 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      algolia: {
+        apiKey: "55b032a5b7a68d857e0eb126e2454706",
+        appId: "SWXCUHSAX2",
+        indexName: "dev_olumel",
+      },
       navbar: {
         title: 'fxpby和olu是好朋友',
         logo: {
           alt: '',
-          src: '/myblog/img/headImg.jpg',
+          src: '/img/headImg.jpg',
           width: 32,
           height: 32,
         },
@@ -157,7 +162,7 @@ const config = {
           Copyright © ${new Date().getFullYear()} fxpby和olu是好朋友 olumel.top | 津ICP备2021008930号-1
           <div style="width: 300px; margin: 0px auto; padding: 20px 0px;">
             <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12011602000961" style="display: inline-block; text-decoration: none; height: 20px; line-height: 20px;">
-            <img src="/myblog/img/beian.png" style="float: left;"> 
+            <img src="/img/beian.png" style="float: left;"> 
             <p style="float: left; height: 20px; line-height: 20px; margin: 0px 0px 0px 5px; color: rgb(147, 147, 147);">
               津公网安备 12011602000961号
             </p>
