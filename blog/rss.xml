@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>fxpby和olu是好朋友 Blog</title>
-        <link>https://www.olumel.top/myblog/blog</link>
+        <link>https://www.olumel.top/blog</link>
         <description>fxpby和olu是好朋友 Blog</description>
         <lastBuildDate>Wed, 20 Jul 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
@@ -10,7 +10,7 @@
         <language>en</language>
         <item>
             <title><![CDATA[Greetings!]]></title>
-            <link>https://www.olumel.top/myblog/blog/greetings</link>
+            <link>https://www.olumel.top/blog/greetings</link>
             <guid>greetings</guid>
             <pubDate>Wed, 20 Jul 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[Congratulations, you have made your first post!]]></description>
