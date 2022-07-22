@@ -9,7 +9,7 @@ const config = {
   title: 'fxpby和olu是好朋友',
   tagline: 'hello world',
   url: 'https://www.olumel.top',
-  baseUrl: '/myblog/',
+  baseUrl: process.env.DEPLOY_SERVER === 'deploygithub' ? '/myblog/' : '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: '/myblog/img/favicon1.jpg',
@@ -60,7 +60,7 @@ const config = {
         title: 'fxpby和olu是好朋友',
         logo: {
           alt: '',
-          src: '/myblog/img/headImg.jpg',
+          src: process.env.NODE_ENV === 'deploygithub' ? '/myblog/img/headImg.jpg' : '/img/headImg.jpg',
           width: 32,
           height: 32,
         },
@@ -157,7 +157,7 @@ const config = {
           Copyright © ${new Date().getFullYear()} fxpby和olu是好朋友 olumel.top | 津ICP备2021008930号-1
           <div style="width: 300px; margin: 0px auto; padding: 20px 0px;">
             <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12011602000961" style="display: inline-block; text-decoration: none; height: 20px; line-height: 20px;">
-            <img src="/myblog/img/beian.png" style="float: left;"> 
+            <img a=${process.env.DEPLOY_SERVER} src=${process.env.DEPLOY_SERVER === 'deploygithub' ? '/myblog/img/beian.png' : '/img/beian.png'} style="float: left;"> 
             <p style="float: left; height: 20px; line-height: 20px; margin: 0px 0px 0px 5px; color: rgb(147, 147, 147);">
               津公网安备 12011602000961号
             </p>

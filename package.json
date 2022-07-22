@@ -5,7 +5,11 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
+    "start-github": "cross-env DEPLOY_SERVER=deploygithub docusaurus start",
+    "start-aliyun": "cross-env DEPLOY_SERVER=deployaliyun docusaurus start",
     "build": "docusaurus build",
+    "build-aliyun": "cross-env DEPLOY_SERVER=deployaliyun docusaurus build",
+    "build-github": "cross-env DEPLOY_SERVER=deploygithub docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -26,6 +30,7 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "2.0.0-beta.22",
     "@tsconfig/docusaurus": "^1.0.5",
+    "cross-env": "^7.0.3",
     "typescript": "^4.7.4"
   },
   "browserslist": {
