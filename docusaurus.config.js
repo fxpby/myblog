@@ -65,7 +65,7 @@ const config = {
         title: 'fxpby和olu是好朋友',
         logo: {
           alt: '',
-          src: process.env.NODE_ENV === 'deploygithub' ? '/myblog/img/headImg.jpg' : '/img/headImg.jpg',
+          src: process.env.DEPLOY_SERVER === 'deploygithub' ? '/myblog/img/headImg.jpg' : '/img/headImg.jpg',
           width: 32,
           height: 32,
         },
