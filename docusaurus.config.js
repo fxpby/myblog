@@ -56,6 +56,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      algolia: {
+        apiKey: "55b032a5b7a68d857e0eb126e2454706",
+        appId: "SWXCUHSAX2",
+        indexName: "dev_olumel",
+      },
       navbar: {
         title: 'fxpby和olu是好朋友',
         logo: {
