@@ -101,17 +101,21 @@ const config = {
           //   label: 'Node.js',
           // },
           {
-            type: 'docSidebar',
-            sidebarId: 'framework',
+            // type: 'localeDropdown',
             position: 'left',
             label: '框架相关',
+            items: [
+              {
+                label: '基础知识',
+                to: '/docs/framework/runtime-compiletime',
+              },
+              {
+                label: 'Vue2',
+                to: '/docs/Vue/vue2/源码-src',
+              },
+            ]
           },
-          {
-            type: 'docSidebar',
-            sidebarId: 'vue2',
-            position: 'left',
-            label: 'Vue2',
-          },
+          
           {
             type: 'docSidebar',
             sidebarId: 'front-end-engineering',
@@ -149,11 +153,11 @@ const config = {
             label: '力扣',
           },
           // {to: '/blog', label: 'Blog', position: 'left'},
-          {
-            href: 'https://github.com/fxpby',
-            label: 'GitHub',
-            position: 'right',
-          },
+          // {
+          //   href: 'https://github.com/fxpby',
+          //   label: 'GitHub',
+          //   position: 'right',
+          // },
         ],
       },
       footer: {
