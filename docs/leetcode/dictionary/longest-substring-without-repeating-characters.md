@@ -1,4 +1,10 @@
-# 3. 无重复字符的最长子串
+---
+id: longest-substring-without-repeating-characters
+title: 3.无重复字符的最长子串
+tags:
+  - 滑动窗口
+  - 双指针
+---
 
 ## 题目描述
 
