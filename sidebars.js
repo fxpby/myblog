@@ -167,6 +167,14 @@ const sidebars = {
         'leetcode/array/search-insert-position',
       ],
     },
+    {
+      type: 'category',
+      label: '字典',
+      collapsed: false,
+      items: [
+        'leetcode/dictionary/longest-substring-without-repeating-characters',
+      ],
+    },
   ],
 };
 
