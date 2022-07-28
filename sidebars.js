@@ -173,6 +173,7 @@ const sidebars = {
       collapsed: false,
       items: [
         'leetcode/dictionary/longest-substring-without-repeating-characters',
+        'leetcode/dictionary/minimum-window-substring',
       ],
     },
   ],
