@@ -1,5 +1,5 @@
 ---
-id: minimum-window-substrin
+id: minimum-window-substring
 title: 76.最小覆盖子串
 tags:
   - 滑动窗口
