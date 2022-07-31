@@ -123,7 +123,13 @@ const sidebars = {
         'data-structures/hashtable/hashtable-separate-chaining',
       ],
     },
-    'data-structures/tree/binary-search-tree',
+    {
+      type: 'category',
+      label: '树',
+      items: [
+        'data-structures/tree/binary-search-tree',
+      ],
+    },
     'data-structures/heap/heap',
     'data-structures/graph/graph',
   ],
