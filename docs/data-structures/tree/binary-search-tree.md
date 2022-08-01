@@ -89,6 +89,8 @@ const bt = {
 
 ![reOrderTraversal](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/datastructures-algorithm/preOrderTraversal.png)
 
+#### 2.1.1 递归
+
 ```js
 const preOrder = root => {
   if (!root) {
@@ -102,6 +104,29 @@ const preOrder = root => {
 
 结果为：11 7 5 3 6 9 8 10 15 13 12 14 20 18 25
 
+#### 2.1.2 非递归 - 栈
+
+```js
+const preOrder = root => {
+  if (!root) {
+    return
+  }
+  const stack = [root]
+  while (stack.length) {
+    const node = stack.pop()
+    console.log(node.val)
+    if (node.right) {
+      stack.push(node.right)
+    }
+    if (node.left) {
+      stack.push(node.left)
+    }
+  }
+}
+```
+
+结果为：11 7 5 3 6 9 8 10 15 13 12 14 20 18 25
+
 ### 2.2 中序遍历
 
 - 对根节点的左子树进行先序遍历
@@ -109,6 +134,8 @@ const preOrder = root => {
 - 对根节点的右子树进行先序遍历
 
 ![inOrderTraversal](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/datastructures-algorithm/inOrderTraversal.png)
+
+#### 2.2.1 递归
 
 ```js
 const inOrder = root => {
@@ -123,6 +150,29 @@ const inOrder = root => {
 
 结果为：3 5 6 7 8 9 10 11 12 13 14 15 18 20 25
 
+#### 2.2.2 非递归 - 栈
+
+```js
+const inOrder = root => {
+  if (!root) {
+    return
+  }
+  const stack = []
+  let p = root
+  while (stack.length || p) {
+    while (p) {
+      stack.push(p)
+      p = p.left
+    }
+    const node = stack.pop()
+    console.log(node.val)
+    p = node.right
+  }
+}
+```
+
+结果为：3 5 6 7 8 9 10 11 12 13 14 15 18 20 25
+
 ### 2.3 后序遍历
 
 - 对根节点的左子树进行先序遍历
@@ -130,6 +180,8 @@ const inOrder = root => {
 - 访问根节点
 
 ![postOrderTraversal](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/datastructures-algorithm/postOrderTraversal.png)
+
+#### 2.3.1 递归
 
 ```js
 const postOrder = root => {
@@ -139,6 +191,34 @@ const postOrder = root => {
   postOrder(root.left)
   postOrder(root.right)
   console.log(root.val)
+}
+```
+
+结果为：3 6 5 8 10 9 7 12 14 13 18 25 20 15 11
+
+#### 2.3.2 非递归 - 栈
+
+```js
+const postOrder = root => {
+  if (!root) {
+    return
+  }
+  const stack = [root]
+  const outputStack = []
+  while (stack.length) {
+    const node = stack.pop()
+    outputStack.push(node)
+    if (node.left) {
+      stack.push(node.left)
+    }
+    if (node.right) {
+      stack.push(node.right)
+    }
+  }
+  while (outputStack.length) {
+    const node = outputStack.pop()
+    console.log(node.val)
+  }
 }
 ```
 
