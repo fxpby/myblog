@@ -43,7 +43,7 @@ A binary tree's maximum depth is the number of nodes along the longest path fro
 - 步骤：
   - 创建变量记录最大深度
   - 深度优先遍历树，记录每个节点的层级，更新最大深度变量
-  - 返回最大深度遍历
+  - 返回最大深度变量
 
 - 复杂度分析：
   - 时间复杂度：O(n)
