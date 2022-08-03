@@ -182,6 +182,15 @@ const sidebars = {
         'leetcode/dictionary/minimum-window-substring',
       ],
     },
+    {
+      type: 'category',
+      label: '树',
+      collapsed: false,
+      items: [
+        'leetcode/tree/minimum-depth-of-binary-tree',
+        'leetcode/tree/maximum-depth-of-binary-tree',
+      ],
+    },
   ],
 };
 
