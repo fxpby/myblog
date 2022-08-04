@@ -1,13 +1,3 @@
-<!--
- * @Author: your name
- * @Date: 2020-11-27 10:38:05
- * @LastEditTime: 2020-11-27 16:20:15
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \myblog-docs\docs\algorithm\methods\binary-search.md
--->
-
-# 
 
 ## 背景描述
 
