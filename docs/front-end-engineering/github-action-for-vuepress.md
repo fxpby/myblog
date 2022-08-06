@@ -26,7 +26,7 @@ actions见名知意是一堆动作, 这一系列的动作包括了pull代码, �
 
 点击我们右上角的个人头像，点击`Settings`
 
-![](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/front-end-enginerring/github-setting.png)
+![user-settings](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/front-end-enginerring/github-setting.png)
 
 来到`Developer settings`，点击`Personal access tokens`， 再点击`Generate new token`
 
