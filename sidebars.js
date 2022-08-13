@@ -191,6 +191,7 @@ const sidebars = {
         'leetcode/tree/maximum-depth-of-binary-tree',
         'leetcode/tree/binary-tree-level-order-traversal',
         'leetcode/tree/binary-tree-right-side-view',
+        'leetcode/tree/binary-tree-inorder-traversal',
       ],
     },
   ],
