@@ -45,6 +45,10 @@ tags:
 - 树中节点数目在范围 [0, 100] 内
 - -100 <= Node.val <= 100
 
+## 解题方法
+
+### 方法一：dfs
+
 ```js
 /**
  * Definition for a binary tree node.
@@ -76,6 +80,8 @@ var inorderTraversal = function (root) {
   return res;
 };
 ```
+
+### 方法二：bfs
 
 ```js
 /**
