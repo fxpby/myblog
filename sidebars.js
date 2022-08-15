@@ -194,6 +194,14 @@ const sidebars = {
         'leetcode/tree/binary-tree-inorder-traversal',
       ],
     },
+    {
+      type: 'category',
+      label: '图',
+      collapsed: false,
+      items: [
+        'leetcode/graph/pacific-atlantic-water-flow',
+      ],
+    },
   ],
 };
 
