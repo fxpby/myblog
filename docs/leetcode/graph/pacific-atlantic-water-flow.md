@@ -157,3 +157,85 @@ var pacificAtlantic = function (heights) {
   return res;
 };
 ```
+
+### 方法二：bfs
+
+```js
+/**
+ * @param {number[][]} heights
+ * @return {number[][]}
+ */
+var pacificAtlantic = function (heights) {
+  if (!heights || !heights[0]) {
+    return [];
+  }
+
+  // 行数量，即矩阵的长度
+  const m = heights.length;
+  // 列数量，即矩阵每一项的长度
+  const n = heights[0].length;
+
+  // 太平洋矩阵
+  const flow1 = Array.from({ length: m }, () => new Array(n).fill(false));
+  // 大西洋矩阵
+  const flow2 = Array.from({ length: m }, () => new Array(n).fill(false));
+
+  // 行坐标，列坐标，矩阵
+  const bfs = (r, c, flow) => {
+    // 流经标记
+    flow[r][c] = true;
+    const queue = [[r, c]];
+    const dirs = [
+      [-1, 0],
+      [1, 0],
+      [0, -1],
+      [0, 1],
+    ];
+
+    while (queue.length) {
+      const cell = queue.shift();
+      for (let dir of dirs) {
+        const nr = dir[0] + cell[0];
+        const nc = dir[1] + cell[1];
+        if (
+          // 边界处理
+          nr >= 0 &&
+          nr < m &&
+          nc >= 0 &&
+          nc < n &&
+          // 防止死循环
+          !flow[nr][nc] &&
+          // 逆流而上
+          heights[nr][nc] >= heights[cell[0]][cell[1]]
+        ) {
+          flow[nr][nc] = true;
+          queue.push([nr, nc]);
+        }
+      }
+    }
+  };
+
+  // 沿着海岸线逆流而上，遍历第一列和最后一列
+  for (let r = 0; r < m; r += 1) {
+    bfs(r, 0, flow1);
+    bfs(r, n - 1, flow2);
+  }
+
+  // 沿着海岸线逆流而上，遍历第一行和最后一行
+  for (let c = 0; c < n; c += 1) {
+    bfs(0, c, flow1);
+    bfs(m - 1, c, flow2);
+  }
+
+  // 找出既能流到大西洋也能流到太平洋的坐标
+  const res = [];
+  for (let r = 0; r < m; r += 1) {
+    for (let c = 0; c < n; c += 1) {
+      if (flow1[r][c] && flow2[r][c]) {
+        res.push([r, c]);
+      }
+    }
+  }
+  return res;
+};
+```
