@@ -208,6 +208,7 @@ const sidebars = {
       collapsed: false,
       items: [
         'leetcode/heap/kth-largest-element-in-an-array',
+        'leetcode/heap/top-k-frequent-elements',
       ],
     },
   ],
