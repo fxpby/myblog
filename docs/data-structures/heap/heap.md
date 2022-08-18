@@ -199,8 +199,20 @@ class MinHeap {
   }
 
   pop() {
+    if (this.size() === 0) {
+      return
+    }
+    if (this.size() === 1) {
+      return this.heap.shift()
+    }
+    const top = this.heap[0]
     this.heap[0] = this.heap.pop()
     this.shiftDown(0)
+    return top
+  }
+
+  findMinimum () {
+    return this.size() === 0 ? undefined : this.heap[0]
   }
 
   peek () {
