@@ -202,6 +202,14 @@ const sidebars = {
         'leetcode/graph/pacific-atlantic-water-flow',
       ],
     },
+    {
+      type: 'category',
+      label: '堆',
+      collapsed: false,
+      items: [
+        'leetcode/heap/kth-largest-element-in-an-array',
+      ],
+    },
   ],
 };
 
