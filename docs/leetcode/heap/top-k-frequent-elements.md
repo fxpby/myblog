@@ -106,10 +106,15 @@ class MinHeap {
 
   pop() {
     if (this.size() === 0) {
-      return;
+      return
     }
-    this.heap[0] = this.heap.pop();
-    this.shiftDown(0);
+    if (this.size() === 1) {
+      return this.heap.shift()
+    }
+    const top = this.heap[0]
+    this.heap[0] = this.heap.pop()
+    this.shiftDown(0)
+    return top
   }
 
   peek() {
