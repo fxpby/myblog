@@ -132,6 +132,13 @@ const sidebars = {
     },
     'data-structures/heap/heap',
     'data-structures/graph/graph',
+    {
+      type: 'category',
+      label: '排序算法',
+      items: [
+        'algorithm/sorting-algorithm/bubble-sort'
+      ],
+    },
   ],
   'leetcode': [
     {
