@@ -136,7 +136,9 @@ const sidebars = {
       type: 'category',
       label: '排序算法',
       items: [
-        'algorithm/sorting-algorithm/bubble-sort'
+        'algorithm/sorting-algorithm/bubble-sort',
+        'algorithm/sorting-algorithm/selection-sort',
+        'algorithm/sorting-algorithm/insertion-sort'
       ],
     },
   ],
