@@ -1,6 +1,6 @@
 ---
 id: merge-sort
-title: 选择排序
+title: 归并排序
 tags:
   - 排序
 ---
