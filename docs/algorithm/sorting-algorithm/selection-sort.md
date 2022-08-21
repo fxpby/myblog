@@ -33,3 +33,8 @@ const selectionSort = arr => {
 
 selectionSort([6,5,4,3,2,1])
 ```
+
+## 复杂度分析
+
+- 时间复杂度：O(n^2)，两个嵌套循环
+- 空间复杂度：O(1)
