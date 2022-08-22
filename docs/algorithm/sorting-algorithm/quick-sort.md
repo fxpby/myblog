@@ -16,7 +16,7 @@ tags:
 
 - 复杂度分析：
   - 时间复杂度：O(nlogN)
-  - 空间复杂度：O(1)
+  - 空间复杂度：O(logN)
 
 ```js
 const quickSort = (arr, lo = 0, hi = arr.length) => {
