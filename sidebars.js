@@ -140,6 +140,7 @@ const sidebars = {
         'algorithm/sorting-algorithm/selection-sort',
         'algorithm/sorting-algorithm/insertion-sort',
         'algorithm/sorting-algorithm/merge-sort',
+        'algorithm/sorting-algorithm/quick-sort',
       ],
     },
   ],
