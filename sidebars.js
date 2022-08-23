@@ -143,6 +143,13 @@ const sidebars = {
         'algorithm/sorting-algorithm/quick-sort',
       ],
     },
+    {
+      type: 'category',
+      label: '搜索算法',
+      items: [
+        'algorithm/search-algorithm/binary-search',
+      ],
+    },
   ],
   'leetcode': [
     {
