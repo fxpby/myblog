@@ -178,6 +178,7 @@ const sidebars = {
         'leetcode/linkedList/remove-duplicates-from-sorted-list',
         'leetcode/linkedList/reverse-linked-list',
         'leetcode/linkedList/delete-node-in-a-linked-list',
+        'leetcode/linkedList/merge-two-sorted-lists',
       ],
     },
     {
@@ -230,6 +231,15 @@ const sidebars = {
         'leetcode/heap/merge-k-sorted-lists',
       ],
     },
+    {
+      type: 'category',
+      label: '二分查找',
+      collapsed: false,
+      items: [
+        'leetcode/binary-search/guess-number-higher-or-lower',
+      ],
+    },
+    
   ],
 };
 
