@@ -61,7 +61,7 @@ tags:
   - 空间复杂度：O(1)
 
 ```js
-/** 
+/**
  * Forward declaration of guess API.
  * @param {number} num   your guess
  * @return              -1 if num is lower than the guess number
@@ -89,5 +89,41 @@ var guessNumber = function (n) {
       hi = mid - 1;
     }
   }
+};
+```
+
+### 方法二：递归
+
+- 复杂度分析
+  - 时间复杂度：O(logN)
+  - 空间复杂度：O(logN), 栈里存储的变量没有释放（递归堆栈层数）
+
+```js
+/**
+ * Forward declaration of guess API.
+ * @param {number} num   your guess
+ * @return               -1 if num is lower than the guess number
+ *                       1 if num is higher than the guess number
+ *                       otherwise return 0
+ * var guess = function(num) {}
+ */
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var guessNumber = function (n) {
+  const rec = (lo, hi) => {
+    const mid = Math.floor((lo + hi) / 2);
+    const res = guess(mid);
+    if (res === 0) {
+      return mid;
+    } else if (res === -1) {
+      return rec(lo, mid - 1);
+    } else {
+      return rec(mid + 1, hi);
+    }
+  };
+  return rec(1, n);
 };
 ```
