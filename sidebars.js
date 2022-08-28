@@ -212,6 +212,8 @@ const sidebars = {
         'leetcode/tree/binary-tree-right-side-view',
         'leetcode/tree/binary-tree-inorder-traversal',
         'leetcode/tree/invert-binary-tree',
+        'leetcode/tree/same-tree',
+        'leetcode/tree/symmetric-tree',
       ],
     },
     {
