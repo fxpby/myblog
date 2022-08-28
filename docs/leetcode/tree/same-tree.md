@@ -46,9 +46,11 @@ tags:
 ### 方法一：dfs
 
 - 思路：
+
   - 深度优先遍历
 
 - 步骤：
+
   - 判断两棵树节点
     - 都为空则相同
     - 一个为空另一个不为空，不同
@@ -84,5 +86,116 @@ var isSameTree = function (p, q) {
     return false;
   }
   return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+};
+```
+
+### 方法二：bfs
+
+- 思路：
+  - 广度优先遍历，判断树结构是否相同，再判断值是否相同
+
+- 步骤：
+  - 创建队列存储二叉树每一层的节点，每次取队头进行比较
+    - 若两个节点值不同则不同
+    - 若值相同，判断两个左右子节点是否为空，如果只有一个为空则结构不同
+    - 若两左右子节点结构相同，将非空节点加入队列
+
+- 复杂度分析：
+  - 时间复杂度：O(n)，二叉树节点数
+  - 空间复杂度：O(n)，二叉树节点数
+
+> 队列可以使用对象的形式，只创建一个就 OK，很巧妙
+
+```js
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} p
+ * @param {TreeNode} q
+ * @return {boolean}
+ */
+var isSameTree = function (p, q) {
+  if (p === null && q === null) {
+    return true;
+  } else if (p === null || q === null) {
+    return false;
+  }
+  const queue = [{ p, q }];
+  while (queue.length) {
+    const cur = queue.shift();
+    if (cur.p === null && cur.q === null) {
+      continue;
+    }
+    if (cur.p === null || cur.q === null) {
+      return false;
+    }
+    if (cur.p.val !== cur.q.val) {
+      return false;
+    }
+    queue.push({ p: cur.p.left, q: cur.q.left });
+    queue.push({ p: cur.p.right, q: cur.q.right });
+  }
+  return true;
+};
+```
+
+```js
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} p
+ * @param {TreeNode} q
+ * @return {boolean}
+ */
+var isSameTree = function (p, q) {
+  if (p === null && q === null) {
+    return true;
+  } else if (p === null || q === null) {
+    return false;
+  }
+  const queue1 = [p];
+  const queue2 = [q];
+  while (queue1.length && queue2.length) {
+    const n1 = queue1.shift();
+    const n2 = queue2.shift();
+    const left1 = n1.left;
+    const left2 = n2.left;
+    const right1 = n1.right;
+    const right2 = n2.right;
+    if (n1.val !== n2.val) {
+      return false;
+    }
+    if ((left1 === null) ^ (left2 === null)) {
+      return false;
+    }
+    if ((right1 === null) ^ (right2 === null)) {
+      return false;
+    }
+    if (left1) {
+      queue1.push(left1);
+    }
+    if (left2) {
+      queue2.push(left2);
+    }
+    if (right1) {
+      queue1.push(right1);
+    }
+    if (right2) {
+      queue2.push(right2);
+    }
+  }
+  return queue1.length === 0 && queue2.length === 0;
 };
 ```
