@@ -243,7 +243,15 @@ const sidebars = {
         'leetcode/binary-search/guess-number-higher-or-lower',
       ],
     },
-    
+    {
+      type: 'category',
+      label: '动态规划',
+      collapsed: false,
+      items: [
+        'leetcode/dynamic-programming/climbing-stairs',
+        'leetcode/dynamic-programming/house-robber',
+      ],
+    }
   ],
 };
 
