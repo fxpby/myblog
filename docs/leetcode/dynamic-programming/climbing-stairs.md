@@ -60,6 +60,8 @@ var climbStairs = function (n) {
 
 ### 方法二：动态规划 + 双指针
 
+![climbing-stairs](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/leetcode/climbing-stairs/climbing-stairs.png)
+
 ```js
 /**
  * @param {number} n
