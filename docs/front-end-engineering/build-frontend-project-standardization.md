@@ -22,6 +22,8 @@ cd .\fe-demo\
 pnpm init
 ```
 
+![init-program](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/front-end-enginerring/build-frontend-project-standardization/init-program.png)
+
 然后我们进行如下操作：
 
 - 新建 `index.html` 文件
