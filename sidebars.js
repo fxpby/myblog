@@ -250,6 +250,7 @@ const sidebars = {
       items: [
         'leetcode/dynamic-programming/climbing-stairs',
         'leetcode/dynamic-programming/house-robber',
+        'leetcode/dynamic-programming/house-robber-ii',
       ],
     }
   ],
