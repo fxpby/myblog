@@ -252,6 +252,14 @@ const sidebars = {
         'leetcode/dynamic-programming/house-robber',
         'leetcode/dynamic-programming/house-robber-ii',
       ],
+    },
+    {
+      type: 'category',
+      label: '贪心算法',
+      collapsed: false,
+      items: [
+        'leetcode/greedy-algorithm/assign-cookies',
+      ],
     }
   ],
 };
