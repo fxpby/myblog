@@ -158,6 +158,11 @@ const config = {
           // },
         ],
       },
+      docs: {
+        sidebar: {
+          hideable: true,
+        },
+      },
       footer: {
         style: 'dark',
         copyright: `
