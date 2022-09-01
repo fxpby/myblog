@@ -61,6 +61,7 @@ const config = {
     ({
       navbar: {
         title: 'fxpby和olu是好朋友',
+        hideOnScroll: true,
         logo: {
           alt: '',
           src: process.env.DEPLOY_SERVER === 'deploygithub' ? '/myblog/img/headImg.jpg' : '/img/headImg.jpg',
@@ -157,6 +158,11 @@ const config = {
           //   position: 'right',
           // },
         ],
+      },
+      docs: {
+        sidebar: {
+          hideable: true,
+        },
       },
       footer: {
         style: 'dark',
