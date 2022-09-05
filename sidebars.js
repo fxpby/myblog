@@ -88,6 +88,14 @@ const sidebars = {
     'network/http/shake-hands',
     'network/http/URI-URL-URN',
     'network/http/http-message',
+    {
+      type: 'category',
+      label: '缓存',
+      items: [
+        'network/cache/network-http-cache',
+        'network/cache/cache-algorithm'
+      ],
+    },
   ],
   'data-structures': [
     'data-structures/time-complexity/time-complexity',
@@ -149,6 +157,15 @@ const sidebars = {
       label: '搜索算法',
       items: [
         'algorithm/search-algorithm/binary-search',
+      ],
+    },
+    {
+      type: 'category',
+      label: '位运算',
+      collapsed: false,
+      items: [
+        'algorithm/bitwise-operation/bitwise-operation',
+        'algorithm/bitwise-operation/bitwise-operation-add'
       ],
     },
   ],
