@@ -178,6 +178,10 @@ const config = {
           </div>
         `,
       },
+      tableOfContents: {
+        minHeadingLevel: 2,
+        maxHeadingLevel: 5,
+      },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
