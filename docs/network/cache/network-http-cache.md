@@ -132,7 +132,7 @@ if-modified-since: Thu, 01 Sep 2022 19:09:52 GMT
 
 还可以发现 `size` 列中很多项都变成了 `memory cache` 或 `disk cache`, 且`memory cache(内存缓存)` 的 `Time` 都是 0ms, `disk cache(磁盘缓存)` 的 `Time` 也仅有 几ms
 
-## 判断强缓存是否新鲜
+### 判断强缓存是否新鲜
 
 生活中我们判断食品是否新鲜要看食品的`保质期`，`生产日期`和`当前日期`
 
