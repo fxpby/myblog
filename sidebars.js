@@ -30,6 +30,7 @@ const sidebars = {
     'css/weight',
   ],
   'javascript': [
+    'javascript/memory',
     'javascript/data-element',
     'javascript/compare-value',
     'javascript/deep-copy',
