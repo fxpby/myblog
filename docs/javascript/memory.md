@@ -75,19 +75,24 @@ let d = function() { console.log(123) }
 
 `Cheney 算法`使用了 `semi-space 半空间`的设计，将内存一分为二，始终只使用一半的空间，一块 `From-Space` 是使用空间，另一块 `To-Space` 是空闲空间
 
+初始的时候 to 空间是空的，新定义的变量都在 from 空间中
+
 ```js
-|<- 新生代->|<-     老生代     ->|
-|-----|-----|--------------------|
+|<- 新生代 ->|<-           老生代            ->|
+|-----|-----|--------------------------------|
  From   To
 ```
 
 - 内存先进入 `From`（新生代在 `From` 中分配对象）
-- 等到 `From` 满了之后，新生代的 `GC` 会启动（在垃圾回收阶段检查并按需复制 `From` 中可访问对象到 `To` 或老生代）
-- 释放掉 `From` 中一些不再使用的内存（不可访问对象占用的内存空间）
+- 等到 `From` 空间使用到一定程度之后，新生代的 `GC` 会启动（在垃圾回收阶段检查并按需复制 `From` 中可访问对象到 `To` 或老生代）
+- `From` 释放不可访问对象占用的内存空间，达到清空效果，回收完成
 - 再将 `From` 和 `To` 的进行互换，即 `From => To`, `To => From`
 
-如果一个对象经历两次新生代的更替还没有被回收，就需要进入`老生代`
-如果一个对象在 `To` 中的内存占比超过 25%，在第一次更替时就直接进入`老生代`
+如果一个对象已经经历过一次回收，就需要进入`老生代`
+
+新生代发现本次复制后，会占用超过 25% 的 To 空间，更替时就直接进入`老生代`
+
+> 总结就是重复 复制-清空 的过程
 
 #### 老生代
 
@@ -107,3 +112,118 @@ let d = function() { console.log(123) }
 `Mark-Compact` 移动这些对象，让他们变紧凑，即标记清除对象后内存空间会出现内存碎片，当碎片超过一定限制后会启动压缩算法，将存活的可访问对象向内存一端移动，直到所有对象都移动完成，然后清理不需要的内存
 
 > 因为新生代中占少数的是可访问对象，老生代中占少数的是不可访问对象，所以 Scavenge GC 垃圾回收算法 和 Mark-Compact 算法配合十分高效
+
+##### Incremental Marking - 增量标记
+
+### 什么时候触发回收
+
+#### 1.执行完一次代码
+
+```js
+let a = 1
+let b = 2
+console.log(a)
+setTimeout(() => {
+  b++
+  console.log(b)
+  // 回收一次
+}, 2000)
+// 回收一次
+```
+
+#### 2.内存不足
+
+```js
+let size = 30 * 1024 * 1024
+let arr1 = new Array(size)
+testMemory()
+let arr2 = new Array(size)
+testMemory()
+let arr3 = new Array(size)
+testMemory()
+let arr4 = new Array(size)
+testMemory()
+let arr5 = new Array(size)
+testMemory()
+let arr6 = new Array(size)
+testMemory()
+```
+
+### 判断一个变量可以回收的标准
+
+- 1. 全局变量直到程序执行完毕，才会回收
+- 2. 普通变量失去引用时会被回收
+
+```js
+function testMemory() {
+  let memory = process.memoryUsage().heapUsed
+  console.log(memory / 1024 / 1024 + 'mb')
+}
+
+let size = 30 * 1024 * 1024
+let arr1 = new Array(size)
+testMemory()
+(function() {
+  let arr2 = new Array(size)
+  testMemory()
+  let arr3 = new Array(size)
+  testMemory()
+  let arr4 = new Array(size)
+  testMemory()
+})()
+let arr5 = new Array(size)
+testMemory()
+let arr6 = new Array(size)
+testMemory()
+
+// node --max-old-space-size=1000 xx.js 指定最大老生代空间
+```
+
+### 如何检测内存
+
+#### 浏览器
+
+```js
+window.performance.memory
+```
+
+```js
+MemoryInfo 
+{
+  totalJSHeapSize: 95959081, 
+  usedJSHeapSize: 90730505, 
+  jsHeapSizeLimit: 4294705152
+}
+```
+
+#### Node
+
+```js
+process.memoryUsage()
+```
+
+```js
+> process.memoryUsage()
+{
+  rss: 35344384, // node 总占用内存，不仅有 v8引擎占用,还有 C++ 程序占用
+  heapTotal: 4784128, // v8 引擎总内存
+  heapUsed: 3360920, // v8 引擎使用内存
+  external: 1582927, // C++ 分配给 v8 的额外内存
+  arrayBuffers: 9405 // node 14 版本后的新特性，arrayBuffers 的占用内存
+}
+```
+
+- 手动触发垃圾回收：global.gc
+- 设置内存：
+  - --max-old-space-size 老生代空间最大值
+  - --max-new-space-space 新生代空间最大值
+
+### 如何优化内存
+
+- 尽量不要定义全局变量，定义后需要及时手动释放
+- 注意闭包
+
+### 为什么 v8 要设计为 1.4g
+
+- 1.4g 对于浏览器够用
+- 回收是阻塞式的，即垃圾回收时会终端代码执行
