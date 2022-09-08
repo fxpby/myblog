@@ -10,12 +10,16 @@ tags:
 
 了解一些和缓存相关的首部字段名
 
+![http-cache-header](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/network/cache/http-cache-header.png)
+
 ### Pragma
 
-- HTTP / 1.0 产物
-- 只有 no-cache 一个可选值
+- `HTTP / 1.0` 产物
+- 只有 `no-cache` 一个可选值, 不直接使用缓存，需向服务器发请求校验缓存新鲜度
 
-每次使用缓存资源之前都必须先向服务器确认有效性，不会命中强缓存
+控制缓存行为，和 `HTTP1.1` 中 `Cache-Control` 功能类似。每次使用缓存资源之前都必须先向服务器确认有效性，存在时不会命中强缓存
+
+通常用来向后兼容基于 `HTTP/1.0` 的客户端
 
 ### Expires
 
@@ -94,8 +98,8 @@ Cache-Control: no-cache
 如果在 `If-Modified-Since` 字段指定的时间之后`资源发生了更新`，服务器会把更新的资源发送给浏览器(`状态码 200`)，并返回最新的 `Last-Modified`, 浏览器收到资源后会更新缓存的 `If-Modified-Since` 值
 
 - 通过资源的最后修改时间来验证缓存
-- 优先级低于 ETag / If-None-Match
-- 缺点是只能精确到秒，如果 1s 内多次修改资源 Last-Modified 不会变化
+- 优先级低于 `ETag` / `If-None-Match`
+- 缺点是只能精确到秒，如果 1s 内多次修改资源 `Last-Modified` 不会变化
 
 ```js
 last-modified: Thu, 01 Sep 2022 19:09:52 GMT
@@ -105,9 +109,9 @@ if-modified-since: Thu, 01 Sep 2022 19:09:52 GMT
 ### ETag 与 If-None-Match
 
 - 通过唯一标识来验证缓存
-- 优先级高于 Last-Modified / If-Modified-Since
+- 优先级高于 `Last-Modified` / `If-Modified-Since`
 
-如果资源请求的响应头包含 ETag，客户端可以在后续请求的头中带上 If-None-Match 头来验证缓存。若服务器判断资源标识一致，返回 304 状态码告知浏览器可从本地读取缓存
+如果资源请求的`响应头`包含 `ETag`，客户端可以在后续请求的头中带上 If-None-Match 头来验证缓存。若服务器判断资源标识一致，返回 304 状态码告知浏览器可从本地读取缓存
 
 唯一标识内容是由服务端生成算法决定的，可以是资源内容生成的哈希值，也可以是最后修改时间戳的哈希值。**ETag 标识改变并不代表资源文件改变**
 
@@ -209,3 +213,37 @@ HTTP 传输耗时，存在传输延迟时间，即浏览器缓存发起请求到
 这里的 `now` 由于是取的客户端本地时间，所以存在被修改导致强缓存失效的风险
 
 ## HTTP 缓存 - 协商缓存
+
+强缓存失效后，浏览器携带缓存标识向服务器发起请求，由服务器根据缓存标识决定是否使用缓存，即**前提是强缓存失效**
+
+### 协商缓存的生效流程
+
+![negotiation-cache-flow1](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/network/cache/negotiation-cache-flow1.png)
+
+### 缓存标识 ETag 和 Last-Modified
+
+前面有提到，协商缓存的前提是强缓存失效。但是这还不够，最终是否要命中协商缓存还需要借助缓存标识
+
+![etag-last-modified](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/network/cache/etag-last-modified.png)
+
+ETag 优先级高于 Last-Modified, 两者同时存在时，只有 ETag 生效
+
+这两个缓存标识只要存在一个，强缓存失效后浏览器就会携带它们向服务器发起请求
+
+携带方式是在请求头增加项, If-Modified-Since 对应 Last-Modified 的值, If-None-Match 对应 ETag 的值
+
+如果 ETag 对应的 If-None-Match 不存在，服务器会将 Last-Modified 对应的 If-Modified-Since 的时间值与服务器该资源的最后修改时间进行对比，最后判断是否走协商缓存
+
+### Last-Modified 的缺点
+
+最开始提到过 Last-Modified 代表资源的最后修改时间，最小单位是秒
+
+- 如果资源修改得很快，毫秒级，那么服务器就会认为该资源没有修改过，导致资源无法在浏览器及时更新
+
+- 服务器资源被编辑了，但是资源的实质内容没有被修改，此时服务器还是会返回最新的 Last-Modified 值，这时我们是不希望浏览器认为这个资源被修改而重新加载
+
+:::info 小结
+
+Etag 可以解决 Last-Modified 无法处理毫秒级修改导致浏览器没有及时更新的问题，但是 Etag 每次都需要服务端生成，进行读写操作；Last-Modified 只需读操作，性能方面 ETag 消耗更大些
+
+:::
