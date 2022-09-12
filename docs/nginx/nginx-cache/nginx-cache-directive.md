@@ -18,7 +18,7 @@ tags:
 
 - 语法：proxy_cache_path path keys_zone=name:size
   - path: 路径
-  - keys_zone: 名称:大小
+  - keys_zone: 名称:大小, 在共享内存中设置一块存储区域来存放缓存的key字符串，这样nginx可以快速判断一个request是否命中或者未命中缓存，1m可以存储8000个key，10m可以存储80000个key；
 - 默认值：proxy_cache_path off
 - 上下文：http
 
@@ -35,7 +35,7 @@ tags:
   - size: 共享内存大小
 
 - inactive：在指定时间内没有被访问缓存会被清理；默认 10 分钟
-- max_size: 设定最大的缓存文件大小，超过将由 CM（cache manager缓存管理进程） 清理
+- max_size: 设定最大的缓存文件大小，超过将由 CM（cache manager缓存管理进程）清理，占用硬盘空间
 - mananger_files: CM 清理一次缓存文件，最大清理文件数；默认 100
 - manager_sleep: CM 清理一次后进程的休眠时间；默认 200 毫秒
 - manager_threshold: CM 清理一次最长耗时；默认 50 毫秒
@@ -72,3 +72,20 @@ proxy_cache_valid 60m # 不指定 code 时只对 200、301、302 响应码缓存
 - REVALIDDATED：Nginx 验证陈旧缓存依然有效
 - UPDATING：内容陈旧，但正在更新
 - BYPASS：响应从原始服务器获取
+
+## proxy_no_cache
+
+配置不缓存特定内容
+
+- 语法：proxy_no_cache string;
+  - string 变量名有值即不缓存
+- 默认值：-
+- 上下文：http、server、location
+
+## proxy_cache_bypass
+
+配置不缓存特定内容
+
+- 语法：proxy_cache_bypass string;
+- 默认值：-
+- 上下文：http、server、location
