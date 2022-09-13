@@ -39,7 +39,7 @@ tags:
 - mananger_files: CM 清理一次缓存文件，最大清理文件数；默认 100
 - manager_sleep: CM 清理一次后进程的休眠时间；默认 200 毫秒
 - manager_threshold: CM 清理一次最长耗时；默认 50 毫秒
-- loader_files: CL（cache loader）载入文件到共享内存，每批最多文件数。默认 100
+- loader_files: CL（cache loader）载入文件到共享内存，每批最多文件数; 默认 100
 - loader_sleep: CL 加载缓存文件到内存后，进程休眠时间；默认 200 毫秒
 - loader_threshold: CL 每次载入文件到共享内存的最大耗时；默认 50 毫秒
 
