@@ -36,6 +36,7 @@ const sidebars = {
     'javascript/deep-copy',
     'javascript/out-script',
     'javascript/throttle-debounce',
+    'javascript/compose-pipe',
   ],
   'typescript': [
     'typescript/everyday-types',
