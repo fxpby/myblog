@@ -41,4 +41,24 @@ Array.prototype.myMap = function(callback) {
 
 ### 手写 reduce
 
+```js
+Array.prototype.myReduce = function(callback, init) {
+  if(typeof callback !== 'function') {
+    throw new Error('parameter must be a function')
+  }
+
+  let pre = init
+  let i = 0
+  if (!init) {
+    pre = this[0]
+    i = 1
+  }
+
+  for (i; i < this.length; i += 1) {
+    pre = callback.call(this, pre, this[i], this)
+  }
+  return pre
+}
+```
+
 ### 手写 filter
