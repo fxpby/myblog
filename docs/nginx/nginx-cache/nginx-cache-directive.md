@@ -9,12 +9,16 @@ tags:
 
 ## proxy_cache
 
+缓存命名空间
+
 - 语法：proxy_cache zone / off;
   - zone: 共享内存名称
 - 默认值：proxy_cache off;
 - 上下文：http、server、location
 
 ## proxy_cache_path
+
+缓存配置路径、进程控制缓存参数
 
 - 语法：proxy_cache_path path keys_zone=name:size
   - path: 路径
@@ -24,9 +28,9 @@ tags:
 
 可选参数：
 
-- path: 缓存文件的存放路径
+- path: 磁盘缓存文件的存放路径
 - level：path 的目录层级
-- use_temp_path:
+- use_temp_path: 临时文件存放目录
   - off：直接使用 path 路径
   - on：使用 proxy_temp_path 路径
 
@@ -34,22 +38,26 @@ tags:
   - name: 共享内存名称
   - size: 共享内存大小
 
-- inactive：在指定时间内没有被访问缓存会被清理；默认 10 分钟
-- max_size: 设定最大的缓存文件大小，超过将由 CM（cache manager缓存管理进程）清理，占用硬盘空间
+- inactive：LRU 缓存淘汰时间，即在指定时间内没有被访问缓存会被清理；默认 10 分钟
+- max_size: LRU 缓存文件大小，超过将由 CM（cache manager缓存管理进程）清理，占用硬盘空间
 - mananger_files: CM 清理一次缓存文件，最大清理文件数；默认 100
 - manager_sleep: CM 清理一次后进程的休眠时间；默认 200 毫秒
 - manager_threshold: CM 清理一次最长耗时；默认 50 毫秒
-- loader_files: CL（cache loader）载入文件到共享内存，每批最多文件数; 默认 100
+- loader_files: CL（cache loader缓存加载进程）载入文件到共享内存，每批最多文件数; 默认 100
 - loader_sleep: CL 加载缓存文件到内存后，进程休眠时间；默认 200 毫秒
 - loader_threshold: CL 每次载入文件到共享内存的最大耗时；默认 50 毫秒
 
 ## proxy_cache_key
+
+缓存关键字，如何去查找缓存
 
 - 语法：proxy_cache_key string;
 - 默认值：proxy_cache_key $scheme$proxy_host$request_uri;
 - 上下文：http、server、location
 
 ## proxy_cache_valid
+
+确定需要缓存是数据
 
 - 语法：proxy_cache_valid [code...] time;
 - 默认值：-
@@ -88,4 +96,12 @@ proxy_cache_valid 60m # 不指定 code 时只对 200、301、302 响应码缓存
 
 - 语法：proxy_cache_bypass string;
 - 默认值：-
+- 上下文：http、server、location
+
+## proxy_cache_methods
+
+需要缓存的方法
+
+- 语法：proxy_cache_methods string
+- 默认值：POST
 - 上下文：http、server、location
