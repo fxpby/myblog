@@ -33,7 +33,7 @@ Array.prototype.myMap = function (callback) {
   }
   const res = [];
   for (let i = 0; i < this.length; i += 1) {
-    res.push(callback.call(this, this[i], i));
+    res.push(callback.call(this, this[i], i, this));
   }
   return res;
 };
@@ -71,7 +71,7 @@ Array.prototype.myFilter = function (callback) {
 
   const res = [];
   for (let i = 0; i < this.length; i += 1) {
-    if (callback.call(this, this[i], i)) {
+    if (callback.call(this, this[i], i, this)) {
       if (typeof this[i] === 'object') {
         res.push(Object.create(this[i]))
       } else {
@@ -81,4 +81,38 @@ Array.prototype.myFilter = function (callback) {
   }
   return res;
 };
+```
+
+### 手写 every
+
+```js
+Array.prototype.myEvery = function (callback) {
+  if (typeof callback !== "function") {
+    throw new Error("parameter must be a function");
+  }
+
+  for (let i = 0; i < this.length; i += 1) {
+    if (!callback.call(this, this[i], i, this)) {
+      return false
+    }
+  }
+  return true
+}
+```
+
+### 手写 some
+
+```js
+Array.prototype.mySome = function (callback) {
+  if (typeof callback !== "function") {
+    throw new Error("parameter must be a function");
+  }
+
+  for (let i = 0; i < this.length; i += 1) {
+    if (callback.call(this, this[i], i, this)) {
+      return true
+    }
+  }
+  return false
+}
 ```
