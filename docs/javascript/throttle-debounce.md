@@ -10,6 +10,8 @@
 
 🌰 olu 梦里打 moba 游戏：连续使用技能，龟龟狂点技能，但是技能有 cd, cd 完成之前，点了也没用
 
+![throttle-flow](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/JavaScript/throttle-flow.drawio.png)
+
 ### 1.2 应用场景
 
 - 搜索框输入时的实时联想
