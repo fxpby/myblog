@@ -1,4 +1,10 @@
-# 节流和防抖
+---
+id: throttle-debounce
+title: 节流和防抖
+tags:
+  - 防抖
+  - 节流
+---
 
 ## 1.节流
 
