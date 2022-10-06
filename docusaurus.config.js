@@ -53,6 +53,13 @@ const config = {
           customCss: require.resolve('./src/css/custom.css'),
         },
       }),
+      '@docusaurus/preset-classic',
+      {
+        googleAnalytics: {
+          trackingID: 'UA-217600182-1',
+          anonymizeIP: true,
+        },
+      },
     ],
   ],
 
