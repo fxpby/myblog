@@ -55,6 +55,13 @@ const sidebars = {
     'front-end-engineering/travis-ci-for-vuepress',
     'front-end-engineering/github-action-for-vuepress',
     'front-end-engineering/build-frontend-project-standardization',
+    {
+      type: 'category',
+      label: 'npm',
+      items: [
+        'front-end-engineering/npm/npm-scoped-packages',
+      ],
+    },
   ],
   'browser': [
     'browser/layout-paint',
