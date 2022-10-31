@@ -226,24 +226,118 @@ HTTP 传输耗时，存在传输延迟时间，即浏览器缓存发起请求到
 
 ![etag-last-modified](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/network/cache/etag-last-modified.png)
 
-ETag 优先级高于 Last-Modified, 两者同时存在时，只有 ETag 生效
+`ETag` 优先级高于 `Last-Modified`, 两者同时存在时，只有 `ETag` 生效
 
-这两个缓存标识只要存在一个，强缓存失效后浏览器就会携带它们向服务器发起请求
+这两个缓存标识只要**存在一个**，强缓存失效后浏览器就会携带它们向服务器发起请求
 
-携带方式是在请求头增加项, If-Modified-Since 对应 Last-Modified 的值, If-None-Match 对应 ETag 的值
+携带方式是在请求头增加项, `If-Modified-Since` 对应 `Last-Modified` 的值, `If-None-Match` 对应 `ETag` 的值, 服务器根据优先级高的缓存标识进行判断
 
-如果 ETag 对应的 If-None-Match 不存在，服务器会将 Last-Modified 对应的 If-Modified-Since 的时间值与服务器该资源的最后修改时间进行对比，最后判断是否走协商缓存
+如果 `ETag` 对应的 `If-None-Match` 不存在，服务器会将 `Last-Modified` 对应的 `If-Modified-Since` 的时间值与服务器该资源的最后修改时间进行对比，最后判断是否走协商缓存
 
 ### Last-Modified 的缺点
 
-最开始提到过 Last-Modified 代表资源的最后修改时间，最小单位是秒
+最开始提到过 `Last-Modified` 代表资源的最后修改时间，最小单位是秒
 
 - 如果资源修改得很快，毫秒级，那么服务器就会认为该资源没有修改过，导致资源无法在浏览器及时更新
 
-- 服务器资源被编辑了，但是资源的实质内容没有被修改，此时服务器还是会返回最新的 Last-Modified 值，这时我们是不希望浏览器认为这个资源被修改而重新加载
+- 服务器资源被编辑了，但是资源的实质内容没有被修改，此时服务器还是会返回最新的 `Last-Modified` 值，这时我们是不希望浏览器认为这个资源被修改而重新加载
 
 :::info 小结
 
-Etag 可以解决 Last-Modified 无法处理毫秒级修改导致浏览器没有及时更新的问题，但是 Etag 每次都需要服务端生成，进行读写操作；Last-Modified 只需读操作，性能方面 ETag 消耗更大些
+Etag 可以解决 `Last-Modified` 无法处理毫秒级修改导致浏览器没有及时更新的问题，但是 Etag 每次都需要服务端生成，进行读写操作；`Last-Modified` 只需读操作，性能方面 `ETag` 消耗更大些
 
 :::
+
+### ETag 原理与实现
+
+上面有提到比如服务器资源被编辑但是内容没有被修改的场景，我们不希望浏览器认为这个资源被修改而重新加载，这时我们需要使用 `ETag`
+
+node中一个 `ETag` 包生成`ETag`值的方式有两种：
+
+- 使用文件大小和修改时间
+- 使用文件内容的`hash`值和内容长度
+
+#### 使用文件大小和修改时间
+
+```js
+function stattag (stat) {
+  var mtime = stat.mtime.getTime().toString(16)
+  var size = stat.size.toString(16)
+
+  return '"' + size + '-' + mtime + '"'
+}
+```
+
+上述代码中当要处理的内容是文件 `stats` 对象时，返回了一个字符串，由**文件大小**和**文件最后一次修改时间**组成
+
+> <https://github.com/jshttp/etag/blob/master/index.js#L126>
+
+#### 使用文件内容的hash值和内容长度
+
+```js
+function entitytag (entity) {
+  if (entity.length === 0) {
+    // fast-path empty
+    return '"0-2jmj7l5rSw0yVb/vlWAYkK/YBwk"'
+  }
+
+  // compute hash of entity
+  var hash = crypto
+    .createHash('sha1')
+    .update(entity, 'utf8')
+    .digest('base64')
+    .substring(0, 27)
+
+  // compute length of entity
+  var len = typeof entity === 'string'
+    ? Buffer.byteLength(entity, 'utf8')
+    : entity.length
+
+  return '"' + len.toString(16) + '-' + hash + '"'
+}
+```
+
+当内容不是文件 `stats` 对象时，通过对内容的 `hash` 进行转换和截取，最终返回内容长度和 `hash` 值组合的字符串
+
+这种方式生成的 `ETag` 也被称作 `强ETag值`, 只要实体发生变化就会更改，与之对应的是`弱ETag值`，源码中我们看到可以通过传递第二个参数 `weak` 为 `true` 启用`弱校验`
+
+```js
+function etag (entity, options) {
+  if (entity == null) {
+    throw new TypeError('argument entity is required')
+  }
+
+  // support fs.Stats object
+  var isStats = isstats(entity)
+  var weak = options && typeof options.weak === 'boolean'
+    ? options.weak
+    : isStats
+
+  // validate argument
+  if (!isStats && typeof entity !== 'string' && !Buffer.isBuffer(entity)) {
+    throw new TypeError('argument entity must be string, Buffer, or fs.Stats')
+  }
+
+  // generate entity tag
+  var tag = isStats
+    ? stattag(entity)
+    : entitytag(entity)
+
+  return weak
+    ? 'W/' + tag
+    : tag
+}
+```
+
+启用弱校验会在字段最开始处加上 `W/`, 弱校验只适合用于提示资源是否相同，只有资源内容发生改变产生差异`ETag`才会变化
+
+> <https://github.com/jshttp/etag/blob/4664b6e53c85a56521076f9c5004dd9626ae10c8/index.js#L39>
+> <https://github.com/jshttp/etag/blob/4664b6e53c85a56521076f9c5004dd9626ae10c8/index.js#L77>
+
+综上我们可以知道使用 `ETag` 可以更精准的分析资源的改变情况
+
+## 启发式缓存
+
+在前面的强缓存内容中我们知道计算强缓存新鲜度公式为：
+
+强缓存新鲜度 = max-age || (expires - date)
