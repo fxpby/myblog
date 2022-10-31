@@ -1,4 +1,10 @@
-# 节流和防抖
+---
+id: throttle-debounce
+title: 节流和防抖
+tags:
+  - 防抖
+  - 节流
+---
 
 ## 1.节流
 
@@ -10,10 +16,18 @@
 
 🌰 olu 梦里打 moba 游戏：连续使用技能，龟龟狂点技能，但是技能有 cd, cd 完成之前，点了也没用
 
+![throttle-flow](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/JavaScript/throttle-flow.drawio.png)
+
 ### 1.2 应用场景
 
 - 搜索框输入时的实时联想
 - 监听 scroll 事件计算位置信息
+
+:::tip
+
+隔一定时间触发一次
+
+:::
 
 ### 1.3 代码实现
 
@@ -56,10 +70,18 @@ const throttle = (func, wait = 1000) => {
 
 🌰 olu 梦里打 moba 游戏：龟龟状态不好需要回城回复一下状态，但是龟龟总是误触回城键，导致连续触发回城，每次触发都会重新计时读条，直到倒计时结束才能真正回泉水修养
 
+![debounce-flow](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/JavaScript/debounce-flow.drawio.png)
+
 ### 2.2 应用场景
 
 - 注册时输入完用户名后检测是否被占用
 - 监听 resize 事件计算尺寸信息
+
+:::tip
+
+多应用于用户高频事件，等用户高频事件结束，再进行事件操作
+
+:::
 
 ### 2.3 代码实现
 
