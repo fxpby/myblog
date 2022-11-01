@@ -340,4 +340,21 @@ function etag (entity, options) {
 
 在前面的强缓存内容中我们知道计算强缓存新鲜度公式为：
 
-强缓存新鲜度 = max-age || (expires - date)
+`强缓存新鲜度` = `max-age` || (`expires` - `date`)
+
+但是也会有场景是响应报头中没有 `max-age(s-maxage)` 和 `expires`, 没有了强缓存相关的字段，浏览器也是会走强缓存的
+
+```yaml
+date: Thu, 02 Sep 2021 13:28:56 GMT
+age: 10467792
+cache-control: public
+last-modified: Mon, 26 Apr 2021 09:56:06 GMT
+```
+
+该报头没有涉及到强缓存过期时间的相关字段，有个协商缓存相关的 `last-modified` 首部, 但是不会走协商缓存，最后触发的是**启发式缓存**
+
+启发式缓存新鲜度计算公式：
+
+缓存新鲜度 = max(0, (date - last-modified)) * 10%
+
+即根据响应报头的 `date` 和 `last-modified` 值的差取最大值的百分之十作为缓存时间
