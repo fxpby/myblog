@@ -102,6 +102,7 @@ const sidebars = {
       label: '缓存',
       items: [
         'network/cache/network-http-cache',
+        'network/cache/frontend-http-cache-solution',
         'network/cache/cache-algorithm'
       ],
     },
