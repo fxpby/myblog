@@ -103,6 +103,7 @@ const sidebars = {
       items: [
         'network/cache/network-http-cache',
         'network/cache/frontend-http-cache-solution',
+        'network/cache/broswer-http-cache',
         'network/cache/cache-algorithm'
       ],
     },
