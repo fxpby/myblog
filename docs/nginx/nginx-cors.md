@@ -5,6 +5,7 @@ tags:
   - nginx
   - cors
   - 跨域
+  - 缓存
 ---
 
 ## nginx与跨域问题
