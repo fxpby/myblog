@@ -112,7 +112,7 @@ const sidebars = {
         'network/cache/network-http-cache',
         'network/cache/frontend-http-cache-solution',
         'network/cache/browser-http-cache',
-        'network/cache/browser-cache',
+        'network/cache/memory-cache-disk-cache',
         'network/cache/cache-algorithm'
       ],
     },
