@@ -1,14 +1,12 @@
 ---
-id: browser-cache
-title: 浏览器缓存
+id: memory-cache-disk-cache
+title: Memory Cache 与 Disk Cache
 tags:
   - cache
   - 缓存
 ---
 
-## Memory Cache 与 Disk Cache
-
-### Memory Cache
+## Memory Cache
 
 存储在浏览器内存中
 
@@ -23,7 +21,7 @@ tags:
 - 生命周期短，网页关闭后内存就会释放
 - 受限制于计算机内存大小
 
-### Disk Cache
+## Disk Cache
 
 存储在计算机硬盘中，会根据保存下来资源的HTTP首部字段判断是否需要重新请求，如果重新请求就是强缓存失效流程，反之是生效流程
 
