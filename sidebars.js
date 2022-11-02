@@ -62,6 +62,14 @@ const sidebars = {
         'front-end-engineering/npm/npm-scoped-packages',
       ],
     },
+    {
+      type: 'category',
+      label: 'nginx',
+      items: [
+        'nginx/nginx-cors',
+        'nginx/nginx-cache-directive',
+      ],
+    },
   ],
   'browser': [
     'browser/layout-paint',

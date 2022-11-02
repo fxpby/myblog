@@ -106,7 +106,7 @@ const config = {
           {
             // type: 'localeDropdown',
             position: 'left',
-            label: '框架相关',
+            label: '框架',
             items: [
               {
                 label: '基础知识',
@@ -118,7 +118,6 @@ const config = {
               },
             ]
           },
-          
           {
             type: 'docSidebar',
             sidebarId: 'front-end-engineering',
