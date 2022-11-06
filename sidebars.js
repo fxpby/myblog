@@ -67,7 +67,7 @@ const sidebars = {
       label: 'nginx',
       items: [
         'nginx/nginx-cors',
-        'nginx/nginx-cache-directive',
+        'nginx/nginx-cache/nginx-cache-directive',
       ],
     },
   ],
@@ -108,12 +108,13 @@ const sidebars = {
     {
       type: 'category',
       label: '缓存',
+      collapsed: false,
       items: [
         'network/cache/network-http-cache',
         'network/cache/frontend-http-cache-solution',
         'network/cache/browser-http-cache',
         'network/cache/memory-cache-disk-cache',
-        'network/cache/cache-algorithm'
+        'network/cache/cache-algorithm',
       ],
     },
   ],
@@ -164,6 +165,7 @@ const sidebars = {
     {
       type: 'category',
       label: '排序算法',
+      collapsed: false,
       items: [
         'algorithm/sorting-algorithm/bubble-sort',
         'algorithm/sorting-algorithm/selection-sort',
