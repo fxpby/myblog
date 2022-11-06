@@ -1,5 +1,5 @@
 ---
-id: broswer-http-cache
+id: browser-http-cache
 title: chrome中三种加载模式与http缓存的关系
 tags:
   - cache
