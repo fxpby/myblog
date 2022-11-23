@@ -170,7 +170,7 @@ const config = {
       footer: {
         style: 'dark',
         copyright: `
-          Copyright © ${new Date().getFullYear()} fxpby和olu是好朋友 olumel.top | 津ICP备2021008930号-1
+          Copyright © ${new Date().getFullYear()} fxpby和olu是好朋友 olumel.top | <a href="https://beian.miit.gov.cn/" target="_blank">津ICP备2021008930号-1</a>
           <div style="width: 300px; margin: 0px auto; padding: 20px 0px;">
             <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12011602000961" style="display: inline-block; text-decoration: none; height: 20px; line-height: 20px;">
             <img a=${process.env.DEPLOY_SERVER} src=${process.env.DEPLOY_SERVER === 'deploygithub' ? '/myblog/img/beian.png' : '/img/beian.png'} style="float: left;"> 
