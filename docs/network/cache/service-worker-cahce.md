@@ -113,3 +113,44 @@ self.addEventListener('activate', event => {
 上面在 active 生命周期中通过调用浏览器的 Cache API 的 delete 方法将过期的缓存进行了删除操作，防止过期缓存影响现有功能
 
 一旦激活，Service Worker 将控制在其范围内加载的所有页面，新的 Service Worker 只会在关闭并重新打开应用时启用，或者调用 clients.claim() 方法
+
+## 优先从缓存中获取资源
+
+如果想让网页离线可用，拦截网络请求并从缓存中获取资源是最主要的方法，前提是缓存里已经存在了要访问的资源
+
+一般采用**缓存回退网络**的方式进行编写，即拦截请求时如果缓存中存在该资源就直接获取，否则需向服务端请求资源并进行缓存
+
+```js
+// test.js
+
+// fetch 处理事件会处理同源资源的响应，如果缓存中存在，则会直接返回缓存资源
+self.addEventListener('fetch', event => {
+  // 跳过跨域请求
+  if (event.request.url.startsWith(self.location.origin)) {
+    event.respondWith(
+      // 从缓存中匹配请求资源
+      caches.match(event.request).then(cacheResponse => {
+        // 存在直接返回
+        if (cacheResponse) {
+          return cacheResponse
+        }
+        // 不存在回退网络请求
+        return caches.open(RUNTIME).then(cache => {
+          return fetch(event.request).then(response => {
+            // 拷贝响应资源存入 runtime 缓存
+            return cache.put(event.request, response.clone()).then(() =>{
+              return response
+            })
+          })
+        })
+      })
+    )
+  }
+})
+```
+
+通过监听 fetch 事件处理程序进行资源请求的拦截操作，实现了 Service Worker 基本的优先从缓存中获取资源的功能
+
+:::caution 兼容性
+Service Worker 的浏览器兼容性不是很好，低版本浏览器需要兼容处理，且出于安全考虑，Service worker 只能在 https 和 localhost 下使用
+:::
