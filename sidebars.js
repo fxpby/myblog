@@ -73,6 +73,7 @@ const sidebars = {
   ],
   'browser': [
     'browser/layout-paint',
+    'browser/browser-storage-caching-scheme'
   ],
   'design-pattern': [
     'design-pattern/uml/uml-basics',
