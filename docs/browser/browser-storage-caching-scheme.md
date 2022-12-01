@@ -51,19 +51,50 @@ export const http = params => {
 }
 ```
 
-### 浏览器存储性缓存方案
+## 浏览器存储性缓存方案
 
 在浏览器环境中，不同的存储性缓存应该视场景使用合适的缓存方案
 
-#### Cookie
+### Cookie
 
-Cookie 最初不是为了做浏览器存储的功能的，而是为了辨别用户身份，实现页面间状态的维持和传递
+通常由服务端生成，发生到客户端，客户端存储后在请求对应服务端时携带，可以用于标识客户端，能够让使用无状态 HTTP 协议的服务器记住状态信息
 
-Cookie 存储空间很小，4kb, 这点限制它不能用于较大容量数据的存储
+Cookie 最初不是为了做浏览器存储的功能的，而是为了辨别用户身份，实现页面间状态的维持和传递，会随请求发送给服务器
 
-不建议将非用户身份类的数据存储在 cookie 中，因为 cookie 在通域下会伴随着每一次资源请求的请求报头传递到服务端进行验证，如果在 cookie 中存储了大量非必要的数据，每次请求响应会造成很多无效资源传输及性能浪费
+#### 使用场景
 
-cookie 无法跨域携带，利用这一特点可以使用在 CDN 域名上。比如如果 CDN 资源和主站采用了同样的域名，那 cookie 传输就会造成巨大的性能浪费。规避这个问题的方法就是使 CDN 的域名和主站区分。如掘金的 CDN 域名为 `https://lf3-cdn-tos.bytescm.com`，主站的域名为 `https://juejin.cn`
+- 会话状态管理（用户登录状态、购物车、游戏分数等）
+- 个性化设置（用户自定义设置、主题等）
+- 浏览器行为跟踪（分析用户行为等）
+
+#### 相关属性
+
+收到 `HTTP` 请求时，服务端可以通过在响应头中增加 `Set-Cookie` 字段告诉客户端存储对应的 `cookie` ，前端可以通过 `JavaScript` 来设置 `cookie` 。之后向相同的服务端发送请求时，存储的 `cookie` 会作为请求头 `Cookie` 字段的值一起发送。可以通过不同属性的设置来让 `cookie` 拥有不同的特性
+
+- `Expires`: 用于设置过期时间，`Max-Age` 用于设置有效时间段，过期后 `cookie` 会被删除
+- `Secure`: 代表 `cookie` 只会随 `HTTPS` 请求发送
+- `HttpOnly`: 代表 `cookie` 只用于发送给服务端，无法被 `JavaScript` 访问
+- `Domain`: 设置可接收 `cookie` 的 `hosts` ，不设置则默认为当前 `host` 。如果设置了 `Domain` ，子域名也被包含在内
+- `Path`: 设置可接收 `cookie` 的 `URL path`，只有包含指定路径的 `url` 请求才会带上 `cookie`。如果设置为 `"/"`, 则子路径也包含在内
+- `SameSite`: 表示跨域时 `cookie` 的处理策略，包括 `Strict` ， `Lax` 和 `None`
+  - `Strcit`: `cookie` 只会在第一方上下文中发送，不会与第三方网站发起的请求一起发送
+  - `Lax`: `cookie` 允许与顶级导航一起发送，并将与第三方网站发起的 `GET` 请求一起发送（浏览器默认值）
+  - `None`: `cookie` 将在所有上下文中发送，即**允许跨站发送**。使用 `None` 时，需在最新的浏览器版本中同时使用 `Secure` 属性，否则会报错
+
+#### 优点
+
+- 简单易用
+- 不占用服务器资源
+- 可设置过期时间，提升安全性
+
+#### 缺点
+
+- cookie 会被添加到每个请求中，增加了流量消耗
+- cookie 在 HTTP 请求中是明文传输，不够安全，使用 HTTPS 可避免该问题
+- cookie 大小限制 4KB，复杂场景不够用
+- cookie 无法跨域携带，利用这一特点可以使用在 CDN 域名上。比如如果 CDN 资源和主站采用了同样的域名，那 cookie 传输就会造成巨大的性能浪费。规避这个问题的方法就是使 CDN 的域名和主站区分。如掘金的 CDN 域名为 `https://lf3-cdn-tos.bytescm.com`，主站的域名为 `https://juejin.cn`
+
+#### 使用
 
 此外日常在使用 cookie 存储相关 API 不是十分方便
 
@@ -80,6 +111,8 @@ date.setTime(date.getTime() - 10000)
 document.cookie = `name=olumel; domain=olumel.top; expires=${date.toGMTString()}`
 ```
 
+#### 三方库 js-cookie
+
 平时我们会选择一款封装 cookie 的库 js-cookie
 
 ```js
@@ -95,16 +128,16 @@ Cookies.get('name')
 Cookies.remove('name')
 ```
 
-#### Web Storage
+### Web Storage
 
 Web Storage 是 HTML5 推出的浏览器存储机制，可分为 Session Storage 和 Local Storage
 
-##### Session Storage
+#### Session Storage
 
 - 临时性本地存储
 - 生命周期存在于网页会话期间，网页关闭后会自动释放
 
-##### Local Storage
+#### Local Storage
 
 - 存储于浏览器本地，除非手动删除或过期，会一直存在，属于持久性缓存
 
@@ -121,6 +154,8 @@ localStorage.setItem('userInfo', JSON.stringify(userInfo))
 // 取 反序列号
 const result = JSON.parse(localStorage.getItem('userInfo'))
 ```
+
+##### 二次封装
 
 所以平时使用还是需要进行二次封装
 
@@ -172,11 +207,13 @@ let storage = {
 }
 ```
 
-##### IndexedDB
+#### IndexedDB
 
 虽然 Web Storage 可以让我们进行网页间数据的临时存储或持久化存储，但是容量还是有限
 
 IndexedDB 是一个大规模的 NoSQL 存储系统，几乎可以存储浏览器中任何数据内容，包括二进制数据（ArrayBuffer对象和 Blob 对象），可以存储不少于 250M 的数据
+
+##### 判断支持性
 
 在使用 IndexedDB 之前，需要判断浏览器是否支持
 
@@ -186,3 +223,112 @@ if (!('indexedDB' in window)) {
   return
 }
 ```
+
+浏览器支持我们就可以对其进行增删改查操作了
+
+##### 创建数据库
+
+```js
+let idb
+
+// 打开名为 olu 且 版本号为 1 的数据库，如果不存在就自动创建
+let request = window.indexedDB.open('olu', 1)
+
+// 错误回调
+request.onerror = function (event) {
+  console.log('open indexedDB error')
+}
+
+// 成功回调
+request.onsuccess = function (event) {
+  idb = request.result
+  console.log('open indexedDB success')
+}
+```
+
+##### 创建表
+
+新建数据库会触发版本变化的 onupgradeneeded 方法（此时版本从无到有）
+
+```js
+request.onupgradeneeded = function (e) {
+  idb = e.target.result
+  console.log('running onupgradeneeded')
+
+  // 新建对象表时，应先判断该表是否存在
+  if (!idb.objectStoreNames.contains('store')) {
+    // 创建名为 store 的表，以 id 为主键
+    let storeOS = idb.createObjectStore('store', { keyPath: 'id' })
+  }
+}
+```
+
+##### 新增记录
+
+创建完表后，就可以进行新增操作
+
+```js
+function addItem(item) {
+  // 新增时需指定表名和操作模式
+  let transaction = idb.transaction(['store'], 'readwrite')
+  // 获取表对象
+  let store = transaction.objectStore('store')
+  // 调用 add 方法新增数据
+  store.add(item)
+}
+
+let data = {
+  id: 1,
+  name: 'test',
+  age: '18'
+}
+
+addItem(data)
+```
+
+##### 查询记录
+
+通过主键 id 可以获取到想要的数据
+
+```js
+function readItem(id) {
+  // 创建事务，指定表名
+  let transaction = idb.transaction(['store'])
+  // 获取表对象
+  let store = transaction.objectStore('store')
+  // 调用 get 方法获取数据
+  let requestStore = store.get(id)
+
+  requestStore.onsuccess = function () {
+    if (requestStore.result) {
+      console.log(requestStore.result)
+    }
+  }
+}
+readItem(1)
+```
+
+##### 三方库 idb
+
+也可以使用流行的 IndexedDB 库使我们日常开发更加丝滑，比如 idb
+
+```js
+import { openDB } from 'idb'
+const dbPromise = openDB('olu', 1, {
+  upgrade(db) {
+    db.createObjectStore('store', { keyPath: 'id' })
+  }
+})
+
+export async function add(val) {
+  return (await dbPromise).add('store', val)
+}
+
+export async function get(key) {
+  return (await dbPromise).get('store', key)
+}
+```
+
+> <https://www.npmjs.com/package/idb>
+
+需要注意的是 IndexedDB 的兼容性问题
