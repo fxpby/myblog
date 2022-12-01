@@ -183,7 +183,7 @@ const config = {
       },
       tableOfContents: {
         minHeadingLevel: 2,
-        maxHeadingLevel: 5,
+        maxHeadingLevel: 6,
       },
       prism: {
         theme: lightCodeTheme,
