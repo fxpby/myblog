@@ -12,23 +12,23 @@ tags:
 
 ## 1.网站登录的存储逻辑
 
-用户从客户端输入账号密码登录后，前端将数据发送给服务端验证，如果服务端判断用户存在且账号密码正确，则向客户端返回响应并颁发有效的 token 信息，校验失败则返回错误信息
+用户从客户端输入账号密码登录后，前端将数据发送给服务端验证，如果服务端判断用户存在且账号密码正确，则向客户端返回响应并颁发有效的 `token` 信息，校验失败则返回错误信息
 
-当唯一有效的 token 返回到客户端后，后面所有需要登录访问的接口请求客户端都需要携带 token 给服务端判断用户登录的有效性，所以 token 在客户端的存储和传输是用户不需要重复登录的关键
+当唯一有效的 `token` 返回到客户端后，后面所有需要登录访问的接口请求客户端都需要携带 `token` 给服务端判断用户登录的有效性，所以 `token` 在客户端的存储和传输是用户不需要重复登录的关键
 
 ### 1.1 服务端自动植入
 
-服务端登录接口在前端的响应报头中设置首部字段 set-cookie 来将 token 信息植入到浏览器 cookie 中
+服务端登录接口在前端的响应报头中设置首部字段 `set-cookie` 来将 `token` 信息植入到浏览器 `cookie` 中
 
-set-cookie 指令值包含了必选项 `<cookie-name>=<cookie-value>` 值和名的形式，还包括可选项 Path（路径）、Domain（域名）、Max-Age(有效时间)等，用分号分割
+`set-cookie` 指令值包含了必选项 `<cookie-name>=<cookie-value>` 值和名的形式，还包括可选项 `Path（路径）`、`Domain（域名）`、`Max-Age(有效时间)`等，用分号分割
 
-服务端可以返回多个 set-cookie 指令来达到设置多个 cookie 目的，可以在开发者工具 Application 面板中查看当前网站设置的 cookie 值
+服务端可以返回多个 `set-cookie` 指令来达到设置多个 `cookie` 目的，可以在开发者工具 Application 面板中查看当前网站设置的 `cookie` 值
 
 ### 1.2 前端手动存储
 
 和服务端自动植入相比，前端存储的方式不受限于浏览器环境（APP 或小程序等没有浏览器 cookie 的环境下也可以）
 
-服务端登录接口成功后将用户的 token 信息通过响应实体的方式返回给前端，前端拿到 token 信息后通过前端存储方法将数据持久化缓存，退出后手动清除，调用后端接口时手动将 token 传递给服务端
+服务端登录接口成功后将用户的 `token` 信息通过响应实体的方式返回给前端，前端拿到 `token` 信息后通过前端存储方法将数据持久化缓存，退出后手动清除，调用后端接口时手动将 `token` 传递给服务端
 
 ```js
 import axios from "axios";
@@ -89,10 +89,10 @@ Cookie 最初不是为了做浏览器存储的功能的，而是为了辨别用�
 
 #### 2.1.4 缺点
 
-- cookie 会被添加到每个请求中，增加了流量消耗
+- cookie 会被添加到**每个请求**中，增加了流量消耗
 - cookie 在 HTTP 请求中是明文传输，不够安全，使用 HTTPS 可避免该问题
-- cookie 大小限制 4KB，复杂场景不够用
-- cookie 无法跨域携带，利用这一特点可以使用在 CDN 域名上。比如如果 CDN 资源和主站采用了同样的域名，那 cookie 传输就会造成巨大的性能浪费。规避这个问题的方法就是使 CDN 的域名和主站区分。如掘金的 CDN 域名为 `https://lf3-cdn-tos.bytescm.com`，主站的域名为 `https://juejin.cn`
+- cookie 大小限制 **4KB**，复杂场景不够用
+- cookie **无法跨域**携带，利用这一特点可以使用在 CDN 域名上。比如如果 CDN 资源和主站采用了同样的域名，那 cookie 传输就会造成巨大的性能浪费。规避这个问题的方法就是使 CDN 的域名和主站区分。如掘金的 CDN 域名为 `https://lf3-cdn-tos.bytescm.com`，主站的域名为 `https://juejin.cn`
 
 #### 2.1.5 使用
 
@@ -113,7 +113,7 @@ document.cookie = `name=olumel; domain=olumel.top; expires=${date.toGMTString()}
 
 #### 2.1.6 三方库 js-cookie
 
-平时我们会选择一款封装 cookie 的库 js-cookie
+平时我们会选择一款封装 `cookie` 的库 [js-cookie](https://www.npmjs.com/package/js-cookie)
 
 ```js
 import Cookies from "js-cookie";
@@ -134,14 +134,14 @@ Cookies.remove("name");
 
 #### 2.2.1 Session Storage
 
-Session Storage 对象是当前源（和同源策略中的源一致）下，存储会话数据的 Storage 实例。生命周期和当前页面保持一致，页面关闭 sessionStorage 会被情况。以键值对方式存储，键值以字符串存储
+`Session Storage` 对象是当前源（和同源策略中的源一致）下，存储会话数据的 `Storage` 实例。生命周期和当前页面保持一致，页面关闭 `sessionStorage` 会被情况。以键值对方式存储，键值以字符串存储
 
 ##### 2.2.1.1 特点
 
-- 只能被当前标签页访问
+- 只能被**当前标签页**访问
 - 页面触发打开新页面时，会复制会话上下文作为新会话的上下文
-- 生命周期存在于网页会话期间，关闭浏览器或标签页清除 sessionStorage, 刷新标签页或者恢复浏览器页面时保留 sessionStorage
-- 复制标签页（浏览器标签右键菜单的复制，不是复制 URL ）时会复制当前 sessionStorage 到新的标签页中
+- 生命周期存在于网页会话期间，关闭浏览器或标签页清除 `sessionStorage`, 刷新标签页或者恢复浏览器页面时保留 `sessionStorage`
+- 复制标签页（浏览器标签右键菜单的复制，不是复制 URL ）时会复制当前 `sessionStorage` 到新的标签页中
 
 ##### 2.2.1.2 使用场景
 
@@ -222,18 +222,18 @@ let storage = {
 
 ##### 2.2.2.2 和 sessionStorage 的区别
 
-- localStorage 没有过期时间（隐私窗口中的 localStorage 在最后一个隐私窗口关闭时会被清空）
-- StorageEvent 只能监听同源页面的 localStorage 的改变，无法监听 sessionStorage 的改变
+- `localStorage` 没有过期时间（隐私窗口中的 `localStorage` 在最后一个隐私窗口关闭时会被清空）
+- `StorageEvent` 只能监听同源页面的 `localStorage` 的改变，无法监听 `sessionStorage` 的改变
 
 ##### 2.2.2.3 使用场景
 
-一般场景 cookie 无法胜任的可以用简单的键值对来存取的数据存储任务，都可以使用 localStorage 处理
+一般场景 `cookie` 无法胜任的可以用简单的键值对来存取的数据存储任务，都可以使用 `localStorage` 处理
 
 #### 2.2.3 IndexedDB
 
 虽然 Web Storage 可以让我们进行网页间数据的临时存储或持久化存储，但是容量还是有限
 
-IndexedDB 是一个大规模的 NoSQL 存储系统，几乎可以存储浏览器中任何数据内容，包括二进制数据（ArrayBuffer 对象和 Blob 对象），可以存储不少于 250M 的数据, 其 API 使用索引实现对数据的高性能搜索，使用上接近于数据库，可以解决 Web Storage 存储大量的结构化数据时存储容量小，搜索速度慢等问题
+IndexedDB 是一个大规模的 NoSQL 存储系统，几乎可以存储浏览器中任何数据内容，包括二进制数据（ArrayBuffer 对象和 Blob 对象），可以存储不少于 `250M` 的数据, 其 API 使用索引实现对数据的高性能搜索，使用上接近于数据库，可以解决 Web Storage 存储大量的结构化数据时存储容量小，搜索速度慢等问题
 
 #### 2.2.3.1 特点
 
@@ -284,7 +284,7 @@ request.onsuccess = function (event) {
 
 #### 2.2.3.5 创建表
 
-新建数据库会触发版本变化的 onupgradeneeded 方法（此时版本从无到有）
+新建数据库会触发版本变化的 `onupgradeneeded` 方法（此时版本从无到有）
 
 ```js
 request.onupgradeneeded = function (e) {
