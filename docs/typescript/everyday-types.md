@@ -369,12 +369,14 @@ interface Person {
   name: number[],
   age?: number,
   readonly hobby: string,
-  [propName: string]: string | number[] | undefined | number
+  cb(): number,
+  [propName: string]: string | number[] | undefined | number | Function
 }
 let olu: Person = {
   name: [1,2],
   drink: 123,
-  hobby: 'sleep'
+  hobby: 'sleep',
+  cb: (): number => 123
 }
 
 olu.hobby = 'eat' // 无法分配到 "hobby" ，因为它是只读属性
