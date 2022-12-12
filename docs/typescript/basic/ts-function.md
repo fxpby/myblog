@@ -31,3 +31,18 @@ strArr.forEach(x => {
   x.toUpperCase()
 })
 ```
+
+## 函数重载
+
+重载允许一个函数接受不同数量或类型的参数时，作出不同的处理
+
+```ts
+function fn (params: number): void
+function fn (params: string): void
+function fn (params: string | number): string | number {
+  console.log(params)
+  return params
+}
+
+let a: void = fn(1)
+```
