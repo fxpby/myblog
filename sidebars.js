@@ -39,7 +39,22 @@ const sidebars = {
     'javascript/compose-pipe',
   ],
   'typescript': [
-    'typescript/everyday-types',
+    {
+      type: 'category',
+      label: '基础',
+      collapsed: false,
+      items: [
+        'typescript/basic/ts-type-annotation',
+        'typescript/basic/ts-primitive-data-types',
+        'typescript/basic/ts-array',
+        'typescript/basic/ts-object',
+        'typescript/basic/ts-function',
+        'typescript/basic/ts-any',
+        'typescript/basic/ts-interfaces',
+        'typescript/basic/ts-union-types',
+        'typescript/basic/ts-type-assertions',
+      ],
+    },
     'typescript/tsconfig',
     'typescript/typeof-guard',
   ],
