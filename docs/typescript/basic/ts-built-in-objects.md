@@ -19,3 +19,18 @@ let f: Error = new Error('error~')
 ```
 
 ## DOM 和 BOM 内置对象
+
+### DOM
+
+```ts
+const body:HTMLElement = document.body
+const list:NodeList = document.querySelectorAll('li')
+```
+
+#### BOM
+
+```ts
+document.body.addEventListener('click', (e: MouseEvent): void => {
+  // cool things
+})
+```
