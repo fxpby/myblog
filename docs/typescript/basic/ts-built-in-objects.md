@@ -34,3 +34,15 @@ document.body.addEventListener('click', (e: MouseEvent): void => {
   // cool things
 })
 ```
+
+## 一些其他 TypeScript 核心库定义文件
+
+### Promise
+
+```ts
+function promise (): Promise<number> {
+  return new Promise<number>((resolve, reject): void => {
+    resolve(1)
+  })
+}
+```
