@@ -53,6 +53,17 @@ const sidebars = {
         'typescript/basic/ts-interfaces',
         'typescript/basic/ts-union-types',
         'typescript/basic/ts-type-assertions',
+        'typescript/basic/ts-cross-types',
+        'typescript/basic/ts-built-in-objects',
+      ],
+    },
+    {
+      type: 'category',
+      label: '进阶',
+      collapsed: false,
+      items: [
+        'typescript/advance/type-aliases',
+        'typescript/advance/ts-class',
       ],
     },
     'typescript/tsconfig',
