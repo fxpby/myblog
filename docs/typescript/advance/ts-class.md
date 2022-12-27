@@ -96,3 +96,29 @@ class Man extends A implements Person, Olu {
   }
 }
 ```
+
+## 抽象类
+
+- 抽象类不允许被实例化
+- 抽象类中的抽象方法必须被子类实现
+
+```ts
+abstract class A {
+  name: string
+  constructor(name: string) {
+    this.name = name
+  }
+
+  abstract getName(): string
+}
+
+class B extends A {
+  constructor() {
+    super('Olu')
+  }
+
+  getName(): string {
+    return this.name
+  }
+}
+```
