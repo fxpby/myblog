@@ -62,3 +62,37 @@ const olu = new Person('Olu', 18, 'sleep')
 console.log(olu.catalogue) // 静态属性，不需要 new 实例化
 console.log(olu.name) // 报错 protected的 属性“name”受保护，只能在类“Person”及其子类中访问
 ```
+
+## implements
+
+接口可以被类实现（implements）, 可用来约束接口类型
+
+一个类只能继承自另一个类，但是可以实现多个接口
+
+实现一个新的类，从父类或者接口实现所有的属性和方法，同时可以重写属性和方法，包含一些新的功能
+
+```ts
+interface Person {
+  run (type: boolean): boolean
+}
+
+interface Olu {
+  sayHi(): void
+}
+
+class A {
+  params:string
+  constructor(params:string) {
+    this.params = params
+  }
+}
+
+class Man extends A implements Person, Olu {
+  run(type: boolean): boolean {
+    return type
+  }
+  sayHi(): void {
+    console.log('hi~')
+  }
+}
+```
