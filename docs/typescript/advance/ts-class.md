@@ -109,6 +109,9 @@ abstract class A {
     this.name = name
   }
 
+  setName(name: string): void {
+    this.name = name
+  }
   abstract getName(): string
 }
 
@@ -121,4 +124,9 @@ class B extends A {
     return this.name
   }
 }
+
+const b = new B()
+console.log(b.getName()) // Olu
+b.setName('Olumel')
+console.log(b.getName()) // Olumel
 ```
