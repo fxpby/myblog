@@ -64,6 +64,7 @@ const sidebars = {
       items: [
         'typescript/advance/type-aliases',
         'typescript/advance/ts-class',
+        'typescript/advance/ts-tuple',
       ],
     },
     'typescript/tsconfig',
