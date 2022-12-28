@@ -152,6 +152,8 @@ if (otherName === Person.name) {
 
 包含正向映射（name => value）和反向映射（value => name）
 
+string 类型不可以进行反向映射
+
 ```ts
 enum Person {
   name
