@@ -24,6 +24,12 @@ function foo8(id: Id) {
 }
 foo8(233)
 foo8('233')
+
+type cb = () => string
+const fn:cb = (): string => 'olu'
+
+type T = 'success' | 'error'
+const res: T = 'success'
 ```
 
 类型别名 type 不能通过同名方式去拓展, 可以使用`&`符号拓展合并
