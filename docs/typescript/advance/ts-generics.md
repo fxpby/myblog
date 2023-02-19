@@ -61,3 +61,48 @@ function print5<T extends Len>(a: T): T {
 
 print5(3) // Argument of type 'number' is not assignable to parameter of type 'Len'.ts(2345)
 ```
+
+## keyof 约束
+
+函数传入一个对象，根据形参 key 输出 value，传入一个不存在的 key，没有错误提示
+
+```ts
+function prop<T>(obj: T, key: string) {
+  return obj[key]
+}
+
+let obj = { a: 1, b: 2, c: 3 }
+prop(obj, 'a')
+prop(obj, 'd')
+```
+
+使用 keyof 约束后，得到错误提示
+
+```ts
+function prop<T, K extends keyof T>(obj: T, key: K): T[K] {
+  return obj[key]
+}
+
+let obj = { a: 1, b: 2, c: 3 }
+prop(obj, 'a')
+prop(obj, 'd') // Argument of type '"d"' is not assignable to parameter of type '"a" | "b" | "c"'.ts(2345)
+```
+
+## 泛型类
+
+```ts
+class Olu<T> {
+  hobby: T[] = []
+  say(a: T): T {
+    return a
+  }
+}
+
+const olu1 = new Olu<number>
+olu1.hobby = [1, 2, 3]
+olu1.say(233)
+
+const olu2 = new Olu<string>
+olu2.hobby = ['study', 'work', 'sleep']
+olu2.say('hello')
+```
