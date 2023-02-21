@@ -21,7 +21,27 @@
 - `strictPropertyInitialization`: 确保类的非undefined属性已经在构造函数里初始化。若要令此选项生效，需要同时启用--strictNullChecks
 - `alwaysStrict`: 以严格模式解析并为每个源文件生成 "use strict"语句
 
-示例:
+## 常用配置
+
+- include：指定编译文件默认是编译当前目录下所有的 ts 文件
+
+```json
+"include": [
+  "src/**/*"
+]
+```
+
+- exclude: 指定排除的文件(include 反向操作)
+- target: 指定编译 js 的版本
+- allowJS：是否允许编译 js 文件
+- removeComments: 是否在编译过程中删除文件中的注释
+- rootDir: 编译文件的目录
+- outDir: 输出文件的目录
+- sourceMap：代码源文件
+- strict: 严格模式
+- module：模块化方式
+
+## 示例
 
 ```json
 {
