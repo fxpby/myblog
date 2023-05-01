@@ -48,3 +48,7 @@ tags:
 ![network-layer](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/network/%E7%BD%91%E7%BB%9C%E5%B1%82%E5%B0%81%E5%8C%85.png)
 
 ### TCP 协议封包
+
+- 每个封包称作一个 TCP 信息段（TCP Segment）
+- Header 用于描述传输行为（如源端口，目标端口等）
+- Header 后面跟若干个 byte 数据，每个 byte 拥有自己的序列号
