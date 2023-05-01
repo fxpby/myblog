@@ -135,6 +135,7 @@ const sidebars = {
   'network': [
     'network/http/http-history',
     'network/http/OSI',
+    'network/http/tcp-ip',
     'network/http/shake-hands',
     'network/http/URI-URL-URN',
     'network/http/http-message',
