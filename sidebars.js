@@ -89,6 +89,14 @@ const sidebars = {
     'front-end-engineering/build-frontend-project-standardization',
     {
       type: 'category',
+      label: '持续集成与部署',
+      collapsed: false,
+      items: [
+        'front-end-engineering/cicd/cicd-intro',
+      ],
+    },
+    {
+      type: 'category',
       label: 'npm',
       items: [
         'front-end-engineering/npm/npm-scoped-packages',
