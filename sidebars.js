@@ -93,6 +93,7 @@ const sidebars = {
       collapsed: false,
       items: [
         'front-end-engineering/cicd/cicd-intro',
+        'front-end-engineering/cicd/jenkins-intro',
       ],
     },
     {
