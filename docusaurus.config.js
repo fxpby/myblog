@@ -75,27 +75,38 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'html',
             position: 'left',
+            label: '前端',
+            sidebarId: 'html',
+            catalog: 'frontend'
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'html',
             label: 'HTML',
+            position: 'left',
+            catalog: 'frontend'
           },
           {
             type: 'docSidebar',
             sidebarId: 'css',
             position: 'left',
             label: 'CSS',
+            catalog: 'frontend'
           },
           {
             type: 'docSidebar',
             sidebarId: 'javascript',
             position: 'left',
             label: 'JavaScript',
+            catalog: 'frontend'
           },
           {
             type: 'docSidebar',
             sidebarId: 'typescript',
             position: 'left',
             label: 'TypeScript',
+            catalog: 'frontend'
           },
           // {
           //   type: 'docSidebar',
@@ -116,56 +127,64 @@ const config = {
                 label: 'Vue2',
                 to: '/docs/Vue/vue2/源码-src',
               },
-            ]
+            ],
+            catalog: 'frontend'
           },
           {
             type: 'docSidebar',
             sidebarId: 'front-end-engineering',
             position: 'left',
             label: '前端工程化',
+            catalog: 'frontend'
           },
           {
             type: 'docSidebar',
             sidebarId: 'browser',
             position: 'left',
             label: '浏览器',
+            catalog: 'frontend'
           },
           {
             type: 'docSidebar',
             sidebarId: 'design-pattern',
             position: 'left',
             label: '设计模式',
+            catalog: 'frontend'
           },
-          {
-            type: 'docSidebar',
-            sidebarId: 'network',
-            position: 'left',
-            label: '计算机网络',
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'data-structures',
-            position: 'left',
-            label: '数据结构和算法',
-          },
+          // {
+          //   type: 'docSidebar',
+          //   sidebarId: 'network',
+          //   position: 'left',
+          //   label: '计算机网络',
+          // },
+          // {
+          //   type: 'docSidebar',
+          //   sidebarId: 'data-structures',
+          //   position: 'left',
+          //   label: '数据结构和算法',
+          // },
           {
             type: 'docSidebar',
             sidebarId: 'leetcode',
             position: 'left',
             label: '力扣',
+            catalog: 'frontend1'
           },
-          // {to: '/blog', label: 'Blog', position: 'left'},
-          // {
-          //   href: 'https://github.com/fxpby',
-          //   label: 'GitHub',
-          //   position: 'right',
-          // },
+          {to: '/blog', label: 'Blog', position: 'left'},
+          {
+            href: 'https://github.com/fxpby',
+            label: 'GitHub',
+            position: 'right',
+          },
         ],
       },
       docs: {
         sidebar: {
           hideable: true,
         },
+      },
+      tests: {
+
       },
       footer: {
         style: 'dark',
