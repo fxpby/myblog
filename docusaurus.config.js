@@ -75,27 +75,35 @@ const config = {
         items: [
           {
             type: 'docSidebar',
+            position: 'left',
+            label: '前端传送门',
             sidebarId: 'html',
-            position: 'left',
-            label: 'HTML',
+            catalog: 'docs/frontend',
+            itemType: 'parent'
           },
           {
-            type: 'docSidebar',
-            sidebarId: 'css',
             position: 'left',
-            label: 'CSS',
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'javascript',
-            position: 'left',
-            label: 'JavaScript',
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'typescript',
-            position: 'left',
-            label: 'TypeScript',
+            label: '前端四剑客',
+            items: [
+              {
+                label: 'HTML',
+                to: '/docs/html/attrs',
+              },
+              {
+                label: 'CSS',
+                to: '/docs/css/box-model',
+              },
+              {
+                label: 'JavaScript',
+                to: '/docs/javascript/memory',
+              },
+              {
+                label: 'TypeScript',
+                to: '/docs/typescript/basic/ts-type-annotation',
+              }
+            ],
+            catalog: 'docs/frontend',
+            itemType: 'child'
           },
           // {
           //   type: 'docSidebar',
@@ -116,56 +124,103 @@ const config = {
                 label: 'Vue2',
                 to: '/docs/Vue/vue2/源码-src',
               },
-            ]
+            ],
+            catalog: 'docs/frontend',
+            itemType: 'child'
           },
           {
             type: 'docSidebar',
             sidebarId: 'front-end-engineering',
             position: 'left',
             label: '前端工程化',
+            catalog: 'docs/frontend',
+            itemType: 'child'
           },
           {
             type: 'docSidebar',
             sidebarId: 'browser',
             position: 'left',
             label: '浏览器',
+            catalog: 'docs/frontend',
+            itemType: 'child'
           },
           {
             type: 'docSidebar',
             sidebarId: 'design-pattern',
             position: 'left',
             label: '设计模式',
+            catalog: 'docs/frontend',
+            itemType: 'child'
           },
           {
             type: 'docSidebar',
             sidebarId: 'network',
             position: 'left',
             label: '计算机网络',
+            catalog: 'docs/frontend',
+            itemType: 'child'
           },
           {
             type: 'docSidebar',
             sidebarId: 'data-structures',
             position: 'left',
             label: '数据结构和算法',
+            catalog: 'docs/frontend',
+            itemType: 'child'
           },
           {
             type: 'docSidebar',
             sidebarId: 'leetcode',
             position: 'left',
             label: '力扣',
+            catalog: 'docs/frontend',
+            itemType: 'child'
           },
-          // {to: '/blog', label: 'Blog', position: 'left'},
-          // {
-          //   href: 'https://github.com/fxpby',
-          //   label: 'GitHub',
-          //   position: 'right',
-          // },
+          {
+            type: 'docSidebar',
+            position: 'left',
+            label: '新大陆',
+            sidebarId: 'English',
+            catalog: 'docs/other',
+            itemType: 'parent'
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'English',
+            position: 'left',
+            label: '英语',
+            catalog: 'docs/other',
+            itemType: 'child'
+          },
+          {
+            to: '/blog',
+            label: '杂记',
+            position: 'left',
+            catalog: 'blog',
+            itemType: 'parent'
+          },
+          {
+            to: '/blog',
+            label: '杂记',
+            position: 'left',
+            catalog: 'blog',
+            itemType: 'child'
+          },
+          {
+            href: 'https://github.com/fxpby',
+            label: 'GitHub',
+            position: 'right',
+            itemType: 'parent'
+          },
         ],
       },
       docs: {
         sidebar: {
           hideable: true,
         },
+      },
+      tests: {
+
       },
       footer: {
         style: 'dark',
