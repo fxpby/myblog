@@ -11,60 +11,61 @@ import NavbarMobileSidebarToggle from '@theme/Navbar/MobileSidebar/Toggle';
 import NavbarLogo from '@theme/Navbar/Logo';
 import NavbarSearch from '@theme/Navbar/Search';
 import styles from './styles.module.css';
-import { useLocation }  from '@docusaurus/router';
+import {useLocation} from '@docusaurus/router';
 
 function useNavbarItems() {
   // TODO temporary casting until ThemeConfig type is improved
   return useThemeConfig().navbar.items;
 }
 function NavbarItems({items}) {
-  const {pathname} = useLocation()
+  const {pathname} = useLocation();
 
-  console.log(items)
-  // if (pathname.includes('docs') && items.catalog !== 'frontend') {
-  //   // return null
-  // }
   return (
     <>
-      {items.filter(x => {
-        const map = {
-          docs: {
-            catalog:'frontend',
-            label: '前端'
-          },
-          blog: {
-            catalog:'life',
-            label: '生活'
-          },
-          other: {
-            catalog:'other',
-            label: '其他'
-          }
-        }
-        
-        for (let k in map) {
-          if(x.label === 'Blog') {
-            console.log('===',x,pathname.includes(k),x.catalog === map[k]['catalog'])
-            console.log('--=',x.catalog,map[k]['catalog'])
+      {items
+        .filter((x) => {
+          const catalogMap = {
+            'docs/frontend': {
+              key: 'docs',
+              label: '前端',
+              pathname: 'docs',
+            },
+            blog: {
+              key: 'blog',
+              label: '杂记',
+              pathname: 'blog',
+            },
+            'docs/other': {
+              key: 'other',
+              label: '其他',
+              pathname: 'docs',
+            },
+          };
 
-  
-          }
-          return (pathname.includes(k) && x.catalog === map[k]['catalog'] && x.label !== map[k]['label']) 
-        }
-      }).map((item, i) => (
-        <ErrorCauseBoundary
-          key={i}
-          onError={(error) =>
-            new Error(
-              `A theme navbar item failed to render.
+          const parentItem = pathname.includes('docs/other')
+            ? catalogMap[x.catalog]?.key !== 'other' && x.itemType === 'parent'
+            : !pathname.includes(catalogMap[x.catalog]?.key) &&
+              x.itemType === 'parent';
+          const childItem = pathname.includes('docs/other')
+            ? catalogMap[x.catalog]?.key === 'other' && x.itemType === 'child'
+            : pathname.includes(catalogMap[x.catalog]?.key) &&
+              x.itemType === 'child';
+          return parentItem || childItem;
+        })
+        .map((item, i) => (
+          <ErrorCauseBoundary
+            key={i}
+            onError={(error) =>
+              new Error(
+                `A theme navbar item failed to render.
 Please double-check the following navbar item (themeConfig.navbar.items) of your Docusaurus config:
 ${JSON.stringify(item, null, 2)}`,
-              {cause: error},
-            )
-          }>
-          <NavbarItem {...item} />
-        </ErrorCauseBoundary>
-      ))}
+                {cause: error},
+              )
+            }>
+            <NavbarItem {...item} />
+          </ErrorCauseBoundary>
+        ))}
     </>
   );
 }

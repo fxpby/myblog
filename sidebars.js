@@ -344,6 +344,10 @@ const sidebars = {
         'leetcode/greedy-algorithm/assign-cookies',
       ],
     }
+    
+  ],
+  'English': [
+    'other/English/other-english-test',
   ],
 };
 
