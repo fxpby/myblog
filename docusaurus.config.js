@@ -26,8 +26,29 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
-  themes: [
-    '@easyops-cn/docusaurus-search-local',
+  themes: ['@easyops-cn/docusaurus-search-local'],
+
+  plugins: [
+    [
+      'content-docs',
+      /** @type {import('@docusaurus/plugin-content-docs').Options} */
+      ({
+        id: 'English',
+        path: 'English',
+        routeBasePath: 'English',
+        sidebarPath: require.resolve('./sidebarsEnglish.js'),
+      }),
+    ],
+    [
+      'content-docs',
+      /** @type {import('@docusaurus/plugin-content-docs').Options} */
+      ({
+        id: 'music',
+        path: 'music',
+        routeBasePath: 'music',
+        sidebarPath: require.resolve('./sidebarsMusic.js'),
+      }),
+    ],
   ],
 
   presets: [
@@ -68,7 +89,10 @@ const config = {
         hideOnScroll: true,
         logo: {
           alt: '',
-          src: process.env.DEPLOY_SERVER === 'deploygithub' ? '/myblog/img/headImg.jpg' : '/img/headImg.jpg',
+          src:
+            process.env.DEPLOY_SERVER === 'deploygithub'
+              ? '/myblog/img/headImg.jpg'
+              : '/img/headImg.jpg',
           width: 32,
           height: 32,
         },
@@ -79,7 +103,7 @@ const config = {
             label: '前端传送门',
             sidebarId: 'html',
             catalog: 'docs/frontend',
-            itemType: 'parent'
+            itemType: 'parent',
           },
           {
             position: 'left',
@@ -100,10 +124,10 @@ const config = {
               {
                 label: 'TypeScript',
                 to: '/docs/typescript/basic/ts-type-annotation',
-              }
+              },
             ],
             catalog: 'docs/frontend',
-            itemType: 'child'
+            itemType: 'child',
           },
           // {
           //   type: 'docSidebar',
@@ -126,7 +150,7 @@ const config = {
               },
             ],
             catalog: 'docs/frontend',
-            itemType: 'child'
+            itemType: 'child',
           },
           {
             type: 'docSidebar',
@@ -134,7 +158,7 @@ const config = {
             position: 'left',
             label: '前端工程化',
             catalog: 'docs/frontend',
-            itemType: 'child'
+            itemType: 'child',
           },
           {
             type: 'docSidebar',
@@ -142,7 +166,7 @@ const config = {
             position: 'left',
             label: '浏览器',
             catalog: 'docs/frontend',
-            itemType: 'child'
+            itemType: 'child',
           },
           {
             type: 'docSidebar',
@@ -150,7 +174,7 @@ const config = {
             position: 'left',
             label: '设计模式',
             catalog: 'docs/frontend',
-            itemType: 'child'
+            itemType: 'child',
           },
           {
             type: 'docSidebar',
@@ -158,7 +182,7 @@ const config = {
             position: 'left',
             label: '计算机网络',
             catalog: 'docs/frontend',
-            itemType: 'child'
+            itemType: 'child',
           },
           {
             type: 'docSidebar',
@@ -166,7 +190,7 @@ const config = {
             position: 'left',
             label: '数据结构和算法',
             catalog: 'docs/frontend',
-            itemType: 'child'
+            itemType: 'child',
           },
           {
             type: 'docSidebar',
@@ -174,43 +198,48 @@ const config = {
             position: 'left',
             label: '力扣',
             catalog: 'docs/frontend',
-            itemType: 'child'
+            itemType: 'child',
           },
           {
-            type: 'docSidebar',
-            position: 'left',
+            to: '/music/音程&度数',
             label: '新大陆',
-            sidebarId: 'English',
+            position: 'left',
             catalog: 'docs/other',
-            itemType: 'parent'
+            itemType: 'parent',
           },
           {
-            type: 'docSidebar',
-            sidebarId: 'English',
+            to: '/music/音程&度数',
+            label: '音乐',
             position: 'left',
+            catalog: 'docs/other',
+            itemType: 'child',
+          },
+          {
+            to: '/English/词汇-谐音记忆',
             label: '英语',
+            position: 'left',
             catalog: 'docs/other',
-            itemType: 'child'
+            itemType: 'child',
           },
           {
             to: '/blog',
             label: '杂记',
             position: 'left',
             catalog: 'blog',
-            itemType: 'parent'
+            itemType: 'parent',
           },
           {
             to: '/blog',
             label: '杂记',
             position: 'left',
             catalog: 'blog',
-            itemType: 'child'
+            itemType: 'child',
           },
           {
             href: 'https://github.com/fxpby',
             label: 'GitHub',
             position: 'right',
-            itemType: 'parent'
+            itemType: 'parent',
           },
         ],
       },
@@ -219,16 +248,18 @@ const config = {
           hideable: true,
         },
       },
-      tests: {
-
-      },
+      tests: {},
       footer: {
         style: 'dark',
         copyright: `
           Copyright © ${new Date().getFullYear()} fxpby和olu是好朋友 olumel.top | <a href="https://beian.miit.gov.cn/" target="_blank">津ICP备2021008930号-1</a>
           <div style="width: 500px; display: flex; align-items: center; margin: 0px auto; padding: 20px 0px;">
             <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12011602000961" style="display: inline-block; text-decoration: none; height: 20px; line-height: 20px;">
-            <img a=${process.env.DEPLOY_SERVER} src=${process.env.DEPLOY_SERVER === 'deploygithub' ? '/myblog/img/beian.png' : '/img/beian.png'} style="float: left;"> 
+            <img a=${process.env.DEPLOY_SERVER} src=${
+              process.env.DEPLOY_SERVER === 'deploygithub'
+                ? '/myblog/img/beian.png'
+                : '/img/beian.png'
+            } style="float: left;"> 
             <p style="float: left; height: 20px; line-height: 20px; margin: 0px 0px 0px 5px; color: rgb(147, 147, 147);">
               津公网安备 12011602000961号
             </p>
