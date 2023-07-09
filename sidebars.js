@@ -91,6 +91,7 @@ const sidebars = {
         'front-end-engineering/cicd/jenkins-intro',
         'front-end-engineering/release-strategy/frontend-release-strategy',
         'front-end-engineering/release-strategy/backend-release-strategy',
+        'front-end-engineering/deploy/environment-deploy',
       ],
     },
     {
