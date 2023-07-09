@@ -89,6 +89,8 @@ const sidebars = {
       items: [
         'front-end-engineering/cicd/cicd-intro',
         'front-end-engineering/cicd/jenkins-intro',
+        'front-end-engineering/release-strategy/frontend-release-strategy',
+        'front-end-engineering/release-strategy/backend-release-strategy',
       ],
     },
     {
