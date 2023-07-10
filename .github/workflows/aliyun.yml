@@ -13,18 +13,32 @@ jobs:
       # 使用action库  actions/checkout获取源码
       - name: Checkout 🐤
         uses: actions/checkout@v2
-      # 安装Node13
+      # 安装 Node 16
       - name: use Node.js 16.15.1 🐣
         # 使用action库  actions/setup-node安装node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: '16.15.1'
-      # 安装依赖
-      - name: npm install 🐥
+
+      # 缓存 npm node_modules
+      - name: Cache dependencies 🐤
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-cache-
+
+      # 安装依赖 npm
+      - name: Install dependencies 🐥
+        # 如果没有命中缓存才执行 npm install
+        if: steps.cache-deps.outputs.cache-hit != 'true'
         run: npm install
+
       # 打包
       - name: npm build 🎄
         run: npm run build-aliyun
+
       # 部署到阿里云
       - name: Deploy to Aliyun 🚀
         uses: easingthemes/ssh-deploy@v2.1.5
@@ -32,12 +46,12 @@ jobs:
           # 私钥
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
           # scp参数
-          ARGS: "-avzr --delete"
+          ARGS: '-avzr --delete'
           # 源目录，编译后生成的文件目录
-          SOURCE: "/build"
+          SOURCE: '/build'
           # 服务器ip：换成你的服务器IP
-          REMOTE_HOST: "120.55.99.110"
+          REMOTE_HOST: '120.55.99.110'
           # 用户
-          REMOTE_USER: "root"
+          REMOTE_USER: 'root'
           # 目标地址 你在服务器上部署代码的地方
-          TARGET: "/home/webapps/myblog"
+          TARGET: '/home/webapps/myblog'
