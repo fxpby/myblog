@@ -71,9 +71,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -100,20 +100,60 @@ jobs:
         run: |
           npm install
           npm run docs:build
-          
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
           FOLDER: docs/.vuepress/dist
+```
 
+### action cache 配置
+
+npm
+
+```yml
+# 缓存 npm node_modules
+- name: Cache dependencies
+  uses: actions/cache@v3
+  with:
+    path: ~/.npm
+    key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+    restore-keys: |
+      ${{ runner.os }}-npm-cache-
+
+# 安装依赖 npm
+- name: Install dependencies
+  # 如果没有命中缓存才执行 npm install
+  if: steps.cache-deps.outputs.cache-hit != 'true'
+  run: npm install
+```
+
+yarn
+
+```yml
+# 缓存 yarn node_modules
+- name: Cache dependencies
+  uses: actions/cache@v3
+  id: yarn-cache
+  with:
+    path: |
+      **/node_modules
+    key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+    restore-keys: |
+      ${{ runner.os }}-yarn-
+
+# 安装依赖 yarn
+- name: Install dependencies
+  # 如果没有命中缓存才执行 npm install
+  if: steps.npm-cache.outputs.cache-hit != 'true'
+  run: yarn --frozen-lockfile
 ```
 
 ## 集成 GitHub Actions 部署到阿里云
 
-服务器购买流程和基础初始化配置这里就不啰嗦了 🦜
-域名购买备案和解析配置，nginx配置，https证书配置都不是本文的核心内容，这里就直入正题了🐎
+服务器购买流程和基础初始化配置这里就不啰嗦了 🦜域名购买备案和解析配置，nginx配置，https证书配置都不是本文的核心内容，这里就直入正题了🐎
 
 ### 创建阿里云密钥对
 
@@ -164,16 +204,15 @@ jobs:
           # 私钥
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           # scp参数
-          ARGS: "-avzr --delete"
+          ARGS: '-avzr --delete'
           # 源目录，编译后生成的文件目录
-          SOURCE: "/docs/.vuepress/dist"
+          SOURCE: '/docs/.vuepress/dist'
           # 服务器ip：换成你的服务器IP
-          REMOTE_HOST: "xxx.xxx.xxx.xxx"
+          REMOTE_HOST: 'xxx.xxx.xxx.xxx'
           # 用户
-          REMOTE_USER: "root"
+          REMOTE_USER: 'root'
           # 目标地址 你在服务器上部署代码的地方
-          TARGET: "/xxx/xxx/xxx"
-
+          TARGET: '/xxx/xxx/xxx'
 ```
 
 ## 测试
