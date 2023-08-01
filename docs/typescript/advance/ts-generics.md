@@ -90,6 +90,8 @@ prop(obj, 'd') // Argument of type '"d"' is not assignable to parameter of type 
 
 ## 泛型类
 
+类型参数在类名后面的尖括号中指定，可以具有泛型字段或方法
+
 ```ts
 class Olu<T> {
   hobby: T[] = []
@@ -106,3 +108,43 @@ const olu2 = new Olu<string>
 olu2.hobby = ['study', 'work', 'sleep']
 olu2.say('hello')
 ```
+
+## 泛型接口
+
+```ts
+interface Olu<T, U> {
+  id: T;
+  name: U;
+}
+
+const olu1:Olu<number, string> = {
+  id: 1,
+  name: 'olu1'
+}
+
+const olu2:Olu<string, string> = {
+  id: 2,
+  name: 'olu2'
+}
+```
+
+### 函数类型的泛型接口
+
+```ts
+interface ShowOluName<T, U> {
+  (id: T, name: U): void;
+}
+
+const showOluName1: ShowOluName<number, string> = (id, name) => {
+  console.log(`id => ${id}, name => ${name}`);
+};
+
+showOluName1(1, "cute Olu!");
+
+const showOluName2: ShowOluName<string, string> = (id, name) => {
+  console.log(`id => ${id}, name => ${name}`);
+};
+
+showOluName2("2", "cool Olu!");
+```
+
