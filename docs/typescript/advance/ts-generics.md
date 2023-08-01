@@ -50,6 +50,31 @@ print4('1', 1)
 
 ## 泛型约束
 
+下面栗子中访问 info 的 id 属性时，编译报错，因为不能证明 info 中有 id 属性
+
+```ts
+function getOluInfo<T>(info: T): T {
+  console.log(`ID: ${info.id}`); // Property 'id' does not exist on type 'T'.
+  return info;
+}
+```
+
+如果需要限制函数处理带有 id 属性的类型，需要列出对于 T 的约束，可以定义一个接口用来描述约束条件，创建一个包含 id 属性的接口，利用 extends 关键字来实现
+
+```ts
+interface Info {
+  id: number;
+}
+
+function getOluInfo<T extends Info>(info: T): T {
+  console.log(`ID: ${info.id}`);
+  return info;
+}
+
+getOluInfo({ id: 2 });
+getOluInfo("abc"); // Argument of type 'string' is not assignable to parameter of type 'Info'.
+```
+
 ```ts
 interface Len {
   length: number
