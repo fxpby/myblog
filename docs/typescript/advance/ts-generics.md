@@ -173,3 +173,29 @@ const showOluName2: ShowOluName<string, string> = (id, name) => {
 showOluName2("2", "cool Olu!");
 ```
 
+## 内置工具类型
+
+### `Partial<Type>`
+
+通过将 Type 中的所有属性都设置为可选来构造一个新的类型
+
+```ts
+interface Person {
+  id: number;
+  name: string;
+  age: number;
+}
+
+const olu1: Person = {
+  // Property 'age' is missing in type '{ id: number; name: string; }' but required in type 'Person'.
+  id: 1,
+  name: "Olu1",
+};
+
+type UnknownPerson = Partial<Person>;
+
+const olu2: UnknownPerson = {
+  id: 1,
+  name: "Olu1",
+};
+```
