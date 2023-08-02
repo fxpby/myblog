@@ -105,7 +105,7 @@ const sidebars = {
       items: ['nginx/nginx-cors', 'nginx/nginx-cache/nginx-cache-directive'],
     },
   ],
-  browser: ['browser/layout-paint', 'browser/browser-storage-caching-scheme'],
+  browser: ['browser/layout-paint', 'browser/browser-storage-caching-scheme', 'browser/browser-router'],
   'design-pattern': [
     'design-pattern/uml/uml-basics',
     'design-pattern/object-oriented/object-oriented-basics',
@@ -145,7 +145,7 @@ const sidebars = {
       items: [
         'network/cache/network-http-cache',
         'network/cache/frontend-http-cache-solution',
-        'network/cache/broswer-load-mode-http-cache',
+        'network/cache/browser-load-mode-http-cache',
         'network/cache/memory-cache-disk-cache',
         'network/cache/service-worker-cahce',
         'network/cache/cache-algorithm',
