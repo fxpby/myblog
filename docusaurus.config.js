@@ -43,9 +43,9 @@ const config = {
       'content-docs',
       /** @type {import('@docusaurus/plugin-content-docs').Options} */
       ({
-        id: 'music',
-        path: 'music',
-        routeBasePath: 'music',
+        id: 'music-theory',
+        path: 'music-theory',
+        routeBasePath: 'music-theory',
         sidebarPath: require.resolve('./sidebarsMusic.js'),
       }),
     ],
