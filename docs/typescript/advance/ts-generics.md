@@ -240,3 +240,20 @@ type Required<T> = {
   [P in keyof T]-?: T[P]
 }
 ```
+
+### `Exclude<UnionType, ExcludedMembers>`
+
+从联合类型 UnionType 中排除 ExcludedMembers 中的所有联合成员来构造一个新的类型
+
+```ts
+type PersonProps = Exclude<"id" | "name" | "age", "age">
+const oluProp:PersonProps = "age"
+```
+
+源码实现：
+
+判断了类型 T 是否可以赋值给类型 U，如果可以赋值，则返回 never 类型，否则返回 T 类型本身
+
+```ts
+type Exclude<T, U> = T extends U ? never : T
+```
