@@ -199,3 +199,11 @@ const olu2: UnknownPerson = {
   name: "Olu1",
 };
 ```
+
+源码实现：
+
+```ts
+type Partial<T> = {
+  [P in keyof T]?: T[P]
+}
+```
