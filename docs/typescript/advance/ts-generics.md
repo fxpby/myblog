@@ -328,3 +328,48 @@ const olu1: Olu = {
 ```ts
 type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>
 ```
+
+### `ReturnType<Type>`
+
+构造一个由函数返回值类型 Type 组成的类型
+
+```ts
+interface GetPerson {
+  (id: number): {
+    id: number;
+    name: string;
+    age: number;
+  }
+}
+
+type Olu = ReturnType<GetPerson>
+/**
+ * type Olu = {
+ *   id: number;
+ *   name: string;
+ *   age: number;
+ * }
+ */
+```
+
+源码实现：
+
+先判断类型 T 是否为一个函数类型，如果是，则使用 infer 关键字推断函数的返回值类型，并返回该类型；如果不是函数类型，则返回 any 类型
+
+```ts
+type ReturnType<T extends (...args: any) => any> = T extends (...args:any) => infer R ? R : any
+```
+
+### `infer`
+
+表示在 extends 条件语句中待推断的类型变量
+
+下面这个例子通过 infer 来实现 tuple 转 union。判断类型 T 是否是一个数组类型，如果是的话，使用 infer 关键字推断数组中的元素类型，并返回该类型；如果不是数组类型，则返回 never 类型
+
+```ts
+type TypeOfArrayItem<T> = T extends Array<infer I> ? I : never
+
+type MyTuple = [string, number]
+
+type MyUnion = TypeOfArrayItem<MyTuple>
+```
