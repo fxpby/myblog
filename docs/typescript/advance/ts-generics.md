@@ -207,3 +207,36 @@ type Partial<T> = {
   [P in keyof T]?: T[P]
 }
 ```
+
+### `Required<Type>`
+
+通过将 Type 中的所有属性都设置为必选来构造一个新的类型，和 Partial 相反
+
+```ts
+interface Person {
+  id: number;
+  name: string;
+  // age?: number; // Property 'age' is missing in type '{ id: number; name: string; }' but required in type 'Required<Person>'.
+}
+
+const olu: Person = {
+  id: 1,
+  name: "olu",
+};
+
+type RequiredPerson = Required<Person>;
+
+const olu2: RequiredPerson = {
+  id: 1,
+  name: "olu2",
+  age: 18,
+};
+```
+
+源码实现：
+
+```ts
+type Required<T> = {
+  [P in keyof T]-?: T[P]
+}
+```
