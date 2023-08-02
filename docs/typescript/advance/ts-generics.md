@@ -235,6 +235,8 @@ const olu2: RequiredPerson = {
 
 源码实现：
 
+在映射类型中，使用 `-?` 可以将原本的可选属性标记为必需属性。遍历类型 T 的所有属性，在每个属性 `P` 上应用 `-?`, 使属性 `P` 变为必需属性
+
 ```ts
 type Required<T> = {
   [P in keyof T]-?: T[P]
@@ -292,4 +294,37 @@ const olu1:Olu = {
 type Pick<T, K extends keyof T> = {
   [P in K]: T[P]
 }
+```
+
+### `Omit<Type, Keys>`
+
+从一个已有的类型 Type 中移除一组属性 Keys 来构造一个新的类型
+
+```ts
+interface Person {
+  id: number;
+  name: string;
+  age: number;
+}
+
+type Olu = Omit<Person, 'id' | 'age'>
+
+/**
+ * type Olu = {
+ *   name: string;
+ * }
+ */
+
+const olu1: Olu = {
+  id: 1, //Type '{ id: number; name: string; }' is not assignable to type 'Olu'. Object literal may only specify known properties, and 'id' does not exist in type 'Olu'.
+  name: 'olu1'
+}
+```
+
+源码实现：
+
+`Omit<T, K>` 的定义使用了两个内置类型工具：`Pick<T, K>` 和 `Exclude<keyof T, K>`。它首先使用 `keyof T` 获取类型 `T` 的所有属性名，然后使用 `Exclude<keyof T, K>` 排除掉属性名 `K`，最后使用 `Pick<T, Exclude<keyof T, K>>` 从类型 `T` 中选取剩余的属性名创建一个新的类型
+
+```ts
+type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>
 ```
