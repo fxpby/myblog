@@ -201,14 +201,14 @@ const config = {
             itemType: 'child',
           },
           {
-            to: '/music/音程&度数',
+            to: '/music-theory/音程&度数',
             label: '新大陆',
             position: 'left',
             catalog: 'docs/other',
             itemType: 'parent',
           },
           {
-            to: '/music/音程&度数',
+            to: '/music-theory/音程&度数',
             label: '音乐',
             position: 'left',
             catalog: 'docs/other',
