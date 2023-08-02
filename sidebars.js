@@ -105,7 +105,7 @@ const sidebars = {
       items: ['nginx/nginx-cors', 'nginx/nginx-cache/nginx-cache-directive'],
     },
   ],
-  browser: ['browser/layout-paint', 'browser/browser-storage-caching-scheme'],
+  browser: ['browser/layout-paint', 'browser/browser-storage-caching-scheme', 'browser/browser-router'],
   'design-pattern': [
     'design-pattern/uml/uml-basics',
     'design-pattern/object-oriented/object-oriented-basics',
