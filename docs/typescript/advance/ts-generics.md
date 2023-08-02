@@ -257,3 +257,39 @@ const oluProp:PersonProps = "age"
 ```ts
 type Exclude<T, U> = T extends U ? never : T
 ```
+
+### `Pick<Type, Keys>`
+
+从一个已有的类型 Type 中选择一组属性 Keys 来构造一个新的类型
+
+```ts
+interface Person {
+  id: number;
+  name: string;
+  age: number;
+}
+
+type Olu = Pick<Person, "id" | "name">
+/**
+ * type Olu = {
+ *   id: number;
+ *   name: string;
+ * }
+ */
+
+const olu1:Olu = {
+  id: 1,
+  name: 'olu1',
+  age: 18 // Type '{ id: number; name: string; age: number; }' is not assignable to type 'Olu'. Object literal may only specify known properties, and 'age' does not exist in type 'Olu'.
+}
+```
+
+源码实现：
+
+遍历类型 K 中的属性名，并在新的类型中创建这些属性，属性值类型与类型 T 中对应属性的类型相同
+
+```ts
+type Pick<T, K extends keyof T> = {
+  [P in K]: T[P]
+}
+```
