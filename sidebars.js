@@ -33,10 +33,13 @@ const sidebars = {
     'javascript/memory',
     'javascript/data-element',
     'javascript/compare-value',
+    'javascript/higher-order-function',
     'javascript/deep-copy',
     'javascript/out-script',
     'javascript/throttle-debounce',
     'javascript/compose-pipe',
+    'javascript/this',
+    'javascript/apply-call-bind',
   ],
   typescript: [
     {
@@ -105,7 +108,11 @@ const sidebars = {
       items: ['nginx/nginx-cors', 'nginx/nginx-cache/nginx-cache-directive'],
     },
   ],
-  browser: ['browser/layout-paint', 'browser/browser-storage-caching-scheme', 'browser/browser-router'],
+  browser: [
+    'browser/layout-paint',
+    'browser/browser-storage-caching-scheme',
+    'browser/browser-router',
+  ],
   'design-pattern': [
     'design-pattern/uml/uml-basics',
     'design-pattern/object-oriented/object-oriented-basics',
