@@ -60,9 +60,59 @@ Function.portotype.apply = function (thisArg, argsArray) {
 };
 ```
 
-## 2. bind
+## 2. call
 
 ### 2.1 语法
+
+```js
+func.call(thisArg, arg1, arg2, ...)
+```
+
+参数
+
+- thisArg: 在 func 函数运行时使用的 this 值
+- arg1,arg2,...: 指定的参数列表
+
+返回值
+
+- 使用指定的 this 值和参数调用函数的结果
+
+### 2.2 流程图
+
+### 2.3 代码实现
+
+```js
+Function.protortpe.call = function (thisArg, ...argsArray) {
+  if (typeof this !== 'function') {
+    throw new TypeError('which called on is not a function');
+  }
+
+  if (thisArg === undefined || thisArg === null) {
+    thisArg = window;
+  } else {
+    thisArg = Object(thisArg);
+  }
+
+  const func = Symbol('func');
+  thisArg[func] = this;
+
+  let result;
+
+  if (argsArray.length) {
+    result = thisArg[func](...argsArray);
+  } else {
+    result = thisArg[func]();
+  }
+
+  delete thisArg[func];
+
+  return result;
+};
+```
+
+## 3. bind
+
+### 3.1 语法
 
 ```js
 func.bind(thisArg[, arg1[, arg2[, ...]]])
@@ -77,9 +127,9 @@ func.bind(thisArg[, arg1[, arg2[, ...]]])
 
 - 返回一个原函数的拷贝，并拥有指定的 this 值和初始参数
 
-### 2.2 流程图
+### 3.2 流程图
 
-### 2.3 代码实现
+### 3.3 代码实现
 
 ```js
 Function.prototype.bind = function (thisArgs, ...argsArray) {
@@ -113,55 +163,5 @@ Function.prototype.bind = function (thisArgs, ...argsArray) {
   bound.prototype = new Empty();
 
   return bound;
-};
-```
-
-## 3. call
-
-### 3.1 语法
-
-```js
-func.call(thisArg, arg1, arg2, ...)
-```
-
-参数
-
-- thisArg: 在 func 函数运行时使用的 this 值
-- arg1,arg2,...: 指定的参数列表
-
-返回值
-
-- 使用指定的 this 值和参数调用函数的结果
-
-### 3.2 流程图
-
-### 3.3 代码实现
-
-```js
-Function.protortpe.call = function (thisArg, ...argsArray) {
-  if (typeof this !== 'function') {
-    throw new TypeError('which called on is not a function');
-  }
-
-  if (thisArg === undefined || thisArg === null) {
-    thisArg = window;
-  } else {
-    thisArg = Object(thisArg);
-  }
-
-  const func = Symbol('func');
-  thisArg[func] = this;
-
-  let result;
-
-  if (argsArray.length) {
-    result = thisArg[func](...argsArray);
-  } else {
-    result = thisArg[func]();
-  }
-
-  delete thisArg[func];
-
-  return result;
 };
 ```
