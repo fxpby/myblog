@@ -327,6 +327,15 @@ const sidebars = {
       collapsed: false,
       items: ['leetcode/greedy-algorithm/assign-cookies'],
     },
+    {
+      type: 'category',
+      label: '双指针',
+      collapsed: false,
+      items: [
+        'leetcode/two-pointers/is-subsequence',
+        'leetcode/two-pointers/valid-palindrome',
+      ]
+    }
   ],
 };
 
