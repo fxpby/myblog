@@ -371,5 +371,26 @@ type TypeOfArrayItem<T> = T extends Array<infer I> ? I : never
 
 type MyTuple = [string, number]
 
-type MyUnion = TypeOfArrayItem<MyTuple>
+type MyUnion = TypeOfArrayItem<MyTuple> // type MyUnion = string | number
+```
+
+### `Parameters`
+
+用于获取函数类型 T 的参数类型。它接受一个函数类型作为参数，并返回一个元组类型，其中包含了函数的每个参数类型
+
+```ts
+function greet(name: string, age: number): void {
+  console.log(`Hello, ${name}! You are ${age} years old.`);
+}
+
+type GreetParams = Parameters<typeof greet>;
+// type GreetParams = [name: string, age: number]
+```
+
+源码实现：
+
+定义了一个类型别名 `Parameters<T>`，它接受一个函数类型 `T` 作为参数, `T extends (...args: infer P) => any` 是一个条件类型表达式。它检查 `T` 是否可以赋值给一个形式类似 `(...args: infer P) => any`的函数类型(`infer P` 用于推断函数参数的类型并将其分配给 `P`), 如果 `T` 可以赋值给 `(...args: infer P) => any`，则条件类型表达式的结果为 `true`，否则为 `false`。在真分支中返回 `P`，即函数 `T` 的参数类型列表。这意味着 `Parameters<T>`的结果将是一个由 `T` 函数的参数类型组成的元组类型; 假分支中即 `T` 无法赋值给 `(...args: infer P) => any`，则返回 `never` 类型
+
+```ts
+type Parameters<T extends (...args: any) => any> = T extends (...args: infer P) => any ? P : never;
 ```
