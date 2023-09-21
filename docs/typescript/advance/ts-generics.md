@@ -407,3 +407,29 @@ const p2 = () => Promise.resolve('olu')
 type TP2 = ReturnType<typeof p2> // type TP2 = Promise<string>
 type TP3 = Awaited<ReturnType<typeof p2>> // ReturnType<typeof p2>
 ```
+
+### `Extract`
+
+从一个联合类型中提取指定的类型。接受两个类型参数，第一个参数是要提取的类型，第二个参数是要从中提取类型的联合类型。
+
+```ts
+type CuteNumber = 'olu' | 'cookie' | 'coke'
+
+type  ExtractNumber = Extract<CuteNumber, 'olu'>
+
+const cute: ExtractNumber = 'olu'
+```
+
+源码实现：
+
+定义了一个类型别名 `Extract<T, U>`，它接受两个类型参数 `T` 和 `U`。
+
+`T extends U ? T : never` 是一个条件类型表达式。检查类型 `T` 是否可以赋值给类型 `U`，即类型 `T` 是否是类型 `U` 的子类型。
+
+如果 `T` 可以赋值给 `U`，则条件类型表达式的结果为 `T`，即返回类型 `T`。即 `Extract<T, U>` 的结果满足条件 `U` 的子类型 `T`。
+
+如果条件类型的结果为 `false`，即 `T` 无法赋值给 `U`，则返回 `never` 类型。
+
+```ts
+type Extract<T, U> = T extends U ? T : never;
+```
