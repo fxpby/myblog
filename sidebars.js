@@ -55,6 +55,7 @@ const sidebars = {
         'typescript/basic/ts-any',
         'typescript/basic/ts-interfaces',
         'typescript/basic/ts-union-types',
+        'typescript/basic/ts-discriminated-union',
         'typescript/basic/ts-type-assertions',
         'typescript/basic/ts-cross-types',
         'typescript/basic/ts-built-in-objects',
