@@ -394,3 +394,16 @@ type GreetParams = Parameters<typeof greet>;
 ```ts
 type Parameters<T extends (...args: any) => any> = T extends (...args: infer P) => any ? P : never;
 ```
+
+### `Awaited`
+
+模拟异步函数中的 `await` 或 `Promises` 上的 `.then()` 方法返回值类型
+
+```ts
+const p = Promise.resolve(123)
+type TP = Awaited<typeof p> // type TP = number
+
+const p2 = () => Promise.resolve('olu')
+type TP2 = ReturnType<typeof p2> // type TP2 = Promise<string>
+type TP3 = Awaited<ReturnType<typeof p2>> // ReturnType<typeof p2>
+```
