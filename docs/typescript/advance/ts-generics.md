@@ -433,3 +433,24 @@ const cute: ExtractNumber = 'olu'
 ```ts
 type Extract<T, U> = T extends U ? T : never;
 ```
+
+### `Exclude`
+
+从一个联合类型中排除指定的类型。接受两个类型参数，第一个参数是要排除的类型，第二个参数是要从中排除类型的联合类型。
+
+```ts
+type CuteNumber = 'olu' | 'cookie' | 'coke'
+
+type  ExcludeNumber = Exclude<CuteNumber, 'olu'>
+
+const cute: ExcludeNumber = 'cookie'
+```
+
+源码实现：
+
+`type Exclude<T, U>`：通过 `type` 关键字定义了一个泛型类型 `Exclude<T, U>`，其中 `T` 是一个类型参数，表示待处理的类型，`U` 是一个类型参数，表示要排除的类型。
+`T extends U ? never : T`：使用条件类型来判断类型 `T` 是否可以赋值给类型 `U`。如果可以赋值，即 `T` 是 `U` 的子类型，那么返回 `never` 类型，表示排除该类型。如果不可以赋值，即 `T` 不是 `U` 的子类型，那么返回 `T` 类型本身。
+
+```ts
+type Extract<T, U> = T extends U ? never : T;
+```
