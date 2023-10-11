@@ -83,7 +83,11 @@ const sidebars = {
   ],
   // 'nodejs': [],
   framework: ['framework/runtime-compiletime'],
-  vue2: ['vue/vue2/源码-src', 'vue/vue2/源码-构建'],
+  vue2: [
+    'vue/vue2/vue2-源码-src',
+    'vue/vue2/vue2-源码-构建',
+    'vue/vue2/vue2-初始化过程',
+  ],
   'front-end-engineering': [
     'front-end-engineering/travis-ci-for-vuepress',
     'front-end-engineering/github-action-for-vuepress',
