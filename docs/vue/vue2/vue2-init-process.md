@@ -302,8 +302,16 @@ export function mergeOptions (
 `/src/core/instance/inject.js`
 
 ```js
+/**
+ * 初始化 inject 配置项
+ * 1. 得到 result[key] = val
+ * 2. 对结果数据进行响应式处理，代理每个 key 到 vm 实例
+ */
 export function initInjections (vm: Component) {
+  // 解析 inject 配置项，然后从祖代组件的配置中找到配置项中每一个 key 对应的 val，最后得到 result[key] = val 的结果
   const result = resolveInject(vm.$options.inject, vm)
+  // 对 result 做数据响应式处理，也有代理 inject 配置中每个 key 到 vm 实例的作用
+  // 不建议在子组件更改数据，因为一旦祖代组件中注入的 provide 发生更改，组件中做的更改就会被覆盖
   if (result) {
     toggleObserving(false)
     Object.keys(result).forEach(key => {
@@ -325,3 +333,96 @@ export function initInjections (vm: Component) {
   }
 }
 ```
+
+#### `resolveInject`
+
+位于 `/src/core/instance/inject.js`
+
+```js
+/**
+ * 解析 inject 配置项，从祖代组件的 provide 配置中找到 key 值，否则用默认值，最后得到 result[key] = val
+ * inject 对象得到的结构如下（合并选项时对组件配置对象做了标准化处理）
+ * inject = {
+ *   key: {
+ *     from: provideKey,
+ *     default: xxx
+ *   }
+ * }
+ */
+export function resolveInject (inject: any, vm: Component): ?Object {
+  if (inject) {
+    // inject is :any because flow is not smart enough to figure out cached
+    const result = Object.create(null)
+
+    // inject 配置项的所有 key
+    const keys = hasSymbol
+      ? Reflect.ownKeys(inject)
+      : Object.keys(inject)
+
+    // 遍历 key
+    for (let i = 0; i < keys.length; i++) {
+      const key = keys[i]
+      // #6574 in case the inject object is observed...
+      // 跳过 __ob__ 对象
+      if (key === '__ob__') continue
+      // 得到 provide 中对应的 key
+      const provideKey = inject[key].from
+      let source = vm
+      // 遍历所有的祖代组件，直至根组件，找到 provide 中对应 key 的值，最后得到 result[key] = provide[provideKey]
+      while (source) {
+        if (source._provided && hasOwn(source._provided, provideKey)) {
+          result[key] = source._provided[provideKey]
+          break
+        }
+        source = source.$parent
+      }
+
+      // 如果上面 while 循环未找到，使用 inject[key].default, 如果没有设置 default，则抛出错误
+      if (!source) {
+        if ('default' in inject[key]) {
+          const provideDefault = inject[key].default
+          result[key] = typeof provideDefault === 'function'
+            ? provideDefault.call(vm)
+            : provideDefault
+        } else if (process.env.NODE_ENV !== 'production') {
+          warn(`Injection "${key}" not found`, vm)
+        }
+      }
+    }
+    return result
+  }
+}
+```
+
+#### `initProvide`
+
+位于`/src/core/instance/inject.js`
+
+```js
+// 解析组件配置项上的 provide 对象，将其挂载到 vm._provided 属性上
+export function initProvide (vm: Component) {
+  const provide = vm.$options.provide
+  if (provide) {
+    vm._provided = typeof provide === 'function'
+      ? provide.call(vm)
+      : provide
+  }
+}
+```
+
+## 总结
+
+new Vue 过程：
+
+- 处理组件配置项
+  - 初始化根组件时进行了选项合并，将全局配置合并到根组件的局部配置上
+  - 初始化每个子组件时做了一些性能优化，将组件配置对象上的深层次属性放到 vm.$options 选项中，提高代码执行效率
+- 初始化组件实例的关系属性，如 $parent,$children,$root,$refs 等
+- 处理自定义事件
+- 调用 beforeCreate 钩子函数
+- 初始化组件的 inject 配置项，得到 `ret[key] = val` 形式的配置对象。然后对该配置对象进行浅层响应式处理（只处理了对象的第一次数据），并代理每个 key 到 vm 实例上
+- 数据响应式，处理 props，methods，data，computed，watch 等选项
+- 解析组件配置项上的 provide 对象，挂载到 vm._provide 上
+- 调用 created 钩子函数
+- 如果发现配置项上有 el 选项，则自动调用 $mount 方法；若没有需要手动调用 $mount 方法
+- 进入挂载阶段
