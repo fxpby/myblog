@@ -146,7 +146,7 @@ const config = {
               },
               {
                 label: 'Vue2',
-                to: '/docs/Vue/vue2/源码-src',
+                to: '/docs/Vue/vue2/vue2-learn-prepare',
               },
             ],
             catalog: 'docs/frontend',
