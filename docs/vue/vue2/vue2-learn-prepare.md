@@ -1,4 +1,9 @@
-# 源码学习 - 准备工作
+---
+id: vue2-learn-prepare
+title: 源码学习 - 准备工作
+tags:
+  - Vue
+---
 
 ## 目录结构
 

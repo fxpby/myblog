@@ -84,8 +84,8 @@ const sidebars = {
   // 'nodejs': [],
   framework: ['framework/runtime-compiletime'],
   vue2: [
-    'vue/vue2/vue2-源码-src',
-    'vue/vue2/vue2-源码-构建',
+    'vue/vue2/vue2-learn-prepare',
+    'vue/vue2/vue2-build',
     'vue/vue2/vue2-init-process',
   ],
   'front-end-engineering': [
