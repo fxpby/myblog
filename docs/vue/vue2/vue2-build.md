@@ -275,9 +275,27 @@ module.exports = {
 
 ### 运行时 runtime + 编译器 compiler VS 仅运行时 （runtime-only）
 
-如果需要动态编译模板，如将字符串模板传递给 template 或 通过提供一个挂载元素的方式编写 HTML 模板则需要编译器
+- Runtime only
 
 使用 `vue-loader` 或 `vueify`时，`*.vue`文件中的模板在构建时会被编译为 JS 渲染函数，不需要包含编译器的全量包，只需仅包含运行时的包
+
+- Runtime + Compiler
+
+如果需要动态编译模板，如将字符串模板传递给 template 或 通过提供一个挂载元素的方式编写 HTML 模板则需要编译器
+
+```js
+// 需要编译器的版本, 因为最终渲染都是通过 render 函数，如果写 template 属性，则需要编译成 render 函数，那么这个编译过程会发生运行时，所以需要带有编译器的版本
+new Vue({
+  template: '<div>{{ hi }}</div>'
+})
+
+// 这种情况不需要
+new Vue({
+  render (h) {
+    return h('div', this.hi)
+  }
+})
+```
 
 仅运行时的包体积比全量包体积小 30%，全量包需要进行一些配置
 
