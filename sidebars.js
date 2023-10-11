@@ -86,7 +86,7 @@ const sidebars = {
   vue2: [
     'vue/vue2/vue2-源码-src',
     'vue/vue2/vue2-源码-构建',
-    'vue/vue2/vue2-初始化过程',
+    'vue/vue2/vue2-init-process',
   ],
   'front-end-engineering': [
     'front-end-engineering/travis-ci-for-vuepress',
