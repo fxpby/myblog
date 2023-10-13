@@ -110,7 +110,7 @@ proxyImage.setSrc(realImgUrl)
 ```
 
 ```js
-const wrapper = document.getElementById('wrapper)
+const wrapper = document.getElementById('wrapper')
 // 监听所有 a 标签的点击事件
 wrapper.addEventListener('click', e => {
   const target = e.target
