@@ -45,6 +45,7 @@ const sidebars = {
       label: 'Promise',
       collapsed: true,
       items: [
+        'javascript/promise/traffic-light/1-exercise-traffic-light',
         'javascript/promise/serial/1-exercise-serial-request',
       ],
     },
