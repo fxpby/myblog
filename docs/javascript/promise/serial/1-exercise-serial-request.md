@@ -3,6 +3,7 @@ id: 1-exercise-serial-request
 title: 请求串行问题
 tags:
   - 串行
+  - Promise
 ---
 
 ## 题目描述
