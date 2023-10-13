@@ -2,13 +2,17 @@
 
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
-### Installation
+## 仓库活跃度
+
+![Repobeats analytics image](https://repobeats.axiom.co/api/embed/702b1539ea26c3dc793503866cc702e7b316448b.svg)
+
+## Installation
 
 ```
 $ yarn
 ```
 
-### Local Development
+## Local Development
 
 ```
 $ yarn start
@@ -16,7 +20,7 @@ $ yarn start
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-### Build
+## Build
 
 ```
 $ yarn build
@@ -24,7 +28,7 @@ $ yarn build
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-### Deployment
+## Deployment
 
 Using SSH:
 
