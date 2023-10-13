@@ -64,6 +64,38 @@ proxyImg.display()
 
 ## 应用场景
 
+### 图片懒加载
+
+```js
+const loadingImgUrl = 'xxx'
+const realImgUrl = 'xxx'
+
+const myImage = (() => {
+  const imgNode = document.createElement('img')
+  document.append(imgNode)
+  return {
+    setSrc: (src) => {
+      imgNode.src = src
+    }
+  }
+})()
+
+const proxyImage = (() => {
+  const img = new Image()
+  img.onload = () => {
+    myImage.setSrc(img.src)
+  }
+  return {
+    setSrc: (src) => {
+      myImage.setSrc(loadingImgUrl)
+      img.src = src
+    }
+  }
+})()
+
+proxyImage.setSrc(realImgUrl)
+```
+
 ### 网页事件代理
 
 ```html
