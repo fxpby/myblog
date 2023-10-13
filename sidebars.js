@@ -40,6 +40,14 @@ const sidebars = {
     'javascript/compose-pipe',
     'javascript/this',
     'javascript/apply-call-bind',
+    {
+      type: 'category',
+      label: 'Promise',
+      collapsed: true,
+      items: [
+        'javascript/promise/serial/1-exercise-serial-request',
+      ],
+    },
   ],
   typescript: [
     {
