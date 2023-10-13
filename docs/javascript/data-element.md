@@ -159,4 +159,37 @@ undefined|N/A|undefined
 
 ## 引用类型
 
-- object 对象
+### object 对象
+
+#### 手写对象属性值迭代器
+
+```js
+const obj = {
+  name: 'olu',
+  age: 18,
+  hobby: 'music'
+}
+
+Object.defineProperty(obj, Symbol.iterator, {
+  writable: false,
+  enumerable: false,
+  configurable: true,
+  value:() => {
+    let index = 0
+    let keys = Object.keys(obj)
+    return {
+      next: () => {
+        return {
+          done: index >= keys.length,
+          value: obj[keys[index++]]
+        }
+      }
+    }
+  }
+})
+
+
+for (const val of obj) {
+  console.log(`属性值为：${val}`);
+}
+```
