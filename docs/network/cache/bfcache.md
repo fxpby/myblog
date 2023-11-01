@@ -53,6 +53,7 @@ bfcache 是内存缓存，可在用户离开网页时存储网页（包括 JavaS
 ### pageshow、pagehide
 
 `pageshow`事件在页面正常加载以及从 bfcache 中恢复时被触发
+
 `pagehide`事件在页面被卸载时浏览器将页面存入 bfcache 时被触发
 这俩事件都有一个 `persisted` 属性, 可以用来区分常规页面加载还是从 bfcache 恢复
 
@@ -106,8 +107,11 @@ beforeunload 不会导致网页不符合在 Chrome 或 Safari 中使用 bfcache 
 
 ## reference
 
+<https://webkit.org/blog/427/webkit-page-cache-i-the-basics/>
 <https://docs.google.com/document/d/1JtDCN9A_1UBlDuwkjn1HWxdhQ1H2un9K4kyPLgBqJUc/edit?hl=zh-cn&pli=1>
+<https://developer.mozilla.org/zh-CN/docs/Mozilla/Firefox/Releases/1.5/Using_Firefox_1.5_caching>
 <https://developer.chrome.com/articles/page-lifecycle-api/?hl=zh-cn>
 <https://web.dev/articles/bfcache?hl=zh-cn>
 <https://developer.chrome.com/docs/devtools/application/back-forward-cache/>
 <https://juejin.cn/post/7291303339152654393>
+<https://developer.mozilla.org/zh-CN/docs/Web/API/Page_Visibility_API>
