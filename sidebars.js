@@ -281,6 +281,7 @@ const sidebars = {
         'leetcode/array/remove-duplicates-from-sorted-array',
         'leetcode/array/remove-element',
         'leetcode/array/search-insert-position',
+        'leetcode/array/move-zeroes',
       ],
     },
     {
