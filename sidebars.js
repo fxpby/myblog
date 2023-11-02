@@ -282,6 +282,7 @@ const sidebars = {
         'leetcode/array/remove-element',
         'leetcode/array/search-insert-position',
         'leetcode/array/move-zeroes',
+        'leetcode/array/sort-colors',
       ],
     },
     {
