@@ -286,6 +286,7 @@ const sidebars = {
         'leetcode/array/intersection-of-two-arrays-ii',
         'leetcode/array/contains-duplicate',
         'leetcode/array/sort-array-by-parity',
+        'leetcode/array/sort-array-by-parity-ii',
       ],
     },
     {
