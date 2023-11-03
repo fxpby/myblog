@@ -288,6 +288,7 @@ const sidebars = {
         'leetcode/array/sort-array-by-parity',
         'leetcode/array/sort-array-by-parity-ii',
         'leetcode/array/minimum-size-subarray-sum',
+        'leetcode/array/product-of-array-except-self',
       ],
     },
     {
