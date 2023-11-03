@@ -3,7 +3,7 @@ id: contains-duplicate
 title: 217. 存在重复元素
 tags:
   - 数组
-  - 双指针
+  - 哈希表
 ---
 
 ## 题目描述
