@@ -287,6 +287,7 @@ const sidebars = {
         'leetcode/array/contains-duplicate',
         'leetcode/array/sort-array-by-parity',
         'leetcode/array/sort-array-by-parity-ii',
+        'leetcode/array/minimum-size-subarray-sum',
       ],
     },
     {
