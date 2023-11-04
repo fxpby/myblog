@@ -40,6 +40,15 @@ const sidebars = {
     'javascript/compose-pipe',
     'javascript/this',
     'javascript/apply-call-bind',
+    {
+      type: 'category',
+      label: 'Promise',
+      collapsed: true,
+      items: [
+        'javascript/promise/traffic-light/1-exercise-traffic-light',
+        'javascript/promise/serial/1-exercise-serial-request',
+      ],
+    },
   ],
   typescript: [
     {
@@ -55,6 +64,8 @@ const sidebars = {
         'typescript/basic/ts-any',
         'typescript/basic/ts-interfaces',
         'typescript/basic/ts-union-types',
+        'typescript/basic/ts-discriminated-union',
+        'typescript/basic/ts-operator',
         'typescript/basic/ts-type-assertions',
         'typescript/basic/ts-cross-types',
         'typescript/basic/ts-built-in-objects',
@@ -71,6 +82,7 @@ const sidebars = {
         'typescript/advance/ts-enum',
         'typescript/advance/ts-three-diagonal',
         'typescript/advance/ts-generics',
+        'typescript/advance/ts-utility',
         'typescript/advance/ts-mixins',
         'typescript/advance/ts-decorator',
       ],
@@ -80,7 +92,12 @@ const sidebars = {
   ],
   // 'nodejs': [],
   framework: ['framework/runtime-compiletime'],
-  vue2: ['vue/vue2/源码-src', 'vue/vue2/源码-构建'],
+  vue2: [
+    'vue/vue2/vue2-learn-prepare',
+    'vue/vue2/vue2-build',
+    'vue/vue2/vue2-init-process',
+    'vue/vue2/vue2-reactivity',
+  ],
   'front-end-engineering': [
     'front-end-engineering/travis-ci-for-vuepress',
     'front-end-engineering/github-action-for-vuepress',
@@ -154,7 +171,8 @@ const sidebars = {
         'network/cache/frontend-http-cache-solution',
         'network/cache/browser-load-mode-http-cache',
         'network/cache/memory-cache-disk-cache',
-        'network/cache/service-worker-cahce',
+        'network/cache/bfcache',
+        'network/cache/service-worker-cache',
         'network/cache/cache-algorithm',
       ],
     },
@@ -263,6 +281,13 @@ const sidebars = {
         'leetcode/array/remove-duplicates-from-sorted-array',
         'leetcode/array/remove-element',
         'leetcode/array/search-insert-position',
+        'leetcode/array/move-zeroes',
+        'leetcode/array/sort-colors',
+        'leetcode/array/intersection-of-two-arrays-ii',
+        'leetcode/array/contains-duplicate',
+        'leetcode/array/sort-array-by-parity',
+        'leetcode/array/sort-array-by-parity-ii',
+        'leetcode/array/minimum-size-subarray-sum',
       ],
     },
     {
@@ -327,6 +352,15 @@ const sidebars = {
       collapsed: false,
       items: ['leetcode/greedy-algorithm/assign-cookies'],
     },
+    {
+      type: 'category',
+      label: '双指针',
+      collapsed: false,
+      items: [
+        'leetcode/two-pointers/is-subsequence',
+        'leetcode/two-pointers/valid-palindrome',
+      ]
+    }
   ],
 };
 

@@ -1,5 +1,5 @@
 ---
-id: service-worker-cahce
+id: service-worker-cache
 title: Service Worker
 tags:
   - cache

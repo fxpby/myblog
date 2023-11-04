@@ -64,6 +64,38 @@ proxyImg.display()
 
 ## 应用场景
 
+### 图片懒加载
+
+```js
+const loadingImgUrl = 'xxx'
+const realImgUrl = 'xxx'
+
+const myImage = (() => {
+  const imgNode = document.createElement('img')
+  document.append(imgNode)
+  return {
+    setSrc: (src) => {
+      imgNode.src = src
+    }
+  }
+})()
+
+const proxyImage = (() => {
+  const img = new Image()
+  img.onload = () => {
+    myImage.setSrc(img.src)
+  }
+  return {
+    setSrc: (src) => {
+      myImage.setSrc(loadingImgUrl)
+      img.src = src
+    }
+  }
+})()
+
+proxyImage.setSrc(realImgUrl)
+```
+
 ### 网页事件代理
 
 ```html
@@ -78,7 +110,7 @@ proxyImg.display()
 ```
 
 ```js
-const wrapper = document.getElementById('wrapper)
+const wrapper = document.getElementById('wrapper')
 // 监听所有 a 标签的点击事件
 wrapper.addEventListener('click', e => {
   const target = e.target
