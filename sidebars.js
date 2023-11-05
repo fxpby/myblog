@@ -288,6 +288,7 @@ const sidebars = {
         'leetcode/array/sort-array-by-parity',
         'leetcode/array/sort-array-by-parity-ii',
         'leetcode/array/minimum-size-subarray-sum',
+        'leetcode/array/fruit-into-baskets',
       ],
     },
     {
@@ -359,8 +360,8 @@ const sidebars = {
       items: [
         'leetcode/two-pointers/is-subsequence',
         'leetcode/two-pointers/valid-palindrome',
-      ]
-    }
+      ],
+    },
   ],
 };
 
