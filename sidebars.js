@@ -271,6 +271,7 @@ const sidebars = {
         'leetcode/linkedList/delete-node-in-a-linked-list',
         'leetcode/linkedList/merge-two-sorted-lists',
         'leetcode/linkedList/remove-linked-list-elements',
+        'leetcode/linkedList/reverse-linked-list-ii',
       ],
     },
     {
