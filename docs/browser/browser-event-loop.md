@@ -47,7 +47,7 @@ tags:
 
 > <https://chromium.googlesource.com/chromium/src/+/main/docs/process_model_and_site_isolation.md>
 
-## 渲染主线程工作模式
+## 2. 渲染主线程工作模式
 
 渲染主线程非常繁忙，处理的任务包括但不限于👇🏻
 
@@ -78,7 +78,7 @@ tags:
 
 上述过程即**事件循环（消息循环）**
 
-## 异步
+## 3. 异步
 
 代码执行过程中，会遇到无法立即处理的任务，如
 
@@ -88,4 +88,76 @@ tags:
 
 如果让渲染主线程等待这些任务的时机到达，就会导致主线程长期处于**阻塞**状态，进而可能浏览器卡死。
 
-渲染主线程上面有提到任务繁重，是经不住这样阻塞的，所以浏览器使用**异步**的方式处理
+渲染主线程上面有提到任务繁重，是经不住这样阻塞的，所以浏览器使用**异步**的方式处理，达到使**渲染主线程永不阻塞**的目的
+
+![异步 1](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/browser/%E8%AE%A1%E6%97%B6%E7%BA%BF%E7%A8%8B%20eg1.svg)
+
+## 4. JavaScript 阻碍渲染
+
+```html
+<h1>hello</h1>
+<button>btn</button>
+<script>
+  const h1 = document.querySelector('h1');
+  const btn = document.querySelector('button');
+
+  // 死循环
+  const delay = (duration) => {
+    let start = Date.now();
+    while (Date.now() - start < duration) {}
+  };
+
+  btn.onclick = () => {
+    h1.textContent = 'olu';
+    delay(2000);
+  };
+</script>
+```
+
+1. 渲染主线程执行全局 js，此时消息队列为空
+2. 交互线程：监听按钮点击事件，点击后执行函数
+3. 用户点击按钮
+4. 点击事件函数放入消息队列
+5. 消息队列中的函数移入到渲染主线程中，执行函数
+   1. 设置 dom 文本（属性值已更改，页面未重新绘制）
+   2. 文本更改，产生**绘制**任务，绘制任务加入消息队列排队
+   3. 继续运行函数即 delay 2000ms
+   4. 点击事件任务执行结束（渲染主线程空闲）
+6. 消息队列中的绘制任务移入渲染主线程，页面绘制文案 hello => olu
+
+综上就是`执行 js` 和`渲染`都在渲染主线程中处理，单线程需要排队
+
+## 5. 任务优先级
+
+任务没有优先级，在消息队列中先进先出
+
+消息队列有优先级
+
+- 每个任务有一个任务类型，**同一类型的任务必须在一个队列**，**不同类型的任务可以分属不同的队列**。在一次事件循环中，浏览器可以根据实际情况从不同队列中取出任务执行
+- 浏览器必须准备好一个**微队列**，微队列中的任务优先所有其他任务执行
+
+chromium task type:
+
+> <https://github.com/chromium/chromium/blob/9cfb77e79563e59d3007a6f28c7c0f266274f033/third_party/blink/public/platform/task_type.h#L24>
+
+perform a microtask checkpoint:
+
+> <https://html.spec.whatwg.org/multipage/webappapis.html#perform-a-microtask-checkpoint>
+
+### 5.1 Chrome 队列
+
+- 延时队列：用于存放计时器到达后的回调任务，优先级 - 中
+- 交互队列：用于存放用户操作后产生的事件处理任务，优先级 - 高
+- 微队列：用于存放需要最快执行的任务，优先级 - 最高
+
+## 6. 总结
+
+JavaScript 是一门单线程语言，因为它运行在浏览器的渲染主线程中，渲染主线程是唯一的
+
+渲染主线程承担诸多工作，如渲染页面、执行 js 等
+
+如果使用同步的方式，极大可能导致主线程产生阻塞，进而导致消息队列中其他任务无法得到执行，消耗大量时间，页面也无法及时更新，造成卡死现象
+
+采用异步方式，当任务如计时器、网络、事件监听等发生时，主线程将任务交给其他线程处理，自身立即结束任务的执行，执行后续代码。当其他线程完成时，将事先传递的回调函数包装成威武，加入到消息队列的末尾排队，等待主线程调度执行
+
+这样就保证浏览器永不阻塞，最大限度保证单线程的流程运行
