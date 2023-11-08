@@ -185,3 +185,7 @@ W3C 最新解释为，每个任务有不同类型，同类型任务必须在同�
 - 操作系统的计时函数本身有少量偏差， js 计时器最终调用的是操作系统的函数，携带偏差
 - W3C 标准，浏览器实现计时器，如果嵌套层级超过 5 层，会有 4 毫秒的最少时间，故计时时间少于 4 毫秒时也会有偏差
 - 受事件循环影响，计时器的回调函数只能在主线程空闲时运行，故又有偏差
+
+<https://github.com/chromium/chromium/blob/7724fb4613ca1ba2a2b28a8a41673a1ddc6dd306/third_party/blink/renderer/modules/scheduler/dom_timer.cc#L52>
+
+<https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html>
