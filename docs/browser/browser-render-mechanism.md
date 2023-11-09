@@ -81,13 +81,15 @@ Bytes => Characters => Tokens => Nodes => CSSOM
 
 > <https://web.dev/articles/critical-rendering-path/constructing-the-object-model?hl=zh-cn>
 
-#### HTML 解析过程遇到 CSS 代码（次级资源加载）
+#### HTML 解析过程遇到 CSS/JS 代码（次级资源加载）
 
 一个网页可能会有多个外部资源，如图片、js、css、字体等。主线程在解析 DOM 过程中遇到这些资源后会一一请求
 
 为了加速渲染流程，`预加载扫描器（preload scanner）线程`并发运行。如果 HTML 中存在 img 或 link 等内容，预加载扫描器会查看 HTML parser 生成的标记，并发送请求到浏览器进程的**网络线程**获取资源
 
-![次级资源加载](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/blogImg/browser/次级资源加载.svg)
+![次级资源加载-css](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/blogImg/browser/次级资源加载.svg)
+
+![次级资源加载-js](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/blogImg/browser/次级资源加载-js.svg)
 
 ### 1.4 Style 阶段：样式计算
 
