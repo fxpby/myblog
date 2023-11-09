@@ -126,10 +126,11 @@ const sidebars = {
     },
   ],
   browser: [
+    'browser/browser-render-mechanism',
+    'browser/browser-event-loop',
     'browser/layout-paint',
     'browser/browser-storage-caching-scheme',
     'browser/browser-router',
-    'browser/browser-event-loop',
   ],
   'design-pattern': [
     'design-pattern/uml/uml-basics',
