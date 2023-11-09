@@ -41,6 +41,12 @@ tags:
 - 如果主线程解析到 `link` 位置，此时外部 CSS 文件还没有下载解析好，主线程不会等待，继续解析后续的 HTML（下载和解析 CSS 的工作在预解析线程中进行）- **CSS 不会阻塞 HTML 解析**
 - 如果主线程解析到 `script` 位置，会停止解析 HTML，转而等待 JS 文件下载好，并将全局代码解析执行完成后，才能继续解析 HTML（JS 代码的执行过程可能会修改当前的 DOM 树，故 DOM 树的生成必须暂停）- **JS 会阻塞 HTML 解析**
 
+:::tip
+
+如果不想因为 JS 阻塞 HTML 的解析，可以为 script 标签添加 defer 属性或将 script 放在 body 结束标签之前，浏览器会在最后执行 JS 代码，避免阻塞 DOM 构建
+
+:::
+
 最终得到 DOM 树和 CSSOM 树， 浏览器的默认样式、内部样式、外部样式和行内样式均会包含在 CSSOM 树中，树的每个节点都对应 JS 对象
 
 ![render-tree1](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/blogImg/browser/render-tree1.png)
