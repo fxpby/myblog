@@ -49,8 +49,6 @@ tags:
 
 最终得到 DOM 树和 CSSOM 树， 浏览器的默认样式、内部样式、外部样式和行内样式均会包含在 CSSOM 树中，树的每个节点都对应 JS 对象
 
-![render-tree1](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/blogImg/browser/render-tree1.png)
-
 #### DOM 树（文档对象模型）
 
 Bytes => Characters => Tokens => Nodes => DOM
@@ -81,6 +79,10 @@ Bytes => Characters => Tokens => Nodes => CSSOM
 
 > <https://web.dev/articles/critical-rendering-path/constructing-the-object-model?hl=zh-cn>
 
+CSSOM 和 DOM 并行构建，构建 CSSOM 不会阻塞 DOM 构建。因为 JS 可能会操作样式信息，故 CSSOM 会阻塞 JS 执行
+
+虽然 CSSOM 不会阻塞 DOM 构建，但进入下一阶段之前，必须等待 CSSOM 构建完成，即 CSSOM 会阻塞渲染
+
 #### HTML 解析过程遇到 CSS/JS 代码（次级资源加载）
 
 一个网页可能会有多个外部资源，如图片、js、css、字体等。主线程在解析 DOM 过程中遇到这些资源后会一一请求
@@ -97,7 +99,45 @@ Bytes => Characters => Tokens => Nodes => CSSOM
 
 ### 1.4 Style 阶段：样式计算
 
-### 1.5 Layout 阶段
+主线程会遍历得到的 DOM 树，依次为树中的每个节点计算出最终的样式，即 Computed Style
+
+样式属性计算过程中，很多预设值会变成绝对值，如 `red` 会变成 `rgb(255, 0, 0)`, 相对单位会变成绝对单位，`em` 会变成 `px`
+
+计算完成后会得到一颗带有样式 DOM 树
+
+CSS 引擎处理样式过程：
+
+1. 收集、划分和索引所有样式表中存在的样式规则，CSS 引擎会从 style 标签，css 文件及浏览器代理样式中收集所有的样式规则，并为这些规则建立索引，方便后续高效查询
+2. 访问每个元素并找到适用于该元素的所有规则，CSS 引擎遍历 DOM 节点，进行选择器适配，为匹配的节点执行样式设置
+3. 结合层叠规则和其他信息为节点生成最终的计算样式，这些样式值可以通过 `window.getComputedStyle()` 获取
+
+页面样式多的话，即存在大量 CSS 规则，如果为每一个节点都保存一份样式值，会导致内存消耗过大。故 CSS 引擎通常会创建共享的样式结构，计算样式对象一般有指针指向相同的共享结构
+
+### 1.5 Layout 阶段: 布局
+
+布局完成会得到布局树，收集所有可见的 DOM 节点，以及每个节点的所有样式信息
+
+布局阶段会依次遍历 DOM 树的每一个节点，计算每个节点的几何信息，产出可见节点，包含其内容和计算的样式
+
+大部分场景下，DOM 树和布局树不是一一对应的：
+
+- 如某些不可见节点（script、head、meta等）不会体现在渲染输出中，会被忽略
+- 如 `display: none` 节点没有几何信息，不会对应生成到布局树
+- 如使用了伪元素选择器，虽然 DOM 树中不存在伪元素节点，但是拥有几何信息最终会生成到布局树中（为伪元素创建 LayoutObject）
+- 匿名行盒和匿名块盒都会导致 DOM 树和布局树无法一一对应（为行内元素创建匿名包含块对应的 LayoutObject）
+
+#### 布局计算
+
+计算可见节点和其样式后，需要计算它们在设备视口内节点的宽高、相对包含块的位置，这个过程称为自动重排
+
+1. 根据 CSS 盒模型及视觉格式化模型，计算每个元素的各种生成盒的大小和位置
+2. 计算块级元素、行内元素、浮动元素、各种定位元素的大小和位置
+3. 计算文字，滚动区域的大小和位置
+4. LayoutObject 类型：
+   1. 传统的 LayoutObject 节点会把布局运算的结果重新写回布局树中
+   2. LayoutNG （Chrome 76 开始启用）节点的输出不可变，会保存在 NGLayoutResult 中，是一个树状结构，相比 LayoutObject 减少很多回溯计算，提高性能
+
+![render-tree1](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/blogImg/browser/render-tree1.png)
 
 ### 1.6 Paint 阶段
 
@@ -110,3 +150,4 @@ Bytes => Characters => Tokens => Nodes => CSSOM
 <https://web.dev/articles/critical-rendering-path/constructing-the-object-model?hl=zh-cn>
 <https://web.dev/articles/critical-rendering-path/render-tree-construction?hl=zh-cn>
 <https://www.lambdatest.com/blog/css-object-model/>
+<https://web.dev/articles/howbrowserswork?hl=zh-cn>
