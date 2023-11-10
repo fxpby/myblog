@@ -139,9 +139,56 @@ CSS 引擎处理样式过程：
 
 ![render-tree1](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/blogImg/browser/render-tree1.png)
 
-### 1.6 Paint 阶段
+### 1.6 Layer 阶段: 分层
 
-### 1.7 合成 Compositing
+主线程会使用一套复杂的策略对整个布局树中进行分层
+
+分层的好处在于，将来某一个层改变后，仅会对该层进行后续处理，提高效率
+
+滚动条、堆叠上下文、transform、opacity 等样式均会影响分层结果，还可以通过 `will-change` 更大程度影响分层结果
+
+#### 构建 PaintLayer（RenderLayer） 树
+
+构建完成的 layoutObject 树不可以被拿去显示(不包含绘制顺序 z-index),还有一些复杂情况如 3d 变换，页面滚动等，浏览器会对上一步的节点进行分层处理 - 建立层叠上下文
+
+浏览器根据 [CSS 层叠上下文规范](https://www.w3.org/TR/CSS21/zindex.html)，建立层叠上下文
+
+1. DOM 树的 Document 节点对应的 RenderView 节点
+2. DOM 树的 Document 节点的子节点，即 HTML 节点对应的 RenderBlock 节点
+3. 显式指定 CSS 位置的节点（position 为 absolute 或 fixed）
+4. 具有透明效果的节点
+5. 具有 CSS 3D 属性的节点
+6. 使用 Canvas 元素或者 Video 元素的节点
+
+浏览器遍历 LayoutObject 树的时候，建立了 PaintLayer 树，LayoutObject 和 PaintLayer 不一定一一对应，即每个 LayoutObject 要么和自己的 PaintLayer 关联，要么和拥有 PaintLayer 的第一个祖先元素的 PaintLayer 关联
+
+![并非一一对应](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/blogImg/browser/layoutobject-dom-node-compare.png)
+
+#### 构建 cc::Layer 与 display items
+
+浏览器会继续根据 PaintLayer 树创建 cc::Layer 列表，cc::Layer 是列表状结构，运行在主线程，一个渲染进程内有且只有一个 cc::Layer，代表一个矩形区域内的 UI，layer 里有 DisplayItem 列表，是绘制操作的列表，包含实际的 paint op 指令。将页面分层，可以让一个图层独立于其他的图层进行变换和光栅化处理
+
+- 合成更新（Compositing update）
+  - 依据 PaintLayer 决定分层
+  - 这个策略被称为 CompositeBeforePaint，未来会被 CompositeAfterPaint 替代
+  
+- PrePaint
+  - PaintInvalidator 进行失效检查，找出需要绘制的 display items
+  - 构建 paint property 树，使动画、页面滚动，clip 等变化仅在合成线程运行，提高性能
+
+### 1.7 Paint 阶段：绘制
+
+主线程会为每个层单独产生绘制指令集，用于描述这一层的内容该如何画出来
+
+DisplayItem 列表准备好后，渲染主线程会给**合成线程**发送`commit`消息，即将每个图层的绘制信息提交给合成线程，剩余工作将由合成线程完成
+
+### 1.8 Tiling 阶段：分块
+
+合成线程先对每个图层进行分块，将其划分为更多的小区域，再从线程池中拿取多个线程来分块工作
+
+考虑到视口大小，当页面非常大的时候，要滑动很长时间，这样一次性全部绘制是十分浪费性能的，因此需要将图层分块，进而加速页面首屏展示
+
+### 1.9
 
 ## 2. 浏览器渲染性能优化
 
@@ -151,3 +198,6 @@ CSS 引擎处理样式过程：
 <https://web.dev/articles/critical-rendering-path/render-tree-construction?hl=zh-cn>
 <https://www.lambdatest.com/blog/css-object-model/>
 <https://web.dev/articles/howbrowserswork?hl=zh-cn>
+<https://me.ursb.me/archives/360.html#directory03020959219799874718>
+<https://cansiny0320.vercel.app/browser-render-process>
+<https://fed.taobao.org/blog/taofed/do71ct/performance-composite/>
