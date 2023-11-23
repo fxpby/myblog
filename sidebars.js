@@ -348,6 +348,7 @@ const sidebars = {
       collapsed: false,
       items: [
         'leetcode/dynamic-programming/climbing-stairs',
+        'leetcode/dynamic-programming/maximum-subarray',
         'leetcode/dynamic-programming/house-robber',
         'leetcode/dynamic-programming/house-robber-ii',
       ],
