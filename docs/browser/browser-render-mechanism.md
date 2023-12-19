@@ -176,15 +176,17 @@ CSS 引擎处理样式过程：
   - PaintInvalidator 进行失效检查，找出需要绘制的 display items
   - 构建 paint property 树，使动画、页面滚动，clip 等变化仅在合成线程运行，提高性能
 
-### 1.7 Paint 阶段：绘制
+### 1.7 Pre-Paint 阶段：生成绘制指令
 
 主线程会为每个层单独产生绘制指令集，用于描述这一层的内容该如何画出来
 
-DisplayItem 列表准备好后，渲染主线程会给**合成线程**发送`commit`消息，即将每个图层的绘制信息提交给合成线程，剩余工作将由合成线程完成
+DisplayItem 列表准备好后，渲染主线程会给**合成线程**发送`commit`消息，即将每个图层的绘制信息提交给合成线程，剩余工作将由合成线程完成(渲染主线程任务至此告一段落)
 
 ### 1.8 Tiling 阶段：分块
 
 合成线程先对每个图层进行分块，将其划分为更多的小区域，再从线程池中拿取多个线程来分块工作
+
+分块工作
 
 考虑到视口大小，当页面非常大的时候，要滑动很长时间，这样一次性全部绘制是十分浪费性能的，因此需要将图层分块，进而加速页面首屏展示
 
@@ -194,10 +196,10 @@ DisplayItem 列表准备好后，渲染主线程会给**合成线程**发送`com
 
 ## reference
 
-<https://web.dev/articles/critical-rendering-path/constructing-the-object-model?hl=zh-cn>
-<https://web.dev/articles/critical-rendering-path/render-tree-construction?hl=zh-cn>
-<https://www.lambdatest.com/blog/css-object-model/>
-<https://web.dev/articles/howbrowserswork?hl=zh-cn>
-<https://me.ursb.me/archives/360.html#directory03020959219799874718>
-<https://cansiny0320.vercel.app/browser-render-process>
-<https://fed.taobao.org/blog/taofed/do71ct/performance-composite/>
+<https://web.dev/articles/critical-rendering-path/constructing-the-object-model?hl=zh-cn>  
+<https://web.dev/articles/critical-rendering-path/render-tree-construction?hl=zh-cn>  
+<https://www.lambdatest.com/blog/css-object-model/>  
+<https://web.dev/articles/howbrowserswork?hl=zh-cn>  
+<https://me.ursb.me/archives/360.html#directory03020959219799874718>  
+<https://cansiny0320.vercel.app/browser-render-process>  
+<https://fed.taobao.org/blog/taofed/do71ct/performance-composite/>  
