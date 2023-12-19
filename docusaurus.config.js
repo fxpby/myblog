@@ -148,6 +148,10 @@ const config = {
                 label: 'Vue2',
                 to: '/docs/Vue/vue2/vue2-learn-prepare',
               },
+              {
+                label: 'React',
+                to: '/docs/react/react-re-renders',
+              },
             ],
             catalog: 'docs/frontend',
             itemType: 'child',
@@ -259,7 +263,7 @@ const config = {
               process.env.DEPLOY_SERVER === 'deploygithub'
                 ? '/myblog/img/beian.png'
                 : '/img/beian.png'
-            } style="float: left;"> 
+            } style="float: left;">
             <p style="float: left; height: 20px; line-height: 20px; margin: 0px 0px 0px 5px; color: rgb(147, 147, 147);">
               津公网安备 12011602000961号
             </p>
