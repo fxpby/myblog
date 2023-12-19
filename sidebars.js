@@ -98,6 +98,9 @@ const sidebars = {
     'vue/vue2/vue2-init-process',
     'vue/vue2/vue2-reactivity',
   ],
+  React: [
+    'react/react-re-renders',
+  ],
   'front-end-engineering': [
     'front-end-engineering/travis-ci-for-vuepress',
     'front-end-engineering/github-action-for-vuepress',
