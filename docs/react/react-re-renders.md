@@ -776,3 +776,41 @@ const Component = () => {
   )
 }
 ```
+
+### ⛔5.1 反模式：使用随机数作为列表的 key
+
+这个是必需必需必需避免的行为，打死也不能用随机数作为列表的 key，因为会导致 React 在**每次 re-render** 时都 re-mount 元素，进而
+
+- 列表性能糟糕
+- 有 state 或 任何不受控元素（如 form inputs）时出现错误
+
+```jsx
+const Child = ({ value }: { value: number }) => {
+  console.log("Child re-renders", value);
+
+  useEffect(() => {
+    console.log("Child re-mounts");
+  }, []);
+  return <div>{value}</div>;
+};
+
+const values = [1,2,3]
+
+const ChildMemo = React.memo(Child)
+
+const Component = () => {
+  const [state, setState] = useState(0)
+  const handleClick = () => {
+    setState(state + 1)
+  }
+
+  return (
+    <>
+      <button onClick={() => handleClick()}>click here {state}</button>
+      <br/>
+      {/* 导致 re-mounts every render ! */}
+      {values.map((val) => (<ChildMemo value={val} key={Math.random()} />))}
+    </>
+  )
+}
+```
