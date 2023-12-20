@@ -145,7 +145,7 @@ const Component = () => {
 
 ### 🌟4.1 巧妙利用组合
 
-#### ⛔4.1.1 在 `render function` 中创建组件
+#### ⛔4.1.1 避免在 `render function` 中创建组件
 
 在另一个组件的 `render function` 中创建组件是一种反模式，这可能是最大的性能杀手
 
