@@ -442,3 +442,262 @@ const Component = () => {
 #### ✅4.2.1 React.memo + component with props
 
 **所有的非基础类型（引用类型）的props** 都必须进行 memo 化，这样 React.memo 才能工作
+
+```jsx
+const Child = ({value}) => {
+  console.log('Child re-render ', value.value)
+  return <>{value.value}</>
+}
+
+const ChildMemo = React.memo(Child)
+
+const Component = () => {
+  const [state, setState] = useState(0)
+
+  const handleClick = () => {
+    // 1. 触发 re-render
+    setState(state + 1)
+  }
+
+  const memoValue = useMemo(() => ({value: 'second'}), [])
+
+  return (
+    <>
+      <button onClick={()=>handleClick()}>click here, state: {state}</button>
+      {/* 2. value changes, re-render */}
+      <ChildMemo value={{value: 'first'}}/>
+      {/* 2. memoValue 没变, 不会 re-render */}
+      <ChildMemo value={memoValue}/>
+    </>
+  )
+}
+```
+
+#### ✅4.2.2 React.memo + components as props or children
+
+React.memo 必须应用于作为 children 或 props 的元素
+
+当 children 和 props 都是 object 时，每次 re-render 都会改变，缓存的父组件将会不起作用
+
+```jsx title="Memoized children or props of not memoized parent should not"
+const Child = ({value}) => {
+  console.log("Child re-render ", value.value)
+  return <>{value.value}</>
+}
+
+const ChildMemo = React.memo(Child)
+
+const Parent = ({left, children}) => {
+  return (
+    <div>
+      {left}
+      {children}
+    </div>
+  )
+}
+
+const ParentMemo = React.memo(Parent)
+
+const Component = () => {
+  const [state, setState] = useState(0)
+
+  const handleClick = () => {
+    // 1. 触发 re-render
+    setState(state + 1)
+  }
+
+  const memoValue = useMemo(() => ({value: "memoized"}), [])
+
+  return (
+    <>
+      <button onClick={() => handleClick()}>click here,state: {state}</button>
+      {/* re-render */}
+      <ParentMemo left={<child value={{value: "left child of ParentMemo"}} />}>
+        <Child value={{value: "child of ParentMemo"}}/>
+      </ParentMemo>
+
+      {/* re-render */}
+      <ParentMemo left={<ChildMemo value={{value: "left ChildMemo of ParentMemo without memoValue"}} />}>
+        <ChildMemo value={{value: "ChildMemo of ParentMemo without memoValue"}}/>
+      </ParentMemo>
+      
+      {/* doesn't re-render */}
+      <Parent left={<ChildMemo value={memoValue} />}>
+        <ChildMemo value={memoValue}/>
+      </Parent>
+    </>
+  )
+}
+```
+
+### 🚗4.3 使用 useMemo/useCallback 提高性能
+
+#### ⛔4.3.1 反模式：在 props 中使用非必要的 useMemo/useCallback
+
+缓存 props 本身不会阻止子组件 re-render，如果一个 父组件 re-render，无论 props 怎么样都会触发它子组件的 re-render
+
+```jsx
+const Child = ({value}) => {
+  console.log("child re-render", value.value)
+  return <>{value.value}</>
+}
+
+const Component = () => {
+  const [state, setState] = useState(0)
+
+  const handleClick = () => {
+    // 1. 触发 re-render
+    setState(state + 1)
+  }
+
+  const memoValue = useMemo(() => ({value: "child"}), [])
+
+  return (
+    <>
+      <button onClick={()=>handleClick()}>click here, state:{state}</button>
+      {/* 2. re-render */}
+      <Child value={memoValue} />
+    </>
+  )
+}
+```
+
+#### ✅4.3.2 必要的使用 useMemo/useCallback
+
+如果子组件被 `React.memo` 包裹，则**所有**非基础类型（引用类型）的 props 都必须被缓存
+
+```jsx
+const Child = ({value}) => {
+  console.log('Child re-render ', value.value)
+  return <>{value.value}</>
+}
+
+const ChildMemo = React.memo(Child)
+
+const Component = () => {
+  const [state, setState] = useState(0)
+
+  const handleClick = () => {
+    // 1. 触发 re-render
+    setState(state + 1)
+  }
+
+  const memoValue = useMemo(() => ({value: 'second'}), [])
+
+  return (
+    <>
+      <button onClick={()=>handleClick()}>click here, state: {state}</button>
+      {/* 2. value changes, re-render */}
+      <ChildMemo value={{value: 'first'}}/>
+      {/* 2. memoValue 没变, 不会 re-render */}
+      <ChildMemo value={memoValue}/>
+    </>
+  )
+}
+```
+
+如果组件在 useEffect, useMemo, useCallback 等 hook 中使用非基础类型值作为依赖，也应该被缓存
+
+```jsx
+const component = () => {
+  const [state, setState] = useState(0)
+
+  const handleClick = () => {
+    // 1. 触发 re-render
+    setState(state + 1)
+  }
+
+  const value = {value: "not memoized"}
+
+  const memoValue = useMemo(() => ({ value: "memoized" }))
+
+  // 除首次渲染其他不触发
+  useEffect(() => {
+    console.log("never triggered")
+  }, [memoValue])
+
+  // 每次重新渲染都触发
+  useEffect(() => {
+    console.log("triggered on every re-render")
+  }, [value])
+
+  return (
+    <button onClick={() => handleClick()}>click here</button>
+  )
+}
+```
+
+#### ✅4.3.3 使用 useMemo 进行复杂的计算
+
+useMemo 的一个用处是避免每次 re-render 是进行复杂的计算
+
+useMemo 存在性能耗费问题（消耗部分内存，让初次渲染变慢），不能滥用。在 React 中，挂载和更新组件是最昂贵复杂的计算
+
+所以，使用 useMemo 的典型场景是缓存 React 元素，通常是已经存在的 render tree 的一部分或生成 render tree 的结果，如返回新元素的 map 函数
+
+同组件更新相比，排序或过滤数组这种纯 JavaScript 操作的成本可以忽略不计
+
+```jsx
+const Child = ({value}) => {
+  console.log("child re-render", value.value)
+  return <>{value.value}</>
+}
+
+const values = [1,2,3]
+const values2 = [4,5,6]
+
+
+const Component = () => {
+  const [state, setState] = useState(0)
+
+  const handleClick = () => {
+    // 1. 触发 re-render
+    setState(state + 1)
+  }
+
+  const items = useMemo(() => {
+    return values.map((v,i) => <Child key={i} value={{v}} />)
+  }, [])
+
+  const items2 = values2.map((v,i) => <Child key={i} value={{v}} />
+
+  return (
+    <>
+      <button> click here {state} </button>
+      {items}
+      <br/>
+      {items2}
+    </>
+  )
+}
+```
+
+```jsx
+const SlowComponent = () => {
+  console.log("slow component re-renders");
+  return <div>slow component</div>;
+};
+
+const component = () => {
+  const [state, setState] = useState(1);
+
+  const onClick = () => {
+    setState(state + 1);
+  };
+
+  const slowComponent = useMemo(() => {
+    return <SlowComponent />;
+  }, []);
+
+  return (
+    <>
+      <button onClick={onClick}>click here {state}</button>
+      <br />
+      {/* 不会 re-render */}
+      {slowComponent}
+    </>
+  )
+}
+```
+
+### 🚄4.4 提高列表的 re-render 性能
