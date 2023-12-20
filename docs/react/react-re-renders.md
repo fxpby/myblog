@@ -1,6 +1,6 @@
 ---
 id: react-re-renders
-title: React 重新渲染
+title: React 重新渲染(re-render)
 tags:
   - react
   - re-render
@@ -700,4 +700,79 @@ const component = () => {
 }
 ```
 
-### 🚄4.4 提高列表的 re-render 性能
+## 🚄5. 提高列表的 re-render 性能
+
+除了上面那些 和 re-render 相关的规则模式外，key 属性也会影响 React 列表中的性能
+
+**仅提供 key 属性并不能提高列表的性能，为了防止列表元素 re-render，需要使用 React.memo 对其进行封装，并遵守所有的最佳实践**😆
+
+key 中的值需要是字符串，并且在列表中每次元素 re-render 时 key 都需要保持一致
+
+通常 item 的 id 或数组的 index 可以用来当做 key
+
+如果列表是**静态**的，即元素不会添加/删除/插入/重新排序，则可以使用数组的 index 作为 key
+
+but，在**动态**列表中，使用数组 index 作为 key 就有问题了
+
+- 有 state 或 不受控的元素（如 form inputs）的话，可能会出现错误
+- 如果 items 被 React.memo 包裹，性能会下降
+
+```jsx title="静态列表，无区别"
+const Child = ({ value }: { value: number }) => {
+  console.log("Child re-renders", value);
+  return <div>{value}</div>;
+};
+
+const values = [1,2,3]
+
+const ChildMemo = React.memo(Child)
+
+const Component = () => {
+  const [state, setState] = useState(0)
+  const handleClick = () => {
+    setState(state + 1)
+  }
+
+  return (
+    <>
+      <button onClick={() => handleClick()}>click here {state}</button>
+      <br/>
+      {values.map((val,idx) => (<ChildMemo value={val} key={idx} />))}
+      <br/>
+      {values.map((val) => (<ChildMemo value={val} key={val} />))}
+    </>
+  )
+}
+```
+
+```jsx title="动态列表，索引粗问题了"
+const Child = ({ value }: { value: number }) => {
+  console.log("Child re-renders", value);
+  return <div>{value}</div>;
+};
+
+const values = [1,2,3]
+
+const ChildMemo = React.memo(Child)
+
+const Component = () => {
+  const [state, setState] = useState(false)
+  const handleClick = () => {
+    setState(!state)
+  }
+
+  const sortedValues = state ? values.sort() : values.sort().reverse()
+
+  return (
+    <>
+      <button onClick={() => handleClick()}>click here {state}</button>
+      <br/>
+      {/* 用 React.memo 包裹也 gg，还是触发了 re-render */}
+      {sortedValues.map((val, index) => (<ChildMemo value={`child of index: ${val}` key={index}} />))}
+      <br/>
+      {/* 没触发 re-render */}
+      {sortedValues.map((val) => (<ChildMemo value={`child of val: ${val}` key={val}} />))}
+    </>
+  )
+}
+```
