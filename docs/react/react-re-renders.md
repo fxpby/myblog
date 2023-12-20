@@ -330,7 +330,7 @@ const SplitComponent = () => {
 
 #### ✅4.1.4 `components` as `props`
 
-和之前的 `children` 作为 `props` 类似，将 `state` 封装在一个较小的组件内，重型组件作为 `props` `传递，props` 不受 `state` 改变的影响，故重型组件不会 `re-render`
+和之前的 `children` 作为 `props` 类似，将 `state` 封装在一个较小的组件内，重型组件作为 `props` 传递，`props` 不受 `state` 改变的影响，故重型组件不会 `re-render`
 
 当一些重型组件的 `state` 独立，但是无法作为 `children` 提取出来时，这种方法就很棒
 
@@ -437,7 +437,7 @@ const Component = () => {
 
 #### ✅4.2.1 `React.memo` + `component with props`
 
-**所有的非基础类型（引用类型）的props** 都必须进行缓存（`useMemo`），这样 `React.memo` 才能工作
+**所有的非基础类型（引用类型）的 `props`** 都必须进行缓存（`useMemo`），这样 `React.memo` 才能工作
 
 ```jsx
 const Child = ({value}) => {
@@ -625,11 +625,11 @@ const component = () => {
 
 #### ✅4.3.3 使用 `useMemo` 进行复杂的计算
 
-`useMemo` 的一个用处是避免每次 re-ren`der` 是进行复杂的计算
+`useMemo` 的一个用处是避免每次 `re-render` 是进行复杂的计算
 
-`useMemo` 存在性能耗费问题（消耗部分内存，让初次渲染变慢），不能滥用。在 `React` 中，挂载和更新组件是最昂贵复杂的计算
+`useMemo` 存在性能耗费问题（消耗部分内存，让初次渲染变慢），不能滥用。在 React 中，挂载和更新组件是最昂贵复杂的计算
 
-所以，使用 `useMemo` 的典型场景是缓存 `React` 元素，通常是已经存在的 `render tree` 的一部分或生成 `render tree` 的结果，如返回新元素的 map 函数
+所以，使用 `useMemo` 的典型场景是缓存 React 元素，通常是已经存在的 `render tree` 的一部分或生成 `render tree` 的结果，如返回新元素的 map 函数
 
 同组件更新相比，排序或过滤数组这种纯 JavaScript 操作的成本可以忽略不计
 
@@ -775,7 +775,7 @@ const Component = () => {
 
 ### ⛔5.1 反模式：使用随机数作为列表的 key
 
-这个是必需必需必需避免的行为，打死也不能用随机数作为列表的 `key`，因为会导致 `React` 在**每次 re-render** 时都 `re-mount` 元素，进而
+这个是必需必需必需避免的行为，打死也不能用随机数作为列表的 `key`，因为会导致 React 在**每次 re-render** 时都 `re-mount` 元素，进而
 
 - 列表性能糟糕
 - 有 `state` 或 任何不受控元素（如 form inputs）时出现错误
