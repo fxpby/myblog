@@ -133,7 +133,7 @@ const Component = () => {
 }
 ```
 
-### ⛔3.5 props 改变
+### 💬 3.5 props 改变
 
 在 re-render 非 memoized 组件时，组件的 props 是否改变并不重要
 
@@ -143,7 +143,9 @@ const Component = () => {
 
 ## 🚑4. 规避 re-render 的方式
 
-### ⛔4.1 在 render function 中创建组件
+### 🌟4.1 巧妙利用组合
+
+#### ⛔4.1.1 在 render function 中创建组件
 
 在另一个组件的 render function 中创建组件是一种反模式，这可能是最大的性能杀手
 
@@ -196,7 +198,7 @@ const Component = () => {
 }
 ```
 
-### ✅4.2 向下移动 state
+#### ✅4.1.2 向下移动 state
 
 当一个重型组件需要管理 state，并且 state 只用于 render tree 的一小部分时，这个方式会很棒
 
@@ -263,4 +265,180 @@ const SplitComponent = () => {
 }
 ```
 
-### ✅4.3 children as props
+#### ✅4.1.3 children as props
+
+这种模式和前面的“向下移动”类似，那种将 state 包裹在 children 周围的感觉，即将 state 变化封装在一个较小的组件中
+
+区别是 state 用在一个元素上，该元素包裹了 render tree 的一个较慢的部分，所有无法轻松提取
+
+较多的使用场景是 onScroll 或 onMouseMove callbacks 附加到组件的根元素上
+
+这种情况 state 管理和使用相关 state 的组件提取到一个小组件中，并将慢组件作为 children 传递给它。从较小组件的角度看，children 只是 prop，不会收到 state 改变的影响，故不会 re-render
+
+```jsx title="不拆分，全量"
+const SlowComponent = () => {
+  console.log("slow component re-renders")
+  return <div>slow component</div>
+}
+
+const FullComponent = () => {
+  const [state, setState] = useState(0)
+
+  const handleClick = () => {
+    // 1. 触发 re-render
+    setState(state + 1)
+  }
+
+  return (
+    <div onClick={() => handleClick()}>
+      <div>Re-render count: {state}</div>
+      {/* 2. re-render */}
+      <SlowComponent />
+    </div>
+  )
+}
+```
+
+```jsx title="拆分后"
+const SlowComponent = () => {
+  console.log("slow component re-renders")
+  return <div>slow component</div>
+}
+
+const ComponentWithClick = ({children}) => {
+  const [state, setState] = useState(0)
+
+  const handleClick = () => {
+    // 1. 触发 re-render
+    setState(state + 1)
+  }
+
+  return (
+    <div onClick={() => handleClick()}>
+      <div>Re-render count: {state}</div>
+      {/* 2. props，不受影响 */}
+      {children}
+    </div>
+  )
+}
+
+const SplitComponent = () => {
+  return (
+    <ComponentWithClick>
+      {/* 3. 不受影响 */}
+      <SlowComponent/>
+    </ComponentWithClick>
+  )
+}
+```
+
+#### ✅4.1.4 components as props
+
+和之前的 children 作为 props 类似，将 state 封装在一个较小的组件内，重型组件作为 props 传递，props 不受 state 改变的影响，故重型组件不会 re-render
+
+当一些重型组件的 state 独立，但是无法作为 children 提取出来时，这种方法就很棒
+
+```jsx title="不拆分，全量"
+const SlowComponent = () => {
+  console.log("slow component re-renders")
+  return <div>slow component</div>
+}
+
+const AnotherSlowComponent = () => {
+  console.log("another slow component re-renders")
+  return <div>another slow component</div>
+}
+
+const FullComponent = () => {
+  const [state, setState] = useState(0)
+  const handleClick = () => {
+    // 1. 触发 re-render
+    setState(state + 1)
+  }
+
+  return (
+    <div>
+      <div>Re-render count: {state} </div>
+      {/* 2. re-render */}
+      <SlowComponent/>
+      {/* 2. re-render */}
+      <AnotherSlowComponent/>
+    </div>
+  )
+}
+```
+
+```jsx title="拆分后"
+const SlowComponent = () => {
+  console.log("slow component re-renders")
+  return <div>slow component</div>
+}
+
+const AnotherSlowComponent = () => {
+  console.log("another slow component re-renders")
+  return <div>another slow component</div>
+}
+
+const ComponentWithClick = (left, right) => {
+  const [state, setState] = useState(0)
+  const handleClick = () => {
+    // 1. 触发 re-render
+    setState(state + 1)
+  }
+
+  return (
+    <div>
+      <div>Re-render count: {state} </div>
+      {/* 2. 作为 props 不受影响 */}
+      {left}
+      {/* 2. 作为 props 不受影响 */}
+      {right}
+    </div>
+  )
+}
+
+const SplitComponent = () => {
+  const left = <SlowComponent/>
+  const right = <AnotherSlowComponent/>
+
+  return (
+    <>
+      <ComponentWithClick left={left} right={right}/>
+    </>
+  )
+}
+```
+
+### 🛴4.2 使用 React.memo
+
+使用 `React.memo` 包裹组件可以停止在 render tree 的某处触发下游的 re-render 链条，除非组件的 props 改变
+
+在渲染不依赖 re-render 源头（state 改变）的重型组件的场景这个方法很棒
+
+```jsx
+const Child = () => {
+  console.log("child re-render")
+  return <>child</>
+}
+
+const ChildMemo = React.memo(Child)
+
+const Component = () => {
+  const [state, setState] = useState(0)
+
+  const handleClick = () => {
+    setState(state + 1)
+  }
+
+  return (
+    <>
+      <button onClick={() => handleClick()}>click here, state: {state}</button>
+      <ChildMemo/>
+    </>
+  )
+}
+```
+
+#### ✅4.2.1 React.memo + component with props
+
+**所有的非基础类型（引用类型）的props** 都必须进行 memo 化，这样 React.memo 才能工作
