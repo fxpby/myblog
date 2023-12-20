@@ -139,7 +139,7 @@ const Component = () => {
 
 为了改变 `props`，需要通过父组件对其进行更新。这意味着父组件需要 `re-render`，这会触发子组件的 `re-render`，不管 `props` 是什么
 
-只有在使用 `React.memo` or `useMemo` `时，props` 改变才重要
+只有在使用 `React.memo` or `useMemo` 时，`props` 改变才重要
 
 ## 🚑4. 规避 `re-render` 的方式
 
