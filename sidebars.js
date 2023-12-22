@@ -100,6 +100,7 @@ const sidebars = {
   ],
   React: [
     'react/react-re-renders',
+    'react/react-elements-children-parents'
   ],
   'front-end-engineering': [
     'front-end-engineering/travis-ci-for-vuepress',

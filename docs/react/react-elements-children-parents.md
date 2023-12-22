@@ -1,6 +1,6 @@
 ---
 id: react-elements-children-parents
-title: React elements,children,parents 和 re-renders
+title: React elements,children,parents 和 re-render
 tags:
   - react
   - re-render
