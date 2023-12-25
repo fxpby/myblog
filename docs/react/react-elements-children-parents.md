@@ -1,6 +1,6 @@
 ---
 id: react-elements-children-parents
-title: React elements,children,parents 和 re-render
+title: React elements, children, parents 和 re-render
 tags:
   - react
   - re-render
@@ -393,3 +393,49 @@ const SomeOutsideComponent = () => {
 在这里我们只对 `MovingComponentMemo` 进行了缓存，但是他仍然有 `children` `prop`，`children` 接受一个 `Element` （object）。每次 `re-render` 时都会 `re-create` 这个对象，`memoized` 组件会尝试进行 `props` 检查，检查到 `children` `prop` 改变，就会触发 `MovingComponentMemo` `re-render`, 这里 `ChildComponent` 的定义被 `re-create`，所以也会触发 `re-render`
 
 ### 5.4 迷惑点4: 使用 useCallback 包裹 render function，仍 re-render
+
+```jsx
+const SomeOutsideComponent = () => {
+  const [state, setState] = useState()
+
+  const child = useCallback(() => <ChildComponent />, [])
+
+  return (
+    <MovingComponent>
+      {/* 尽管用 useCallback 包裹缓存了，但是还是 re-render */}
+      {child}
+    </MovingComponent>
+  )
+}
+```
+
+上面这段代码 `child` 作为函数进行传递，且被缓存，但是仍然 `re-render`，和下面这段代码等同
+
+```jsx
+const SomeOutsideComponent = () => {
+  const [state, setState] = useState()
+
+  const child = useCallback(() => <ChildComponent />, [])
+
+  return (
+    <MovingComponent children={child} />
+  )
+}
+```
+
+如果想阻止 `ChildComponent` `re-render`，需要不在这里使用 `useCallback` 缓存，只是将 `ChildComponent` 包裹在 `React.memo` 中，`MovingComponent` `re-render`， `children` 函数会被触发，但是它的结果被缓存，所以最终 `ChildComponent` 不会 `re-render`
+
+```jsx
+const SomeOutsideComponent = () => {
+  const [state, setState] = useState()
+
+  const child = useCallback(() => <ChildComponent />, [])
+  const ChildComponentMemo = React.memo(ChildComponent);
+
+  return (
+    <MovingComponent>
+      {() => <ChildComponentMemo />}  
+    <MovingComponent/>
+  )
+}
+```
