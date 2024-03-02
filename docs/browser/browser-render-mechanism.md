@@ -21,7 +21,7 @@ tags:
 - 样式计算
 - 布局
 - 分层
-- 绘制
+- 生成绘制指令
 - 分块
 - 光栅化
 - 画
@@ -29,6 +29,8 @@ tags:
 每个阶段都有明确的输入输出，即上一阶段的输出会成为下一阶段的输入，综上整个渲染流程形成了一套组织严密的生产流水线
 
 ![渲染进程流水线2](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/blogImg/browser/渲染进程流水线2.svg)
+
+![browser-render-full-flow](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/browser/browser-render-full-flow.svg)
 
 来自google的图：
 
@@ -186,13 +188,34 @@ DisplayItem 列表准备好后，渲染主线程会给**合成线程**发送`com
 
 合成线程先对每个图层进行分块，将其划分为更多的小区域，再从线程池中拿取多个线程来分块工作
 
-分块工作
+分块的原因：
 
 考虑到视口大小，当页面非常大的时候，要滑动很长时间，这样一次性全部绘制是十分浪费性能的，因此需要将图层分块，进而加速页面首屏展示
 
-### 1.9
+![browser-render-tiling](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/browser/browser-render-tiling.svg)
+
+### 1.9 Raster 阶段: 光栅化
+
+合成线程将块信息交给 GPU 进程，将每个块变成**位图**（像素信息-像素点、颜色等），GPU 进程会开启多个线程完成光珊瑚，且优先处理靠近视口的块
+
+![browser-render-raster](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/browser/browser-render-raster.svg)
+![browser-render-raster2](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/browser/browser-render-raster2.svg)
+
+### 1.10 画
+
+合成线程拿到每个层、每个块的**位图**后，生成一个个 `quad` 指引信息
+
+指引会标识出每个位图应该画到屏幕的哪个位置（如考虑旋转、缩放等变形）
+
+变形发生在合成线程，与渲染主线程无关（即 `transform` 高效率的本质）
+
+合成线程把 `quad` 提交给 GPU 进程，由 GPU 进程产生系统调用，提交给 GPU 硬件，完成最终的屏幕成像
+
+![browser-render-draw](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/browser/browser-render-draw.svg)
 
 ## 2. 浏览器渲染性能优化
+
+### 2.1 reflow
 
 ## reference
 
