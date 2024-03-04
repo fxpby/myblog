@@ -16,18 +16,75 @@
 
 ### 引起重排/重绘的常见操作
 
-- 外观有变化时，会导致重绘，比如修改 `color` `opacity` 等样式属性
-- 布局结构或者节点内容变化时，会导致重排，比如修改 `height` `float` `position` 等样式属性
-  - 盒子尺寸和类型
+#### 重排
+
+- 布局结构或者节点内容变化时，会导致**重排**，比如修改 `height` `float` `position` 等样式属性或添加删除可见 DOM 元素
+  - 盒子尺寸和类型（如文本或图片大小改变导致计算宽度or高度改变）
   - 定位方案（正常流、浮动和绝对定位）
   - 文档树中元素之间的关系
   - 外部信息（如视口大小）
-- 获取布局信息时，会导致重排，比如使用 `offsetTop` `getComputedStyle`
+- 获取布局信息时，会导致**重排**，比如使用 `offsetTop` `getComputedStyle`
+- 页面初始化渲染导致**重排**
+- 浏览器窗口尺寸改变-`resize` 事件会导致**重排**
+
+#### 重绘
+
+- 外观有变化时，会导致**重绘**，比如修改 `color` `opacity` 等样式属性
 
 ## 如何减少重排重绘
 
+### 浏览器优化策略
+
+浏览器会维护一个队列，把所有会触发重排重绘的操作放入这个队列，队列中操作达到一定的数量或者时间间隔，浏览器就会清理冲刷队列进行一次批处理，进而让多次的重排重绘合成成为一次重排重绘。
+
+but 我们写一些 js 如获取属性的场景就会强制浏览器提前清理冲刷队列（强制重排）。这些属性包括 offsetTop、offsetLeft、 offsetWidth、offsetHeight、scrollTop、scrollLeft、scrollWidth、scrollHeight、 clientTop、clientLeft、clientWidth、clientHeight、getComputedStyle()  
+
+### 开发者优化方式
+
+- 将多次改变样式属性的操作合并成一次操作
 - 对 `DOM` 进行批量写入和读取（通过 `虚拟DOM` 或者 `DocumentFragment` 实现）
+  - 如需要异步获取表格数据渲染页面，可以先获取数据后在内容中构建整个 HTML 片段，再一次性添加到 DOM 中，而不是循环添加每一行
+  
+  ```js
+  const changeDiv = document.getElementById('changeDiv')
+  changeDiv.style.color = '#fff'
+  changeDiv.style.background = '#eee'
+  changeDiv.style.height = '100px'
+  ```
+
+  可以合并成
+
+  ```css
+  #changeClassName {
+      background: #eee;
+      color: #fff;
+      height: 100px;
+  }
+  ```
+
+  ```js
+  document.getElementById('changeDiv').className = changeClassName;
+  ```
+
 - 避免对样式进行频繁操作，了解常用样式属性触发 Layout/Paint/Composite 的机制，合理使用样式
+  - 如将需要多次重排的元素，position 设置为 absolute 或 fixed，让它脱离文档流，这样变化后就不会影响到其他元素（具有动画效果的元素绝对定位较好）
+  - 如由于 display 为 none 的元素不在渲染树中，对隐藏的元素操作不会引发其他元素的重排，所以若要对一个元素进行复杂的操作时，可以先隐藏，完成操作处理后再显示，这样可以控制只在隐藏和显示时触发 2 次重排
 - 合理利用特殊样式属性（如 `transform: translateZ(0)` 或者 `will-change`）, 将渲染层提升为合成层，开启 `GPU 加速`，提高页面性能
-- 使用变量对布局信息（如 `clientTop`进行缓存，避免频繁读取布局信息触发重排和重绘）
+- 使用变量对布局信息（对于经常要取值访问的属性如 `clientTop`缓存到变量，避免频繁读取布局信息触发重排和重绘）
+  
+  ```js
+  // bad
+  const width = elem.getBoundingClientRect().width
+  const height = elem.getBoundingClientRect().height
+  const top = elem.getBoundingClientRect().top
+  const left = elem.getBoundingClientRect().left
+
+  // good
+  const elemClientRect = elem.getBoundingClientRect()
+  const width = elemClientRect.width
+  const height = elemClientRect.height
+  const top = elemClientRect.top
+  const left = elemClientRect.left
+  ```
+
 - 借助 `DevTools Performance` 面板查看重排重绘任务占用主线程的情况和调用代码
