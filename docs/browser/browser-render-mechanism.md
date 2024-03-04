@@ -215,7 +215,25 @@ DisplayItem 列表准备好后，渲染主线程会给**合成线程**发送`com
 
 ## 2. 浏览器渲染性能优化
 
+我们在修改元素几何信息时，实际修改的是 CSSOM 或 DOM
+
+![browser-render-full-flow](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/browser/browser-render-full-flow.svg)
+
 ### 2.1 reflow
+
+重排对应浏览器渲染过程中的 `Layout`, 其本质是重新计算 layout 树
+
+为了避免连续多次操作导致布局树反复计算，浏览器会合并这些操作，当 js 代码全部完成后再进行统一计算，即改动属性造成的 reflow 是异步完成的，这也就导致了，在 js 获取布局属性时，可能会造成无法获取到最新布局信息的问题。为了解决这个问题浏览器便有了使用 js 获取属性时产生一个同步任务会立即 reflow 的机制（设置属性异步，读取属性同步）
+
+### 2.2 repaint
+
+重绘对应浏览器渲染过程中的 `Paint`, 其本质是重新根据分层信息计算绘制指令
+
+改变可见样式后小重新计算，就会触发 repaint
+
+元素的布局信息也属于可见样式，从上面的流程图中我们可以发现 Layout 改变一定会触发 Paint，即重排一定会触发重绘
+
+更具体的内容请参考这篇总结 [浏览器的重排和重绘](/docs/browser/layout-paint.md)
 
 ## reference
 
