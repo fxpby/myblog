@@ -129,7 +129,7 @@ const sidebars = {
       type: 'category',
       label: 'webpack',
       collapsed: false,
-      items: ['front-end-engineering/webpack/loader'],
+      items: ['front-end-engineering/webpack/webpack-loader'],
     },
   ],
   browser: [
