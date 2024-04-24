@@ -1,6 +1,6 @@
 ---
 id: webpack-loader
-title: webpack loader
+title: Loader
 tags:
   - 工程化
   - webpack
