@@ -131,6 +131,7 @@ const sidebars = {
       collapsed: false,
       items: ['front-end-engineering/webpack/webpack-loader'],
     },
+    'front-end-engineering/babel',
   ],
   browser: [
     'browser/browser-render-mechanism',
