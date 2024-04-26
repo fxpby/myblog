@@ -107,9 +107,93 @@ Babel 会递归读取 `preset`，最终获取一个大的 `plugin` 数组，用�
 - @babel/preset-react
 - @babel/preset-flow
 
-其中的 @babel/preset-env 预设是最常见的，它包含了一组最新浏览器已支持的 ES 语法特性，并且可以通过配置目标运行环境范围，自动按需引入插件
+#### 4.1.1 @babel/preset-env
 
-### 4.2 编写 Babel 插件
+其中的 @babel/preset-env 智能预设是最常见的，它包含了一组最新浏览器已支持的 ES 语法特性，并且可以通过配置目标运行环境范围，自动按需引入插件
+
+内部集成了绝大多数 plugin （Stage > 3）的分析转换插件
+
+::: caution
+@babel/preset-env 不包含低于 Stage 3 的JavaScript 语法提案，如果需要兼容则要额外引对应的 Plugin
+
+@babel/preset-env 仅针对语法阶段分析转换，如 const、let、箭头函数这种的。对于一些 Api 或者 ES6 内置模块的 polyfill 无法处理
+:::
+
+#### 4.1.2 @babel/preset-react
+
+在开发 React 项目编写 jsx 时，本质上 jsx 最后会被编译成 `React.createElement()`
+
+@babel/preset-react 预设就是对 jsx 进行分析转换
+
+#### 4.1.3 @babel/preset-typescript
+
+@babel/preset-typescript 顾名思义是对 ts 代码进行分析转换
+
+### 4.2 常见 plugin
+
+大多数常见的 plugin 都已经集成在 @babel/preset-env 中了，如果我们发现项目不能支持某些新的 js 语法时，可以查 babel plugin list找到对应的插件，插入到我们的 babel 配置中
+
+> <https://babeljs.io/docs/en/plugins-list>
+
+比较重要常见的插件有 `@babel/plugin-transform-runtime`
+
+### 4.3 基建 Babel 配置
+
+日常项目我们主要会涉及到三个插件
+
+- babel-loader
+- @babel/core
+- @babel/preset-env
+
+#### 4.3.1 babel-loader
+
+webpack 中 loader 本质是一个函数，接受源代码作为入参同时返回新内容
+
+所以 babel-loader 本质是一个函数
+
+> 各种基建项目的初始化方式：<https://babeljs.io/setup>
+
+`@babel/core` 是编译代码的核心库，可以将代码进行`词法分析--语法分析--语义分析`生成 AST 抽象语法树（相当于`@babel/parse`和`@babel/generator`的合体，类似 js 编译相关的 `esprima` 和 `escodegen` 两个库）
+
+`@babel/core`通过 transform 方法进行转换编译
+
+```js
+babel.transform(code, options, function(err, result) {
+  result; // => { code, map, ast }
+});
+
+babel.transform("code();", options, function(err, result) {
+  result.code;
+  result.map;
+  result.ast;
+});
+```
+
+它支持[同步和异步](https://babeljs.io/docs/babel-core)
+
+上面的 transform 方法是直接接受字符串，transformFile 方法可以接受 js 文件路径
+
+```js
+babel.transformFile(filename, options, callback);
+
+babel.transformFile("filename.js", options, function(err, result) {
+  result; // => { code, map, ast }
+});
+```
+
+```js title="babel-loader 伪代码"
+let babel = require("@babel/core");
+
+function babelLoader (sourceCode,options) {
+  // 通过transform方法编译传入的源代码
+  babel.transform(sourceCode)
+  return targetCode
+}
+```
+
+#### 4.3.2 @babel/core
+
+### 4.4 编写 Babel 插件
 
 Babel 插件的写法借助**访问者模式**对关注的节点定义处理函数，下面是一个例子
 
@@ -149,7 +233,7 @@ function olu() {}
 function OLU() {}
 ```
 
-### 4.3 Babel 转换阶段
+### 4.5 Babel 转换阶段
 
 转换阶段，Babel 相关方法会获得一个插件数组变量，用于后续操作。插件结构接口如下：
 
