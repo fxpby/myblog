@@ -38,17 +38,17 @@ function NavbarItems({items}) {
             'docs/other': {
               key: 'other',
               label: '其他',
-              pathname: 'music|English',
+              pathname: 'music|English|workout',
             },
           };
 
-          const parentItem = ['music', 'English'].includes(
+          const parentItem = ['music', 'English', 'workout'].includes(
             pathname.split('/')[1],
           )
             ? catalogMap[x.catalog]?.key !== 'other' && x.itemType === 'parent'
             : !pathname.includes(catalogMap[x.catalog]?.key) &&
               x.itemType === 'parent';
-          const childItem = ['music', 'English'].includes(
+          const childItem = ['music', 'English', 'workout'].includes(
             pathname.split('/')[1],
           )
             ? catalogMap[x.catalog]?.key === 'other' && x.itemType === 'child'

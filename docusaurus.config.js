@@ -49,6 +49,16 @@ const config = {
         sidebarPath: require.resolve('./sidebarsMusic.js'),
       }),
     ],
+    [
+      'content-docs',
+      /** @type {import('@docusaurus/plugin-content-docs').Options} */
+      ({
+        id: 'workout',
+        path: 'workout',
+        routeBasePath: 'workout',
+        sidebarPath: require.resolve('./sidebarsWorkout.js'),
+      }),
+    ],
   ],
 
   presets: [
@@ -208,6 +218,13 @@ const config = {
             to: '/music-theory/音程&度数',
             label: '新大陆',
             position: 'left',
+            catalog: 'docs/other',
+            itemType: 'parent',
+          },
+          {
+            to: '/workout/rebuilding-milo/intro',
+            position: 'left',
+            label: '序、前言',
             catalog: 'docs/other',
             itemType: 'parent',
           },
