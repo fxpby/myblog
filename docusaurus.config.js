@@ -226,7 +226,7 @@ const config = {
             position: 'left',
             label: '序、前言',
             catalog: 'docs/other',
-            itemType: 'parent',
+            itemType: 'child',
           },
           {
             to: '/music-theory/音程&度数',
