@@ -222,7 +222,7 @@ const config = {
             itemType: 'parent',
           },
           {
-            to: '/workout/rebuilding-milo/intro',
+            to: '/workout/rebuilding-milo-intro',
             position: 'left',
             label: '序、前言',
             catalog: 'docs/other',
