@@ -221,10 +221,17 @@ const config = {
             catalog: 'docs/other',
             itemType: 'parent',
           },
+          // {
+          //   to: '/workout/rebuilding-milo-intro',
+          //   label: '肌骨重建',
+          //   position: 'left',
+          //   catalog: 'docs/other',
+          //   itemType: 'parent',
+          // },
           {
             to: '/workout/rebuilding-milo-intro',
             position: 'left',
-            label: '序、前言',
+            label: '肌骨重建',
             catalog: 'docs/other',
             itemType: 'child',
           },

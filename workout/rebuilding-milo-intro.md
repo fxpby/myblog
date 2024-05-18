@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 5
 id: rebuilding-milo-intro
 title: 序、前言
 ---
