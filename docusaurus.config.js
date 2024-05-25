@@ -229,9 +229,9 @@ const config = {
           //   itemType: 'parent',
           // },
           {
-            to: '/workout/rebuilding-milo-intro',
+            to: '/workout/rebuilding-milo/rebuilding-milo-intro',
             position: 'left',
-            label: '肌骨重建',
+            label: '运动与解剖',
             catalog: 'docs/other',
             itemType: 'child',
           },
