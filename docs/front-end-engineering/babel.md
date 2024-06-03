@@ -79,16 +79,16 @@ const name = olu
 
 Babel 默认使用`@babel/parser`将代码转换为 AST
 
-- 词法分析：对输入的字符序列做标记化（tokenization）操作
-- 语法分析：处理标记于标记之间的关系，最终形成一颗完整的 AST 结构
+- 词法分析：对输入的字符序列做标记化（tokenization）操作（将 js 代码字符串进行词法分析生成一系列 `tokens`）
+- 语法分析：处理标记于标记之间的关系，最终形成一颗完整的 AST 结构(将上一步的 tokens 进行组合)
 
 ### 3.2 转换阶段(Transformer)
 
-Babel 使用`@babel/traverse`提供的方法对 AST 进行深度优先遍历，调用插件对关注节点的处理函数，按需对 AST 节点进行增删改处理
+Babel 使用`@babel/traverse`提供的方法对 AST 进行深度优先遍历，调用插件对关注节点的处理函数，按需对 AST 节点进行增删改处理，将新的 js 语法节点转化成浏览器兼容的语法节点
 
 ### 3.3 生成阶段(Generator)
 
-Babel 默认使用`@babel/generator`将上一阶段处理后的AST转换为代码字符串
+Babel 默认使用`@babel/generator`将上一阶段深度遍历处理后的AST转换为代码字符串
 
 ## 4. Babel 插件系统
 
