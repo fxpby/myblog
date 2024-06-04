@@ -75,6 +75,8 @@ const name = olu
 
 ## 3. Babel 编译流程
 
+![babel-flow1](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/front-end-enginerring/babel-flow1.svg)
+
 ### 3.1 解析阶段（Parser）
 
 Babel 默认使用`@babel/parser`将代码转换为 AST
