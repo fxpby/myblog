@@ -14,11 +14,11 @@ jobs:
       - name: Checkout 🐤
         uses: actions/checkout@v2
       # 安装 Node 16
-      - name: use Node.js 20.10.0 🐣
+      - name: use Node.js 16.15.1 🐣
         # 使用action库  actions/setup-node安装node
         uses: actions/setup-node@v3
         with:
-          node-version: '20.10.0'
+          node-version: '16.15.1'
 
       # 缓存 npm node_modules
       - name: Cache dependencies 🐤
