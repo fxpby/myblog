@@ -1,0 +1,24 @@
+.columnsWrap {
+  display: flex;
+}
+
+.columnsItem {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.tableHeader {
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.tableContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.contentItem {
+  border: 1px solid #ccc;
+}
