@@ -10,6 +10,7 @@
 }
 
 .tableHeader {
+  padding: 2px;
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
@@ -20,5 +21,6 @@
 }
 
 .contentItem {
+  padding: 2px;
   border: 1px solid #ccc;
 }

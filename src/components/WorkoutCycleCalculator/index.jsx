@@ -52,7 +52,7 @@ const WorkoutCycleCalculator = () => {
         col.items = new Array(5).fill(`${rep}RM ${repFitMap[rep]}`);
       }
       if (col.id === 'targetLoad') {
-        col.item = targetLoadRatioList[rep].map(
+        col.items = targetLoadRatioList[rep].map(
           (ratio) => `${Number(oneRM) * ratio} (${ratio * 100}%)`,
         );
       }
