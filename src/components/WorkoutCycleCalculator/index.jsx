@@ -89,7 +89,7 @@ const WorkoutCycleCalculator = () => {
 
   return (
     <div className={s.workoutCycleCalculatorWrapper}>
-      <H2>S</H2>
+      <h2>S</h2>
       <div>
         请输入 1RM 的重量(kg)
         <input
@@ -107,7 +107,7 @@ const WorkoutCycleCalculator = () => {
         <BaseCalculator rep={10} oneRM={oneRMS} />
       </div>
       <br />
-      <H2>B</H2>
+      <h2>B</h2>
       <div>
         请输入 1RM 的重量(kg)
         <input
@@ -125,7 +125,7 @@ const WorkoutCycleCalculator = () => {
         <BaseCalculator rep={10} oneRM={oneRMB} />
       </div>
       <br />
-      <H2>D</H2>
+      <h2>D</h2>
       <div>
         请输入 1RM 的重量(kg)
         <input
