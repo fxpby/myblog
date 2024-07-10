@@ -41,7 +41,7 @@ const WorkoutCycleCalculator = () => {
   const [oneRMB, setOneRMB] = useState('');
   const [oneRMD, setOneRMD] = useState('');
 
-  const baseCalculator = ({rep, oneRM} = {}) => {
+  const BaseCalculator = ({rep, oneRM} = {}) => {
     const tempColumns = [...columns];
     const repFitMap = {
       10: 0.75 * Number(oneRM),
