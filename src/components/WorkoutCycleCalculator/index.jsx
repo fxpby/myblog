@@ -7,6 +7,8 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
+  Divider,
+  Tag,
 } from '@chakra-ui/react';
 const rawList = ['W-1', 'W-2', 'W-3', 'W-4', 'W-5'];
 
@@ -44,9 +46,9 @@ const targetLoadRatioList = {
 };
 
 const WorkoutCycleCalculator = () => {
-  const [oneRMS, setOneRMS] = useState('');
-  const [oneRMB, setOneRMB] = useState('');
-  const [oneRMD, setOneRMD] = useState('');
+  const [oneRMS, setOneRMS] = useState(0);
+  const [oneRMB, setOneRMB] = useState(0);
+  const [oneRMD, setOneRMD] = useState(0);
 
   const BaseCalculator = ({rep, oneRM} = {}) => {
     const tempColumns = [...columns];
@@ -60,7 +62,8 @@ const WorkoutCycleCalculator = () => {
       }
       if (col.id === 'targetLoad') {
         col.items = targetLoadRatioList[rep].map(
-          (ratio) => `${Number(repFitMap[rep]) * ratio} (${ratio * 100}%)`,
+          (ratio) =>
+            `${(Number(repFitMap[rep]) * ratio).toFixed(2)} (${ratio * 100}%)`,
         );
       }
       if (col.id === 'count') {
@@ -94,73 +97,40 @@ const WorkoutCycleCalculator = () => {
     }
   };
 
+  const CycleCard = ({inputChange, oneRM, title} = {}) => (
+    <div className={s.cycleCardWrapper}>
+      <Tag>{title}</Tag>
+      <div>
+        请输入 1RM 的重量(kg)
+        <NumberInput
+          defaultValue={0}
+          min={0}
+          max={500}
+          onChange={(val) => inputChange(val)}>
+          <NumberInputField />
+          <NumberInputStepper>
+            <NumberIncrementStepper />
+            <NumberDecrementStepper />
+          </NumberInputStepper>
+        </NumberInput>
+      </div>
+      <div>
+        <div>12 RM 小周期 ①</div>
+        <BaseCalculator rep={12} oneRM={oneRM} />
+      </div>
+      <div>
+        <div>10 RM 小周期 ②</div>
+        <BaseCalculator rep={10} oneRM={oneRM} />
+      </div>
+    </div>
+  );
+
   return (
     <ChakraProvider>
       <div className={s.workoutCycleCalculatorWrapper}>
-        <h2>S</h2>
-        <div>
-          请输入 1RM 的重量(kg)
-          <input
-            type="text"
-            value={oneRMS}
-            onChange={(e) => handleInputChange(e, 'S')}
-          />
-          <NumberInput
-            defaultValue={0}
-            min={0}
-            max={500}
-            onChange={(val) => setOneRMS(val)}>
-            <NumberInputField />
-            <NumberInputStepper>
-              <NumberIncrementStepper />
-              <NumberDecrementStepper />
-            </NumberInputStepper>
-          </NumberInput>
-        </div>
-        <div>
-          <div>12 RM 小周期 ①</div>
-          <BaseCalculator rep={12} oneRM={oneRMS} />
-        </div>
-        <div>
-          <div>10 RM 小周期 ②</div>
-          <BaseCalculator rep={10} oneRM={oneRMS} />
-        </div>
-        <br />
-        <h2>B</h2>
-        <div>
-          请输入 1RM 的重量(kg)
-          <input
-            type="text"
-            value={oneRMB}
-            onChange={(e) => handleInputChange(e, 'B')}
-          />
-        </div>
-        <div>
-          <div>12 RM 小周期 ①</div>
-          <BaseCalculator rep={12} oneRM={oneRMB} />
-        </div>
-        <div>
-          <div>10 RM 小周期 ②</div>
-          <BaseCalculator rep={10} oneRM={oneRMB} />
-        </div>
-        <br />
-        <h2>D</h2>
-        <div>
-          请输入 1RM 的重量(kg)
-          <input
-            type="text"
-            value={oneRMD}
-            onChange={(e) => handleInputChange(e, 'D')}
-          />
-        </div>
-        <div>
-          <div>12 RM 小周期 ①</div>
-          <BaseCalculator rep={12} oneRM={oneRMD} />
-        </div>
-        <div>
-          <div>10 RM 小周期 ②</div>
-          <BaseCalculator rep={10} oneRM={oneRMD} />
-        </div>
+        <CycleCard inputChange={setOneRMS} oneRM={oneRMS} title={'S'} />
+        <CycleCard inputChange={setOneRMB} oneRM={oneRMB} title={'B'} />
+        <CycleCard inputChange={setOneRMD} oneRM={oneRMD} title={'D'} />
       </div>
     </ChakraProvider>
   );

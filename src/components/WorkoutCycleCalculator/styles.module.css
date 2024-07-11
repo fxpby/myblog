@@ -1,3 +1,9 @@
+.workoutCycleCalculatorWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
 .columnsWrap {
   display: flex;
 }
@@ -23,4 +29,10 @@
 .contentItem {
   padding: 2px;
   border: 1px solid #ccc;
+}
+
+.cycleCardWrapper {
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
