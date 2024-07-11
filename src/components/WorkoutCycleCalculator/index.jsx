@@ -143,6 +143,7 @@ const WorkoutCycleCalculator = () => {
         请输入 1RM 的重量(kg)
         <NumberInput
           defaultValue={0}
+          value={oneRM}
           min={0}
           max={500}
           onChange={(val) => handleChange(inputChange, val)}>
