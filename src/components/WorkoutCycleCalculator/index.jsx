@@ -176,21 +176,9 @@ const WorkoutCycleCalculator = () => {
   return (
     <ChakraProvider>
       <div className={s.workoutCycleCalculatorWrapper}>
-        <CycleCard
-          inputChange={(val) => setOneRMS(val)}
-          oneRM={oneRMS}
-          title={'S'}
-        />
-        <CycleCard
-          inputChange={(val) => setOneRMB(val)}
-          oneRM={oneRMB}
-          title={'B'}
-        />
-        <CycleCard
-          inputChange={(val) => setOneRMD(val)}
-          oneRM={oneRMD}
-          title={'D'}
-        />
+        <CycleCard inputChange={setOneRMS} oneRM={oneRMS} title={'S'} />
+        <CycleCard inputChange={setOneRMB} oneRM={oneRMB} title={'B'} />
+        <CycleCard inputChange={setOneRMD} oneRM={oneRMD} title={'D'} />
       </div>
     </ChakraProvider>
   );
