@@ -7,8 +7,14 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
-  Divider,
   Tag,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  TableContainer,
 } from '@chakra-ui/react';
 const rawList = ['W-1', 'W-2', 'W-3', 'W-4', 'W-5'];
 
@@ -70,19 +76,61 @@ const WorkoutCycleCalculator = () => {
         col.items = new Array(5).fill(rep);
       }
     });
+
+    const displayTableData = rawList.map((raw, index) => {
+      const targetColItem = (id) =>
+        tempColumns.find((x) => x.id === id).items[index];
+      return {
+        name: raw[index],
+        rep: targetColItem('rep'),
+        targetLoad: targetColItem('targetLoad'),
+        count: targetColItem('count'),
+        group: targetColItem('group'),
+      };
+    });
+    console.log(
+      '%c Line:83 🥥 displayTableData',
+      'color:#4fff4B',
+      displayTableData,
+    );
+
+    // return (
+    //   <div className={s.columnsWrap}>
+    //     {tempColumns.map((col) => (
+    //       <div className={s.columnsItem}>
+    //         <div className={s.tableHeader}>{col.label}</div>
+    //         <div className={s.tableContent}>
+    //           {col.items.map((item) => (
+    //             <div className={s.contentItem}>{item}</div>
+    //           ))}
+    //         </div>
+    //       </div>
+    //     ))}
+    //   </div>
+    // );
     return (
-      <div className={s.columnsWrap}>
-        {tempColumns.map((col) => (
-          <div className={s.columnsItem}>
-            <div className={s.tableHeader}>{col.label}</div>
-            <div className={s.tableContent}>
-              {col.items.map((item) => (
-                <div className={s.contentItem}>{item}</div>
+      <TableContainer>
+        <Table variant="simple">
+          <Thead>
+            <Tr>
+              {tempColumns.map((col) => (
+                <Th>{col.label}</Th>
               ))}
-            </div>
-          </div>
-        ))}
-      </div>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {displayTableData.map((row) => (
+              <Tr>
+                <Td>{row.name}</Td>
+                <Td>{row.rep}</Td>
+                <Td>{row.targetLoad}</Td>
+                <Td>{row.count}</Td>
+                <Td>{row.group}</Td>
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+      </TableContainer>
     );
   };
 
