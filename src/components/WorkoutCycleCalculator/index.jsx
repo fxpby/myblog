@@ -64,12 +64,16 @@ const WorkoutCycleCalculator = () => {
     };
     tempColumns.forEach((col) => {
       if (col.id === 'rep') {
-        col.items = new Array(5).fill(`${rep}RM ${repFitMap[rep]}`);
+        col.items = new Array(5).fill(
+          `${rep}RM ${repFitMap[rep].toFixed(2)}kg`,
+        );
       }
       if (col.id === 'targetLoad') {
         col.items = targetLoadRatioList[rep].map(
           (ratio) =>
-            `${(Number(repFitMap[rep]) * ratio).toFixed(2)} (${ratio * 100}%)`,
+            `${(Number(repFitMap[rep]) * ratio).toFixed(2)}kg (${(
+              ratio * 100
+            ).toFixed(2)}%)`,
         );
       }
       if (col.id === 'count') {
@@ -138,7 +142,7 @@ const WorkoutCycleCalculator = () => {
 
   const CycleCard = ({inputChange, oneRM, title} = {}) => (
     <div className={s.cycleCardWrapper}>
-      <Tag>{title}</Tag>
+      <Tag size="lg">{title}</Tag>
       <div>
         请输入 1RM 的重量(kg)
         <NumberInput
