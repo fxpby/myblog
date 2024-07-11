@@ -94,20 +94,6 @@ const WorkoutCycleCalculator = () => {
       displayTableData,
     );
 
-    // return (
-    //   <div className={s.columnsWrap}>
-    //     {tempColumns.map((col) => (
-    //       <div className={s.columnsItem}>
-    //         <div className={s.tableHeader}>{col.label}</div>
-    //         <div className={s.tableContent}>
-    //           {col.items.map((item) => (
-    //             <div className={s.contentItem}>{item}</div>
-    //           ))}
-    //         </div>
-    //       </div>
-    //     ))}
-    //   </div>
-    // );
     return (
       <TableContainer>
         <Table variant="simple">
@@ -145,6 +131,11 @@ const WorkoutCycleCalculator = () => {
     }
   };
 
+  const handleChange = (callback, val) => {
+    console.log('callback, val: ', callback, val);
+    callback(Number(val));
+  };
+
   const CycleCard = ({inputChange, oneRM, title} = {}) => (
     <div className={s.cycleCardWrapper}>
       <Tag>{title}</Tag>
@@ -154,7 +145,7 @@ const WorkoutCycleCalculator = () => {
           defaultValue={0}
           min={0}
           max={500}
-          onChange={(val) => inputChange(val)}>
+          onChange={(val) => handleChange(inputChange, val)}>
           <NumberInputField />
           <NumberInputStepper>
             <NumberIncrementStepper />
