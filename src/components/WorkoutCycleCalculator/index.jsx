@@ -128,21 +128,13 @@ const WorkoutCycleCalculator = (props) => {
     callback(val);
   }, []);
 
-  useEffect(() => {
-    if (numberInputRef.current) {
-      numberInputRef.current.focus();
-    }
-  }, [handleChange]);
-
   const CycleCard = memo(({inputChange, oneRM, cycleName} = {}) => {
-    const numberInputRef = useRef(null);
     return (
       <div className={s.cycleCardWrapper}>
         <Tag size="lg">{title}</Tag>
         <div>
           请输入 1RM 的重量(kg)
           <NumberInput
-            ref={numberInputRef}
             defaultValue={0}
             value={oneRM}
             min={0}
