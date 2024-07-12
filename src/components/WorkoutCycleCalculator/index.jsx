@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, memo} from 'react';
 import s from './styles.module.css';
 import {
   ChakraProvider,
@@ -171,4 +171,4 @@ const WorkoutCycleCalculator = (props) => {
   );
 };
 
-export default WorkoutCycleCalculator;
+export default memo(WorkoutCycleCalculator);
