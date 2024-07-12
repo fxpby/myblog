@@ -63,8 +63,8 @@ const WorkoutCycleCalculator = (props) => {
   const BaseCalculator = ({rep, oneRM, cycleName} = {}) => {
     const tempColumns = [...columns];
     const repFitMap = {
-      10: 0.75 * Number(oneRM),
-      12: 0.67 * Number(oneRM),
+      10: 0.75 * oneRM,
+      12: 0.67 * oneRM,
     };
     tempColumns.forEach((col) => {
       if (col.id === 'rep') {
@@ -75,9 +75,9 @@ const WorkoutCycleCalculator = (props) => {
       if (col.id === 'targetLoad') {
         col.items = targetLoadRatioList[cycleName][rep].map(
           (ratio) =>
-            `${(Number(repFitMap[rep]) * ratio).toFixed(2)}kg (${(
-              ratio * 100
-            ).toFixed(2)}%)`,
+            `${(repFitMap[rep] * ratio).toFixed(2)}kg (${(ratio * 100).toFixed(
+              2,
+            )}%)`,
         );
       }
       if (col.id === 'count') {
@@ -124,7 +124,7 @@ const WorkoutCycleCalculator = (props) => {
   };
 
   const handleChange = (callback, val) => {
-    callback(Number(val));
+    callback(val);
   };
 
   const CycleCard = ({inputChange, oneRM, cycleName} = {}) => (
@@ -137,7 +137,9 @@ const WorkoutCycleCalculator = (props) => {
           value={oneRM}
           min={0}
           max={500}
-          onChange={(val) => handleChange(inputChange, val)}>
+          onChange={(valueAsString, valueAsNumber) =>
+            handleChange(inputChange, valueAsNumber)
+          }>
           <NumberInputField />
           <NumberInputStepper>
             <NumberIncrementStepper />
