@@ -1,4 +1,4 @@
-import React, {useState, memo} from 'react';
+import React, {useState, useCallback, memo, useEffect, useRef} from 'react';
 import s from './styles.module.css';
 import {
   ChakraProvider,
@@ -124,40 +124,50 @@ const WorkoutCycleCalculator = (props) => {
     );
   });
 
-  const handleChange = (callback, val) => {
+  const handleChange = useCallback((callback, val) => {
     callback(val);
-  };
+  }, []);
 
-  const CycleCard = memo(({inputChange, oneRM, cycleName} = {}) => (
-    <div className={s.cycleCardWrapper}>
-      <Tag size="lg">{title}</Tag>
-      <div>
-        请输入 1RM 的重量(kg)
-        <NumberInput
-          defaultValue={0}
-          value={oneRM}
-          min={0}
-          max={500}
-          onChange={(valueAsString, valueAsNumber) =>
-            handleChange(inputChange, valueAsNumber)
-          }>
-          <NumberInputField />
-          <NumberInputStepper>
-            <NumberIncrementStepper />
-            <NumberDecrementStepper />
-          </NumberInputStepper>
-        </NumberInput>
+  useEffect(() => {
+    if (numberInputRef.current) {
+      numberInputRef.current.focus();
+    }
+  }, [handleChange]);
+
+  const CycleCard = memo(({inputChange, oneRM, cycleName} = {}) => {
+    const numberInputRef = useRef(null);
+    return (
+      <div className={s.cycleCardWrapper}>
+        <Tag size="lg">{title}</Tag>
+        <div>
+          请输入 1RM 的重量(kg)
+          <NumberInput
+            ref={numberInputRef}
+            defaultValue={0}
+            value={oneRM}
+            min={0}
+            max={500}
+            onChange={(valueAsString, valueAsNumber) =>
+              handleChange(inputChange, valueAsNumber)
+            }>
+            <NumberInputField />
+            <NumberInputStepper>
+              <NumberIncrementStepper />
+              <NumberDecrementStepper />
+            </NumberInputStepper>
+          </NumberInput>
+        </div>
+        <div>
+          <div>12 RM 小周期 ① (W 代表周)</div>
+          <BaseCalculator rep={12} oneRM={oneRM} cycleName={cycleName} />
+        </div>
+        <div>
+          <div>10 RM 小周期 ② (W 代表周)</div>
+          <BaseCalculator rep={10} oneRM={oneRM} cycleName={cycleName} />
+        </div>
       </div>
-      <div>
-        <div>12 RM 小周期 ① (W 代表周)</div>
-        <BaseCalculator rep={12} oneRM={oneRM} cycleName={cycleName} />
-      </div>
-      <div>
-        <div>10 RM 小周期 ② (W 代表周)</div>
-        <BaseCalculator rep={10} oneRM={oneRM} cycleName={cycleName} />
-      </div>
-    </div>
-  ));
+    );
+  });
 
   return (
     <ChakraProvider resetCSS={false} disableGlobalStyle={true}>
