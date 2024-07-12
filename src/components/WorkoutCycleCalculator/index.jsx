@@ -43,21 +43,24 @@ const columns = [
   {
     label: '组',
     id: 'group',
-    items: [4, 5, 5, 4, 6],
+    items: [3, 4, 5, 4, 6],
   },
 ];
 
 const targetLoadRatioList = {
-  12: [0.9, 0.925, 0.95, 0.85, 0.45],
-  10: [0.975, 1, 1.025, 0.925, 0.525],
+  normalPrepare: {
+    12: [0.9, 0.925, 0.95, 0.85, 0.45],
+    10: [0.975, 1, 1.025, 0.925, 0.525],
+  },
 };
 
-const WorkoutCycleCalculator = () => {
-  const [oneRMS, setOneRMS] = useState(0);
+const WorkoutCycleCalculator = (props) => {
+  const {cycleName, title} = props;
+  const [oneRMNormalPrepare, setOneRMNormalPrepare] = useState(0);
   const [oneRMB, setOneRMB] = useState(0);
   const [oneRMD, setOneRMD] = useState(0);
 
-  const BaseCalculator = ({rep, oneRM} = {}) => {
+  const BaseCalculator = ({rep, oneRM, cycleName} = {}) => {
     const tempColumns = [...columns];
     const repFitMap = {
       10: 0.75 * Number(oneRM),
@@ -70,7 +73,7 @@ const WorkoutCycleCalculator = () => {
         );
       }
       if (col.id === 'targetLoad') {
-        col.items = targetLoadRatioList[rep].map(
+        col.items = targetLoadRatioList[cycleName][rep].map(
           (ratio) =>
             `${(Number(repFitMap[rep]) * ratio).toFixed(2)}kg (${(
               ratio * 100
@@ -93,11 +96,6 @@ const WorkoutCycleCalculator = () => {
         group: targetColItem('group'),
       };
     });
-    console.log(
-      '%c Line:83 🥥 displayTableData',
-      'color:#4fff4B',
-      displayTableData,
-    );
 
     return (
       <TableContainer>
@@ -125,23 +123,11 @@ const WorkoutCycleCalculator = () => {
     );
   };
 
-  const handleInputChange = (e, type) => {
-    console.log('%c Line:12 🍕 e', 'color:#3f7cff', e);
-    if (type === 'S') {
-      setOneRMS(e?.target?.value);
-    } else if (type === 'B') {
-      setOneRMB(e?.target?.value);
-    } else if (type === 'D') {
-      setOneRMD(e?.target?.value);
-    }
-  };
-
   const handleChange = (callback, val) => {
-    console.log('callback, val: ', callback, val);
     callback(Number(val));
   };
 
-  const CycleCard = ({inputChange, oneRM, title} = {}) => (
+  const CycleCard = ({inputChange, oneRM, cycleName} = {}) => (
     <div className={s.cycleCardWrapper}>
       <Tag size="lg">{title}</Tag>
       <div>
@@ -160,12 +146,12 @@ const WorkoutCycleCalculator = () => {
         </NumberInput>
       </div>
       <div>
-        <div>12 RM 小周期 ①</div>
-        <BaseCalculator rep={12} oneRM={oneRM} />
+        <div>12 RM 小周期 ① (W 代表周)</div>
+        <BaseCalculator rep={12} oneRM={oneRM} cycleName={cycleName} />
       </div>
       <div>
-        <div>10 RM 小周期 ②</div>
-        <BaseCalculator rep={10} oneRM={oneRM} />
+        <div>10 RM 小周期 ② (W 代表周)</div>
+        <BaseCalculator rep={10} oneRM={oneRM} cycleName={cycleName} />
       </div>
     </div>
   );
@@ -173,9 +159,11 @@ const WorkoutCycleCalculator = () => {
   return (
     <ChakraProvider resetCSS={false} disableGlobalStyle={true}>
       <div className={s.workoutCycleCalculatorWrapper}>
-        <CycleCard inputChange={setOneRMS} oneRM={oneRMS} title={'S'} />
-        <CycleCard inputChange={setOneRMB} oneRM={oneRMB} title={'B'} />
-        <CycleCard inputChange={setOneRMD} oneRM={oneRMD} title={'D'} />
+        <CycleCard
+          inputChange={setOneRMNormalPrepare}
+          oneRM={oneRMNormalPrepare}
+          cycleName={cycleName}
+        />
       </div>
     </ChakraProvider>
   );
