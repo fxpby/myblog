@@ -60,7 +60,8 @@ const WorkoutCycleCalculator = (props) => {
   const [oneRMB, setOneRMB] = useState(0);
   const [oneRMD, setOneRMD] = useState(0);
 
-  const BaseCalculator = ({rep, oneRM, cycleName} = {}) => {
+  const BaseCalculator = memo(({rep, oneRM, cycleName} = {}) => {
+    console.log('BaseCalculator');
     const tempColumns = [...columns];
     const repFitMap = {
       10: 0.75 * oneRM,
@@ -121,13 +122,13 @@ const WorkoutCycleCalculator = (props) => {
         </Table>
       </TableContainer>
     );
-  };
+  });
 
   const handleChange = (callback, val) => {
     callback(val);
   };
 
-  const CycleCard = ({inputChange, oneRM, cycleName} = {}) => (
+  const CycleCard = memo(({inputChange, oneRM, cycleName} = {}) => (
     <div className={s.cycleCardWrapper}>
       <Tag size="lg">{title}</Tag>
       <div>
@@ -156,7 +157,7 @@ const WorkoutCycleCalculator = (props) => {
         <BaseCalculator rep={10} oneRM={oneRM} cycleName={cycleName} />
       </div>
     </div>
-  );
+  ));
 
   return (
     <ChakraProvider resetCSS={false} disableGlobalStyle={true}>
