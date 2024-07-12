@@ -69,13 +69,32 @@ import WorkoutCycleCalculator from '@site/src/components/WorkoutCycleCalculator'
   - 高大强壮且运动经验丰富：5-7kg
 
 
-<WorkoutCycleCalculator cycleName={'normalPrepare'} title={'一般准备期主项动作计算器'}/>
+<WorkoutCycleCalculator
+  cycleName={'normalPrepare'}
+  title={'一般准备期主项动作计算器'}
+  cycles={
+    [
+      {caption:'12 RM 小周期 ① (W 代表周)',rep: 12},
+      {caption:'10 RM 小周期 ① (W 代表周)',rep: 10}
+    ]
+  }/>
 
 ## 专项准备期
 
 增加专项动作所需的最大力量和爆发力
 
-关注点是良好的动作技术和较大负荷的练习
+关注点是:
+- 良好的动作技术
+- 较大负荷的练习
+- 较长的组间休息时间
+
+由于我们的目标是**开发最大肌肉力量**，所以分成两个阶段 `MxS-1`、`MxS-2` 进行
+
+如 `5 x 5` 为`肌肉间协调性训练`，`3 x 3`为`肌肉内协调性训练`
+
+### 肌肉间协调性训练
+
+
 
 ## 第一过渡期
 

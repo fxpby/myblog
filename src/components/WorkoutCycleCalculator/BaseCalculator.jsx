@@ -8,6 +8,7 @@ import {
   Th,
   Td,
   TableContainer,
+  TableCaption,
 } from '@chakra-ui/react';
 
 const rawList = ['W-1', 'W-2', 'W-3', 'W-4(减载)', 'W-4(减载)'];
@@ -47,7 +48,7 @@ const targetLoadRatioList = {
   },
 };
 
-const BaseCalculator = memo(({rep, oneRM, cycleName} = {}) => {
+const BaseCalculator = memo(({rep, oneRM, cycleName, caption} = {}) => {
   console.log('BaseCalculator');
   const tempColumns = [...columns];
   const repFitMap = {
@@ -86,6 +87,7 @@ const BaseCalculator = memo(({rep, oneRM, cycleName} = {}) => {
   return (
     <TableContainer>
       <Table variant="simple">
+        <TableCaption>{caption}</TableCaption>
         <Thead>
           <Tr>
             {tempColumns.map((col) => (

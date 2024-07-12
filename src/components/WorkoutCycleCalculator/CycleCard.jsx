@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import s from './styles.module.css';
 
-const CycleCard = memo(({cycleName, title} = {}) => {
+const CycleCard = memo(({cycleName, title, cycles = []} = {}) => {
   const [oneRM, setOneRM] = useState(0);
 
   return (
@@ -32,14 +32,16 @@ const CycleCard = memo(({cycleName, title} = {}) => {
           </NumberInputStepper>
         </NumberInput>
       </div>
-      <div>
-        <div>12 RM 小周期 ① (W 代表周)</div>
-        <BaseCalculator rep={12} oneRM={oneRM} cycleName={cycleName} />
-      </div>
-      <div>
-        <div>10 RM 小周期 ② (W 代表周)</div>
-        <BaseCalculator rep={10} oneRM={oneRM} cycleName={cycleName} />
-      </div>
+      {cycles.map((item) => (
+        <div>
+          <BaseCalculator
+            rep={item.rep}
+            oneRM={oneRM}
+            cycleName={cycleName}
+            caption={item.caption}
+          />
+        </div>
+      ))}
     </div>
   );
 });
