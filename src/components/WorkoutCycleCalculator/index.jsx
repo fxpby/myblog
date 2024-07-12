@@ -16,6 +16,7 @@ import {
   Td,
   TableContainer,
 } from '@chakra-ui/react';
+
 const rawList = ['W-1', 'W-2', 'W-3', 'W-4(减载)', 'W-4(减载)'];
 
 const columns = [
@@ -170,7 +171,7 @@ const WorkoutCycleCalculator = () => {
   );
 
   return (
-    <ChakraProvider>
+    <ChakraProvider resetCSS={false} disableGlobalStyle={true}>
       <div className={s.workoutCycleCalculatorWrapper}>
         <CycleCard inputChange={setOneRMS} oneRM={oneRMS} title={'S'} />
         <CycleCard inputChange={setOneRMB} oneRM={oneRMB} title={'B'} />
