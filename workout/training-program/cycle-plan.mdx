@@ -1,4 +1,4 @@
-import WorkoutCycleCalculator from '@site/src/components/WorkoutCycleCalculator';
+import WorkoutCycleCalculator from '@site/src/components/WorkoutCycleCalc';
 
 
 # 周期计划
@@ -69,15 +69,7 @@ import WorkoutCycleCalculator from '@site/src/components/WorkoutCycleCalculator'
   - 高大强壮且运动经验丰富：5-7kg
 
 
-<WorkoutCycleCalculator
-  cycleName={'normalPrepare'}
-  title={'一般准备期主项动作计算器'}
-  cycles={
-    [
-      {caption:'12 RM 小周期 ① (W 代表周)',rep: 12},
-      {caption:'10 RM 小周期 ① (W 代表周)',rep: 10}
-    ]
-  }/>
+<WorkoutCycleCalculator/>
 
 ## 专项准备期
 
@@ -94,6 +86,43 @@ import WorkoutCycleCalculator from '@site/src/components/WorkoutCycleCalculator'
 
 ### 肌肉间协调性训练
 
+不同肌群之间相互配合，以实现平稳流畅的动作技术
+
+#### 训练强度
+
+- 超负荷训练：每周、每个肌群的主要训练动作安排 1-2 次
+- 轻训日：0-1 次
+
+#### 训练量
+
+- 每周：每个肌群 15-20 组
+- 每天：每个动作 4-5 组，每组 3-6 次（总次数不能超过 25 次峰值，如不能 5x6, 超量恢复困难）
+- 辅助项目训练次数建议 6-12 次肌肥大适应区间
+
+#### 动作选择
+
+- 限制使用或不适用单关节动作
+
+#### 频率
+
+- 同一肌群第二次超负荷训练间隔 > 3 天
+- 单日训练安排可根据“蹲推拉”三大动作模式进行两两组合
+
+#### 中周期时长
+
+- 结构：3:1 or 4:1 (建议 3:1)
+- 时长：2-3 个月
+
+{/* <WorkoutCycleCalculator
+  cycleName={'normalPrepare'}
+  title={'肌肉间协调性训练主项计算器'}
+  cycles={
+    [
+      {caption:'中周期 ① ',rep: [6,5,5,]},
+      {caption:'中周期 ② ',rep: 10}
+    ]
+  }
+/> */}
 
 
 ## 第一过渡期
