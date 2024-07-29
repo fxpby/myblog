@@ -29,7 +29,7 @@ const config = {
   themes: ['@easyops-cn/docusaurus-search-local'],
 
   plugins: [
-    './postcss-unocss-loader',
+    'postcss-unocss-loader',
     [
       'content-docs',
       /** @type {import('@docusaurus/plugin-content-docs').Options} */
