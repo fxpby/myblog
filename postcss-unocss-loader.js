@@ -1,10 +1,11 @@
+import UnoCSS from '@unocss/postcss'
 module.exports = function (context, options) {
   return {
     name: 'postcss-unocss-loader',
     configurePostCss(postcssOptions) {
       postcssOptions.plugins.push(
         // require('postcss-import'),
-        require('unocss'),
+        UnoCSS(),
         require('postcss-nested'),
         require('autoprefixer'),
       )
