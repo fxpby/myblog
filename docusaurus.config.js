@@ -29,6 +29,7 @@ const config = {
   themes: ['@easyops-cn/docusaurus-search-local'],
 
   plugins: [
+    "./postcss-tailwind-loader",
     [
       'content-docs',
       /** @type {import('@docusaurus/plugin-content-docs').Options} */
@@ -283,11 +284,10 @@ const config = {
           Copyright © ${new Date().getFullYear()} fxpby和olu是好朋友 olumel.top | <a href="https://beian.miit.gov.cn/" target="_blank">津ICP备2021008930号-1</a>
           <div style="width: 500px; display: flex; align-items: center; margin: 0px auto; padding: 20px 0px;">
             <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12011602000961" style="display: inline-block; text-decoration: none; height: 20px; line-height: 20px;">
-            <img a=${process.env.DEPLOY_SERVER} src=${
-              process.env.DEPLOY_SERVER === 'deploygithub'
-                ? '/myblog/img/beian.png'
-                : '/img/beian.png'
-            } style="float: left;">
+            <img a=${process.env.DEPLOY_SERVER} src=${process.env.DEPLOY_SERVER === 'deploygithub'
+            ? '/myblog/img/beian.png'
+            : '/img/beian.png'
+          } style="float: left;">
             <p style="float: left; height: 20px; line-height: 20px; margin: 0px 0px 0px 5px; color: rgb(147, 147, 147);">
               津公网安备 12011602000961号
             </p>

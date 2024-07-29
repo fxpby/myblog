@@ -54,7 +54,7 @@ export default function ConfigArea(props) {
   };
 
   return (
-    <Flex direction="column" className={s.configArea}>
+    <Flex direction="column" className="p-10 gap-8">
       <RadioGroup onChange={setCycle} value={cycle}>
         请选择中周期阶段：
         <Stack direction="row">
