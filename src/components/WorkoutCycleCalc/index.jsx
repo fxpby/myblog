@@ -9,7 +9,7 @@ export default function Calculator() {
   const props = useConfigInitData();
   return (
     <ChakraProvider resetCSS={false} disableGlobalStyle={true}>
-      <div className={s.workoutCycleCalculatorWrapper}>
+      <div className={`${s.workoutCycleCalculatorWrapper} unocss`}>
         <ConfigArea {...props} />
         <TableArea {...props} />
       </div>

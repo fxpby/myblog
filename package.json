@@ -38,8 +38,14 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "2.0.0-beta.22",
     "@tsconfig/docusaurus": "^1.0.5",
+    "@unocss/postcss": "^0.61.6",
+    "autoprefixer": "^10.4.19",
     "cross-env": "^7.0.3",
-    "typescript": "^4.7.4"
+    "postcss-cli": "^11.0.0",
+    "postcss-nested": "^6.2.0",
+    "postcss-preset-env": "^9.6.0",
+    "typescript": "^4.7.4",
+    "unocss": "^0.61.6"
   },
   "browserslist": {
     "production": [
