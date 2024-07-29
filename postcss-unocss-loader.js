@@ -3,7 +3,7 @@ module.exports = function (context, options) {
     name: 'postcss-unocss-loader',
     configurePostCss(postcssOptions) {
       postcssOptions.plugins.push(
-        require('postcss-import'),
+        // require('postcss-import'),
         require('unocss'),
         require('postcss-nested'),
         require('autoprefixer'),
