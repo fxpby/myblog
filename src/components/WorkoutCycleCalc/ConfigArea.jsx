@@ -372,7 +372,7 @@ export default function ConfigArea(props) {
                           ).fill(3),
                         );
                         newLightTrainingDegree.push(0.7);
-                        newCycleConnection.push(0.2);
+                        newCycleConnection.push(0.02);
                         newOverloadIncreaseDegree.push(
                           new Array(
                             rules.progressiveOverloadWeekCount.value,
