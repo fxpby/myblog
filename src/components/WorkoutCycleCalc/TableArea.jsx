@@ -3,7 +3,7 @@ import BaseTable from './BaseTable';
 import s from './styles.module.css';
 
 export default function TableArea(props) {
-  const {tableDataList, tableColumn} = props;
+  const {tableDataList, tableColumn, unit} = props;
 
   return (
     <div className={s.tableArea}>
@@ -13,6 +13,7 @@ export default function TableArea(props) {
           tableIndex={index}
           tableData={table}
           tableColumn={tableColumn}
+          unit={unit}
         />
       ))}
     </div>
