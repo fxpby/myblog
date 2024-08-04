@@ -60,7 +60,7 @@ export const defaultRule = {
     [-0.1, -0.35],
     [-0.1, -0.35],
   ],
-  cycleConnection: [0.2],
+  cycleConnection: [0.02],
 };
 
 export const tableColumn = [
