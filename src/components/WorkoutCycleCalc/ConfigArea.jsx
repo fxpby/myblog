@@ -184,11 +184,11 @@ export default function ConfigArea(props) {
         },
         group: {
           ...prev.group,
-          value: defaultRule.group,
+          value: structuredClone(defaultRule.group),
         },
         count: {
           ...prev.count,
-          value: defaultRule.count,
+          value: structuredClone(defaultRule.count),
         },
         buffer: {
           ...prev.buffer,
@@ -196,19 +196,19 @@ export default function ConfigArea(props) {
         },
         lightTrainingDegree: {
           ...prev.lightTrainingDegree,
-          value: defaultRule.lightTrainingDegree,
+          value: structuredClone(defaultRule.lightTrainingDegree),
         },
         overloadIncreaseDegree: {
           ...prev.overloadIncreaseDegree,
-          value: defaultRule.overloadIncreaseDegree,
+          value: structuredClone(defaultRule.overloadIncreaseDegree),
         },
         deloadDegree: {
           ...prev.deloadDegree,
-          value: defaultRule.deloadDegree,
+          value: structuredClone(defaultRule.deloadDegree),
         },
         cycleConnection: {
           ...prev.cycleConnection,
-          value: defaultRule.cycleConnection,
+          value: structuredClone(defaultRule.cycleConnection),
         },
       };
     });
