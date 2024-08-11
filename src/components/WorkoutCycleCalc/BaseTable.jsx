@@ -33,7 +33,7 @@ export default function BaseTable(props) {
               <Td>{row.group}</Td>
               <Td>{row.count}</Td>
               <Td>
-                {row.absoluteStrength[0]}
+                {row.absoluteStrength[0].toFixed(2)}
                 {unit}/{toPercent(row.absoluteStrength[1])}
               </Td>
               <Td>{toPercent(row.relativeStrength)}</Td>
