@@ -1,20 +1,20 @@
 export const bufferMap = {
   'mxs-1': 0.15,
-}
+};
 
 export const lightTrainingDegreeMap = {
   'mxs-1': 0.7,
   'mxs-2': 0.85,
-}
+};
 
 export const overloadIncreaseDegreeMap = {
   'mxs-1': 0.02,
   'mxs-2': 0.05,
-}
+};
 
 export const deloadDegreeMap = {
   'mxs-1': [-0.1, -0.35],
-}
+};
 
 export const cycleConfig = {
   'mxs-1': {
@@ -31,9 +31,37 @@ export const cycleConfig = {
     group: [[], []],
     count: [[], []],
   },
-}
+};
 
-export const deloadWeekIndex = [3, 4]
+export const deloadWeekIndex = [3, 4];
+
+export const defaultRule = {
+  oneRM: 100,
+  unit: 'kg',
+  cycleCount: 2,
+  progressiveOverloadWeekCount: 3,
+  deloadWeekCount: 2,
+  isdeloadWeekBreak: true,
+  group: [
+    [4, 5, 5, 3, 5],
+    [4, 4, 4, 3, 5],
+  ],
+  count: [
+    [6, 5, 5, 5, 5],
+    [5, 4, 3, 3, 3],
+  ],
+  buffer: 0.15,
+  lightTrainingDegree: [0.7, 0.7],
+  overloadIncreaseDegree: [
+    [0.02, 0.02, 0.02],
+    [0.02, 0.02, 0.02],
+  ],
+  deloadDegree: [
+    [-0.1, -0.35],
+    [-0.1, -0.35],
+  ],
+  cycleConnection: [0.02],
+};
 
 export const tableColumn = [
   {
@@ -68,7 +96,7 @@ export const tableColumn = [
     label: '轻训',
     id: 'lightTraining',
   },
-]
+];
 
 export const RMCountRelation = {
   1: 1,
@@ -84,4 +112,4 @@ export const RMCountRelation = {
   11: 0.7,
   12: 0.67,
   15: 0.65,
-}
+};

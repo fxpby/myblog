@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   Table,
   Thead,
@@ -8,13 +8,13 @@ import {
   Td,
   TableContainer,
   TableCaption,
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
 
 export default function BaseTable(props) {
-  const { tableIndex, tableData, tableColumn } = props
+  const {tableIndex, tableData, tableColumn, unit} = props;
   const toPercent = (num) => {
-    return `${Number(num * 100).toFixed(2)}%`
-  }
+    return `${Number(num * 100).toFixed(2)}%`;
+  };
   return (
     <TableContainer>
       <Table variant="simple">
@@ -33,19 +33,26 @@ export default function BaseTable(props) {
               <Td>{row.group}</Td>
               <Td>{row.count}</Td>
               <Td>
-                {row.absoluteStrength[0]}/{toPercent(row.absoluteStrength[1])}
+                {row.absoluteStrength[0].toFixed(2)}
+                {unit}/{toPercent(row.absoluteStrength[1])}
               </Td>
               <Td>{toPercent(row.relativeStrength)}</Td>
               <Td>
-                {row.trainingLoad[0].toFixed(2)}/
-                {toPercent(row.trainingLoad[1])}
+                {row.trainingLoad[0].toFixed(2)}
+                {unit}/{toPercent(row.trainingLoad[1])}
               </Td>
-              <Td>{row.capacity.toFixed(2)}</Td>
-              <Td>{row.lightTraining.toFixed(2)}</Td>
+              <Td>
+                {row.capacity.toFixed(2)}
+                {unit}
+              </Td>
+              <Td>
+                {row.lightTraining.toFixed(2)}
+                {unit}
+              </Td>
             </Tr>
           ))}
         </Tbody>
       </Table>
     </TableContainer>
-  )
+  );
 }
