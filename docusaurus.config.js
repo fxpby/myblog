@@ -231,7 +231,7 @@ const config = {
           {
             to: '/workout/rebuilding-milo/rebuilding-milo-intro',
             position: 'left',
-            label: '运动与解剖',
+            label: '运动/解剖/康复',
             catalog: 'docs/other',
             itemType: 'child',
           },
