@@ -8,7 +8,7 @@ id: shoulder-impingement-syndrome
 
 先去搞张右肩关节移除肱骨的侧视图[解剖图](https://www.aafp.org/pubs/afp/issues/1999/0515/p2773.html)
 
-![shoulder-joint](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/workout/shoulder-joint1.png)
+![shoulder-joint](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/workout/shoulder-joint1.jpeg)
 
 之前我们了解过肩关节是一个球窝关节，由三块骨头，即肱骨、肩胛骨和锁骨构成。这个球窝关节细分可以分为盂肱关节、肩锁关节、胸锁关节和肩胸关节
 
@@ -100,15 +100,15 @@ id: shoulder-impingement-syndrome
 
 每个动作时长 1-2 min
 
-- 斜方肌上束: 使用筋膜球按压颈后和肩颈处肌肉，锁骨边缘处如果按压费劲可以用手代替筋膜球（绿色点点处） ![trapezius1](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/workout/trapezius.png)
-- 肩胛提肌：筋膜球按压，或者抬起手臂从头顶过去摸对侧耳朵，头转向手臂侧方向 45°向下，手臂施加向下的力 ![levator-scapulae](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/workout/levator-scapulae.jpg)
-- 胸小肌：胸部和肩部连接的部位有一个浅浅的窝的位置，手法按压或者俯卧在垫子上用筋膜球滚动 ![pectoralis-minor](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/workout/pectoralis-minor.png)
+- 斜方肌上束: 使用筋膜球按压颈后和肩颈处肌肉，锁骨边缘处如果按压费劲可以用手代替筋膜球（绿色点点处） ![trapezius1](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/workout/trapezius1.png)
+- 肩胛提肌：筋膜球按压，或者抬起手臂从头顶过去摸对侧耳朵，头转向手臂侧方向 45°向下，手臂施加向下的力 ![levator-scapulae](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/workout/levator-scapulae.png)
+- 胸小肌：胸部和肩部连接的部位有一个浅浅的窝的位置，手法按压或者俯卧在垫子上用筋膜球滚动 ![pectoralis-minor](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/workout/pectoralis-minor.jpeg)
 
 ### 激活/强化方案
 
 先激活，后强化
 
-激活即用筋膜球进行按压滚动，但与松解不同，时间较短，15-30s。 ![trapezius2](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/workout/trapezius2.png)
+激活即用筋膜球进行按压滚动，但与松解不同，时间较短，15-30s。 ![trapezius2](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/workout/trapezius2.jpeg)
 
 - 斜方肌下束：Y 字伸展，即面朝下趴在垫子上，头贴地不抬起，两臂伸直并向两侧伸展，大拇指朝上👍🏻，身体呈现 Y 字，上抬手臂 (4 x 15-20)
 - 菱形肌：A 字伸展，即趴在垫子上，两臂伸直大拇指朝上👍🏻，手臂与躯干45°左右夹角，抬起手臂同时携带头部前胸抬起 (4 x 15-20)
