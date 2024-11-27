@@ -38,7 +38,7 @@ id: biomechanical-fundamentals-of-resistance-training
 
 ### 第一类杠杆
 
-肌力和阻力位于支点的两侧
+肌力和阻力位于支点的两侧（平衡）
 
 ### 第二类杠杆
 
