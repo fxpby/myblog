@@ -4,6 +4,12 @@ import type * as Preset from "@docusaurus/preset-classic";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+const fs = require("fs");
+const toolbarCodingHTML = fs.readFileSync(
+  "./src/snippets/coding.html",
+  "utf-8"
+);
+
 const config: Config = {
   title: "邂逅大大小小陆",
   // tagline: "遇见是缘分，感谢你的驻足",
@@ -81,7 +87,7 @@ const config: Config = {
       title: "邂逅大大小小陆",
       logo: {
         alt: "My Site Logo",
-        src: "img/logo.svg",
+        src: "img/favicon1.jpg",
       },
       items: [
         // {
@@ -96,6 +102,19 @@ const config: Config = {
         //   position: "right",
         //   value: "<button>Give feedback</button>",
         // },
+        {
+          label: "coding",
+          type: "dropdown",
+          className: "dyte-dropdown",
+          items: [
+            {
+              type: "html",
+              value: toolbarCodingHTML,
+              className: "dyte-dropdown",
+            },
+          ],
+        },
+
         {
           href: "https://github.com/fxpby",
           label: "GitHub",
