@@ -10,15 +10,6 @@
   overflow: hidden;
 }
 
-.suitable{
-  cursor: pointer;
-  font-size: 1.5em;
-  user-select: none;
-}
-.suitable:hover {
-  text-shadow: #fff 1px 0 10px;
-}
-
 @media screen and (max-width: 996px) {
   .heroBanner {
     padding: 2rem;

@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, { useState, useEffect, useCallback } from "react";
 import {
   Button,
   Box,
@@ -17,8 +17,8 @@ import {
   RadioGroup,
   HStack,
   VStack,
-} from '@chakra-ui/react';
-import {defaultRule} from './constant';
+} from "@chakra-ui/react";
+import { defaultRule } from "./constant";
 
 export default function ConfigArea(props) {
   const {
@@ -57,12 +57,12 @@ export default function ConfigArea(props) {
     oneRM: {
       value: 0,
       rule: (val) => {
-        return typeof val === 'number' && !isNaN(val);
+        return typeof val === "number" && !isNaN(val);
       },
       setter: setOneRM,
     },
     unit: {
-      value: 'kg',
+      value: "kg",
       rule: (val) => {
         return true;
       },
@@ -71,21 +71,21 @@ export default function ConfigArea(props) {
     cycleCount: {
       value: 2,
       rule: (val) => {
-        return typeof val === 'number' && !isNaN(val);
+        return typeof val === "number" && !isNaN(val);
       },
       setter: setCycleCount,
     },
     progressiveOverloadWeekCount: {
       value: 0,
       rule: (val) => {
-        return typeof val === 'number' && !isNaN(val);
+        return typeof val === "number" && !isNaN(val);
       },
       setter: setProgressiveOverloadWeekCount,
     },
     deloadWeekCount: {
       value: 0,
       rule: (val) => {
-        return typeof val === 'number' && !isNaN(val);
+        return typeof val === "number" && !isNaN(val);
       },
       setter: setDeloadWeekCount,
     },
@@ -150,7 +150,7 @@ export default function ConfigArea(props) {
   const verifyRuleHandler = (key) => {
     const func = rules[key]?.rule;
     const value = rules[key]?.value;
-    console.log('value: ', value);
+    console.log("value: ", value);
     return func(value);
   };
 
@@ -242,7 +242,7 @@ export default function ConfigArea(props) {
   ]);
 
   const handler = () => {
-    console.log('rules: ', rules);
+    console.log("rules: ", rules);
     Object.keys(rules).forEach((configName) => {
       if (verifyRuleHandler(configName)) {
         rules[configName]?.setter(rules[configName]?.value);
@@ -261,7 +261,7 @@ export default function ConfigArea(props) {
   const getWeekLabel = (index) => {
     const isDeloadWeek = deloadWeekIndex()?.includes(index);
     const currentDeloadWeekIdx = deloadWeekIndex().findIndex(
-      (x) => x === index,
+      (x) => x === index
     );
     const deloadStart = deloadWeekIndex()[0];
 
@@ -297,7 +297,8 @@ export default function ConfigArea(props) {
                 };
               })
             }
-            value={rules.unit.value}>
+            value={rules.unit.value}
+          >
             请选择重量单位：
             <Stack direction="row">
               <Radio value="kg">kg</Radio>
@@ -325,7 +326,8 @@ export default function ConfigArea(props) {
                       },
                     };
                   })
-                }>
+                }
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -362,24 +364,24 @@ export default function ConfigArea(props) {
                         newGroupValue.push(
                           new Array(
                             rules.progressiveOverloadWeekCount.value +
-                              rules.deloadWeekCount.value,
-                          ).fill(3),
+                              rules.deloadWeekCount.value
+                          ).fill(3)
                         );
                         newCountValue.push(
                           new Array(
                             rules.progressiveOverloadWeekCount.value +
-                              rules.deloadWeekCount.value,
-                          ).fill(3),
+                              rules.deloadWeekCount.value
+                          ).fill(3)
                         );
                         newLightTrainingDegree.push(0.7);
                         newCycleConnection.push(0.02);
                         newOverloadIncreaseDegree.push(
                           new Array(
-                            rules.progressiveOverloadWeekCount.value,
-                          ).fill(0.02),
+                            rules.progressiveOverloadWeekCount.value
+                          ).fill(0.02)
                         );
                         newDeloadDegree.push(
-                          new Array(rules.deloadWeekCount.value).fill(0.02),
+                          new Array(rules.deloadWeekCount.value).fill(0.02)
                         );
                       }
                     } else if (diff < 0) {
@@ -422,7 +424,8 @@ export default function ConfigArea(props) {
                       },
                     };
                   })
-                }>
+                }
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -456,19 +459,19 @@ export default function ConfigArea(props) {
 
                         const prev_g = _g.slice(
                           0,
-                          rules.progressiveOverloadWeekCount.value,
+                          rules.progressiveOverloadWeekCount.value
                         );
                         const behind_g = _g.slice(
                           rules.progressiveOverloadWeekCount.value,
-                          _g.length,
+                          _g.length
                         );
                         const prev_c = _c.slice(
                           0,
-                          rules.progressiveOverloadWeekCount.value,
+                          rules.progressiveOverloadWeekCount.value
                         );
                         const behind_c = _c.slice(
                           rules.progressiveOverloadWeekCount.value,
-                          _c.length,
+                          _c.length
                         );
 
                         newGroupValue = newGroupValue.map(() => {
@@ -488,19 +491,19 @@ export default function ConfigArea(props) {
                         const _c = newCountValue[i];
                         const prev_g = _g.slice(
                           0,
-                          rules.progressiveOverloadWeekCount.value + diff,
+                          rules.progressiveOverloadWeekCount.value + diff
                         );
                         const behind_g = _g.slice(
                           rules.progressiveOverloadWeekCount.value,
-                          _g.length,
+                          _g.length
                         );
                         const prev_c = _c.slice(
                           0,
-                          rules.progressiveOverloadWeekCount.value + diff,
+                          rules.progressiveOverloadWeekCount.value + diff
                         );
                         const behind_c = _c.slice(
                           rules.progressiveOverloadWeekCount.value,
-                          _c.length,
+                          _c.length
                         );
                         newGroupValue = newGroupValue.map(() => {
                           return [...prev_g, ...behind_g];
@@ -535,7 +538,8 @@ export default function ConfigArea(props) {
                       },
                     };
                   })
-                }>
+                }
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -567,19 +571,19 @@ export default function ConfigArea(props) {
 
                         const prev_g = _g.slice(
                           0,
-                          rules.progressiveOverloadWeekCount.value,
+                          rules.progressiveOverloadWeekCount.value
                         );
                         const behind_g = _g.slice(
                           rules.progressiveOverloadWeekCount.value,
-                          _g.length,
+                          _g.length
                         );
                         const prev_c = _c.slice(
                           0,
-                          rules.progressiveOverloadWeekCount.value,
+                          rules.progressiveOverloadWeekCount.value
                         );
                         const behind_c = _c.slice(
                           rules.progressiveOverloadWeekCount.value,
-                          _c.length,
+                          _c.length
                         );
 
                         newGroupValue = newGroupValue.map(() => {
@@ -599,19 +603,19 @@ export default function ConfigArea(props) {
                         const _c = newCountValue[i];
                         const prev_g = _g.slice(
                           0,
-                          rules.progressiveOverloadWeekCount.value,
+                          rules.progressiveOverloadWeekCount.value
                         );
                         const behind_g = _g.slice(
                           rules.progressiveOverloadWeekCount.value,
-                          _g.length + diff,
+                          _g.length + diff
                         );
                         const prev_c = _c.slice(
                           0,
-                          rules.progressiveOverloadWeekCount.value,
+                          rules.progressiveOverloadWeekCount.value
                         );
                         const behind_c = _c.slice(
                           rules.progressiveOverloadWeekCount.value,
-                          _c.length + diff,
+                          _c.length + diff
                         );
                         newGroupValue = newGroupValue.map(() => {
                           return [...prev_g, ...behind_g];
@@ -645,7 +649,8 @@ export default function ConfigArea(props) {
                       },
                     };
                   })
-                }>
+                }
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -675,7 +680,8 @@ export default function ConfigArea(props) {
                         },
                       };
                     })
-                  }>
+                  }
+                >
                   <NumberInputField />
                   <NumberInputStepper>
                     <NumberIncrementStepper />
@@ -697,7 +703,7 @@ export default function ConfigArea(props) {
                   0
                     ? new Array(
                         rules.progressiveOverloadWeekCount.value +
-                          rules.deloadWeekCount.value,
+                          rules.deloadWeekCount.value
                       )
                         .fill()
                         .map((x, i) => (
@@ -735,7 +741,8 @@ export default function ConfigArea(props) {
                                     },
                                   };
                                 })
-                              }>
+                              }
+                            >
                               <NumberInputField />
                               <NumberInputStepper>
                                 <NumberIncrementStepper />
@@ -744,7 +751,7 @@ export default function ConfigArea(props) {
                             </NumberInput>
                           </VStack>
                         ))
-                    : '请在上方输入中周期超负荷/减载周数'}
+                    : "请在上方输入中周期超负荷/减载周数"}
                 </Flex>
               ))}
 
@@ -766,7 +773,7 @@ export default function ConfigArea(props) {
                   0
                     ? new Array(
                         rules.progressiveOverloadWeekCount.value +
-                          rules.deloadWeekCount.value,
+                          rules.deloadWeekCount.value
                       )
                         .fill()
                         .map((x, i) => (
@@ -805,7 +812,8 @@ export default function ConfigArea(props) {
                                     },
                                   };
                                 })
-                              }>
+                              }
+                            >
                               <NumberInputField />
                               <NumberInputStepper>
                                 <NumberIncrementStepper />
@@ -814,7 +822,7 @@ export default function ConfigArea(props) {
                             </NumberInput>
                           </VStack>
                         ))
-                    : '请在上方输入中周期超负荷/减载周数'}
+                    : "请在上方输入中周期超负荷/减载周数"}
                 </Flex>
               ))}
             </FormControl>
@@ -831,12 +839,13 @@ export default function ConfigArea(props) {
                       ...prev,
                       isdeloadWeekBreak: {
                         ...prev.isdeloadWeekBreak,
-                        value: val === '1',
+                        value: val === "1",
                       },
                     };
                   })
                 }
-                value={rules.isdeloadWeekBreak.value === true ? '1' : '0'}>
+                value={rules.isdeloadWeekBreak.value === true ? "1" : "0"}
+              >
                 若分段代表减载周数为 1 周，生成分段减载周 W-X.1 W-X.2 ...
                 <Stack direction="row">
                   <Radio value="1">是</Radio>
@@ -879,12 +888,13 @@ export default function ConfigArea(props) {
                                             g[i] = valueAsNumber;
                                           }
                                           return g;
-                                        },
+                                        }
                                       ),
                                   },
                                 };
                               })
-                            }>
+                            }
+                          >
                             <NumberInputField />
                             <NumberInputStepper>
                               <NumberIncrementStepper />
@@ -893,7 +903,7 @@ export default function ConfigArea(props) {
                           </NumberInput>
                         </VStack>
                       ))
-                  : '请在上方输入中周期超负荷周数'}
+                  : "请在上方输入中周期超负荷周数"}
               </Flex>
             ))}
           </FormControl>
@@ -909,7 +919,7 @@ export default function ConfigArea(props) {
                           <span>
                             {`循环${cIdx + 1}`}-
                             {getWeekLabel(
-                              i + rules.progressiveOverloadWeekCount.value,
+                              i + rules.progressiveOverloadWeekCount.value
                             )}
                           </span>
                           <NumberInput
@@ -931,12 +941,13 @@ export default function ConfigArea(props) {
                                           g[i] = valueAsNumber;
                                         }
                                         return g;
-                                      },
+                                      }
                                     ),
                                   },
                                 };
                               })
-                            }>
+                            }
+                          >
                             <NumberInputField />
                             <NumberInputStepper>
                               <NumberIncrementStepper />
@@ -945,7 +956,7 @@ export default function ConfigArea(props) {
                           </NumberInput>
                         </VStack>
                       ))
-                  : '请在上方输入中周期超负荷周数'}
+                  : "请在上方输入中周期超负荷周数"}
               </Flex>
             ))}
           </FormControl>
@@ -976,12 +987,13 @@ export default function ConfigArea(props) {
                                   l = valueAsNumber;
                                 }
                                 return l;
-                              },
+                              }
                             ),
                           },
                         };
                       })
-                    }>
+                    }
+                  >
                     <NumberInputField />
                     <NumberInputStepper>
                       <NumberIncrementStepper />
@@ -1019,7 +1031,8 @@ export default function ConfigArea(props) {
                           },
                         };
                       })
-                    }>
+                    }
+                  >
                     <NumberInputField />
                     <NumberInputStepper>
                       <NumberIncrementStepper />
