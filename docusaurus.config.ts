@@ -83,6 +83,12 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
+    docs: {
+      sidebar: {
+        autoCollapseCategories: true,
+        hideable: true,
+      },
+    },
     navbar: {
       title: "邂逅大大小小陆",
       logo: {
@@ -94,7 +100,7 @@ const config: Config = {
         //   type: "docSidebar",
         //   sidebarId: "tutorialSidebar",
         //   position: "left",
-        //   label: "Tutorial",
+        //   label: "",
         // },
         // { to: "/blog", label: "Blog", position: "left" },
         // {
