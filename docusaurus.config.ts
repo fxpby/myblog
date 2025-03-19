@@ -109,7 +109,7 @@ const config: Config = {
         //   value: "<button>Give feedback</button>",
         // },
         {
-          label: "coding",
+          label: "编程",
           type: "dropdown",
           className: "dyte-dropdown",
           items: [
@@ -121,11 +121,15 @@ const config: Config = {
           ],
         },
         {
-          label: "workout",
+          label: "锻炼",
           to: "/docs/workout/training-program/cycle-calc",
         },
         {
-          label: "music theory",
+          label: "运动营养",
+          to: "/docs/nutrition-for-exercise-science/medical-basic/thyroid",
+        },
+        {
+          label: "基础乐理",
           to: "/docs/music-theory/音程&度数",
         },
         {
