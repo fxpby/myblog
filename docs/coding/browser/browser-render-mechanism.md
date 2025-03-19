@@ -1,9 +1,8 @@
 ---
-id: browser-render-mechanism
-title: 浏览器渲染原理
-tags:
-  - 浏览器
+sidebar_position: 1
 ---
+
+# 浏览器渲染原理
 
 ## 1. 浏览器的渲染流程
 
