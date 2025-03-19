@@ -120,7 +120,10 @@ const config: Config = {
             },
           ],
         },
-
+        {
+          label: "workout",
+          to: "/docs/workout/training-program/cycle-calc",
+        },
         {
           href: "https://github.com/fxpby",
           label: "GitHub",
