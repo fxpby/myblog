@@ -1,7 +1,3 @@
----
-id: shoulder-impingement-syndrome
----
-
 # 肩峰撞击综合症
 
 ## 相关结构基础概念
