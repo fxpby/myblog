@@ -1,9 +1,8 @@
 ---
-id: memory
-title: 内存管理
-tags:
-  - 内存
+sidebar_position: 1
 ---
+
+# 内存管理
 
 ## 为什么要管理内存
 
@@ -28,8 +27,8 @@ tags:
 ### 存储普通类型的变量 - 栈内存
 
 ```js
-let a = 1
-let b = 2
+let a = 1;
+let b = 2;
 ```
 
 - 先入栈 a-123
@@ -40,11 +39,15 @@ let b = 2
 ### 存储引用类型的变量 - 堆栈
 
 ```js
-let a = { a1: 123 }
-let b = a
-let c = [1, 2, 3]
-let d = function() { console.log(123) }
-{ a2: 666 }
+let a = { a1: 123 };
+let b = a;
+let c = [1, 2, 3];
+let d = function () {
+  console.log(123);
+};
+{
+  a2: 666;
+}
 ```
 
 - 声明引用类型变量 a 的时候，先在堆内存中开辟一个地址存放变量（变量本体），再把这个地址赋值给变量，即入栈 a-0x00000000
@@ -55,7 +58,7 @@ let d = function() { console.log(123) }
 
 ## V8 内存的管理
 
-### V8到底有多大
+### V8 到底有多大
 
 - `64 位`下是`1.4G（标准）`
 - `32 位`下是 `700MB （标准）`
@@ -117,7 +120,7 @@ let d = function() { console.log(123) }
 
 上面提到的标记阶段需要遍历所有可访问对象，对于大型的堆内存来说，可能需要几百毫秒才能完成一次标记。在这期间会造成停顿，阻碍主线程的执行，一般来说老生代存在大量存活的对象，标记阶段的堆内存遍历会造成一定的卡顿，影响用户体验。所以 v8 引入了增量标记。
 
-增量标记中，先标记堆内存中的一部分对象，然后暂停，将执行权重新交给 JS 主线程，等待主线程任务执行完毕后再从原来暂停标记的地方继续标记，知道标记完整个堆内存，即把垃圾回收分段，穿插在 JS任务中间执行，尽可能少的影响 JS 主线程任务，避免应用卡顿，提升应用性能
+增量标记中，先标记堆内存中的一部分对象，然后暂停，将执行权重新交给 JS 主线程，等待主线程任务执行完毕后再从原来暂停标记的地方继续标记，知道标记完整个堆内存，即把垃圾回收分段，穿插在 JS 任务中间执行，尽可能少的影响 JS 主线程任务，避免应用卡顿，提升应用性能
 
 :::tip 拓展
 
@@ -133,33 +136,33 @@ let d = function() { console.log(123) }
 #### 1.执行完一次代码
 
 ```js
-let a = 1
-let b = 2
-console.log(a)
+let a = 1;
+let b = 2;
+console.log(a);
 setTimeout(() => {
-  b++
-  console.log(b)
+  b++;
+  console.log(b);
   // 回收一次
-}, 2000)
+}, 2000);
 // 回收一次
 ```
 
 #### 2.内存不足
 
 ```js
-let size = 30 * 1024 * 1024
-let arr1 = new Array(size)
-testMemory()
-let arr2 = new Array(size)
-testMemory()
-let arr3 = new Array(size)
-testMemory()
-let arr4 = new Array(size)
-testMemory()
-let arr5 = new Array(size)
-testMemory()
-let arr6 = new Array(size)
-testMemory()
+let size = 30 * 1024 * 1024;
+let arr1 = new Array(size);
+testMemory();
+let arr2 = new Array(size);
+testMemory();
+let arr3 = new Array(size);
+testMemory();
+let arr4 = new Array(size);
+testMemory();
+let arr5 = new Array(size);
+testMemory();
+let arr6 = new Array(size);
+testMemory();
 ```
 
 ### 判断一个变量可以回收的标准
@@ -169,25 +172,24 @@ testMemory()
 
 ```js
 function testMemory() {
-  let memory = process.memoryUsage().heapUsed
-  console.log(memory / 1024 / 1024 + 'mb')
+  let memory = process.memoryUsage().heapUsed;
+  console.log(memory / 1024 / 1024 + "mb");
 }
 
-let size = 30 * 1024 * 1024
-let arr1 = new Array(size)
-testMemory()
-(function() {
-  let arr2 = new Array(size)
-  testMemory()
-  let arr3 = new Array(size)
-  testMemory()
-  let arr4 = new Array(size)
-  testMemory()
-})()
-let arr5 = new Array(size)
-testMemory()
-let arr6 = new Array(size)
-testMemory()
+let size = 30 * 1024 * 1024;
+let arr1 = new Array(size);
+testMemory()(function () {
+  let arr2 = new Array(size);
+  testMemory();
+  let arr3 = new Array(size);
+  testMemory();
+  let arr4 = new Array(size);
+  testMemory();
+})();
+let arr5 = new Array(size);
+testMemory();
+let arr6 = new Array(size);
+testMemory();
 
 // node --max-old-space-size=1000 xx.js 指定最大老生代空间
 ```
@@ -197,14 +199,14 @@ testMemory()
 #### 浏览器
 
 ```js
-window.performance.memory
+window.performance.memory;
 ```
 
 ```js
-MemoryInfo 
+MemoryInfo
 {
-  totalJSHeapSize: 95959081, 
-  usedJSHeapSize: 90730505, 
+  totalJSHeapSize: 95959081,
+  usedJSHeapSize: 90730505,
   jsHeapSizeLimit: 4294705152
 }
 ```
@@ -212,7 +214,7 @@ MemoryInfo
 #### Node
 
 ```js
-process.memoryUsage()
+process.memoryUsage();
 ```
 
 ```js
