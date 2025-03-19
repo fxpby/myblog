@@ -125,6 +125,10 @@ const config: Config = {
           to: "/docs/workout/training-program/cycle-calc",
         },
         {
+          label: "music theory",
+          to: "/docs/music-theory/音程&度数",
+        },
+        {
           href: "https://github.com/fxpby",
           label: "GitHub",
           position: "right",
