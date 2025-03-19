@@ -45,6 +45,7 @@
   border: 1px solid rgb(245 246 247);
 }
 .navbar-first-level-title{
+  display: block;
   white-space: nowrap;
   padding: 8px 4px;
   font-weight: 700;
