@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[4862],{13044:e=>{e.exports=JSON.parse('{"label":"babel","permalink":"/myblog/docs/tags/babel","allTagsPath":"/myblog/docs/tags","count":1,"items":[{"id":"front-end-engineering/babel","title":"Babel","description":"\x3c!--","permalink":"/myblog/docs/front-end-engineering/babel"}]}')}}]);

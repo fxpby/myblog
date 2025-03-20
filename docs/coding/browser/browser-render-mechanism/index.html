@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-coding/browser/browser-render-mechanism" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.7.0">
+<title data-rh="true">浏览器渲染原理 | 邂逅大大小小陆</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://serendipityhaven.com/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://serendipityhaven.com/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://serendipityhaven.com/docs/coding/browser/browser-render-mechanism"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="浏览器渲染原理 | 邂逅大大小小陆"><meta data-rh="true" name="description" content="1. 浏览器的渲染流程"><meta data-rh="true" property="og:description" content="1. 浏览器的渲染流程"><link data-rh="true" rel="icon" href="/img/favicon1.jpg"><link data-rh="true" rel="canonical" href="https://serendipityhaven.com/docs/coding/browser/browser-render-mechanism"><link data-rh="true" rel="alternate" href="https://serendipityhaven.com/docs/coding/browser/browser-render-mechanism" hreflang="en"><link data-rh="true" rel="alternate" href="https://serendipityhaven.com/docs/coding/browser/browser-render-mechanism" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="邂逅大大小小陆 RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="邂逅大大小小陆 Atom Feed">
+
+<link rel="preconnect" href="https://www.google-analytics.com">
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-217600182-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview")</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<link rel="preconnect" href="https://www.google-analytics.com">
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<script async src="https://www.googletagmanager.com/gtag/js?id=GTM-TSG5B2CH"></script>
+<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","GTM-TSG5B2CH",{anonymize_ip:!0})</script><link rel="stylesheet" href="/assets/css/styles.911a1fc0.css">
+<script src="/assets/js/runtime~main.6150160a.js" defer="defer"></script>
+<script src="/assets/js/main.dbae149f.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/favicon1.jpg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/favicon1.jpg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/favicon1.jpg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">邂逅大大小小陆</b></a><div class="navbar__item dropdown dropdown--hoverable"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link dyte-dropdown">编程</a><ul class="dropdown__menu"><li class="dyte-dropdown"><div class="navbar-wrapper">
+  <div class="navbar-col">
+    <div class="navbar-first-level has-child">
+      <div class="navbar-first-level-title">前端四剑客</div>
+      <div class="navbar-second-level">
+        <a href="/docs/coding/html/favicon" class="second-level-item"> HTML </a>
+        <a href="/docs/coding/css/BFC" class="second-level-item"> CSS </a>
+        <a href="/docs/coding/javascript/memory" class="second-level-item">
+          JavaScript
+        </a>
+        <a href="/docs/coding/typescript/basic/ts-primitive-data-types" class="second-level-item">
+          TypeScript
+        </a>
+      </div>
+    </div>
+    <div class="navbar-first-level has-child">
+      <div class="navbar-first-level-title">前端框架</div>
+      <div class="navbar-second-level">
+        <a href="/docs/coding/framework/runtime-compiletime" class="second-level-item">
+          基础知识
+        </a>
+        <a href="/docs/coding/framework/vue/vue2-learn-prepare" class="second-level-item">
+          Vue
+        </a>
+        <a href="/docs/coding/framework/react/react-re-renders" class="second-level-item">
+          React
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="navbar-col">
+    <div class="navbar-first-level">
+      <a href="/docs/coding/front-end-engineering/travis-ci-for-vuepress" class="navbar-first-level-title can-mouse-over">
+        前端工程化
+      </a>
+    </div>
+    <div class="navbar-first-level">
+      <a href="/docs/coding/browser/browser-render-mechanism" class="navbar-first-level-title can-mouse-over">
+        浏览器
+      </a>
+    </div>
+    <div class="navbar-first-level">
+      <a href="/docs/coding/design-pattern/uml-basics" class="navbar-first-level-title can-mouse-over">
+        设计模式
+      </a>
+    </div>
+    <div class="navbar-first-level">
+      <a href="/docs/coding/network/cache/frontend-http-cache-solution" class="navbar-first-level-title can-mouse-over">
+        计算机网络
+      </a>
+    </div>
+    <div class="navbar-first-level">
+      <a href="/docs/coding/data-structures/time-complexity/" class="navbar-first-level-title can-mouse-over">
+        数据结构
+      </a>
+    </div>
+    <div class="navbar-first-level">
+      <a href="/docs/coding/algorithm/sorting-algorithm/bubble-sort" class="navbar-first-level-title can-mouse-over">
+        算法
+      </a>
+    </div>
+    <div class="navbar-first-level">
+      <a href="docs/coding/leetcode/array/twosum" class="navbar-first-level-title can-mouse-over">
+        力扣
+      </a>
+    </div>
+  </div>
+</div>
+</li></ul></div><a class="navbar__item navbar__link" href="/docs/workout/training-program/cycle-calc">锻炼</a><a class="navbar__item navbar__link" href="/docs/nutrition-for-exercise-science/medical-basic/thyroid">运动营养</a><a class="navbar__item navbar__link" href="/docs/music-theory/音程&amp;度数">基础乐理</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/fxpby" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite" aria-pressed="false"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/coding/html/attrs">编程</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/coding/html/attrs">HTML</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/coding/css/BFC">CSS</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/coding/javascript/memory">JavaScript</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/coding/typescript/basic/ts-any">TypeScript</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/coding/framework/vue/vue2-build">前端框架</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/coding/front-end-engineering/travis-ci-for-vuepress">前端工程化</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/coding/browser/browser-render-mechanism">浏览器</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/coding/browser/browser-render-mechanism">浏览器渲染原理</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/coding/browser/browser-event-loop">浏览器事件循环</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/coding/browser/browser-router">前端路由</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/coding/browser/browser-storage-caching-scheme">浏览器存储型缓存方案</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/coding/browser/layout-paint">浏览器的重排和重绘</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/coding/design-pattern/uml-basics">设计模式</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/coding/network/cache/bfcache">计算机网络</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/coding/data-structures/time-complexity/">数据结构</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/coding/algorithm/sorting-algorithm/bubble-sort">算法</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/coding/leetcode/array/twosum">leetcode</a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/workout/training-program/cycle-calc">workout</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/nutrition-for-exercise-science/medical-basic/thyroid/">运动营养</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/music-theory/音程&amp;度数">基础乐理</a></div></li></ul></nav><button type="button" title="Collapse sidebar" aria-label="Collapse sidebar" class="button button--secondary button--outline collapseSidebarButton_PEFL"><svg width="20" height="20" aria-hidden="true" class="collapseSidebarButtonIcon_kv0_"><g fill="#7a7a7a"><path d="M9.992 10.023c0 .2-.062.399-.172.547l-4.996 7.492a.982.982 0 01-.828.454H1c-.55 0-1-.453-1-1 0-.2.059-.403.168-.551l4.629-6.942L.168 3.078A.939.939 0 010 2.528c0-.548.45-.997 1-.997h2.996c.352 0 .649.18.828.45L9.82 9.472c.11.148.172.347.172.55zm0 0"></path><path d="M19.98 10.023c0 .2-.058.399-.168.547l-4.996 7.492a.987.987 0 01-.828.454h-3c-.547 0-.996-.453-.996-1 0-.2.059-.403.168-.551l4.625-6.942-4.625-6.945a.939.939 0 01-.168-.55 1 1 0 01.996-.997h3c.348 0 .649.18.828.45l4.996 7.492c.11.148.168.347.168.55zm0 0"></path></g></svg></button></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">编程</span><meta itemprop="position" content="1"></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">浏览器</span><meta itemprop="position" content="2"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">浏览器渲染原理</span><meta itemprop="position" content="3"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>浏览器渲染原理</h1></header>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="1-浏览器的渲染流程">1. 浏览器的渲染流程<a href="#1-浏览器的渲染流程" class="hash-link" aria-label="Direct link to 1. 浏览器的渲染流程" title="Direct link to 1. 浏览器的渲染流程">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="11-渲染时间点">1.1 渲染时间点<a href="#11-渲染时间点" class="hash-link" aria-label="Direct link to 1.1 渲染时间点" title="Direct link to 1.1 渲染时间点">​</a></h3>
+<p>浏览器的网络进程开启线程<strong>接收 HTML 文档</strong>，产生一个<strong>渲染任务</strong>并传递给渲染主线程的<strong>消息队列</strong>，在事件循环机制作用下，渲染主线程取出消息队列中的渲染任务，开启渲染流程</p>
+<p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/blogImg/browser/%E6%B8%B2%E6%9F%93%E6%97%B6%E9%97%B4%E7%82%B9.svg" alt="渲染时间点" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="12-渲染流水线">1.2 渲染流水线<a href="#12-渲染流水线" class="hash-link" aria-label="Direct link to 1.2 渲染流水线" title="Direct link to 1.2 渲染流水线">​</a></h3>
+<p>整个渲染流程分为多个阶段，分别是</p>
+<ul>
+<li>HTML 解析</li>
+<li>样式计算</li>
+<li>布局</li>
+<li>分层</li>
+<li>生成绘制指令</li>
+<li>分块</li>
+<li>光栅化</li>
+<li>画</li>
+</ul>
+<p>每个阶段都有明确的输入输出，即上一阶段的输出会成为下一阶段的输入，综上整个渲染流程形成了一套组织严密的生产流水线</p>
+<p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/blogImg/browser/%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B%E6%B5%81%E6%B0%B4%E7%BA%BF2.svg" alt="渲染进程流水线2" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/browser/browser-render-full-flow.svg" alt="browser-render-full-flow" class="img_ev3q"></p>
+<p>来自 google 的图：</p>
+<p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/blogImg/browser/%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B%E6%B5%81%E6%B0%B4%E7%BA%BF.png" alt="渲染进程流水线" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="13-parse-阶段解析-html">1.3 Parse 阶段：解析 HTML<a href="#13-parse-阶段解析-html" class="hash-link" aria-label="Direct link to 1.3 Parse 阶段：解析 HTML" title="Direct link to 1.3 Parse 阶段：解析 HTML">​</a></h3>
+<p>解析过程遇到 CSS 解析 CSS，遇到 JS 解析 JS，为了提高解析效率，浏览器在开始解析前会启动一个预解析线程，率先下载 HTML 中的外部 CSS 和 JS 文件</p>
+<ul>
+<li>如果主线程解析到 <code>link</code> 位置，此时外部 CSS 文件还没有下载解析好，主线程不会等待，继续解析后续的 HTML（下载和解析 CSS 的工作在预解析线程中进行）- <strong>CSS 不会阻塞 HTML 解析</strong></li>
+<li>如果主线程解析到 <code>script</code> 位置，会停止解析 HTML，转而等待 JS 文件下载好，并将全局代码解析执行完成后，才能继续解析 HTML（JS 代码的执行过程可能会修改当前的 DOM 树，故 DOM 树的生成必须暂停）- <strong>JS 会阻塞 HTML 解析</strong></li>
+</ul>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_BuS1"><p>如果不想因为 JS 阻塞 HTML 的解析，可以为 script 标签添加 defer 属性或将 script 放在 body 结束标签之前，浏览器会在最后执行 JS 代码，避免阻塞 DOM 构建</p></div></div>
+<p>最终得到 DOM 树和 CSSOM 树， 浏览器的默认样式、内部样式、外部样式和行内样式均会包含在 CSSOM 树中，树的每个节点都对应 JS 对象</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="dom-树文档对象模型">DOM 树（文档对象模型）<a href="#dom-树文档对象模型" class="hash-link" aria-label="Direct link to DOM 树（文档对象模型）" title="Direct link to DOM 树（文档对象模型）">​</a></h4>
+<p>Bytes =&gt; Characters =&gt; Tokens =&gt; Nodes =&gt; DOM</p>
+<ol>
+<li>转换 Conversion：浏览器从磁盘或网络中读取 HTML 原始字节，并根据文件的指定编码（如 UTF-8）将它们转换为各个字符</li>
+<li>令牌化/分词 Tokenizing：浏览器根据 HTML 规范将字符串转换为不同令牌（如<code>&lt;html&gt;</code>、<code>&lt;body&gt;</code>）以及用尖括号括起来的其他字符串</li>
+<li>词法处理/语法分析 Lexing：上一步产生的标记被转换为“对象”，从而定义其属性和规则</li>
+<li>DOM 构建：由于 HTML 标记定义了不同标签之间的关系，因此创建的对象链接在一个树型数据结构中，并捕获原始标记中定义的父子、兄弟关系</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="cssom-树css-对象模型">CSSOM 树（CSS 对象模型）<a href="#cssom-树css-对象模型" class="hash-link" aria-label="Direct link to CSSOM 树（CSS 对象模型）" title="Direct link to CSSOM 树（CSS 对象模型）">​</a></h4>
+<p>重复上面 DOM 树流程，针对 CSS</p>
+<p>StyleSheetList(样式表集合) =&gt; 若干个样式表 CSSStyleSheet =&gt; CSSStyleRule =&gt; 选择器 + style</p>
+<p>样式表分类：</p>
+<ul>
+<li>头部<code>&lt;style&gt;</code>样式表</li>
+<li>头部<code>&lt;link...&gt;</code>样式表</li>
+<li>内联样式表 <code>&lt;div style=&quot;color: #fff&quot;&gt;</code></li>
+<li>浏览器默认样式表(user agent stylesheet)</li>
+</ul>
+<p>除了浏览器默认样式，其他样式 js 都可以操作，比如 内联样式通过 <code>dom.style</code> 更改, 前两个样式可通过 <code>document.styleSheets[0].addRule(&#x27;div&#x27;, &#x27;border: 1px solid red&#x27;)</code>处理</p>
+<p>Bytes =&gt; Characters =&gt; Tokens =&gt; Nodes =&gt; CSSOM</p>
+<p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/blogImg/browser/parsing1.png" alt="parsing1" class="img_ev3q"></p>
+<blockquote>
+<p><a href="https://web.dev/articles/critical-rendering-path/constructing-the-object-model?hl=zh-cn" target="_blank" rel="noopener noreferrer">https://web.dev/articles/critical-rendering-path/constructing-the-object-model?hl=zh-cn</a></p>
+</blockquote>
+<p>CSSOM 和 DOM 并行构建，构建 CSSOM 不会阻塞 DOM 构建。因为 JS 可能会操作样式信息，故 CSSOM 会阻塞 JS 执行</p>
+<p>虽然 CSSOM 不会阻塞 DOM 构建，但进入下一阶段之前，必须等待 CSSOM 构建完成，即 CSSOM 会阻塞渲染</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="html-解析过程遇到-cssjs-代码次级资源加载">HTML 解析过程遇到 CSS/JS 代码（次级资源加载）<a href="#html-解析过程遇到-cssjs-代码次级资源加载" class="hash-link" aria-label="Direct link to HTML 解析过程遇到 CSS/JS 代码（次级资源加载）" title="Direct link to HTML 解析过程遇到 CSS/JS 代码（次级资源加载）">​</a></h4>
+<p>一个网页可能会有多个外部资源，如图片、js、css、字体等。主线程在解析 DOM 过程中遇到这些资源后会一一请求</p>
+<p>为了加速渲染流程，<code>预加载扫描器（preload scanner）线程</code>并发运行。如果 HTML 中存在 img 或 link 等内容，预加载扫描器会查看 HTML parser 生成的标记，并发送请求到浏览器进程的<strong>网络线程</strong>获取资源</p>
+<p>次级资源加载-css</p>
+<p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/blogImg/browser/%E6%AC%A1%E7%BA%A7%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD.svg" alt="次级资源加载-css" class="img_ev3q"></p>
+<p>次级资源加载-js</p>
+<p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/blogImg/browser/%E6%AC%A1%E7%BA%A7%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD-js.svg" alt="次级资源加载-js" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="14-style-阶段样式计算">1.4 Style 阶段：样式计算<a href="#14-style-阶段样式计算" class="hash-link" aria-label="Direct link to 1.4 Style 阶段：样式计算" title="Direct link to 1.4 Style 阶段：样式计算">​</a></h3>
+<p>主线程会遍历得到的 DOM 树，依次为树中的每个节点计算出最终的样式，即 Computed Style</p>
+<p>样式属性计算过程中，很多预设值会变成绝对值，如 <code>red</code> 会变成 <code>rgb(255, 0, 0)</code>, 相对单位会变成绝对单位，<code>em</code> 会变成 <code>px</code></p>
+<p>计算完成后会得到一颗带有样式 DOM 树</p>
+<p>CSS 引擎处理样式过程：</p>
+<ol>
+<li>收集、划分和索引所有样式表中存在的样式规则，CSS 引擎会从 style 标签，css 文件及浏览器代理样式中收集所有的样式规则，并为这些规则建立索引，方便后续高效查询</li>
+<li>访问每个元素并找到适用于该元素的所有规则，CSS 引擎遍历 DOM 节点，进行选择器适配，为匹配的节点执行样式设置</li>
+<li>结合层叠规则和其他信息为节点生成最终的计算样式，这些样式值可以通过 <code>window.getComputedStyle()</code> 获取</li>
+</ol>
+<p>页面样式多的话，即存在大量 CSS 规则，如果为每一个节点都保存一份样式值，会导致内存消耗过大。故 CSS 引擎通常会创建共享的样式结构，计算样式对象一般有指针指向相同的共享结构</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="15-layout-阶段-布局">1.5 Layout 阶段: 布局<a href="#15-layout-阶段-布局" class="hash-link" aria-label="Direct link to 1.5 Layout 阶段: 布局" title="Direct link to 1.5 Layout 阶段: 布局">​</a></h3>
+<p>布局完成会得到布局树，收集所有可见的 DOM 节点，以及每个节点的所有样式信息</p>
+<p>布局阶段会依次遍历 DOM 树的每一个节点，计算每个节点的几何信息，产出可见节点，包含其内容和计算的样式</p>
+<p>大部分场景下，DOM 树和布局树不是一一对应的：</p>
+<ul>
+<li>如某些不可见节点（script、head、meta 等）不会体现在渲染输出中，会被忽略</li>
+<li>如 <code>display: none</code> 节点没有几何信息，不会对应生成到布局树</li>
+<li>如使用了伪元素选择器，虽然 DOM 树中不存在伪元素节点，但是拥有几何信息最终会生成到布局树中（为伪元素创建 LayoutObject）</li>
+<li>匿名行盒和匿名块盒都会导致 DOM 树和布局树无法一一对应（为行内元素创建匿名包含块对应的 LayoutObject）</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="布局计算">布局计算<a href="#布局计算" class="hash-link" aria-label="Direct link to 布局计算" title="Direct link to 布局计算">​</a></h4>
+<p>计算可见节点和其样式后，需要计算它们在设备视口内节点的宽高、相对包含块的位置，这个过程称为自动重排</p>
+<ol>
+<li>根据 CSS 盒模型及视觉格式化模型，计算每个元素的各种生成盒的大小和位置</li>
+<li>计算块级元素、行内元素、浮动元素、各种定位元素的大小和位置</li>
+<li>计算文字，滚动区域的大小和位置</li>
+<li>LayoutObject 类型：<!-- -->
+<ol>
+<li>传统的 LayoutObject 节点会把布局运算的结果重新写回布局树中</li>
+<li>LayoutNG （Chrome 76 开始启用）节点的输出不可变，会保存在 NGLayoutResult 中，是一个树状结构，相比 LayoutObject 减少很多回溯计算，提高性能</li>
+</ol>
+</li>
+</ol>
+<p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/blogImg/browser/render-tree1.png" alt="render-tree1" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="16-layer-阶段-分层">1.6 Layer 阶段: 分层<a href="#16-layer-阶段-分层" class="hash-link" aria-label="Direct link to 1.6 Layer 阶段: 分层" title="Direct link to 1.6 Layer 阶段: 分层">​</a></h3>
+<p>主线程会使用一套复杂的策略对整个布局树中进行分层</p>
+<p>分层的好处在于，将来某一个层改变后，仅会对该层进行后续处理，提高效率</p>
+<p>滚动条、堆叠上下文、transform、opacity 等样式均会影响分层结果，还可以通过 <code>will-change</code> 更大程度影响分层结果</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="构建-paintlayerrenderlayer-树">构建 PaintLayer（RenderLayer） 树<a href="#构建-paintlayerrenderlayer-树" class="hash-link" aria-label="Direct link to 构建 PaintLayer（RenderLayer） 树" title="Direct link to 构建 PaintLayer（RenderLayer） 树">​</a></h4>
+<p>构建完成的 layoutObject 树不可以被拿去显示(不包含绘制顺序 z-index),还有一些复杂情况如 3d 变换，页面滚动等，浏览器会对上一步的节点进行分层处理 - 建立层叠上下文</p>
+<p>浏览器根据 <a href="https://www.w3.org/TR/CSS21/zindex.html" target="_blank" rel="noopener noreferrer">CSS 层叠上下文规范</a>，建立层叠上下文</p>
+<ol>
+<li>DOM 树的 Document 节点对应的 RenderView 节点</li>
+<li>DOM 树的 Document 节点的子节点，即 HTML 节点对应的 RenderBlock 节点</li>
+<li>显式指定 CSS 位置的节点（position 为 absolute 或 fixed）</li>
+<li>具有透明效果的节点</li>
+<li>具有 CSS 3D 属性的节点</li>
+<li>使用 Canvas 元素或者 Video 元素的节点</li>
+</ol>
+<p>浏览器遍历 LayoutObject 树的时候，建立了 PaintLayer 树，LayoutObject 和 PaintLayer 不一定一一对应，即每个 LayoutObject 要么和自己的 PaintLayer 关联，要么和拥有 PaintLayer 的第一个祖先元素的 PaintLayer 关联</p>
+<p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/blogImg/browser/layoutobject-dom-node-compare.png" alt="并非一一对应" class="img_ev3q"></p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="构建-cclayer-与-display-items">构建 cc::Layer 与 display items<a href="#构建-cclayer-与-display-items" class="hash-link" aria-label="Direct link to 构建 cc::Layer 与 display items" title="Direct link to 构建 cc::Layer 与 display items">​</a></h4>
+<p>浏览器会继续根据 PaintLayer 树创建 cc::Layer 列表，cc::Layer 是列表状结构，运行在主线程，一个渲染进程内有且只有一个 cc::Layer，代表一个矩形区域内的 UI，layer 里有 DisplayItem 列表，是绘制操作的列表，包含实际的 paint op 指令。将页面分层，可以让一个图层独立于其他的图层进行变换和光栅化处理</p>
+<ul>
+<li>合成更新（Compositing update）<!-- -->
+<ul>
+<li>依据 PaintLayer 决定分层</li>
+<li>这个策略被称为 CompositeBeforePaint，未来会被 CompositeAfterPaint 替代</li>
+</ul>
+</li>
+<li>PrePaint<!-- -->
+<ul>
+<li>PaintInvalidator 进行失效检查，找出需要绘制的 display items</li>
+<li>构建 paint property 树，使动画、页面滚动，clip 等变化仅在合成线程运行，提高性能</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="17-pre-paint-阶段生成绘制指令">1.7 Pre-Paint 阶段：生成绘制指令<a href="#17-pre-paint-阶段生成绘制指令" class="hash-link" aria-label="Direct link to 1.7 Pre-Paint 阶段：生成绘制指令" title="Direct link to 1.7 Pre-Paint 阶段：生成绘制指令">​</a></h3>
+<p>主线程会为每个层单独产生绘制指令集，用于描述这一层的内容该如何画出来</p>
+<p>DisplayItem 列表准备好后，渲染主线程会给<strong>合成线程</strong>发送<code>commit</code>消息，即将每个图层的绘制信息提交给合成线程，剩余工作将由合成线程完成(渲染主线程任务至此告一段落)</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="18-tiling-阶段分块">1.8 Tiling 阶段：分块<a href="#18-tiling-阶段分块" class="hash-link" aria-label="Direct link to 1.8 Tiling 阶段：分块" title="Direct link to 1.8 Tiling 阶段：分块">​</a></h3>
+<p>合成线程先对每个图层进行分块，将其划分为更多的小区域，再从线程池中拿取多个线程来分块工作</p>
+<p>分块的原因：</p>
+<p>考虑到视口大小，当页面非常大的时候，要滑动很长时间，这样一次性全部绘制是十分浪费性能的，因此需要将图层分块，进而加速页面首屏展示</p>
+<p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/browser/browser-render-tiling.svg" alt="browser-render-tiling" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="19-raster-阶段-光栅化">1.9 Raster 阶段: 光栅化<a href="#19-raster-阶段-光栅化" class="hash-link" aria-label="Direct link to 1.9 Raster 阶段: 光栅化" title="Direct link to 1.9 Raster 阶段: 光栅化">​</a></h3>
+<p>合成线程将块信息交给 GPU 进程，将每个块变成<strong>位图</strong>（像素信息-像素点、颜色等），GPU 进程会开启多个线程完成光珊瑚，且优先处理靠近视口的块</p>
+<p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/browser/browser-render-raster.svg" alt="browser-render-raster" class="img_ev3q">
+<img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/browser/browser-render-raster2.svg" alt="browser-render-raster2" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="110-画">1.10 画<a href="#110-画" class="hash-link" aria-label="Direct link to 1.10 画" title="Direct link to 1.10 画">​</a></h3>
+<p>合成线程拿到每个层、每个块的<strong>位图</strong>后，生成一个个 <code>quad</code> 指引信息</p>
+<p>指引会标识出每个位图应该画到屏幕的哪个位置（如考虑旋转、缩放等变形）</p>
+<p>变形发生在合成线程，与渲染主线程无关（即 <code>transform</code> 高效率的本质）</p>
+<p>合成线程把 <code>quad</code> 提交给 GPU 进程，由 GPU 进程产生系统调用，提交给 GPU 硬件，完成最终的屏幕成像</p>
+<p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/browser/browser-render-draw.svg" alt="browser-render-draw" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="2-浏览器渲染性能优化">2. 浏览器渲染性能优化<a href="#2-浏览器渲染性能优化" class="hash-link" aria-label="Direct link to 2. 浏览器渲染性能优化" title="Direct link to 2. 浏览器渲染性能优化">​</a></h2>
+<p>我们在修改元素几何信息时，实际修改的是 CSSOM 或 DOM</p>
+<p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/browser/browser-render-full-flow.svg" alt="browser-render-full-flow" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="21-reflow">2.1 reflow<a href="#21-reflow" class="hash-link" aria-label="Direct link to 2.1 reflow" title="Direct link to 2.1 reflow">​</a></h3>
+<p>重排对应浏览器渲染过程中的 <code>Layout</code>, 其本质是重新计算 layout 树</p>
+<p>为了避免连续多次操作导致布局树反复计算，浏览器会合并这些操作，当 js 代码全部完成后再进行统一计算，即改动属性造成的 reflow 是异步完成的，这也就导致了，在 js 获取布局属性时，可能会造成无法获取到最新布局信息的问题。为了解决这个问题浏览器便有了使用 js 获取属性时产生一个同步任务会立即 reflow 的机制（设置属性异步，读取属性同步）</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="22-repaint">2.2 repaint<a href="#22-repaint" class="hash-link" aria-label="Direct link to 2.2 repaint" title="Direct link to 2.2 repaint">​</a></h3>
+<p>重绘对应浏览器渲染过程中的 <code>Paint</code>, 其本质是重新根据分层信息计算绘制指令</p>
+<p>改变可见样式后小重新计算，就会触发 repaint</p>
+<p>元素的布局信息也属于可见样式，从上面的流程图中我们可以发现 Layout 改变一定会触发 Paint，即重排一定会触发重绘</p>
+<p>更具体的内容请参考这篇总结 <a href="/docs/coding/browser/layout-paint">浏览器的重排和重绘</a></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="reference">reference<a href="#reference" class="hash-link" aria-label="Direct link to reference" title="Direct link to reference">​</a></h2>
+<ul>
+<li><a href="https://web.dev/articles/critical-rendering-path/constructing-the-object-model?hl=zh-cn" target="_blank" rel="noopener noreferrer">https://web.dev/articles/critical-rendering-path/constructing-the-object-model?hl=zh-cn</a></li>
+<li><a href="https://web.dev/articles/critical-rendering-path/render-tree-construction?hl=zh-cn" target="_blank" rel="noopener noreferrer">https://web.dev/articles/critical-rendering-path/render-tree-construction?hl=zh-cn</a></li>
+<li><a href="https://www.lambdatest.com/blog/css-object-model/" target="_blank" rel="noopener noreferrer">https://www.lambdatest.com/blog/css-object-model/</a></li>
+<li><a href="https://web.dev/articles/howbrowserswork?hl=zh-cn" target="_blank" rel="noopener noreferrer">https://web.dev/articles/howbrowserswork?hl=zh-cn</a></li>
+<li><a href="https://me.ursb.me/archives/360.html#directory03020959219799874718" target="_blank" rel="noopener noreferrer">https://me.ursb.me/archives/360.html#directory03020959219799874718</a></li>
+<li><a href="https://cansiny0320.vercel.app/browser-render-process" target="_blank" rel="noopener noreferrer">https://cansiny0320.vercel.app/browser-render-process</a></li>
+<li><a href="https://fed.taobao.org/blog/taofed/do71ct/performance-composite/" target="_blank" rel="noopener noreferrer">https://fed.taobao.org/blog/taofed/do71ct/performance-composite/</a></li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/coding/browser/browser-render-mechanism.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/coding/front-end-engineering/webpack/webpack-loader"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Loader</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/coding/browser/browser-event-loop"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">浏览器事件循环</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#1-浏览器的渲染流程" class="table-of-contents__link toc-highlight">1. 浏览器的渲染流程</a><ul><li><a href="#11-渲染时间点" class="table-of-contents__link toc-highlight">1.1 渲染时间点</a></li><li><a href="#12-渲染流水线" class="table-of-contents__link toc-highlight">1.2 渲染流水线</a></li><li><a href="#13-parse-阶段解析-html" class="table-of-contents__link toc-highlight">1.3 Parse 阶段：解析 HTML</a></li><li><a href="#14-style-阶段样式计算" class="table-of-contents__link toc-highlight">1.4 Style 阶段：样式计算</a></li><li><a href="#15-layout-阶段-布局" class="table-of-contents__link toc-highlight">1.5 Layout 阶段: 布局</a></li><li><a href="#16-layer-阶段-分层" class="table-of-contents__link toc-highlight">1.6 Layer 阶段: 分层</a></li><li><a href="#17-pre-paint-阶段生成绘制指令" class="table-of-contents__link toc-highlight">1.7 Pre-Paint 阶段：生成绘制指令</a></li><li><a href="#18-tiling-阶段分块" class="table-of-contents__link toc-highlight">1.8 Tiling 阶段：分块</a></li><li><a href="#19-raster-阶段-光栅化" class="table-of-contents__link toc-highlight">1.9 Raster 阶段: 光栅化</a></li><li><a href="#110-画" class="table-of-contents__link toc-highlight">1.10 画</a></li></ul></li><li><a href="#2-浏览器渲染性能优化" class="table-of-contents__link toc-highlight">2. 浏览器渲染性能优化</a><ul><li><a href="#21-reflow" class="table-of-contents__link toc-highlight">2.1 reflow</a></li><li><a href="#22-repaint" class="table-of-contents__link toc-highlight">2.2 repaint</a></li></ul></li><li><a href="#reference" class="table-of-contents__link toc-highlight">reference</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">
+          Copyright © 2025 邂逅大大小小陆 serendipityhaven.com | <a href="https://beian.miit.gov.cn/" target="_blank">津ICP备2021008930号-2</a>
+          <div style="justify-content: center; display: flex; align-items: center; margin: 0px auto; padding: 20px 0px;">
+            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12011602000961" style="display: inline-block; text-decoration: none; height: 20px; line-height: 20px;">
+            <img a="deploygithub" src="/myblog/img/beian.png" style="float: left;">
+            
+            </a>
+            <a style="margin-left: 10px;" href="mailto:1037345919@qq.com">举报投诉 1037345919@qq.com</a>
+          </div>
+        </div></div></div></footer></div>
+</body>
+</html>
