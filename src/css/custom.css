@@ -33,11 +33,12 @@
 }
 .navbar-col {
   display: flex;
+  row-gap: 2px;
   flex-direction: column;
+  justify-content: space-between;
 }
 .navbar-first-level {
-  padding: 8px;
-  margin: 4px;
+  padding: 4px;
   border-radius: 6px;
 }
 
