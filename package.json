@@ -5,7 +5,11 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
+    "start-github": "cross-env DEPLOY_SERVER=deploygithub docusaurus start",
+    "start-host": "cross-env DEPLOY_SERVER=deployhost docusaurus start",
     "build": "docusaurus build",
+    "build-host": "cross-env DEPLOY_SERVER=deployhost docusaurus build",
+    "build-github": "cross-env DEPLOY_SERVER=deploygithub docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",

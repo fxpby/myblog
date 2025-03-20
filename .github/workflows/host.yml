@@ -1,4 +1,4 @@
-name: Deploy to aliyun
+name: Deploy to tencent host
 on:
   #监听push操作
   push:
@@ -13,12 +13,12 @@ jobs:
       # 使用action库  actions/checkout获取源码
       - name: Checkout 🐤
         uses: actions/checkout@v2
-      # 安装 Node 16
-      - name: use Node.js 16.15.1 🐣
+      # 安装 Node 20
+      - name: use Node.js 20.10.0 🐣
         # 使用action库  actions/setup-node安装node
         uses: actions/setup-node@v3
         with:
-          node-version: '16.15.1'
+          node-version: "20.10.0"
 
       # 缓存 npm node_modules
       - name: Cache dependencies 🐤
@@ -37,21 +37,21 @@ jobs:
 
       # 打包
       - name: npm build 🎄
-        run: npm run build-aliyun
+        run: npm run build-host
 
       # 部署到阿里云
-      - name: Deploy to Aliyun 🚀
+      - name: Deploy to Host 🚀
         uses: easingthemes/ssh-deploy@v2.1.5
         env:
           # 私钥
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
           # scp参数
-          ARGS: '-avzr --delete'
+          ARGS: "-avzr --delete"
           # 源目录，编译后生成的文件目录
-          SOURCE: '/build'
+          SOURCE: "/build"
           # 服务器ip：换成你的服务器IP
-          REMOTE_HOST: '120.55.99.110'
+          REMOTE_HOST: "150.158.100.135"
           # 用户
-          REMOTE_USER: 'root'
+          REMOTE_USER: "root"
           # 目标地址 你在服务器上部署代码的地方
-          TARGET: '/home/webapps/myblog'
+          TARGET: "/home/webapps/myblog"
