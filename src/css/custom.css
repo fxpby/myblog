@@ -28,3 +28,45 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+.navbar-wrapper {
+  display: flex;
+}
+.navbar-col {
+  display: flex;
+  row-gap: 2px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.navbar-first-level {
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.has-child {
+  border: 1px solid rgb(245 246 247);
+}
+.navbar-first-level-title{
+  display: block;
+  white-space: nowrap;
+  padding: 8px 4px;
+  font-weight: 700;
+  border-radius: 6px;
+}
+
+.can-mouse-over:hover {
+  background-color: rgb(245 246 247);
+  cursor: pointer;
+}
+
+.second-level-item {
+  display: block;
+  padding: 6px 4px;
+  font-weight: 400;
+  font-size: 14px;
+  border-radius: 6px;
+}
+
+.second-level-item:hover {
+  background-color: rgb(245 246 247);
+  cursor: pointer;
+}
