@@ -12,8 +12,8 @@ const toolbarCodingHTML = fs.readFileSync(
 
 const config: Config = {
   title: "邂逅大大小小陆",
-  // tagline: "遇见是缘分，感谢你的驻足",
-  tagline: "感谢你的驻足，网站加速装修中...🐢🐢🐢",
+  tagline: "遇见是缘分，感谢你的驻足",
+  // tagline: "感谢你的驻足，网站加速装修中...🐢🐢🐢",
 
   favicon: "img/favicon1.jpg",
 
