@@ -231,7 +231,7 @@ DisplayItem 列表准备好后，渲染主线程会给**合成线程**发送`com
 
 元素的布局信息也属于可见样式，从上面的流程图中我们可以发现 Layout 改变一定会触发 Paint，即重排一定会触发重绘
 
-更具体的内容请参考这篇总结 [浏览器的重排和重绘](/docs/browser/layout-paint.md)
+更具体的内容请参考这篇总结 [浏览器的重排和重绘](/docs/coding/browser/layout-paint.md)
 
 ## reference
 
