@@ -125,7 +125,7 @@ const config: Config = {
           to: "/docs/workout/training-program/cycle-calc",
         },
         {
-          label: "运动营养",
+          label: "营养科学",
           to: "/docs/nutrition-for-exercise-science/medical-basic/thyroid",
         },
         {
