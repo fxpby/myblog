@@ -144,13 +144,13 @@ const config: Config = {
       copyright: `
           Copyright © ${new Date().getFullYear()} 邂逅大大小小陆 serendipityhaven.com | <a href="https://beian.miit.gov.cn/" target="_blank">津ICP备2021008930号-2</a>
           <div style="justify-content: center; display: flex; align-items: center; margin: 0px auto; padding: 20px 0px;">
-            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12011602000961" style="display: inline-block; text-decoration: none; height: 20px; line-height: 20px;">
+            <a target="_blank" href="https://beian.mps.gov.cn/#/query/webSearch?code=12011602300553" rel="noreferrer" style="display: inline-block; text-decoration: none; height: 20px; line-height: 20px;">
             <img a=${process.env.DEPLOY_SERVER} src=${
         process.env.DEPLOY_SERVER === "deploygithub"
           ? "/myblog/img/beian.png"
           : "/img/beian.png"
       } style="float: left;">
-            
+            <span>津公网安备12011602300553号</span>
             </a>
             <a style="margin-left: 10px;" href="mailto:1037345919@qq.com">举报投诉 1037345919@qq.com</a>
           </div>
