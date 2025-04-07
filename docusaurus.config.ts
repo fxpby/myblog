@@ -21,7 +21,7 @@ const config: Config = {
   url: "https://serendipityhaven.com/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/",
+  baseUrl: process.env.DEPLOY_SERVER === "deploygithub" ? "/myblog/" : "/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -93,7 +93,10 @@ const config: Config = {
       title: "邂逅大大小小陆",
       logo: {
         alt: "My Site Logo",
-        src: "img/favicon1.jpg",
+        src:
+          process.env.DEPLOY_SERVER === "deploygithub"
+            ? "/myblog/img/favicon1.jpg"
+            : "/img/favicon1.jpg",
       },
       items: [
         // {
