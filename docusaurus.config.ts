@@ -129,7 +129,7 @@ const config: Config = {
         },
         {
           label: "营养科学",
-          to: "/docs/nutrition-for-exercise-science/medical-basic/thyroid",
+          to: "/docs/nutrition-science/functional-nutrients/omega-3",
         },
         {
           label: "基础乐理",
