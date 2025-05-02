@@ -10,7 +10,7 @@ const MyComponent = () => {
   };
 
   const handleVerify = () => {
-    if (inputValue === "seagull") {
+    if (inputValue.trim() === "seagull" || inputValue.trim() === "海鸥") {
       setMessage("大厨太棒啦，校验通过！");
       setIsShow(true);
     } else {
