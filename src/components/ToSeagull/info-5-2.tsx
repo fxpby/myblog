@@ -5,8 +5,7 @@ const MyComponent = () => {
   const {
     siteConfig: { customFields },
   } = useDocusaurusContext();
-  console.log("customFields", customFields);
-  const { blogPost1 = "" } = customFields;
+  const { blogPost250502 = "" } = customFields;
 
   const [inputValue, setInputValue] = useState("");
   const [message, setMessage] = useState("请输入暗号");
@@ -34,7 +33,7 @@ const MyComponent = () => {
       <button onClick={handleVerify}>校验</button>
       <p>{message}</p>
       {isShow ? (
-        <div dangerouslySetInnerHTML={{ __html: blogPost1 }}></div>
+        <div dangerouslySetInnerHTML={{ __html: blogPost250502 }}></div>
       ) : (
         <></>
       )}
