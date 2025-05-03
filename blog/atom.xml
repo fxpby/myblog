@@ -14,7 +14,7 @@
         <updated>2025-05-02T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[{/ truncate /}]]></summary>
         <content type="html"><![CDATA[
-<div><p>网页如果崩了则表示在测试中，请耐心等待</p><input type="text" value=""><button>校验</button><p>请输入暗号</p></div>]]></content>
+<div><input type="text" value=""><button>校验</button><p>请输入暗号</p></div>]]></content>
         <author>
             <name>fxpby</name>
             <uri>https://github.com/fxpby</uri>
