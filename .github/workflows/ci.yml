@@ -54,6 +54,9 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Build 🎄
+        env:
+          BLOG_POST250502: ${{ secrets.BLOG_POST250502 }}
+          BLOG_POST250416: ${{ secrets.BLOG_POST250416 }}
         run: npm run build-github
 
       - name: Deploy 🚀
