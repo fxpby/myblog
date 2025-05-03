@@ -37,14 +37,14 @@ jobs:
 
       # 打包
       - name: npm build 🎄
+        env:
+          BLOG_POST1: ${{ secrets.BLOG_POST1 }}
         run: npm run build-host
 
       # 部署到阿里云
       - name: Deploy to Host 🚀
         uses: easingthemes/ssh-deploy@v2.1.5
         env:
-          BLOG_POST1: ${{ secrets.BLOG_POST1 }}
-          BLOG_POST2: ${{ secrets.BLOG_POST2 }}
           # 私钥
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
           # scp参数

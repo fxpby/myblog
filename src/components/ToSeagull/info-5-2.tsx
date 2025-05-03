@@ -5,7 +5,7 @@ const MyComponent = () => {
   const {
     siteConfig: { customFields },
   } = useDocusaurusContext();
-
+  console.log("customFields", customFields);
   console.log("customFields.DEPLOY_SERVER:", customFields?.DEPLOY_SERVER);
   console.log("customFields.BLOG_POST1:", customFields?.BLOG_POST1);
 
