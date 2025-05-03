@@ -15,7 +15,7 @@
             <pubDate>Fri, 02 May 2025 00:00:00 GMT</pubDate>
             <description><![CDATA[{/ truncate /}]]></description>
             <content:encoded><![CDATA[
-<div><input type="text" value=""><button>校验</button><p>请输入暗号</p></div>]]></content:encoded>
+<div><p>网页如果崩了则表示在测试中，请耐心等待</p><input type="text" value=""><button>校验</button><p>请输入暗号</p></div>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[to-seagull-4/16]]></title>
