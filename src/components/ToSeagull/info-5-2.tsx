@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 const MyComponent = () => {
+  const {
+    siteConfig: { customFields },
+  } = useDocusaurusContext();
+
+  console.log("customFields.DEPLOY_SERVER:", customFields?.DEPLOY_SERVER);
+  console.log("customFields.BLOG_POST1:", customFields?.BLOG_POST1);
+
   const [inputValue, setInputValue] = useState("");
   const [message, setMessage] = useState("请输入暗号");
   const [isShow, setIsShow] = useState(false);
@@ -22,6 +30,7 @@ const MyComponent = () => {
 
   return (
     <div>
+      <p>网页如果崩了则表示在测试中，请耐心等待</p>
       <input type="text" value={inputValue} onChange={handleChange} />
       <button onClick={handleVerify}>校验</button>
       <p>{message}</p>

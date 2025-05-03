@@ -22,6 +22,12 @@ const config: Config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: process.env.DEPLOY_SERVER === "deploygithub" ? "/myblog/" : "/",
 
+  customFields: {
+    // Put your custom environment here
+    blogPost1: process.env.BLOG_POST1,
+    blogPost2: process.env.BLOG_POST2,
+  },
+
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "fxpby", // Usually your GitHub org/user name.
