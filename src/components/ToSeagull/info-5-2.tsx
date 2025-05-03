@@ -28,7 +28,6 @@ const MyComponent = () => {
 
   return (
     <div>
-      <p>网页如果崩了则表示在测试中，请耐心等待</p>
       <input type="text" value={inputValue} onChange={handleChange} />
       <button onClick={handleVerify}>校验</button>
       <p>{message}</p>

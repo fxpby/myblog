@@ -16,10 +16,10 @@ const MyComponent = () => {
 
   const handleVerify = () => {
     if (inputValue.trim() === "seagull" || inputValue.trim() === "海鸥") {
-      setMessage("大厨太棒啦，校验通过！");
+      setMessage("大厨太棒啦，校验通过！✌️");
       setIsShow(true);
     } else {
-      setMessage("嘤嘤校验失败，请重新输入暗号。");
+      setMessage("嘤嘤校验失败，请重新输入暗号。🤧");
       setInputValue("");
       setIsShow(false);
     }
