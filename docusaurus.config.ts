@@ -1,7 +1,7 @@
 import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
-
+import "dotenv/config";
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const fs = require("fs");
@@ -9,6 +9,7 @@ const toolbarCodingHTML = fs.readFileSync(
   "./src/snippets/coding.html",
   "utf-8"
 );
+console.log("process.env :", process.env);
 
 const config: Config = {
   title: "邂逅大大小小陆",
