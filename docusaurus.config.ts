@@ -26,7 +26,7 @@ const config: Config = {
   customFields: {
     // Put your custom environment here
     blogPost250502: process.env.BLOG_POST250502,
-    blogPost250415: process.env.BLOG_POST250416,
+    blogPost250416: process.env.BLOG_POST250416,
   },
 
   // GitHub pages deployment config.
