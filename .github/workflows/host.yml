@@ -38,8 +38,9 @@ jobs:
       # 打包
       - name: npm build 🎄
         env:
-          BLOG_POST250502: ${{ secrets.BLOG_POST250502 }}
           BLOG_POST250416: ${{ secrets.BLOG_POST250416 }}
+          BLOG_POST250502: ${{ secrets.BLOG_POST250502 }}
+          BLOG_POST250507: ${{ secrets.BLOG_POST250507 }}
         run: npm run build-host
 
       # 部署到阿里云
