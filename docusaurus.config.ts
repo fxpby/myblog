@@ -131,6 +131,10 @@ const config: Config = {
           to: "/docs/music-theory/音程&度数",
         },
         {
+          label: "暂存区",
+          to: "/docs/photography/iPhone-photography-guide/iPhone相机基本操作和设置",
+        },
+        {
           href: "https://github.com/fxpby",
           label: "GitHub",
           position: "right",
