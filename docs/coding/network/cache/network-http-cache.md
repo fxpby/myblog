@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # 浏览器 HTTP 缓存机制
 
 ## HTTP 缓存 - 前置知识点
