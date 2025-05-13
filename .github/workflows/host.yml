@@ -41,6 +41,7 @@ jobs:
           BLOG_POST250416: ${{ secrets.BLOG_POST250416 }}
           BLOG_POST250502: ${{ secrets.BLOG_POST250502 }}
           BLOG_POST250507: ${{ secrets.BLOG_POST250507 }}
+          BLOG_POST250513: ${{ secrets.BLOG_POST250513}}
         run: npm run build-host
 
       # 部署到阿里云
