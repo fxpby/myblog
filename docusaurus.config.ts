@@ -132,6 +132,10 @@ const config: Config = {
           to: "/docs/music-theory/音程&度数",
         },
         {
+          label: "菜谱",
+          to: "/docs/dishes/soup/辣豆腐汤",
+        },
+        {
           label: "暂存区",
           to: "/docs/photography/iPhone-photography-guide/iPhone相机基本操作和设置",
         },
