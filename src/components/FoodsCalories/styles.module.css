@@ -1,0 +1,9 @@
+.foodItemWrap {
+  padding: 10px;
+}
+.foodItem {
+  padding: 6px;
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+}
