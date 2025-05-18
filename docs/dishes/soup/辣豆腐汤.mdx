@@ -1,3 +1,5 @@
+import Calculator from '@site/src/components/FoodsCalories';
+
 # 辣豆腐汤
 
 热乎乎香喷喷温暖美味的汤品~
@@ -26,7 +28,14 @@
 
 ### 主要食材计算
 
-- 嫩豆腐 150g
+<Calculator foods={[
+  {name:'嫩豆腐',value:'150'},
+  {name:'鸡蛋',value:'55'},
+  {name:'香菇',value:' 50'},
+  {name:'油',value:'7'},
+  {name:'鸡胸肉',value:'80'},
+  ]} extra={{c:'30',p: '2', f: '0'}}/>
+{/* - 嫩豆腐 150g
   - c: 5g
   - p: 5g（考虑豆制品生物利用率）
   - f: 8g
@@ -46,13 +55,13 @@
   - c: 1g
   - p: 17~20g
   - f: 2g
-- 其他适量
+- 其他适量 */}
 
 ### 营养概况
 
-- c: 20~40g
+{/* - c: 20~40g
 - p: 30g
-- f: 22g
+- f: 22g */}
 
 #### 碳水化合物
 
