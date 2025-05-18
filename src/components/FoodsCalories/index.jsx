@@ -24,32 +24,27 @@ export default function Calculator(props = {}) {
     );
   };
 
+  const getCalcTotalItemValue = (basicData, extraData, type) => {
+    return (
+      basicData
+        .map((x) => getItemValue({ value: x.value, name: x.name, type }))
+        .reduce((p, c) => p + c) + Number(extraData[type])
+    );
+  };
+
   useEffect(() => {
     if (basicData.length) {
       setTotalData({
-        c:
-          basicData
-            .map((x) =>
-              getItemValue({ value: x.value, name: x.name, type: "c" })
-            )
-            .reduce((p, c) => p + c) + Number(extraData.c),
-        p:
-          basicData
-            .map((x) =>
-              getItemValue({ value: x.value, name: x.name, type: "p" })
-            )
-            .reduce((p, c) => p + c) + Number(extraData.p),
-        f:
-          basicData
-            .map((x) =>
-              getItemValue({ value: x.value, name: x.name, type: "f" })
-            )
-            .reduce((p, c) => p + c) + Number(extraData.f),
+        c: getCalcTotalItemValue(basicData, extraData, "c"),
+        p: getCalcTotalItemValue(basicData, extraData, "p"),
+        f: getCalcTotalItemValue(basicData, extraData, "f"),
       });
     }
   }, [basicData, extraData]);
 
   useEffect(() => {
+    setExtraData(extra);
+    setBaseData(displayFoods);
     setExtraData(extra);
     if (displayFoods) {
       setTotalData({
