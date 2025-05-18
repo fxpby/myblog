@@ -48,24 +48,9 @@ export default function Calculator(props = {}) {
     setExtraData(extra);
     if (displayFoods) {
       setTotalData({
-        c:
-          displayFoods
-            .map((x) =>
-              getItemValue({ value: x.value, name: x.name, type: "c" })
-            )
-            .reduce((p, c) => p + c) + Number(extra.c),
-        p:
-          displayFoods
-            .map((x) =>
-              getItemValue({ value: x.value, name: x.name, type: "p" })
-            )
-            .reduce((p, c) => p + c) + Number(extra.p),
-        f:
-          displayFoods
-            .map((x) =>
-              getItemValue({ value: x.value, name: x.name, type: "f" })
-            )
-            .reduce((p, c) => p + c) + Number(extra.f),
+        c: getCalcTotalItemValue(displayFoods, extra, "c"),
+        p: getCalcTotalItemValue(displayFoods, extra, "p"),
+        f: getCalcTotalItemValue(displayFoods, extra, "f"),
       });
     }
   }, [displayFoods, extra]);
