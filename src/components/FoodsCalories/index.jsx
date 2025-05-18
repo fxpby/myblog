@@ -17,11 +17,6 @@ export default function Calculator(props = {}) {
   const [extraData, setExtraData] = useState({});
   const [totalData, setTotalData] = useState({});
 
-  useEffect(() => {
-    setBaseData(displayFoods);
-    setExtraData(extra);
-  }, []);
-
   const getItemValue = ({ value, name, type } = {}) => {
     return (
       data.find((item) => item.name === name)[type] *
@@ -29,9 +24,60 @@ export default function Calculator(props = {}) {
     );
   };
 
+  useEffect(() => {
+    if (basicData.length) {
+      setTotalData({
+        c:
+          basicData
+            .map((x) =>
+              getItemValue({ value: x.value, name: x.name, type: "c" })
+            )
+            .reduce((p, c) => p + c) + Number(extraData.c),
+        p:
+          basicData
+            .map((x) =>
+              getItemValue({ value: x.value, name: x.name, type: "p" })
+            )
+            .reduce((p, c) => p + c) + Number(extraData.p),
+        f:
+          basicData
+            .map((x) =>
+              getItemValue({ value: x.value, name: x.name, type: "f" })
+            )
+            .reduce((p, c) => p + c) + Number(extraData.f),
+      });
+    }
+  }, [basicData, extraData]);
+
+  useEffect(() => {
+    setExtraData(extra);
+    if (displayFoods) {
+      setTotalData({
+        c:
+          displayFoods
+            .map((x) =>
+              getItemValue({ value: x.value, name: x.name, type: "c" })
+            )
+            .reduce((p, c) => p + c) + Number(extra.c),
+        p:
+          displayFoods
+            .map((x) =>
+              getItemValue({ value: x.value, name: x.name, type: "p" })
+            )
+            .reduce((p, c) => p + c) + Number(extra.p),
+        f:
+          displayFoods
+            .map((x) =>
+              getItemValue({ value: x.value, name: x.name, type: "f" })
+            )
+            .reduce((p, c) => p + c) + Number(extra.f),
+      });
+    }
+  }, [displayFoods, extra]);
+
   return (
     <ChakraProvider resetCSS={false} disableGlobalStyle={true}>
-      {displayFoods.map((item) => (
+      {basicData.map((item) => (
         <div className={s.foodItemWrap}>
           <div className={s.foodItem}>
             {item.name} -{" "}
@@ -162,9 +208,9 @@ export default function Calculator(props = {}) {
       </div>
       <div className={s.foodItemWrap}>
         <div>总数据一览</div>
-        <div className={s.foodItem}>c:</div>
-        <div className={s.foodItem}>p:</div>
-        <div className={s.foodItem}>f:</div>
+        <div className={s.foodItem}>c:{totalData.c?.toFixed(1)}g</div>
+        <div className={s.foodItem}>p:{totalData.p?.toFixed(1)}g</div>
+        <div className={s.foodItem}>f:{totalData.f?.toFixed(1)}g</div>
       </div>
     </ChakraProvider>
   );
