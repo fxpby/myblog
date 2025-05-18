@@ -18,7 +18,8 @@ export default function Calculator(props = {}) {
   const [totalData, setTotalData] = useState({});
 
   useEffect(() => {
-    console.log(data);
+    setBaseData(displayFoods);
+    setExtraData(extra);
   }, []);
 
   const getItemValue = ({ value, name, type } = {}) => {
@@ -32,19 +33,23 @@ export default function Calculator(props = {}) {
     <ChakraProvider resetCSS={false} disableGlobalStyle={true}>
       {displayFoods.map((item) => (
         <div className={s.foodItemWrap}>
-          <div>{item.name}</div>
           <div className={s.foodItem}>
-            c:
+            {item.name} -{" "}
             <NumberInput
               defaultValue={0}
-              value={getItemValue({
-                value: item.value,
-                name: item.name,
-                type: "c",
-              })}
+              value={item.value}
               min={0}
               max={10000}
-              onChange={() => {}}
+              onChange={(valueAsString, valueAsNumber) =>
+                setBaseData((prev) => {
+                  return prev.map((x) => {
+                    if (x.name === item.name) {
+                      x.value = valueAsNumber;
+                    }
+                    return x;
+                  });
+                })
+              }
             >
               <NumberInputField />
               <NumberInputStepper>
@@ -52,46 +57,34 @@ export default function Calculator(props = {}) {
                 <NumberDecrementStepper />
               </NumberInputStepper>
             </NumberInput>
+            g
+          </div>
+          <div className={s.foodItem}>
+            c:
+            {getItemValue({
+              value: item.value,
+              name: item.name,
+              type: "c",
+            }).toFixed(1)}
+            g
           </div>
           <div className={s.foodItem}>
             p:
-            <NumberInput
-              defaultValue={0}
-              value={getItemValue({
-                value: item.value,
-                name: item.name,
-                type: "p",
-              })}
-              min={0}
-              max={10000}
-              onChange={() => {}}
-            >
-              <NumberInputField />
-              <NumberInputStepper>
-                <NumberIncrementStepper />
-                <NumberDecrementStepper />
-              </NumberInputStepper>
-            </NumberInput>
+            {getItemValue({
+              value: item.value,
+              name: item.name,
+              type: "p",
+            }).toFixed(1)}
+            g
           </div>
           <div className={s.foodItem}>
             f:
-            <NumberInput
-              defaultValue={0}
-              value={getItemValue({
-                value: item.value,
-                name: item.name,
-                type: "f",
-              })}
-              min={0}
-              max={10000}
-              onChange={() => {}}
-            >
-              <NumberInputField />
-              <NumberInputStepper>
-                <NumberIncrementStepper />
-                <NumberDecrementStepper />
-              </NumberInputStepper>
-            </NumberInput>
+            {getItemValue({
+              value: item.value,
+              name: item.name,
+              type: "f",
+            }).toFixed(1)}
+            g
           </div>
         </div>
       ))}
@@ -101,10 +94,17 @@ export default function Calculator(props = {}) {
           c:
           <NumberInput
             defaultValue={0}
-            value={extra.c}
+            value={extraData.c}
             min={0}
             max={10000}
-            onChange={() => {}}
+            onChange={(valueAsString, valueAsNumber) =>
+              setExtraData((prev) => {
+                return {
+                  ...prev,
+                  c: valueAsNumber,
+                };
+              })
+            }
           >
             <NumberInputField />
             <NumberInputStepper>
@@ -117,10 +117,17 @@ export default function Calculator(props = {}) {
           p:
           <NumberInput
             defaultValue={0}
-            value={extra.p}
+            value={extraData.p}
             min={0}
             max={10000}
-            onChange={() => {}}
+            onChange={(valueAsString, valueAsNumber) =>
+              setExtraData((prev) => {
+                return {
+                  ...prev,
+                  p: valueAsNumber,
+                };
+              })
+            }
           >
             <NumberInputField />
             <NumberInputStepper>
@@ -133,10 +140,17 @@ export default function Calculator(props = {}) {
           f:
           <NumberInput
             defaultValue={0}
-            value={extra.f}
+            value={extraData.f}
             min={0}
             max={10000}
-            onChange={() => {}}
+            onChange={(valueAsString, valueAsNumber) =>
+              setExtraData((prev) => {
+                return {
+                  ...prev,
+                  f: valueAsNumber,
+                };
+              })
+            }
           >
             <NumberInputField />
             <NumberInputStepper>
@@ -145,6 +159,12 @@ export default function Calculator(props = {}) {
             </NumberInputStepper>
           </NumberInput>
         </div>
+      </div>
+      <div className={s.foodItemWrap}>
+        <div>总数据一览</div>
+        <div className={s.foodItem}>c:</div>
+        <div className={s.foodItem}>p:</div>
+        <div className={s.foodItem}>f:</div>
       </div>
     </ChakraProvider>
   );
