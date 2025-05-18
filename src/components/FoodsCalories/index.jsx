@@ -6,6 +6,9 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
+  ListItem,
+  UnorderedList,
+  Box,
 } from "@chakra-ui/react";
 import s from "./styles.module.css";
 import data from "./../../metadata/food-calories.json";
@@ -57,8 +60,8 @@ export default function Calculator(props = {}) {
 
   return (
     <ChakraProvider resetCSS={false} disableGlobalStyle={true}>
-      {basicData.map((item) => (
-        <div className={s.foodItemWrap}>
+      {basicData.map((item, i) => (
+        <div className={s.foodItemWrap} key={i}>
           <div className={s.foodItem}>
             {item.name} -{" "}
             <NumberInput
@@ -85,33 +88,36 @@ export default function Calculator(props = {}) {
             </NumberInput>
             g
           </div>
-          <div className={s.foodItem}>
-            c:
-            {getItemValue({
-              value: item.value,
-              name: item.name,
-              type: "c",
-            }).toFixed(1)}
-            g
-          </div>
-          <div className={s.foodItem}>
-            p:
-            {getItemValue({
-              value: item.value,
-              name: item.name,
-              type: "p",
-            }).toFixed(1)}
-            g
-          </div>
-          <div className={s.foodItem}>
-            f:
-            {getItemValue({
-              value: item.value,
-              name: item.name,
-              type: "f",
-            }).toFixed(1)}
-            g
-          </div>
+
+          <UnorderedList>
+            <ListItem>
+              c:{" "}
+              {getItemValue({
+                value: item.value,
+                name: item.name,
+                type: "c",
+              }).toFixed(1)}
+              g
+            </ListItem>
+            <ListItem>
+              p:{" "}
+              {getItemValue({
+                value: item.value,
+                name: item.name,
+                type: "p",
+              }).toFixed(1)}
+              g
+            </ListItem>
+            <ListItem>
+              f:{" "}
+              {getItemValue({
+                value: item.value,
+                name: item.name,
+                type: "f",
+              }).toFixed(1)}
+              g
+            </ListItem>
+          </UnorderedList>
         </div>
       ))}
       <div className={s.foodItemWrap}>
@@ -186,12 +192,16 @@ export default function Calculator(props = {}) {
           </NumberInput>
         </div>
       </div>
-      <div className={s.foodItemWrap}>
-        <div>总数据一览</div>
-        <div className={s.foodItem}>c:{totalData.c?.toFixed(1)}g</div>
-        <div className={s.foodItem}>p:{totalData.p?.toFixed(1)}g</div>
-        <div className={s.foodItem}>f:{totalData.f?.toFixed(1)}g</div>
-      </div>
+      <Box>
+        <div className={s.foodItemWrap}>
+          <p>总数据一览</p>
+          <UnorderedList>
+            <ListItem>c: {totalData.c?.toFixed(1)}g</ListItem>
+            <ListItem>p: {totalData.p?.toFixed(1)}g</ListItem>
+            <ListItem>f: {totalData.f?.toFixed(1)}g</ListItem>
+          </UnorderedList>
+        </div>
+      </Box>
     </ChakraProvider>
   );
 }
