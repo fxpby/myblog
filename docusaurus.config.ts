@@ -32,6 +32,7 @@ const config: Config = {
     blogPost250519: process.env.BLOG_POST250519,
     blogPost250520: process.env.BLOG_POST250520,
     blogPost250521: process.env.BLOG_POST250521,
+    blogPost250522: process.env.BLOG_POST250522,
   },
 
   // GitHub pages deployment config.
