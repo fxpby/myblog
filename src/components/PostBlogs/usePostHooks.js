@@ -10,7 +10,7 @@ const usePostHooks = ({ blogPostId } = {}) => {
   };
 
   const handleVerify = () => {
-    if (inputValue.trim() === "seagull" || inputValue.trim() === "海鸥") {
+    if (inputValue.trim() === "20241014") {
       setMessage("大厨太棒啦，校验通过！✌️");
       setIsShow(true);
     } else {
