@@ -14,7 +14,9 @@ const usePostHooks = ({ blogPostId } = {}) => {
       setMessage("大厨太棒啦，校验通过！✌️");
       setIsShow(true);
     } else {
-      setMessage("嘤嘤校验失败，请重新输入暗号。🤧");
+      setMessage(
+        "嘤嘤校验失败，请重新输入暗号。🤧（暗号已更新为 growth cycle 公开时间年月日 8 位数字哦~）"
+      );
       setInputValue("");
       setIsShow(false);
     }
