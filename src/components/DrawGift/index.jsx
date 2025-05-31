@@ -41,6 +41,11 @@ export default function DrawGift(props = {}) {
       step: 0,
     },
     {
+      name: "紫米芋泥粽",
+      src: "https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/seagull/zz-yuni.jpg",
+      step: 0,
+    },
+    {
       name: "惊喜海鸥粽",
       src: "https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/seagull/zz-seagull.jpg",
       step: 0,

@@ -18,7 +18,6 @@ export default function DrawGift(props = {}) {
   console.log("props: ", props);
 
   const itemClick = () => {
-    console.log(22);
     if (drawCount <= 0 || listItem.step === 2) {
       return;
     }
@@ -75,7 +74,11 @@ export default function DrawGift(props = {}) {
           {listItem.step > 0 ? (
             <div className={s.imgWrap}>
               <img src={listItem.src} alt="" />
-              <div>{listItem.name}</div>
+              {listItem.step === 2 ? (
+                <div>谢谢惠顾</div>
+              ) : (
+                <div>{listItem.name}</div>
+              )}
             </div>
           ) : (
             "抓幸运粽"
