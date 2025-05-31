@@ -7,47 +7,47 @@ export default function DrawGift(props = {}) {
   const metaList = [
     {
       name: "原味白米粽",
-      src: "https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/seagull/zz-nuomi.jpg",
+      src: "https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/seagull/zz-nuomi.png",
       step: 0,
     },
     {
       name: "蜜枣甜粽",
-      src: "https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/seagull/zz-mizao.jpg",
+      src: "https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/seagull/zz-mizao.png",
       step: 0,
     },
     {
       name: "豆沙红豆粽",
-      src: "https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/seagull/zz-dousha.jpg",
+      src: "https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/seagull/zz-dousha.png",
       step: 0,
     },
     {
       name: "蛋黄鲜肉粽",
-      src: "https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/seagull/zz-danhuang.jpg",
+      src: "https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/seagull/zz-danhuang.png",
       step: 0,
     },
     {
       name: "紫薯糯米粽",
-      src: "https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/seagull/zz-zishu.jpg",
+      src: "https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/seagull/zz-zishu.png",
       step: 0,
     },
     {
       name: "蜂蜜粽",
-      src: "https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/seagull/zz-fengmi.jpg",
+      src: "https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/seagull/zz-fengmi.png",
       step: 0,
     },
     {
       name: "八宝粽",
-      src: "https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/seagull/zz-babao.jpg",
+      src: "https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/seagull/zz-babao.png",
       step: 0,
     },
     {
       name: "紫米芋泥粽",
-      src: "https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/seagull/zz-yuni.jpg",
+      src: "https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/seagull/zz-yuni.png",
       step: 0,
     },
     {
       name: "惊喜海鸥粽",
-      src: "https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/seagull/zz-seagull.jpg",
+      src: "https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/seagull/zz-seagull.png",
       step: 0,
     },
   ];
