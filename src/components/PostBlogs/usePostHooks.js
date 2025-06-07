@@ -10,12 +10,12 @@ const usePostHooks = ({ blogPostId } = {}) => {
   };
 
   const handleVerify = () => {
-    if (inputValue.trim() === "20241014") {
-      setMessage("大厨太棒啦，校验通过！✌️");
+    if (inputValue.trim() === "en0u1340") {
+      setMessage("太棒啦，校验通过！✌️");
       setIsShow(true);
     } else {
       setMessage(
-        "嘤嘤校验失败，请重新输入暗号。🤧（暗号已更新为 growth cycle 公开时间年月日 8 位数字哦~）"
+        "嘤嘤校验失败，请重新输入暗号。🤧（暗号临时已更新为消失的铃铛作者 id~）"
       );
       setInputValue("");
       setIsShow(false);
