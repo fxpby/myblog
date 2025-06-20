@@ -140,7 +140,7 @@ const config: Config = {
         },
         {
           label: "菜谱",
-          to: "/docs/dishes/soup/辣豆腐汤",
+          to: "/docs/dishes/design-principle",
         },
         {
           label: "暂存区",
