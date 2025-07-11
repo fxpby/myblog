@@ -143,6 +143,10 @@ const config: Config = {
           to: "/docs/dishes/dishes-design-principle",
         },
         {
+          label: "阅读",
+          to: "/docs/reading/爱情这门课你可别挂科",
+        },
+        {
           label: "暂存区",
           to: "/docs/photography/iPhone-photography-guide/iPhone相机基本操作和设置",
         },
