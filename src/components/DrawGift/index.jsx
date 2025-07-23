@@ -46,8 +46,8 @@ export default function DrawGift(props = {}) {
       step: 0,
     },
     {
-      name: "惊喜海鸥粽",
-      src: "https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/seagull/zz-seagull.png",
+      name: "惊喜兔兔粽",
+      src: "https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/seagull/zz-rabbit3.jpg",
       step: 0,
     },
   ];
@@ -67,7 +67,7 @@ export default function DrawGift(props = {}) {
   return (
     <ChakraProvider resetCSS={false} disableGlobalStyle={true}>
       <p className={s.title}>
-        🍃端午安康，去俩小可爱那里偷了几个可香可香的粽子回来，大厨来抓个盲粽品尝一下吧~
+        🍃端午安康，做梦包了几个可香可香的粽子回来，您来抓个盲粽品尝一下吧~
         剩余次数：
         {drawCount}
       </p>
@@ -87,7 +87,8 @@ export default function DrawGift(props = {}) {
         {drawCount === 0 ? (
           <div>
             <div>
-              (注：惊喜海鸥粽是之前码头餐厅大厨包的，不是海鸥馅，唔，可爱海鸥不能吃🤤)
+              {/* (注：惊喜海鸥粽是之前码头餐厅大厨包的，不是海鸥馅，唔，可爱海鸥不能吃🤤) */}
+              （没有海鸥了，只有您，只有可爱的小兔兔，可爱的小兔兔馅可不能吃哦）
             </div>
             <Button onClick={() => init()}>这次不算再来一次!</Button>
           </div>
