@@ -10,13 +10,11 @@ const usePostHooks = ({ blogPostId } = {}) => {
   };
 
   const handleVerify = () => {
-    if (inputValue.trim() === "en0u1340") {
+    if (inputValue.trim() === "imaimauo") {
       setMessage("太棒啦，校验通过！✌️");
       setIsShow(true);
     } else {
-      setMessage(
-        "嘤嘤校验失败，请重新输入暗号。🤧（暗号临时已更新为消失的铃铛作者 id~）"
-      );
+      setMessage("嘤嘤校验失败，请重新输入暗号。🤧（暗号是您用户名）");
       setInputValue("");
       setIsShow(false);
     }
