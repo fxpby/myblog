@@ -129,7 +129,7 @@ const config: Config = {
         },
         {
           label: "锻炼",
-          to: "/docs/workout/training-program/cycle-calc",
+          to: "/docs/workout/nsca-cscs/抗阻训练的计划设计",
         },
         {
           label: "营养科学",
