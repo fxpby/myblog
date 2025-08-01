@@ -4,10 +4,19 @@
         <title>邂逅大大小小陆 Blog</title>
         <link>https://serendipityhaven.com/myblog/blog</link>
         <description>邂逅大大小小陆 Blog</description>
-        <lastBuildDate>Sun, 27 Jul 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 01 Aug 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[post-8/01]]></title>
+            <link>https://serendipityhaven.com/myblog/blog/post-8/01</link>
+            <guid>https://serendipityhaven.com/myblog/blog/post-8/01</guid>
+            <pubDate>Fri, 01 Aug 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[{/ truncate /}]]></description>
+            <content:encoded><![CDATA[
+<div><input type="text" value=""><button>校验</button><p>请输入暗号</p></div>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[post-7/27]]></title>
             <link>https://serendipityhaven.com/myblog/blog/post-7/27</link>
