@@ -125,7 +125,7 @@ export default function Hello() {
                 rowGap: "40px",
               }}
             >
-              <p>口令正确~小心心只给您看，您可以拍拍哦</p>
+              <p>口令正确~小心心只给您看，您可以点击拍拍哦</p>
               <div className={s.heart} onClick={() => handleClickHeart()}></div>
             </div>
           )}
