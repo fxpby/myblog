@@ -153,6 +153,10 @@ const config: Config = {
           to: "/docs/photography/iPhone-photography-guide/iPhone相机基本操作和设置",
         },
         {
+          to: "/heart",
+          label: "魔法小陆",
+        },
+        {
           href: "https://github.com/fxpby",
           label: "GitHub",
           position: "right",
