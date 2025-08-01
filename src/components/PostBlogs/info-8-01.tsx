@@ -7,9 +7,9 @@ const MyComponent = () => {
     siteConfig: { customFields },
   } = useDocusaurusContext();
 
-  const { blogPost250731 = "" } = customFields;
+  const { blogPost250801 = "" } = customFields;
 
-  const { contentElement } = usePostHooks({ blogPostId: blogPost250731 });
+  const { contentElement } = usePostHooks({ blogPostId: blogPost250801 });
 
   return <>{contentElement}</>;
 };

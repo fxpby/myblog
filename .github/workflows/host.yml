@@ -50,7 +50,7 @@ jobs:
           BLOG_POST250529: ${{ secrets.BLOG_POST250529}}
           BLOG_POST250604: ${{ secrets.BLOG_POST250604}}
           BLOG_POST250727: ${{ secrets.BLOG_POST250727}}
-          BLOG_POST250731: ${{ secrets.BLOG_POST250731}}
+          BLOG_POST250801: ${{ secrets.BLOG_POST250801}}
 
         run: npm run build-host
 
