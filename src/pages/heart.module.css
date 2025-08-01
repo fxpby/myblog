@@ -1,0 +1,52 @@
+.heart {
+  width: 100px;
+  height: 100px;
+  background: red;
+  box-shadow: 0 0 10px red;
+  position: relative;
+  transform: rotate(45deg) scale(0.5);
+  animation: heartbit 0.5s alternate infinite;
+}
+
+.heart:hover {
+  cursor: pointer;
+}
+
+.heart::before {
+  content: "";
+  width: 100px;
+  height: 50px;
+  background: red;
+  box-shadow: 0 0 10px red;
+  position: absolute;
+  left: 0;
+  top: -50px;
+  border-radius: 50px 50px 0 0;
+}
+
+.heart::after {
+  content: "";
+  width: 50px;
+  height: 100px;
+  background: red;
+  box-shadow: 0 0 10px red;
+  position: absolute;
+  left: -50px;
+  top: 0;
+  border-radius: 50px 0 0 50px;
+}
+
+@keyframes heartbit {
+  0% {
+    transform: rotate(45deg) scale(0.7);
+  }
+
+  100% {
+    transform: rotate(45deg) scale(1);
+  }
+}
+
+.dog{
+  width: 200px;
+  height: 200px;
+}
