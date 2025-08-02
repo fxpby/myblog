@@ -53,7 +53,6 @@ export default function Hello() {
   };
 
   const inputOnComplete = (value) => {
-    console.log("value: ", value);
     if (value !== "imaimauo") {
       setIsShowInputTip(true);
     } else {
