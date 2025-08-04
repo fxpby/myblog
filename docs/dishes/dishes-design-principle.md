@@ -121,9 +121,10 @@ sidebar_position: 1
 
 ### 断食饮食
 
-#### 5 + 2 断食
+- 5 + 2 断食
+- 16 + 8 、20 + 4 断食
 
-#### 16 + 8 、20 + 4 断食
+[断食饮食法具体请看这里](/docs/nutrition-science/fat-loss/intermittent-fasting.md)
 
 #### 莫得脑子的断食系列
 
@@ -131,11 +132,43 @@ sidebar_position: 1
 
 ### 碳循环饮食
 
+[碳循环饮食法具体请看这里](/docs/nutrition-science/fat-loss/carb-cycling.md)
+
 ## 🥙 维生素
+
+- [维生素 A](/docs/nutrition-science/vitamin/vitamin-a.md)
+- [维生素 B 族](/docs/nutrition-science/vitamin/vitamin-b-intro.md)
+- [维生素 B1](/docs/nutrition-science/vitamin/vitamin-b1.md)
+- [维生素 B2](/docs/nutrition-science/vitamin/vitamin-b2.md)
+- [维生素 B3](/docs/nutrition-science/vitamin/vitamin-b3.md)
+- [维生素 B5](/docs/nutrition-science/vitamin/vitamin-b5.md)
+- [维生素 B6](/docs/nutrition-science/vitamin/vitamin-b6.md)
+- [维生素 B7](/docs/nutrition-science/vitamin/vitamin-b7.md)
+- [维生素 B9](/docs/nutrition-science/vitamin/vitamin-b9.md)
+- [维生素 B12](/docs/nutrition-science/vitamin/vitamin-b12.md)
+- [维生素 C](/docs/nutrition-science/vitamin/vitamin-c.md)
+- [维生素 D](/docs/nutrition-science/vitamin/vitamin-d.md)
+- [维生素 E](/docs/nutrition-science/vitamin/vitamin-e.md)
+- [维生素 K](/docs/nutrition-science/vitamin/vitamin-k.md)
 
 ## 💎 矿物质
 
+TODO
+
+- 钾
+- 铜
+- 锌
+- 镁
+- 钙
+- 铁
+- 钠
+- 氟
+- 锰
+- 铬
+
 ## 🛫 激素水平
+
+TODO
 
 ### 肽类激素
 
@@ -158,13 +191,35 @@ sidebar_position: 1
 
 ## 🏖 抗氧化
 
+TODO
+
 ## 🩹 抗炎
 
+- Omega-3
+- 多酚类化合物
+  - 花色苷
+    - 蓝莓
+    - 紫葡萄
+  - 黄酮类
+    - 柑橘
+    - 茶叶
+  - 异黄酮
+    - 大豆、扁豆
+  - 单宁
+    - 茶叶
+    - 可可
+  - 木酚素
+    - 谷物、坚果
+
 ## 🧺 消化系统
+
+TODO
 
 酶蛋白：促进食物消化吸收和利用
 
 ## 🧬 免疫系统
+
+TODO
 
 免疫蛋白：维持机体免疫功能
 
