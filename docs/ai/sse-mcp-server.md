@@ -199,6 +199,45 @@ pnpm run dev
 
 ### 方案 B：不敲代码，LLM 专家为您服务
 
+现在是魔法时代，有大模型专家在，我们不用码，代码也能漂亮自己蹦出来，下面介绍一个简单的让 AI 写代码示例
+
+以 Claude Code 为例（cursor 好贵啊...）
+
+命令行执行初始化命令，cc 会分析我们的项目文件，并输出一个 md 文件存档
+
+```bash
+#  项目根目录进入 cc
+claude
+# 初始化 Claude
+/init
+```
+
+![claude-init](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/ai/sse-mcp-demo/claude-init.jpg)
+
+笔者好懒，新闻这个描述会有点麻烦，我们搞个简单的吧 😆
+
+`你是一个 MCP 专家，请帮我在 src 目录下创建一个 index.ts 文件，作为 MCP Server 用来返回当前城市的天气，数据需要你来 mock，可以参考 https://github.com/modelcontextprotocol/typescript-sdk，技术栈是 TypeScript`
+
+提出问题后，喝口水的功夫专家就写完了，这自己不得写个几十分钟的，太酷辣，看了下，写得可真不戳 👏
+
+![claude-qa1](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/ai/sse-mcp-demo/claude-qa1.jpg)
+
+注意端口和文件名，以及运行服务命令，我们再跑起来这个专家写好的 MCP Server
+
+```bash
+pnpm run dev
+```
+
+执行 mcp inspector 可视化界面命令测试，配置好传参调用工具，成功拿到数据 ✌️，至此我们一行代码可都没有写哦 😋
+
+后续也可以通过大模型去提问城市天气，可以让大模型给出对应天气提示意见等，魔法就是这么简单 ✨
+
+```bash
+npx @modelcontextprotocol/inspector node build/index.js
+```
+
+![mcp-inspector-1](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/ai/sse-mcp-demo/mcp-inspector-1.jpg)
+
 ## 5. 加入大模型魔法
 
 有了运行的本地服务后，我们需要先测试一下
