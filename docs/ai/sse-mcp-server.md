@@ -72,7 +72,7 @@ openRouter 中转站支持支付宝等国内方便的支付方式，其他大厂
 
 ![cherrystudio](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/ai/sse-mcp-demo/cherrystudio-1.jpg)
 
-## 4. 具体实现
+## 4. 代码实现
 
 提供两种开发方案，不熟悉代码也能包玩转~
 
@@ -100,7 +100,7 @@ pnpm install
 - `https://hacker-news.firebaseio.com/v0/${type}.json`中 `type` 是`"topstories", "newstories", "beststories"`任一都可以获取到对应类型（最热门、最新、最好）新闻网站的新闻数据 ids 列表
 - 再通过上一步拿到的 ids 列表的单个 id 代入 `https://hacker-news.firebaseio.com/v0/item/${id}.json` 这个接口获取具体一条的新闻详情信息
 
-主要要点：
+主要核心代码是 MCP 工具注册这一环节
 
 - 创建 MCP 实例，传参名称和版本
 - 注册 MCP 工具，传参名称、描述、工具参数和工具执行函数（重点）
@@ -195,8 +195,49 @@ app.listen(3006, () => {
 pnpm run dev
 ```
 
+至此，我们的本地 MCP Server 就跑起来了
+
 ### 方案 B：不敲代码，LLM 专家为您服务
 
-## 5. Reference
+## 5. 加入大模型魔法
+
+有了运行的本地服务后，我们需要先测试一下
+
+我们执行下面命令，这个命令会自动打开一个 MCP 可视化界面
+
+```bash
+npx @modelcontextprotocol/inspector node build/index.js
+```
+
+- Transport Type 选择 SSE
+- URL 输入我们 本地 MCP Server 运行的地址
+- 点击下方的连接按钮，右侧就会展示 Tools 界面
+- 点击 List Tools 就可以看到我们写的方法
+
+![mcp-inspector-2](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/ai/sse-mcp-demo/mcp-inspector-2.jpg)
+
+- 点击方法后右侧交互输入参数，点击 Run Tool 即可执行服务
+- 最终成功获取到数据如下展示，这就说明我们的 MCP Server 跑通了！
+
+![mcp-result-1](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/ai/sse-mcp-demo/mcp-result-1.jpg)
+
+下面就是最激动人心是时刻了，我们使用客户端来接入 MCP Server，并利用大模型来搞点事情
+
+打开我们的客户端，进行 MCP 设置，新增一个 MCP 服务器，注意填写名称、类型和 URL，保存打开
+
+![config-mcp-server-1](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/ai/sse-mcp-demo/config-mcp-server-1.jpg)
+
+工具栏可以看到接入后的可用工具，包括参数详情，至此，魔法连接完成
+
+![config-mcp-server-2](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/ai/sse-mcp-demo/config-mcp-server-2.jpg)
+
+在 chat 视图中，下方输入框 MCP 设置图标选择我们刚接入的 MCP Server，变绿就代表已挂载状态
+
+然后就开始魔法提问，它已经获取到我们 MCP Server 信息了，并且去调用了服务工具，为我们加工处理分析了新闻简介说明并总结 🥳
+
+![chat-1](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/ai/sse-mcp-demo/chat-1.jpg)
+
+## 6. Reference
 
 - [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) - MCP 文档
+- [modelcontextprotocol/inspector](https://github.com/modelcontextprotocol/inspector) - modelcontextprotocol/inspector 文档
