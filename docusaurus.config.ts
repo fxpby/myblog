@@ -150,8 +150,12 @@ const config: Config = {
           to: "/docs/reading/爱情这门课你可别挂科",
         },
         {
-          label: "暂存区",
+          label: "摄影",
           to: "/docs/photography/iPhone-photography-guide/iPhone相机基本操作和设置",
+        },
+        {
+          label: "AI",
+          to: "/docs/ai/sse-mcp-server",
         },
         {
           to: "/heart",
