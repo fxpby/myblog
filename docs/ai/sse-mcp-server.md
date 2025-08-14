@@ -1,11 +1,11 @@
 # SSE MCP Server playground
 
-## 1. 功能目标
+## 🎯 1. 功能目标
 
 - 从 0 实现一个 SSE 传输的 MCP 服务器
 - 使用 Client 如 `CheeryStudio` 借助 LLM 调用本地运行的 MCP 服务器抓取分析数据
 
-## 2. 环境准备
+## 🚗 2. 环境准备
 
 笔者要写史上最细从头来的说明，嗯，从装 node 开始，有一台新电脑即可（默认 Mac，手头没 Windows...）
 
@@ -14,7 +14,7 @@
 - 准备个大模型的 api key
 - 安装客户端，自己用的`CheeryStudio`
 
-### 2.1 安装 nvm && node
+### 🚲 2.1 安装 nvm && node
 
 [Download Node.js®](https://nodejs.org/zh-cn/download) - 官方下载地址
 
@@ -45,7 +45,7 @@ npm -v # Should print "10.9.3".
 
 `node -v`有输出版本就是成功啦~
 
-### 2.2 安装 pnpm
+### 🏍 2.2 安装 pnpm
 
 装完 node 就有了 npm，我们就可以在终端继续用 npm 来装 pnpm
 
@@ -55,13 +55,13 @@ npm install -g pnpm
 
 一行命令搞定，就是这么简单
 
-### 2.3 搞个 api key
+### 🚜 2.3 搞个 api key
 
 笔者这两天了解到的有限信息是硅基流动和智谱 AI 都注册会送很多 token 可以来耍
 
 openRouter 中转站支持支付宝等国内方便的支付方式，其他大厂的模型有能力方式的都可以搞
 
-### 2.4 安装 `CheeryStudio`
+### 🏎 2.4 安装 `CheeryStudio`
 
 - [官网下载地址](https://www.cherry-ai.com/download) 这个需要中转去网盘下载，没有夸克会员，有点麻烦
 - [CheeryStudio github 下载地址](https://github.com/CherryHQ/cherry-studio/releases) 这个在 github 仓库里，可以直接下载包，nice~
@@ -72,7 +72,7 @@ openRouter 中转站支持支付宝等国内方便的支付方式，其他大厂
 
 ![cherrystudio](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/ai/sse-mcp-demo/cherrystudio-1.jpg)
 
-## 4. 代码实现
+## 🚁 4. 代码实现
 
 提供两种开发方案，不熟悉代码也能包玩转~
 
@@ -91,7 +91,7 @@ pnpm install
 
 <!-- 可以把 `src` 目录下 `index.ts` 删掉重新建一个，也可以把 `index.ts` 改名，新建一个空 `index.ts` -->
 
-### 方案 A：手敲版
+### 🛴 方案 A：手敲版
 
 看一下 `src` 目录下的 `index.ts`，加了注释说明解释，代码量不大
 
@@ -197,7 +197,7 @@ pnpm run dev
 
 至此，我们的本地 MCP Server 就跑起来了
 
-### 方案 B：不敲代码，LLM 专家为您服务
+### 🚀 方案 B：不敲代码，LLM 专家为您服务
 
 现在是魔法时代，有大模型专家在，我们不用码，代码也能漂亮自己蹦出来，下面介绍一个简单的让 AI 写代码示例
 
@@ -218,7 +218,7 @@ claude
 
 `你是一个 MCP 专家，请帮我在 src 目录下创建一个 index.ts 文件，作为 MCP Server 用来返回当前城市的天气，数据需要你来 mock，可以参考 https://github.com/modelcontextprotocol/typescript-sdk，技术栈是 TypeScript`
 
-提出问题后，喝口水的功夫专家就写完了，这自己不得写个几十分钟的，太酷辣，看了下，写得可真不戳 👏
+提出问题后，喝口水歇歇的功夫专家就写完了，这自己不得写个几十分钟的，太酷辣，看了下，写得可真不戳 👏
 
 ![claude-qa1](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/ai/sse-mcp-demo/claude-qa1.jpg)
 
@@ -238,9 +238,9 @@ npx @modelcontextprotocol/inspector node build/index.js
 
 ![mcp-inspector-1](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/ai/sse-mcp-demo/mcp-inspector-1.jpg)
 
-## 5. 加入大模型魔法
+## 🪄 5. 加入大模型魔法
 
-有了运行的本地服务后，我们需要先测试一下
+续上手敲版，有了运行的本地服务后，我们需要先测试一下
 
 我们执行下面命令，这个命令会自动打开一个 MCP 可视化界面
 
@@ -255,7 +255,7 @@ npx @modelcontextprotocol/inspector node build/index.js
 
 ![mcp-inspector-2](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/ai/sse-mcp-demo/mcp-inspector-2.jpg)
 
-- 点击方法后右侧交互输入参数，点击 Run Tool 即可执行服务
+- 点击方法后右侧交互输入工具参数，点击 Run Tool 即可执行服务工具函数
 - 最终成功获取到数据如下展示，这就说明我们的 MCP Server 跑通了！
 
 ![mcp-result-1](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/ai/sse-mcp-demo/mcp-result-1.jpg)
@@ -276,7 +276,7 @@ npx @modelcontextprotocol/inspector node build/index.js
 
 ![chat-1](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/ai/sse-mcp-demo/chat-1.jpg)
 
-## 6. Reference
+## 📚 6. Reference
 
 - [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) - MCP 文档
 - [modelcontextprotocol/inspector](https://github.com/modelcontextprotocol/inspector) - modelcontextprotocol/inspector 文档
