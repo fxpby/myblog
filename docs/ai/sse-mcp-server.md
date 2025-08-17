@@ -260,7 +260,7 @@ npx @modelcontextprotocol/inspector node build/index.js
 
 ![mcp-result-1](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/ai/sse-mcp-demo/mcp-result-1.jpg)
 
-下面就是最激动人心是时刻了，我们使用客户端来接入 MCP Server，并利用大模型来搞点事情
+下面就是最激动人心的时刻了，我们使用客户端来接入 MCP Server，并利用大模型来搞点事情
 
 打开我们的客户端，进行 MCP 设置，新增一个 MCP 服务器，注意填写名称、类型和 URL，保存打开
 
