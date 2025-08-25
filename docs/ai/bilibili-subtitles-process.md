@@ -1,14 +1,16 @@
 # bilibili 字幕文本提取及处理
 
-## 1. 提取字幕文本
+## 🔖 1. 提取字幕文本
 
-### 1.1 安装 tampermonkey
+### 🛠 1.1 安装 tampermonkey
 
 https://www.tampermonkey.net/
 
-### 1.2 安装 bilibili evolved
+### ⚙️ 1.2 安装 bilibili evolved
 
 https://github.com/the1812/Bilibili-Evolved
+
+### 🪜 1.3 配置与使用下载字幕插件
 
 在 tampermonkey 中安装完 `bilibili evolved` 后，打开一个 bilibili 视频后页面左边就会自动出现侧边栏，点击下面设置图标，在线搜索添加`下载字幕`组件
 
@@ -20,9 +22,7 @@ https://github.com/the1812/Bilibili-Evolved
 
 ![bilibili-ex-3](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/ai/bilibili/bilibili-ex-3.jpg)
 
-### 1.3 配置与使用下载字幕插件
-
-## 2. AI 文本处理与优化指令
+## 🪄 2. AI 文本处理与优化指令
 
 把字幕 JSON 文件丢给 AI 模型，让它在提示词限制下输出我们期待的优质阅读体验文案
 
