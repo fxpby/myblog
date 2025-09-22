@@ -137,7 +137,11 @@ const config: Config = {
         },
         {
           label: "营养科学",
-          to: "/docs/nutrition-science/functional-medicine/endocrine-system-and-hormones",
+          to: "/docs/nutrition-science/functional-nutrients/omega-3",
+        },
+        {
+          label: "功能医学",
+          to: "/docs/functional-medicine/endocrine-system-and-hormones/下丘脑-垂体-肾上腺 HPA 轴与皮质醇的应激反应",
         },
         {
           label: "基础乐理",
