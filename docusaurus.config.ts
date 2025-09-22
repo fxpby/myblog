@@ -137,7 +137,7 @@ const config: Config = {
         },
         {
           label: "营养科学",
-          to: "/docs/nutrition-science/functional-nutrients/omega-3",
+          to: "/docs/nutrition-science/functional-medicine/endocrine-system-and-hormones",
         },
         {
           label: "基础乐理",
@@ -158,6 +158,10 @@ const config: Config = {
         {
           label: "AI",
           to: "/docs/ai/sse-mcp-server",
+        },
+        {
+          label: "工具",
+          to: "/docs/tools/obsidian/obsidian同步方案",
         },
         {
           to: "/heart",
