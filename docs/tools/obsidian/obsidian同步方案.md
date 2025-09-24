@@ -162,7 +162,32 @@ obsidian 这个黑曜石很热门，一直没用过，这就想试试了，看�
 
 ## 3. `self-hosted liveSync` 部署流程
 
-TODO
+### 3.1 部署 CouchDB 数据库
+
+docker-compose 配置:
+
+```yml
+services:
+  couchdb:
+    image: couchdb:latest
+    container_name: couchdb-for-ols
+    user: 5984:5984
+    environment:
+      - COUCHDB_USER=user_name # 账号
+      - COUCHDB_PASSWORD=passport # 密码
+    volumes:
+      - ./couchdb-data:/opt/couchdb/data
+      - ./couchdb-etc:/opt/couchdb/etc/local.d
+    ports:
+      - 5984:5984
+    restart: unless-stopped
+```
+
+### 3.2 初始化数据库
+
+### 3.3 配置 nginx 反向代理
+
+### 3.4 Obsidian 客户端 Self-hosted Livesync 插件设置
 
 ## 4. 方案总结一览
 
