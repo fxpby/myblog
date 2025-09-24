@@ -183,11 +183,102 @@ services:
     restart: unless-stopped
 ```
 
+然后有很重要的一步，就是创建挂载目录修改权限，否则 couchDB 无法读写
+
+```bash
+mkdir -p ./couchdb-data ./couchdb-etc
+sudo chown -R 5984:5984 ./couchdb-data ./couchdb-etc
+```
+
+拉取运行容器
+
+```bash
+docker-compose up -d
+```
+
+执行完成后就可以通过 `http://ip:5984/_utils` 访问数据库了
+
 ### 3.2 初始化数据库
+
+官方的一键脚本
+
+```bash
+# 添加环境变量
+export hostname=localhost:5984
+# 之前 docker-compose.yml 配置里设置的账号密码
+export username=user_name
+export password=passport
+# 执行脚本
+curl -s https://raw.githubusercontent.com/vrtmrz/obsidian-livesync/main/utils/couchdb/couchdb-init.sh | bash
+```
+
+结果如下时，初始化完成
+
+```txt
+-- Configuring CouchDB by REST APIs... -->
+{"ok":true}
+""
+""
+""
+""
+""
+""
+""
+""
+""
+<-- Configuring CouchDB by REST APIs Done!
+```
+
+- 进入 http://ip:5894/\_utils 并输入账号密码登入
+- 进入 `Databases`，点击`Create Database`创建一个数据库，名称随便起，比如`obsidian-notes`
+- `Partitioning`分区选择第一个`Non-partitioned`
 
 ### 3.3 配置 nginx 反向代理
 
+移动端需要 SSL 证书，仅局域网电脑端可以跳过此步骤
+
+nginx 配置如下：
+
+```conf
+server {
+    listen 80;
+    server_name 反代域名;
+    return 301 https://$host$request_uri;
+}
+server {
+    listen 443 ssl http2;
+    server_name 反代域名;
+    ssl_certificate 证书路径;
+    ssl_certificate_key 密钥路径;
+    location / {
+        proxy_pass http://127.0.0.1:5984;
+        proxy_redirect off;
+        proxy_buffering off;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+    client_max_body_size 0;
+}
+```
+
 ### 3.4 Obsidian 客户端 Self-hosted Livesync 插件设置
+
+1. 社区下载 `Self-hosted Livesync` 插件并启用，可切换一下中文语言
+2. 点击卫星按钮进入远程配置
+
+- 远程类型：`CouchDB`
+- 服务器 URI：`https://反代的域名`（使用移动端同步）或 `http://ip:5984`（只在局域网内使用且仅使用电脑端同步）
+- 用户名：`CouchDB` 账号
+- 密码：`CouchDB` 密码
+- 数据库名称：创建的 `CouchDB` 数据库名称如 `obsidian-notes`
+- 点击测试数据库连接，出现 `Connect to` 数据库名称，则连接成功
+- 再点击 `check` 检查按钮，全是绿勾则成功，有错误就选择 `fix` 修正
+- `Property Encryption` 设置密码，开启端对端加密
+- 切换到同步设置，选择同步模式 `LiveSync`，即实时同步
+
+至此配置完成，不过就算这样也建议使用 `git` 来控制维护版本，而不是完全依赖 `livesync`，毕竟数据第一位
 
 ## 4. 方案总结一览
 
