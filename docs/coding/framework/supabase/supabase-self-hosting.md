@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# supabase 自部署
+# supabase 旅程预备 - 自部署
 
 ## 1. 什么是 supabase
 
