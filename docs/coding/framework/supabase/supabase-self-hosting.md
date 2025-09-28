@@ -12,6 +12,8 @@ Supabase 是一个基于 PostgreSQL 的开源开发平台
 
 Supabase 的目标是简化 Web 和移动应用的开发过程，让开发者能够专注于核心业务逻辑
 
+白话说就是，借助 supabase 的能力开发 web 应用不需要后端服务啦，通过 supabase 可以 CURD 管理权限等，有可视化的数据库交互界面
+
 ## 2. Docker 部署
 
 ### 2.1 部署准备
