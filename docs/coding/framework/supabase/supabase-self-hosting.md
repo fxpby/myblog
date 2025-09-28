@@ -90,3 +90,48 @@ API_EXTERNAL_URL=http://localhost:8000
 - `JWT_EXPIRY`：JWT 过期时间，可以改大一点
 - `DISABLE_SIGNUP`: 禁用注册
 - `API_EXTERNAL_URL`：API URL
+
+再往下看到 Email auth 部分，也需要手动修改
+
+```env
+## Email auth
+ENABLE_EMAIL_SIGNUP=true
+ENABLE_EMAIL_AUTOCONFIRM=false
+SMTP_ADMIN_EMAIL=admin@example.com
+SMTP_HOST=supabase-mail
+SMTP_PORT=2500
+SMTP_USER=fake_mail_user
+SMTP_PASS=fake_mail_password
+SMTP_SENDER_NAME=fake_sender
+ENABLE_ANONYMOUS_USERS=false
+```
+
+- `SMTP_ADMIN_EMAIL`: 邮箱账号
+- `SMTP_HOST`: 邮箱服务器 host，不同邮箱不一样需要查询配置
+- `SMTP_PORT`: 端口，也是不同邮箱不一样需要查询配置
+- `SMTP_USER`: 同邮箱账号
+- `SMTP_PASS`: 邮箱授权码，这个不同邮箱配置方式有不同，以腾讯邮箱举例
+  - 点击设置，进入账号页面
+  - ![supabase-self-hosting2](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting2.jpg)
+  - 开启服务
+  - ![supabase-self-hosting3](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting3.jpg)
+  - 点击生成授权码（需要短信验证）
+  - ![supabase-self-hosting4](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting4.jpg)
+  - get √ 授权码
+  - ![supabase-self-hosting5](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting5.jpg)
+  - `SMTP_SENDER_NAME`: 发送人名称，随便写
+
+下面是自己的腾讯邮箱示例：
+
+```env
+## Email auth
+ENABLE_EMAIL_SIGNUP=true
+ENABLE_EMAIL_AUTOCONFIRM=false
+SMTP_ADMIN_EMAIL= xxxxxxxxxxx@qq.com
+SMTP_HOST=smtp.qq.com
+SMTP_PORT=465
+SMTP_USER=xxxxxxxxxxx@qq.com
+SMTP_PASS=xxxxxxxxxxxx
+SMTP_SENDER_NAME=fxpby-supabase
+ENABLE_ANONYMOUS_USERS=false
+```
