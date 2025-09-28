@@ -143,3 +143,5 @@ ENABLE_ANONYMOUS_USERS=false
 需要把两个`keyauth_credentials`替换成我们上面生成的`ANON_KEY`和`SERVICE_ROLE_KEY`的值
 
 然后就可以运行`docker compose up -d`了，嗯，很好，我的服务器挂了，滚去修了
+
+滚回来了...🤧，这个玩意咋这么占内存...好家伙，1 个多 g ？我服务器一共才 2g 内存啊啊啊...去想想办法了...🤕
