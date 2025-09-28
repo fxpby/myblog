@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # SSE MCP Server playground
 
 ## 🎯 1. 功能目标
