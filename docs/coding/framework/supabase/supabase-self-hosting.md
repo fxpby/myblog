@@ -138,10 +138,21 @@ SMTP_SENDER_NAME=fxpby-supabase
 ENABLE_ANONYMOUS_USERS=false
 ```
 
-至此，`.env` 文件配置完成，还有一个文件需要修改配置，在`./docker/volumes/api/kong.yml`中
-
-需要把两个`keyauth_credentials`替换成我们上面生成的`ANON_KEY`和`SERVICE_ROLE_KEY`的值
+至此，`.env` 文件配置完成
 
 然后就可以运行`docker compose up -d`了，嗯，很好，我的服务器挂了，滚去修了
 
-滚回来了...🤧，这个玩意咋这么占内存...好家伙，1 个多 g ？我服务器一共才 2g 内存啊啊啊...去想想办法了...🤕
+滚回来了...🤧，这个玩意咋这么占内存...好家伙，一下子内存就满了 ？我服务器 2g 内存都不够啊啊啊...去想想办法了...🤕
+
+查到资料说，跑这个需要 4g 内存...emmm 这服务器不便宜搞不来，本机跑吧
+
+本机跑时遇到 `supabase-analytics` 容器 `error` 问题
+
+`supabase-analytics` 容器 `error` 问题做以下处理可解决，即重置环境，删除所有持久化数据
+
+```bash
+docker compose down -v
+rm -rf volumes/db/data/
+```
+
+一定要确认所有容器都启动了，看了下用了 2.3 g 多，真的好吃内存...
