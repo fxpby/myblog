@@ -155,4 +155,6 @@ docker compose down -v
 rm -rf volumes/db/data/
 ```
 
-一定要确认所有容器都启动了，看了下用了 2.3 g 多，真的好吃内存...
+![supabase-self-hosting6](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting6.jpg)
+
+一定要确认所有容器都启动了，看了下用了 2g 多，真的好吃内存...
