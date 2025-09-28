@@ -137,3 +137,9 @@ SMTP_PASS=xxxxxxxxxxxx
 SMTP_SENDER_NAME=fxpby-supabase
 ENABLE_ANONYMOUS_USERS=false
 ```
+
+至此，`.env` 文件配置完成，还有一个文件需要修改配置，在`./docker/volumes/api/kong.yml`中
+
+需要把两个`keyauth_credentials`替换成我们上面生成的`ANON_KEY`和`SERVICE_ROLE_KEY`的值
+
+然后就可以运行`docker compose up -d`了，嗯，很好，我的服务器挂了，滚去修了
