@@ -71,3 +71,5 @@ VAULT_ENC_KEY=your-encryption-key-32-chars-min
 - `SERVICE_ROLE_KEY`: 根据`JWT_SECRET`生成，下拉框选中后点击下方`Generate JWT`按钮生成
 - `DASHBOARD_USERNAME`: 面板用户名
 - `DASHBOARD_PASSWORD`: 面板密码
+- `SECRET_KEY_BASE`: 可用`openssl rand -base64 48`随机数生成器生成
+- `VAULT_ENC_KEY`: 32 位自定义
