@@ -73,3 +73,20 @@ VAULT_ENC_KEY=your-encryption-key-32-chars-min
 - `DASHBOARD_PASSWORD`: 面板密码
 - `SECRET_KEY_BASE`: 可用`openssl rand -base64 48`随机数生成器生成
 - `VAULT_ENC_KEY`: 32 位自定义
+
+下方 General 部分也很重要需要修改
+
+```env
+## General
+SITE_URL=http://localhost:3000
+ADDITIONAL_REDIRECT_URLS=
+JWT_EXPIRY=3600
+DISABLE_SIGNUP=false
+API_EXTERNAL_URL=http://localhost:8000
+```
+
+- `SITE_URL`: 项目地址，看自己项目
+- `ADDITIONAL_REDIRECT_URLS`: 重定向地址，看自己项目
+- `JWT_EXPIRY`：JWT 过期时间，可以改大一点
+- `DISABLE_SIGNUP`: 禁用注册
+- `API_EXTERNAL_URL`：API URL
