@@ -161,4 +161,6 @@ rm -rf volumes/db/data/
 
 在浏览器中访问`http://localhost:8000/`或`http://<your-ip>:8000`后输入上面配置的用户名和密码即可访问我们的 supabase 管理面板~
 
+至此，我们的自部署旅程准备就完成啦~🥳
+
 ![supabase-self-hosting7](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting7.jpg)
