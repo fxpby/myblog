@@ -74,7 +74,7 @@ VAULT_ENC_KEY=your-encryption-key-32-chars-min
 - `DASHBOARD_USERNAME`: 面板用户名
 - `DASHBOARD_PASSWORD`: 面板密码
 - `SECRET_KEY_BASE`: 可用`openssl rand -base64 48`随机数生成器生成
-- `VAULT_ENC_KEY`: 32 位自定义
+- `VAULT_ENC_KEY`: 可用`openssl rand -base64 32`随机数生成器生成
 
 下方 General 部分也很重要需要修改
 
