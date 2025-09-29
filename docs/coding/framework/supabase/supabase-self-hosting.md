@@ -74,7 +74,7 @@ VAULT_ENC_KEY=your-encryption-key-32-chars-min
 - `DASHBOARD_USERNAME`: 面板用户名
 - `DASHBOARD_PASSWORD`: 面板密码
 - `SECRET_KEY_BASE`: 可用`openssl rand -base64 48`随机数生成器生成
-- `VAULT_ENC_KEY`: 可用`openssl rand -base64 32`随机数生成器生成
+- `VAULT_ENC_KEY`: 可用`openssl rand -base64 24`随机数生成器生成（这里有个大坑，就是官网文档说最少 32 位，其实是必需 32 位，否则`supabase-pooler`容器就会起不来，官方挖坑昂...）
 
 下方 General 部分也很重要需要修改
 
