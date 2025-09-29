@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-TSG5B2CH"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","GTM-TSG5B2CH",{anonymize_ip:!0})</script><link rel="stylesheet" href="/myblog/assets/css/styles.09287821.css">
-<script src="/myblog/assets/js/runtime~main.5f096df2.js" defer="defer"></script>
+<script src="/myblog/assets/js/runtime~main.c429cd90.js" defer="defer"></script>
 <script src="/myblog/assets/js/main.d4f08047.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -162,7 +162,7 @@
 <p>滚回来了...🤧，这个玩意咋这么占内存...好家伙，一下子内存就满了 ？我服务器 2g 内存都不够啊啊啊...去想想办法了...🤕</p>
 <p>查到资料说，跑这个需要 4g 内存...emmm 这服务器不便宜搞不来，本机跑吧</p>
 <p>本机跑时遇到 <code>supabase-analytics</code> 容器 <code>error</code> 问题</p>
-<p><code>supabase-analytics</code> 容器 <code>error</code> 问题做以下处理可解决，即重置环境，删除所有持久化数据</p>
+<p><code>supabase-analytics</code> 容器 <code>error</code> 问题做以下处理可解决，即重置初始化环境，删除所有持久化数据</p>
 <div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">docker compose down -v</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">rm -rf volumes/db/data/</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting6.jpg" alt="supabase-self-hosting6" class="img_ev3q"></p>
 <p>一定要确认所有容器都启动了，看了下刚跑起来什么都没做就用了 2g 多，真的好吃内存...</p>
