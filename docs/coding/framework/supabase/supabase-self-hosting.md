@@ -148,7 +148,7 @@ ENABLE_ANONYMOUS_USERS=false
 
 本机跑时遇到 `supabase-analytics` 容器 `error` 问题
 
-`supabase-analytics` 容器 `error` 问题做以下处理可解决，即重置环境，删除所有持久化数据
+`supabase-analytics` 容器 `error` 问题做以下处理可解决，即重置初始化环境，删除所有持久化数据
 
 ```bash
 docker compose down -v
