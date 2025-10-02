@@ -59,3 +59,23 @@ export async function signup(email, password) {
   return data;
 }
 ```
+
+我们可以从 https://temp-mail.org/ 这个网址获取临时邮箱
+
+![supabase-self-hosting22](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting22.jpg)
+
+此时来到我们项目的注册窗口，使用这个临时邮箱来注册一个账号
+
+![supabase-self-hosting23](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting23.jpg)
+
+点击注册后，来到面板，会看到 user 这里新增了一条记录，是有 email 标识的
+
+![supabase-self-hosting24](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting24.jpg)
+
+此时再来到获取邮箱的网址，会看到下方收到了邮件提示，点击去确认，会看到我们的校验码
+
+![supabase-self-hosting25](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting25.jpg)
+
+![supabase-self-hosting26](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting26.jpg)
+
+有了校验码后，我们继续来完成 apiVerifyEmail 邮箱验证部分的函数逻辑
