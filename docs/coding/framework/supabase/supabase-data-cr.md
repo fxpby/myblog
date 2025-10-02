@@ -111,3 +111,11 @@ export async function getEmployees() {
   return employees;
 }
 ```
+
+访问项目地址 http://localhost:5173/ 即可看到加载数据如下，和我们之前插入的数据是对得上的
+
+![supabase-self-hosting19](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting19.jpg)
+
+至此我们就成功地从 supabase 中读取了对应的数据，对应的读取逻辑其实就是 supabase docs 给我们提供了这样一些调用 SDK 代码
+
+通过 supabase 的 SDK 可以直接获取数据库中的数据，而不再需要我们去和后端对接。我们只需要处理好渲染逻辑就可以，美滋滋~
