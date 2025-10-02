@@ -30,3 +30,32 @@ export async function signup(email, password) {
   return data;
 }
 ```
+
+在 https://supabase.com/docs/reference/javascript/auth-signup 文档中我们可以找到添加额外元数据信息的参数，即 options，我们需要利用这个参数去获取用户头像
+
+![supabase-self-hosting21](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting21.jpg)
+
+修改`vue-version/src/services/apiSignup.js`代码如下
+
+```js
+import { getFakeAvatar } from "@/utils/employeeFakeHelper";
+import supabase from "@/utils/supabase";
+
+export async function signup(email, password) {
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: {
+        avatar: getFakeAvatar(),
+      },
+    },
+  });
+
+  if (error) {
+    throw new Error(error?.message);
+  }
+
+  return data;
+}
+```
