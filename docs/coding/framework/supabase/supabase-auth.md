@@ -173,3 +173,9 @@ export async function login(email, password) {
 登录成功后即可看到提示，以及右上角的头像（头像回显有点问题无伤大雅，登录状态过来就行）
 
 ![supabase-self-hosting32](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting32.jpg)
+
+localstorage 中也可以看到登录信息带过来了，至此登录功能完成~
+
+![supabase-self-hosting33](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting33.jpg)
+
+## 退出登录
