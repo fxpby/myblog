@@ -78,4 +78,30 @@ export async function signup(email, password) {
 
 ![supabase-self-hosting26](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting26.jpg)
 
-有了校验码后，我们继续来完成 apiVerifyEmail 邮箱验证部分的函数逻辑
+有了校验码后，我们继续来完成 apiVerifyEmail 邮箱验证部分的函数逻辑。在文档中找到这个 OTP 验证部分，复制注册一次性密码这一项代码至`vue-version/src/services/apiVerifyEmail.js`，不是 SMS 短信验证哦
+
+![supabase-self-hosting27](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting27.jpg)
+
+```js
+import supabase from "@/utils/supabase";
+
+export async function verifyEmail(email, token) {
+  const { data, error } = await supabase.auth.verifyOtp({
+    email,
+    token,
+    type: "email",
+  });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+}
+```
+
+restart 项目后，我们在面板中删除之前的用户，按照上面流程重新注册一个账号，并使用验证码进行验证
+
+验证完成后，在 localstorage 中我们会看到这样的数据结构，是我们刚校验完成的用户数据，我们需要获取到这个数据
+
+![supabase-self-hosting2](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting28.jpg)
