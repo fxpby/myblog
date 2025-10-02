@@ -83,8 +83,8 @@ VITE_SUPABASE_AUTH_KEY=
 import { createClient } from "@supabase/supabase-js";
 import { getConfig } from "./configHelper";
 
-const supabaseUrl = getConfig("VITE_SUPABASE_URL");
-const supabaseKey = getConfig("VITE_SUPABASE_KEY");
+const supabaseUrl = getConfig("SUPABASE_URL");
+const supabaseKey = getConfig("SUPABASE_KEY");
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default supabase;
@@ -94,4 +94,20 @@ export default supabase;
 
 ```bash
 pnpm run dev
+```
+
+跑起来后来到`vue-version/src/services/apiEmployee.js`文件中，将我们的 supabase 实例导入
+
+```js
+export async function getEmployees() {
+  // Mock employees with faker js
+  const { data: employees, error } = await supabase
+    .from("employee")
+    .select("*");
+
+  if (error) {
+    throw new Error(error.message);
+  }
+  return employees;
+}
 ```
