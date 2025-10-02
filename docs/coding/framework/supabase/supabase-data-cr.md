@@ -4,8 +4,6 @@ sidebar_position: 3
 
 # supabase 旅程目的地 - 插入&读取操作
 
-TODO
-
 项目地址 [https://github.com/fxpby/person-management](https://github.com/fxpby/person-management)
 
 可以先克隆项目到本地，进入 helper 目录使用小包子执行 install
