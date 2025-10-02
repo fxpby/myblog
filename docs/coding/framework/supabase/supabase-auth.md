@@ -124,6 +124,7 @@ VITE_SUPABASE_AUTH_KEY=sb-localhost-auth-token
 ```js
 import { getConfig } from "@/utils/configHelper";
 import { getItem } from "@/utils/localstorageHelper";
+import supabase from "@/utils/supabase";
 
 const SUPABASE_AUTH_KEY = getConfig("SUPABASE_AUTH_KEY");
 
@@ -147,3 +148,28 @@ export async function retrieveUser() {
 下面我们完成登录逻辑，在控制面板 API Docs 中可以获取登录代码
 
 ![supabase-self-hosting30](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting30.jpg)
+
+来到`vue-version/src/services/apiLogin.js`中修改一下后即可尝试用之前的邮箱进行登录
+
+```js
+import supabase from "@/utils/supabase";
+
+export async function login(email, password) {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+}
+```
+
+![supabase-self-hosting31](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting31.jpg)
+
+登录成功后即可看到提示，以及右上角的头像（头像回显有点问题无伤大雅，登录状态过来就行）
+
+![supabase-self-hosting32](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting32.jpg)
