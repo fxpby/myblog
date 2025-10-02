@@ -202,3 +202,26 @@ export async function logout() {
 ![supabase-self-hosting36](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting36.jpg)
 
 ## 重新发送
+
+在前面的注册功能中，邮箱验证码处有一个重新发送按钮，这个功能也是很常见必备的，下面我们来实现一下
+
+来到官网文档 https://supabase.com/docs/reference/javascript/auth-resend 中，复制代码到`vue-version/src/services/apiResend.js`文件后修改一番如下
+
+![supabase-self-hosting37](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting37.jpg)
+
+```js
+import supabase from "@/utils/supabase";
+
+export async function resend(email) {
+  const { error } = await supabase.auth.resend({
+    type: "signup",
+    email,
+  });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+}
+```
+
+写好后我们来到控制面板，在 Authentication user 中把前面的用户删掉，重新来一遍邮箱注册操作即可
