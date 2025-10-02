@@ -102,6 +102,48 @@ export async function verifyEmail(email, token) {
 
 restart 项目后，我们在面板中删除之前的用户，按照上面流程重新注册一个账号，并使用验证码进行验证
 
+## 检索用户
+
 验证完成后，在 localstorage 中我们会看到这样的数据结构，是我们刚校验完成的用户数据，我们需要获取到这个数据
 
-![supabase-self-hosting2](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting28.jpg)
+![supabase-self-hosting28](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting28.jpg)
+
+在文档 https://supabase.com/docs/reference/javascript/auth-getuser 中，我们可以查到通过 `jwt` 来获取数据的方法，复制过来~
+
+我们可以看到有一个参数 `jwt`，这个 `jwt` 其实就是我们前面 `localstorage` 里的 `access_token`，也就是说我们现在要做的是获取到这个`access_token`，所以我们修改配置文件中`VITE_SUPABASE_AUTH_KEY`的值为 `localstorage` 里的 Key
+
+```env
+# SUPABASE config
+VITE_SUPABASE_URL=http://localhost:8000
+VITE_SUPABASE_KEY=xxxxxxxxxxx
+VITE_SUPABASE_AUTH_KEY=sb-localhost-auth-token
+```
+
+`vue-version/src/services/apiRetrieveUser.js` 代码如下
+
+```js
+import { getConfig } from "@/utils/configHelper";
+import { getItem } from "@/utils/localstorageHelper";
+
+const SUPABASE_AUTH_KEY = getConfig("SUPABASE_AUTH_KEY");
+
+export async function retrieveUser() {
+  const jwt = getItem(SUPABASE_AUTH_KEY).access_token;
+
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser(jwt);
+
+  if (error) {
+    throw new Error(error?.message);
+  }
+  return user;
+}
+```
+
+## 登录
+
+下面我们完成登录逻辑，在控制面板 API Docs 中可以获取登录代码
+
+![supabase-self-hosting30](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting30.jpg)
