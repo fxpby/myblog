@@ -43,3 +43,55 @@ bun index.ts
 来到面板可以很清晰看到我们生成的数据插入成功~
 
 ![supabase-self-hosting16](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting16.jpg)
+
+## 读取操作
+
+supabase 不仅仅是一个数据库，更是基于我们创建好的数据库的定义，以及数据库中的数据
+
+它自动生成了对应的一些 API 接口,并且将这些 API 接口对应的一些前端的请求代码也都内置在了里面，而且它是动态生成的
+
+比如刚才我们刚开始创建好这个 supabase 管理面板的时候，它是没有这个 employee 表,也没有任何数据的。但我们创建好这样一张表，创建好这样一些数据之后
+
+在左边找到 API Docs，可以看到这里多了一个 employee 的选项，点击可以看到这里的其实就直接给我们提供了所有的基于这张 employee 表的增删改查的一些代码。并且这是它自动生成的，可以看到甚至细化到了每一个对应的字段中，非常的智能
+
+![supabase-self-hosting17](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting17.jpg)
+
+看右侧代码，我们会发现所有的数据都来自于 supabase 实例，那么这个实例在哪里呢
+
+还是 API Docs 面板，Getting Started - Introduction 这里有几行代码我们复制下来，在项目`vue-version/src/utils`目录下新建`supabase.js`文件，将代码粘贴进去
+
+![supabase-self-hosting18](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting18.jpg)
+
+再添加安装 sdk 文件包
+
+```bash
+pnpm add @supabase/supabase-js
+```
+
+来到`vue-version/.env`文件中填写我们的配置`VITE_SUPABASE_URL`和`VITE_SUPABASE_KEY`,`VITE_SUPABASE_KEY`还是之前的`SERVICE_ROLE_KEY`，`VITE_SUPABASE_AUTH_KEY`是登录认证相关字段，后面旅程再来探索
+
+```env
+# SUPABASE config
+VITE_SUPABASE_URL=http://localhost:8000
+VITE_SUPABASE_KEY=xxxxxxxx
+VITE_SUPABASE_AUTH_KEY=
+```
+
+再来到 supabase.js 文件中修改代码如下，我们从配置文件读取后再将实例导出
+
+```js
+import { createClient } from "@supabase/supabase-js";
+import { getConfig } from "./configHelper";
+
+const supabaseUrl = getConfig("VITE_SUPABASE_URL");
+const supabaseKey = getConfig("VITE_SUPABASE_KEY");
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+export default supabase;
+```
+
+配置好后跑前端项目咯~
+
+```bash
+pnpm run dev
+```
