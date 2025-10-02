@@ -179,3 +179,26 @@ localstorage 中也可以看到登录信息带过来了，至此登录功能完�
 ![supabase-self-hosting33](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting33.jpg)
 
 ## 退出登录
+
+来到官方文档 https://supabase.com/docs/reference/javascript/auth-signout 找到签出的方法，复制过来修改一番到`vue-version/src/services/apiLogout.js`中
+
+```js
+import supabase from "@/utils/supabase";
+export async function logout() {
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    throw new Error(error.message);
+  }
+}
+```
+
+来到右上角头像点击退出登录
+
+![supabase-self-hosting35](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting35.jpg)
+
+退出登录后我们的按钮已经回到初始状态，同时 `localstorage` 中对应的认证信息也已经智能清除掉了，重新登录的话认证信息又会回来，无需我们操心这块逻辑处理，心智负担--
+
+![supabase-self-hosting36](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting36.jpg)
+
+## 重新发送
