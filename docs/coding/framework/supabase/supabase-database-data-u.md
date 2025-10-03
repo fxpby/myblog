@@ -74,7 +74,7 @@ export async function updateEmployee(id, updateObj) {
     throw new Error(error.message);
   }
 
-  return data;
+  return data[0];
 }
 ```
 
