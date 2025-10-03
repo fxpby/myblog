@@ -45,7 +45,7 @@ import supabase from "@/utils/supabase";
 
 export async function uploadAvatar(filename, avatarFile) {
   const { data, error } = await supabase.storage
-    .from("avatars")
+    .from("avatar")
     .upload(filename, avatarFile);
 
   if (error) {
