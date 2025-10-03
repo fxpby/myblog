@@ -4,7 +4,11 @@ sidebar_position: 4
 
 # supabase 旅程目的地 - 权限认证
 
-TODO
+看到认证两字就想起几年前的一个登录重构需求，当时是把一个技术栈为 PHP+jQuery 上万行代码的盘古级别旧项目重构为 Vue 的新项目，涉及到 14 种不同维度的登录场景（基础账号、手机号、邮箱、扫码、口令、企业专属、单点、第三方对接等等）
+
+当时光梳理业务逻辑整理业务流程图就输出 30 余张，这还只是前端业务。自己当时带着 3 个前端同事一起加班做了快 3 个月。很难想象吧，一个登录需求可能在别人眼里几天最多一周的工作量，但是企业级项目的复杂程度和历史包袱就是如此沉重冗杂
+
+supabase 的认证体系虽然没有那么复杂，但普通场景是都满足覆盖到的，个人项目或者普通企业项目够用的，而且这 SDK 用起来真的很爽，全新的开发体验，让开发者把精力更多着眼于页面渲染，而非业务逻辑封装，让人耳目一新~
 
 ## 注册
 
@@ -213,7 +217,7 @@ export async function logout() {
 import supabase from "@/utils/supabase";
 
 export async function resend(email) {
-  const { error } = await supabase.auth.resend({
+  const { data, error } = await supabase.auth.resend({
     type: "signup",
     email,
   });
@@ -221,7 +225,13 @@ export async function resend(email) {
   if (error) {
     throw new Error(error.message);
   }
+
+  return data;
 }
 ```
 
 写好后我们来到控制面板，在 Authentication user 中把前面的用户删掉，重新来一遍邮箱注册操作即可
+
+![supabase-self-hosting39](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting39.jpg)
+
+至此，我们的鉴权相关功能就实现好咯~
