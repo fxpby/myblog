@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# supabase 旅程目的地 - 新增&删除操作
+# supabase 旅程目的地 - 新增&删除&查询操作
 
 ## 新增数据
 
@@ -70,4 +70,6 @@ export async function deleteEmployee(id) {
 
 ![supabase-self-hosting47](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting47.jpg)
 
-## 修改数据
+## 查询数据
+
+操作一栏还有一项编辑，点击编辑按钮后跳转到一个可以修改信息的页面，这个页面需要先获取 user 数据，所以需要先实现查询功能
