@@ -96,3 +96,7 @@ export async function getEmployee(id) {
   return employee[0];
 }
 ```
+
+写好函数后我们来到列表点击第一项的编辑按钮，可以看到跳转到了编辑页面且成功回显了该用户的数据信息~
+
+![supabase-self-hosting49](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting49.jpg)
