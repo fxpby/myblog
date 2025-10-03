@@ -73,3 +73,26 @@ export async function deleteEmployee(id) {
 ## 查询数据
 
 操作一栏还有一项编辑，点击编辑按钮后跳转到一个可以修改信息的页面，这个页面需要先获取 user 数据，所以需要先实现查询功能
+
+来到我们的`vue-version/src/services/apiEmployee.js`中，有一个`getEmployee`函数，我们来实现一下
+
+先来到项目的控制面板 API Docs 中，我们看到了 `Filtering` 方法
+
+![supabase-self-hosting48](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting48.jpg)
+
+我们需要根据 id 去查询，复制下来相关代码再修改如下，其中 `employee` 是数组，我们取第一项，故返回`employee[0]`
+
+```js
+export async function getEmployee(id) {
+  let { data: employee, error } = await supabase
+    .from("employee")
+    .select("*")
+    .eq("id", id);
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return employee[0];
+}
+```
