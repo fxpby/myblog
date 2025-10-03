@@ -55,3 +55,54 @@ export async function uploadAvatar(filename, avatarFile) {
   return data;
 }
 ```
+
+再来到控制面板 API Docs 中，找到我们更新的代码复制下来
+
+![supabase-self-hosting57](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting57.jpg)
+
+来到项目的`vue-version/src/services/apiEmployee.js`文件中的`updateEmployee`函数中修改如下
+
+```js
+export async function updateEmployee(id, updateObj) {
+  const { data, error } = await supabase
+    .from("employee")
+    .update(updateObj)
+    .eq("id", id)
+    .select();
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+}
+```
+
+这样修改操作调用 SDK 就完成了，看到这时做过上传的同学可能会有一些问号，？？？图片上传这么简单就完了？，其实调用上传图片的逻辑在项目的 hooks 中，下面我们简单看一下核心代码
+
+在`vue-version/src/features/employee/EmployeeForm.vue`中有下面这样一段代码，即在点击修改按钮时
+
+- 如果头像没有改变，则直接调用更新方法
+- 如果头像有改变，则去调用上传头像方法，上传后获取到我们的新头像地址后更新 avatar 的值再调用更新方法
+
+具体整个流程实现代码可去项目里浏览梳理
+
+```js
+function handleSubmit() {
+  // avatar not changed
+  if (!avatarObj.value) {
+    updateEmployee(employeeId);
+    return;
+  }
+
+  const filename = generateFilename(avatarObj.value.name);
+
+  uploadAvatar(filename, {
+    onSuccess: (avatarData) => {
+      avatar.value = `${SUPABASE_URL}storage/v1/object/public/${avatarData.fullPath}`;
+
+      updateEmployee(employeeId);
+    },
+  });
+}
+```
