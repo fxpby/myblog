@@ -121,4 +121,88 @@ docker compose -f docker-compose.yml -f docker-compose.s3.yml up -d
 
 然鹅可能昨晚运气有失偏颇，这么搞完有几个容器一直起不来 🥺。转天让心爱的小本本休息几秒重启了一下，功夫不负有心人，终于成了，话说这么重要的信息为什么官网不提及 🤧
 
-问题处理完，回顾一下上面的内容，有几个问题很好奇
+问题处理完，回顾一下上面的内容，有几个问题很好奇，想学习探索一下
+
+1. 什么是 xattr
+2. 为什么 Supabase Storage 需要 xattr
+3. 为什么 xattr 在 macOS 的 Docker 中不工作
+4. 为什么 MinIO(S3 兼容) 能解决问题
+5. VirtioFS 解决了什么
+6. VirtioFS 仍然无法解决 xattr 的原因
+
+感觉这些应该新开个地方记录，暂时没想好放哪里，先记录在这里吧
+
+### macOS 自部署 Storage 问题回顾
+
+#### 1. 什么是 xattr
+
+xattr 是 扩展文件属性 的缩写，它允许在文件系统中存储额外的元数据
+
+- 额外的存储空间：除了文件内容、权限、时间戳等标准属性外，xattr 提供了额外的键值对存储
+- 命名空间：通常有 user、system、security 等命名空间
+- 跨平台：Linux、macOS 都支持，但实现细节不同
+
+实际应用：
+
+```bash
+# 设置扩展属性
+setfattr -n user.comment -v "这是一个测试文件" example.txt
+
+# 查看扩展属性
+getfattr example.txt
+
+# 在 macOS 上使用不同的命令
+xattr -w user.comment "这是一个测试文件" example.txt
+```
+
+#### 2. 为什么 Supabase Storage 需要 xattr
+
+在 Supabase Storage 的文件系统后端中，xattr 用于存储文件的元数据，代码在这里：
+
+https://github.com/supabase/storage/blob/23559aaabeba90dd0adaa30a548ec0c3322f793b/src/storage/backend/file.ts#L570
+
+```ts
+protected setMetadataAttr(file: string, attribute: string, value: string): Promise<void> {
+  // 将元数据作为扩展属性存储
+  return xattr.set(file, attribute, value)
+}
+```
+
+其具体用途有：
+
+- 存储文件的 MIME 类型
+- 存储文件大小、哈希值
+- 存储自定义元数据（如用户 ID、上传时间等）
+- 权限和访问控制信息
+
+#### 3. 为什么 xattr 在 macOS 的 Docker 中不工作
+
+根本原因是文件系统不兼容
+
+对于不同的文件系统
+
+- macOS: APFS/HFS+ (使用不同的 xattr 实现)
+- Linux: ext4/xfs/btrfs (使用标准的 xattr)
+- Docker 容器: 运行在 Linux 环境中
+
+Docker 的文件共享机制是
+
+```bash
+# 当在 macOS 上运行 Docker 时：
+macOS 主机 → Docker Desktop VM (Linux) → 容器
+
+# 文件系统挂载：
+macOS 目录 → 通过 gRPC-FUSE → Linux VM → 容器
+```
+
+xattr 传输问题
+
+- macOS 和 Linux 的 xattr 实现不兼容
+- Docker 的文件共享层无法正确传递 xattr
+- 某些 xattr 可能在传输过程中丢失或损坏
+
+#### 4. 为什么 MinIO(S3 兼容) 能解决问题
+
+#### 5. VirtioFS 解决了什么
+
+#### 6. VirtioFS 仍然无法解决 xattr 的原因
