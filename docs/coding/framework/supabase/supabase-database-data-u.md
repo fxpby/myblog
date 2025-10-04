@@ -203,6 +203,57 @@ xattr 传输问题
 
 #### 4. 为什么 MinIO(S3 兼容) 能解决问题
 
+```yaml
+environment:
+  ANON_KEY: ${ANON_KEY}
+  SERVICE_KEY: ${SERVICE_ROLE_KEY}
+  POSTGREST_URL: http://rest:3000
+  PGRST_JWT_SECRET: ${JWT_SECRET}
+  DATABASE_URL: postgres://supabase_storage_admin:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
+  FILE_SIZE_LIMIT: 52428800
+  STORAGE_BACKEND: s3 # 使用 S3 后端而不是文件系统
+  GLOBAL_S3_BUCKET: stub
+  GLOBAL_S3_ENDPOINT: http://minio:9000
+  GLOBAL_S3_PROTOCOL: http
+  GLOBAL_S3_FORCE_PATH_STYLE: true
+  AWS_ACCESS_KEY_ID: supa-storage
+  AWS_SECRET_ACCESS_KEY: secret1234
+  AWS_DEFAULT_REGION: stub
+  FILE_STORAGE_BACKEND_PATH: /var/lib/storage
+  TENANT_ID: stub
+  # TODO: https://github.com/supabase/storage-api/issues/55
+  REGION: stub
+  ENABLE_IMAGE_TRANSFORMATION: "true"
+  IMGPROXY_URL: http://imgproxy:5001
+```
+
+MinIO 的优势：
+
+- 抽象层：MinIO 提供对象存储接口，不依赖主机文件系统
+- 元数据存储：MinIO 在内部处理元数据，不需要 xattr
+- 跨平台一致性：S3 协议在所有平台上行为一致
+
+```text
+有问题的文件系统后端：
+应用 → 文件系统操作 → xattr (在 macOS Docker 中失败)
+
+正常的 MinIO 后端：
+应用 → HTTP API → MinIO → 内部存储 (在任何平台都正常工作)
+```
+
+如果不用 MinIO，在 macOS 上可能会遇到：
+
+- 文件上传失败
+- 元数据丢失
+- 权限检查异常
+- Storage 服务无法正常工作
+
 #### 5. VirtioFS 解决了什么
 
+- 性能提升：基于 virtio 协议，减少用户态-内核态切换
+- 更好的缓存：更高效的文件系统缓存机制
+- 原生体验：在 VM 中更像本地文件系统
+
 #### 6. VirtioFS 仍然无法解决 xattr 的原因
+
+VirtioFS 主要优化了性能，但没有解决 macOS 和 Linux 之间文件系统语义的根本差异
