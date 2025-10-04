@@ -108,3 +108,17 @@ function handleSubmit() {
 ```
 
 emmm，非常顺利地，又踩到一个坑，非代码问题，本机 MacOS 环境的这个分区无法上传文件...
+
+话说这坑踩得可真实在，自己系统是 `macOS Sonoma 14.5`
+
+在 GitHub issue 中有查到两条相关问题，其中有说在 Docker 中需启用 `VirtioFS`，看了眼自己的配置是开着的
+
+大神网友提到 Storage 的文件系统后端使用 `xattr`，这个对于 macOS 的 Docker 是不管用，可以使用 minio，即使用如下命令
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.s3.yml up -d
+```
+
+然鹅可能昨晚运气有失偏颇，这么搞完有几个容器一直起不来 🥺。转天让心爱的小本本休息几秒重启了一下，功夫不负有心人，终于成了，话说这么重要的信息为什么官网不提及 🤧
+
+问题处理完，回顾一下上面的内容，有几个问题很好奇
