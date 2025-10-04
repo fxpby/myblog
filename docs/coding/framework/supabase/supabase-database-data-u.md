@@ -99,7 +99,7 @@ function handleSubmit() {
 
   uploadAvatar(filename, {
     onSuccess: (avatarData) => {
-      avatar.value = `${SUPABASE_URL}storage/v1/object/public/${avatarData.fullPath}`;
+      avatar.value = `${SUPABASE_URL}/storage/v1/object/public/${avatarData.fullPath}`;
 
       updateEmployee(employeeId);
     },
@@ -130,7 +130,11 @@ docker compose -f docker-compose.yml -f docker-compose.s3.yml up -d
 5. VirtioFS 解决了什么
 6. VirtioFS 仍然无法解决 xattr 的原因
 
-感觉这些应该新开个地方记录，暂时没想好放哪里，先记录在这里吧
+感觉这些应该新开个地方记录，暂时没想好放哪里，先记录在下面吧
+
+继续回到项目，可以看到修改成功了！
+
+![supabase-self-hosting59](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting59.jpg)
 
 ### macOS 自部署 Storage 问题回顾
 
