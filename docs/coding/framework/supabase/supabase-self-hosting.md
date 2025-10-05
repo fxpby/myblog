@@ -142,6 +142,12 @@ ENABLE_ANONYMOUS_USERS=false
 
 然后就可以运行`docker compose up -d`了，嗯，很好，我的服务器挂了，滚去修了
 
+:::tip
+macOS 请运行如下命令，使用 MinIO(S3 兼容) 文件存储才能正常使用
+
+docker compose -f docker-compose.yml -f docker-compose.s3.yml up -d
+:::
+
 滚回来了...🤧，这个玩意咋这么占内存...好家伙，一下子内存就满了 ？我服务器 2g 内存都不够啊啊啊...去想想办法了...🤕
 
 查到资料说，跑这个需要 4g 内存...emmm 这服务器不便宜搞不来，本机跑吧
