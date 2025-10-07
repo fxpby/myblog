@@ -62,3 +62,37 @@ Transaction pooler 事务池这里有一个.env 文件，请将页面窗口保�
 耐心等待一会儿，看到如图所示运行结果即可访问地址
 
 ![n8n-10](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-10.jpg)
+
+访问地址后先进行一波注册操作~
+
+![n8n-10](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-11.jpg)
+
+注册好后我们来试一下，点击 start from scratch 进入设计页面
+
+![n8n-12](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-12.jpg)
+
+点击 add first step 添加 trigger manually
+
+![n8n-15](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-15.jpg)
+
+再点击加号节点，添加一个 AI，这里随意，搜自己有的就行
+
+![n8n-16](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-16.jpg)
+
+这边用 openrouter 示例
+
+![n8n-17](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-17.jpg)
+
+![n8n-18](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-18.jpg)
+
+配置好 API Key 后，选择对应模型，选个免费滴~ 然后点击生成前序节点
+
+![n8n-19](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-19.jpg)
+
+点击第二个 chat 节点后，在下方 chat 聊天框内输入问题，发送后即可看到流程开始执行流转
+
+![n8n-13](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-13.jpg)
+
+如图工作流执行完成
+
+![n8n-14](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-14.jpg)
