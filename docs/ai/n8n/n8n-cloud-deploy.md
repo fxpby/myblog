@@ -100,3 +100,11 @@ Transaction pooler 事务池这里有一个.env 文件，请将页面窗口保�
 如图工作流执行完成
 
 ![n8n-14](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-14.jpg)
+
+## 云服务器保活
+
+服务器是免费的，长时间不用回停机，我们肯定是希望它能一直跑着的，就需要保活处理一下
+
+我们新建一个工作流
+
+![n8n-20](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-20.jpg)
