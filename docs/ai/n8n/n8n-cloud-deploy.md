@@ -36,6 +36,8 @@ Transaction pooler 事务池这里有一个.env 文件，请将页面窗口保�
 
 ![n8n-6](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-6.jpg)
 
+## n8n 配置
+
 回到 huggingface 页面窗口，选择 CPU basic 选项，这个是免费的，但是不花钱嘛不能贪求什么，人家不会给我们保存数据，所以我们就需要把数据存到云端数据库中，这也就是上面用 supabase 的原因了。
 
 - DB_POSTGRESDB_PASSWORD 填写之前 supabase 创建项目的密码
@@ -66,6 +68,8 @@ Transaction pooler 事务池这里有一个.env 文件，请将页面窗口保�
 访问地址后先进行一波注册操作~
 
 ![n8n-10](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-11.jpg)
+
+## n8n 初体验
 
 注册好后我们来试一下，点击 start from scratch 进入设计页面
 
