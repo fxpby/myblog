@@ -31,3 +31,34 @@ sidebar_position: 1
 其中 Type 选择 SQLAlchemy
 
 ![n8n-5](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-5.jpg)
+
+Transaction pooler 事务池这里有一个.env 文件，请将页面窗口保留至此
+
+![n8n-6](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-6.jpg)
+
+回到 huggingface 页面窗口，选择 CPU basic 选项，这个是免费的，但是不花钱嘛不能贪求什么，人家不会给我们保存数据，所以我们就需要把数据存到云端数据库中，这也就是上面用 supabase 的原因了。
+
+- DB_POSTGRESDB_PASSWORD 填写之前 supabase 创建项目的密码
+- N8N_ENCRYPTION_KEY 随便写
+- DB_POSTGRESDB_USER 填写之前 supabase .env user 的值
+- DB_POSTGRESDB_HOST 填写之前 supabase .env host 的值
+
+:::tip
+
+注意复制 .env 文件内容不要末尾带空格，需检查好哦
+
+:::
+
+![n8n-7](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-7.jpg)
+
+下方 WEBHOOK_URL 替换成自己的，时区国内可以写上海，version 是版本，如有特殊需要可以去 GitHub 找到自己所需的，stable 即最新稳定版
+
+![n8n-8](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-8.jpg)
+
+最后 Visibility 改成 public，再点击左下角的 Duplicate Space 完成复制操作
+
+![n8n-9](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-9.jpg)
+
+耐心等待一会儿，看到如图所示运行结果即可访问地址
+
+![n8n-10](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-10.jpg)
