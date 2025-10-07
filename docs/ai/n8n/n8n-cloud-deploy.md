@@ -103,8 +103,32 @@ Transaction pooler 事务池这里有一个.env 文件，请将页面窗口保�
 
 ## 云服务器保活
 
-服务器是免费的，长时间不用回停机，我们肯定是希望它能一直跑着的，就需要保活处理一下
+服务器是免费的，长时间没人使用会停机，我们肯定是希望它能一直跑着的，就需要保活处理一下
 
 我们新建一个工作流
 
 ![n8n-20](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-20.jpg)
+
+添加一个定时任务步骤
+
+![n8n-21](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-21.jpg)
+
+触发规则选择小时，即一小时执行一次
+
+![n8n-22](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-22.jpg)
+
+后续节点添加 http request
+
+![n8n-23](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-23.jpg)
+
+如图输入当前服务器地址，即每小时访问一次这个服务器地址
+
+![n8n-24](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-24.jpg)
+
+再点击上方的 Inactive 让工作流上线
+
+![n8n-25](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-25.jpg)
+
+上线成功提示，至此云端免费的 n8n 服务就部署好了！🥳
+
+![n8n-26](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-26.jpg)
