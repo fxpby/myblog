@@ -69,6 +69,22 @@ Transaction pooler 事务池这里有一个.env 文件，请将页面窗口保�
 
 ![n8n-10](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-11.jpg)
 
+:::tip
+
+如果部署时遇到了 Server Signature is missing 报错，可能是由于分配服务器的网络问题， 点击 huggingface 页面上方的设置
+
+![n8n-27](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-27.jpg)
+
+修改数据库的端口为 supabase 的 session pooler 端口 5432 保存
+
+![n8n-28](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-28.jpg)
+
+再重启 Space 即可
+
+![n8n-29](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-29.jpg)
+
+:::
+
 ## 4. 🏎 n8n 初体验
 
 注册好后我们来试一下，点击 start from scratch 进入设计页面
