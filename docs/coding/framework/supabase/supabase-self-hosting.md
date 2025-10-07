@@ -74,7 +74,13 @@ VAULT_ENC_KEY=your-encryption-key-32-chars-min
 - `DASHBOARD_USERNAME`: 面板用户名
 - `DASHBOARD_PASSWORD`: 面板密码
 - `SECRET_KEY_BASE`: 可用`openssl rand -base64 48`随机数生成器生成
-- `VAULT_ENC_KEY`: 可用`openssl rand -base64 24`随机数生成器生成（这里有个大坑，就是官网文档说最少 32 位，其实是**必需 32 位**，否则`supabase-pooler`容器就会起不来，官方挖坑可还行...😵）
+- `VAULT_ENC_KEY`: 可用`openssl rand -base64 24`随机数生成器生成
+
+:::caution 注意
+
+`VAULT_ENC_KEY`这里有个大坑，就是官网文档说最少 32 位，其实是**必需 32 位**，否则`supabase-pooler`容器就会起不来，官方挖坑可还行...😵
+
+:::
 
 下方 General 部分也很重要需要修改
 
@@ -163,7 +169,7 @@ rm -rf volumes/db/data/
 
 ![supabase-self-hosting6](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting6.jpg)
 
-一定要确认所有容器都启动了，看了下刚跑起来什么都没做就用了 2g 多，真的好吃内存...后面 3g 打不住的...
+一定要确认所有容器都启动了，看了下刚跑起来什么都没做就用了 2g 多，真的好吃内存...后面 3g 打不住的（后续旅程补，用了 4.5g 左右）
 
 在浏览器中访问`http://localhost:8000/`或`http://<your-ip>:8000`后输入上面配置的用户名和密码即可访问我们的 supabase 管理面板~
 
