@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # n8n 云端部署（无需信用卡）
 
-## huggingface 注册
+## 1. 🤲 huggingface 注册
 
 来到 https://huggingface.co/ 官网注册个账号~
 
@@ -20,7 +20,7 @@ sidebar_position: 1
 
 ![n8n-3](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-3.jpg)
 
-## supabase 注册
+## 2. ⚡️ supabase 注册
 
 来到 https://supabase.com/ 注册一个账号，同时创建一个组织，并创建一个 project，选择区域的时候建议选择距离自己较近的地方
 
@@ -36,7 +36,7 @@ Transaction pooler 事务池这里有一个.env 文件，请将页面窗口保�
 
 ![n8n-6](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-6.jpg)
 
-## n8n 配置
+## 3. 🛠 n8n 配置
 
 回到 huggingface 页面窗口，选择 CPU basic 选项，这个是免费的，但是不花钱嘛不能贪求什么，人家不会给我们保存数据，所以我们就需要把数据存到云端数据库中，这也就是上面用 supabase 的原因了。
 
@@ -69,7 +69,7 @@ Transaction pooler 事务池这里有一个.env 文件，请将页面窗口保�
 
 ![n8n-10](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-11.jpg)
 
-## n8n 初体验
+## 4. 🏎 n8n 初体验
 
 注册好后我们来试一下，点击 start from scratch 进入设计页面
 
@@ -101,7 +101,7 @@ Transaction pooler 事务池这里有一个.env 文件，请将页面窗口保�
 
 ![n8n-14](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-14.jpg)
 
-## 云服务器保活
+## 5. 🚑 云服务器保活
 
 服务器是免费的，长时间没人使用会停机，我们肯定是希望它能一直跑着的，就需要保活处理一下
 
