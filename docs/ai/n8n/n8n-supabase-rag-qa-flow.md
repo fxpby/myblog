@@ -30,6 +30,16 @@ https://github.com/fxpby/llm-mcp-rag-demo
 
 在官方文档 https://supabase.com/docs/guides/ai/langchain 中有一个 LangChain 的文档，LangChain 支持使用 supabase 作为向量存储，我们需要下面的 SQL 代码来初始化数据库
 
+![n8n-rag-supabase-4](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-4.jpg)
+
+来到 supabase 项目的控制面板，在 SQL Editor 中粘贴上面的 SQL 代码，并点击运行
+
+![n8n-rag-supabase-5](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-5.jpg)
+
+![n8n-rag-supabase-6](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-6.jpg)
+
+执行成功下面 result 面板会显示 `Success. No rows returned`
+
 ## 2. 创建导入文档工作流
 
 ## 3. 创建知识库问答工作流
