@@ -60,4 +60,42 @@ https://github.com/fxpby/llm-mcp-rag-demo
 
 ![n8n-rag-supabase-10](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-10.jpg)
 
+然后我们新建一个工作流，第一个节点触发器选择 `n8n Form`，我们来设计一个表单
+
+![n8n-rag-supabase-11](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-11.jpg)
+
+表单设置如图所示
+
+![n8n-rag-supabase-12](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-12.jpg)
+
+接下来我们添加一个 `sqlite` 向量存储节点，搜索 supabase，选择 `Supabase Vector Store`
+
+![n8n-rag-supabase-13](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-13.jpg)
+
+选择第二个向向量存储中添加文档选项
+
+![n8n-rag-supabase-14](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-14.jpg)
+
+配置如图所示，选择我们之前的项目名称以及表
+
+![n8n-rag-supabase-15](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-15.jpg)
+
+配置好后会发现节点右下角有一个红色感叹号，这是因为向量存储要依赖的相关组件我们还没有配置添加
+
+![n8n-rag-supabase-16](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-16.jpg)
+
+点击左边的 `embeddings` 节点，这里选择了 `openAI` 的
+
+![n8n-rag-supabase-17](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-17.jpg)
+
+没有证书配置的话需要设置一下，这里自己用了 `openrouter` 的
+
+![n8n-rag-supabase-18](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-18.jpg)
+
+配置好如图所示
+
+![n8n-rag-supabase-19](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-19.jpg)
+
+然后点击第二个加号节点 `document` 添加我们的数据加载器，选择第一个 `default Data Loader`
+
 ## 3. 创建知识库问答工作流
