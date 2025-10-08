@@ -98,4 +98,12 @@ https://github.com/fxpby/llm-mcp-rag-demo
 
 然后点击第二个加号节点 `document` 添加我们的数据加载器，选择第一个 `default Data Loader`
 
+![n8n-rag-supabase-20](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-20.jpg)
+
+如图配置，其中 Type of Data 由于是文件，我们选择 binary
+
+文本拆分有两种模式，一个是简单模式，一个是自定义模式。简单模式是每 1000 个字符做拆分，然后包含 200 字符的重叠，我们保持 simple
+
+![n8n-rag-supabase-21](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-21.jpg)
+
 ## 3. 创建知识库问答工作流
