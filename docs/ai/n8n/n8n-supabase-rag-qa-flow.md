@@ -42,8 +42,22 @@ https://github.com/fxpby/llm-mcp-rag-demo
 
 来到控制面板 `Database - Tables` 中可以看到撞击的 `documents` 表
 
-![n8n-rag-supabase-7.](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-7.jpg)
+![n8n-rag-supabase-7](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-7.jpg)
+
+至此 supabase 项目创建完成~
 
 ## 2. 创建导入文档工作流
+
+首先来到我们的 n8n 项目，`create credential`
+
+![n8n-rag-supabase-8](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-8.jpg)
+
+选择 supabase
+
+![n8n-rag-supabase-9](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-9.jpg)
+
+把之前 supabase 中记录的 `project URL` 和 `API Key` 拿过来粘贴并保存
+
+![n8n-rag-supabase-10](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-10.jpg)
 
 ## 3. 创建知识库问答工作流
