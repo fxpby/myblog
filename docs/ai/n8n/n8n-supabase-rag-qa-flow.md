@@ -106,4 +106,26 @@ https://github.com/fxpby/llm-mcp-rag-demo
 
 ![n8n-rag-supabase-21](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-21.jpg)
 
+然后就可以点击下方按钮测试了
+
+![n8n-rag-supabase-22](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-22.jpg)
+
+选择文件，这里选了个讲设计模式的 PDF 文件
+
+![n8n-rag-supabase-23](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-23.jpg)
+
+![n8n-rag-supabase-24](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-24.jpg)
+
+![n8n-rag-supabase-25](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-25.jpg)
+
+提交完成提示如图
+
+![n8n-rag-supabase-26](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-26.jpg)
+
+然后就可以看到工作流开始流转了
+
+![n8n-rag-supabase-27](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-27.jpg)
+
+emmmm，报错了，看了下 n8n 这里的 embeddings 不支持 openrouter 的，有点蓝瘦，去想想办法
+
 ## 3. 创建知识库问答工作流
