@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-TSG5B2CH"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","GTM-TSG5B2CH",{anonymize_ip:!0})</script><link rel="stylesheet" href="/myblog/assets/css/styles.09287821.css">
-<script src="/myblog/assets/js/runtime~main.82038856.js" defer="defer"></script>
+<script src="/myblog/assets/js/runtime~main.231184c4.js" defer="defer"></script>
 <script src="/myblog/assets/js/main.96037e66.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -145,8 +145,8 @@
 <p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-19.jpg" alt="n8n-rag-supabase-19" class="img_ev3q"></p>
 <p>然后点击第二个加号节点 <code>document</code> 添加我们的数据加载器，选择第一个 <code>default Data Loader</code></p>
 <p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-20.jpg" alt="n8n-rag-supabase-20" class="img_ev3q"></p>
-<p>如图配置，其中 Type of Data 由于是文件，我们选择 binary</p>
-<p>文本拆分有两种模式，一个是简单模式，一个是自定义模式。简单模式是每 1000 个字符做拆分，然后包含 200 字符的重叠，我们保持 simple</p>
+<p>如图配置，其中 <code>Type of Data</code> 由于是文件，我们选择 <code>binary</code></p>
+<p>文本拆分有两种模式，一个是简单模式，一个是自定义模式。简单模式是每 1000 个字符做拆分，然后包含 200 字符的重叠，我们保持 <code>simple</code></p>
 <p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-21.jpg" alt="n8n-rag-supabase-21" class="img_ev3q"></p>
 <p>然后就可以点击下方按钮测试了</p>
 <p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-22.jpg" alt="n8n-rag-supabase-22" class="img_ev3q"></p>
@@ -173,25 +173,25 @@
 <p>这个工作流是基于向量存储来进行问答的，首先先完成对相关文档的检索，再基于文档分块，由大模型完成推理</p>
 <p>我们新创建一个工作流，并添加一个聊天触发器节点</p>
 <p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-33.jpg" alt="n8n-rag-supabase-33" class="img_ev3q"></p>
-<p>接着给聊天触发器添加一个 AI Agent</p>
+<p>接着给聊天触发器添加一个 <code>AI Agent</code></p>
 <p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-34.jpg" alt="n8n-rag-supabase-34" class="img_ev3q"></p>
-<p>这里模型结合手头有的自行选择，笔者选择的是 <del>openrouter</del>也换成 cohere 了，openrouter 后面接其他节点工具用不了会报错 <code>No endpoints found that support tool use. To learn more about provider routing, visit: https://openrouter.ai/docs/provider-routing</code>，很可惜吧，没有适配 n8n</p>
+<p>这里模型结合手头有的自行选择，笔者选择的是 <del>openrouter</del>也换成 <code>cohere</code> 了，openrouter 后面接其他节点工具用不了会报错 <code>No endpoints found that support tool use. To learn more about provider routing, visit: https://openrouter.ai/docs/provider-routing</code>，很可惜吧，没有适配 n8n</p>
 <p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-35.jpg" alt="n8n-rag-supabase-35" class="img_ev3q"></p>
 <p>提前配置好证书哦，选了个免费模型~</p>
 <p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-36.jpg" alt="n8n-rag-supabase-36" class="img_ev3q"></p>
 <p>接入完成简单测试一下聊天功能，运行完美~</p>
 <p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-37.jpg" alt="n8n-rag-supabase-37" class="img_ev3q"></p>
-<p>然后给 AI Agent 添加 Tool，搜索选择 <code>Supabase Vector Store</code></p>
+<p>然后给 <code>AI Agent</code> 添加 <code>Tool</code>，搜索选择 <code>Supabase Vector Store</code></p>
 <p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-38.jpg" alt="n8n-rag-supabase-38" class="img_ev3q"></p>
-<p>配置如图，选择 documents。limit 表示检索多少份文档，可以根据自己的需要来调整参数，这里保持默认</p>
+<p>配置如图，选择 <code>documents</code>。<code>limit</code> 表示检索多少份文档，可以根据自己的需要来调整参数，这里保持默认</p>
 <p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-41.jpg" alt="n8n-rag-supabase-41" class="img_ev3q"></p>
-<p>至此这个工作流就构建完成了，我们将 supabase 作为向量存储工具集成到 AI Agent</p>
+<p>至此这个工作流就构建完成了，我们将 <code>supabase</code> 作为向量存储工具集成到 <code>AI Agent</code></p>
 <p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-42.jpg" alt="n8n-rag-supabase-42" class="img_ev3q"></p>
 <p>工作流流转中</p>
 <p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-43.jpg" alt="n8n-rag-supabase-43" class="img_ev3q"></p>
 <p>流转执行完成，可以看到聊天窗口展示的内容和前面提交存储到数据库中的文案一致</p>
 <p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-44.jpg" alt="n8n-rag-supabase-44" class="img_ev3q"></p>
-<p>点击下方的 LLM 模型调用可以看到 Tool 中，Supabase Vector Store 给我们的文档分块的引用，LLM 模型把这些文档分块作为了输入</p>
+<p>点击下方的 LLM 模型调用可以看到 <code>Tool</code> 中，<code>Supabase Vector Store</code> 给我们的文档分块的引用，LLM 模型把这些文档分块作为了输入</p>
 <p><img decoding="async" loading="lazy" src="https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-45.jpg" alt="n8n-rag-supabase-45" class="img_ev3q"></p>
 <p>至此我们的知识库问答工作流也完成了~🥳</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/ai/n8n/n8n-supabase-rag-qa-flow.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/myblog/docs/ai/n8n/n8n-cloud-deploy"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">n8n 云端部署（无需信用卡）</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/myblog/docs/ai/sse-mcp-server"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">SSE MCP Server playground</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#1-创建-supabase-向量存储项目" class="table-of-contents__link toc-highlight">1. 创建 supabase 向量存储项目</a></li><li><a href="#2-创建导入文档工作流" class="table-of-contents__link toc-highlight">2. 创建导入文档工作流</a></li><li><a href="#3-创建知识库问答工作流" class="table-of-contents__link toc-highlight">3. 创建知识库问答工作流</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">
           Copyright © 2025 邂逅大大小小陆 serendipityhaven.com | <a href="https://beian.miit.gov.cn/" target="_blank">津ICP备2021008930号-2</a>
