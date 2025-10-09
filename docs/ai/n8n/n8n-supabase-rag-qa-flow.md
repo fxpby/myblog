@@ -161,3 +161,15 @@ https://github.com/fxpby/llm-mcp-rag-demo
 提前配置好证书哦，选了个免费模型~
 
 ![n8n-rag-supabase-36](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-36.jpg)
+
+接入完成简单测试一下聊天功能，运行完美~
+
+![n8n-rag-supabase-37](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-37.jpg)
+
+然后给 AI Agent 添加 Tool，搜索选择 `Supabase Vector Store`
+
+![n8n-rag-supabase-38](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-38.jpg)
+
+配置如图，选择 documents。limit 表示检索多少份文档，可以根据自己的需要来调整参数，这里保持默认
+
+![n8n-rag-supabase-39](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-39.jpg)
