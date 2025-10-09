@@ -145,3 +145,19 @@ https://github.com/fxpby/llm-mcp-rag-demo
 至此就完成了第一个工作流~
 
 ## 3. 创建知识库问答工作流
+
+我们新创建一个工作流，并添加一个聊天触发器节点
+
+![n8n-rag-supabase-33](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-33.jpg)
+
+接着给聊天触发器添加一个 AI Agent
+
+![n8n-rag-supabase-34](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-34.jpg)
+
+这里模型结合手头有的自行选择，笔者选择的是 openrouter
+
+![n8n-rag-supabase-35](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-35.jpg)
+
+提前配置好证书哦，选了个免费模型~
+
+![n8n-rag-supabase-36](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-36.jpg)
