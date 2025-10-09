@@ -124,8 +124,22 @@ https://github.com/fxpby/llm-mcp-rag-demo
 
 然后就可以看到工作流开始流转了
 
-![n8n-rag-supabase-27](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-27.jpg)
+![n8n-rag-supabase-29](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-29.jpg)
 
-emmmm，报错了，看了下 n8n 这里的 embeddings 不支持 openrouter 的，有点蓝瘦，去想想办法
+![n8n-rag-supabase-30](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-30.jpg)
+
+流转完成后我们回到 supabase 控制面板查看表数据
+
+![n8n-rag-supabase-32](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-32.jpg)
+
+可以看到新数据了，自己 PDF 文件就一页所以数据比较少只有一条记录
+
+- content：是对文档的分块后的切片的原始内容
+- embedding：是它的向量数据
+- Metadata：是每一个文档分块的原数据
+
+![n8n-rag-supabase-31](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-31.jpg)
+
+至此就完成了第一个工作流~
 
 ## 3. 创建知识库问答工作流
