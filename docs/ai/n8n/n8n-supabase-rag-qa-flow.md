@@ -116,9 +116,9 @@ openrouter embeddings 节点不适用于 n8n，n8n 只接受标准模型。于�
 
 ![n8n-rag-supabase-20](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-20.jpg)
 
-如图配置，其中 Type of Data 由于是文件，我们选择 binary
+如图配置，其中 `Type of Data` 由于是文件，我们选择 `binary`
 
-文本拆分有两种模式，一个是简单模式，一个是自定义模式。简单模式是每 1000 个字符做拆分，然后包含 200 字符的重叠，我们保持 simple
+文本拆分有两种模式，一个是简单模式，一个是自定义模式。简单模式是每 1000 个字符做拆分，然后包含 200 字符的重叠，我们保持 `simple`
 
 ![n8n-rag-supabase-21](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-21.jpg)
 
@@ -166,11 +166,11 @@ openrouter embeddings 节点不适用于 n8n，n8n 只接受标准模型。于�
 
 ![n8n-rag-supabase-33](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-33.jpg)
 
-接着给聊天触发器添加一个 AI Agent
+接着给聊天触发器添加一个 `AI Agent`
 
 ![n8n-rag-supabase-34](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-34.jpg)
 
-这里模型结合手头有的自行选择，笔者选择的是 ~~openrouter~~也换成 cohere 了，openrouter 后面接其他节点工具用不了会报错 `No endpoints found that support tool use. To learn more about provider routing, visit: https://openrouter.ai/docs/provider-routing`，很可惜吧，没有适配 n8n
+这里模型结合手头有的自行选择，笔者选择的是 ~~openrouter~~也换成 `cohere` 了，openrouter 后面接其他节点工具用不了会报错 `No endpoints found that support tool use. To learn more about provider routing, visit: https://openrouter.ai/docs/provider-routing`，很可惜吧，没有适配 n8n
 
 ![n8n-rag-supabase-35](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-35.jpg)
 
@@ -182,15 +182,15 @@ openrouter embeddings 节点不适用于 n8n，n8n 只接受标准模型。于�
 
 ![n8n-rag-supabase-37](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-37.jpg)
 
-然后给 AI Agent 添加 Tool，搜索选择 `Supabase Vector Store`
+然后给 `AI Agent` 添加 `Tool`，搜索选择 `Supabase Vector Store`
 
 ![n8n-rag-supabase-38](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-38.jpg)
 
-配置如图，选择 documents。limit 表示检索多少份文档，可以根据自己的需要来调整参数，这里保持默认
+配置如图，选择 `documents`。`limit` 表示检索多少份文档，可以根据自己的需要来调整参数，这里保持默认
 
 ![n8n-rag-supabase-41](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-41.jpg)
 
-至此这个工作流就构建完成了，我们将 supabase 作为向量存储工具集成到 AI Agent
+至此这个工作流就构建完成了，我们将 `supabase` 作为向量存储工具集成到 `AI Agent`
 
 ![n8n-rag-supabase-42](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-42.jpg)
 
@@ -202,7 +202,7 @@ openrouter embeddings 节点不适用于 n8n，n8n 只接受标准模型。于�
 
 ![n8n-rag-supabase-44](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-44.jpg)
 
-点击下方的 LLM 模型调用可以看到 Tool 中，Supabase Vector Store 给我们的文档分块的引用，LLM 模型把这些文档分块作为了输入
+点击下方的 LLM 模型调用可以看到 `Tool` 中，`Supabase Vector Store` 给我们的文档分块的引用，LLM 模型把这些文档分块作为了输入
 
 ![n8n-rag-supabase-45](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-45.jpg)
 
