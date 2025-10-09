@@ -30,6 +30,14 @@ https://github.com/fxpby/llm-mcp-rag-demo
 
 在官方文档 https://supabase.com/docs/guides/ai/langchain 中有一个 `LangChain` `的文档，LangChain` 支持使用 supabase 作为向量存储，我们需要下面的 `SQL` 代码来初始化数据库
 
+:::tip
+
+这里有一个点需要注意下，示例代码中我们有看到 1536 这个容积值，后面我们选 embedding 模型时也需要注意要配套一致，否则会报错，类似`Error inserting: expected 1536 dimensions, not 4096 400 Bad Request`
+
+根据手头模型来，模型 dimensions 是多少，这里的 SQL 就写多少
+
+:::
+
 ![n8n-rag-supabase-4](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-4.jpg)
 
 来到 supabase 项目的控制面板，在 `SQL Editor` 中粘贴上面的 `SQL` 代码，并点击运行
@@ -90,7 +98,13 @@ https://github.com/fxpby/llm-mcp-rag-demo
 
 ![n8n-rag-supabase-17](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-17.jpg)
 
-没有证书配置的话需要设置一下，这里自己用了 `openrouter` 的
+没有证书配置的话需要设置一下，~~这里自己用了 `openrouter` 的~~（后面改成另外的模型了）
+
+:::tip
+
+openrouter embeddings 节点不适用于 n8n，n8n 只接受标准模型。于是搞了张虚拟卡注册了 cohere 的账号来跑的
+
+:::
 
 ![n8n-rag-supabase-18](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-18.jpg)
 
@@ -112,7 +126,7 @@ https://github.com/fxpby/llm-mcp-rag-demo
 
 ![n8n-rag-supabase-22](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-22.jpg)
 
-选择文件，这里选了个讲设计模式的 PDF 文件
+选择文件，这里选了个讲~~设计模式的 PDF 文件~~简单介绍 promise 的文件（跑流程换了个小的）
 
 ![n8n-rag-supabase-23](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-23.jpg)
 
@@ -124,7 +138,7 @@ https://github.com/fxpby/llm-mcp-rag-demo
 
 ![n8n-rag-supabase-26](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-26.jpg)
 
-然后就可以看到工作流开始流转了
+然后就可以看到工作流开始流转了（embeddings 换成 cohere 了）
 
 ![n8n-rag-supabase-29](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-29.jpg)
 
@@ -146,6 +160,8 @@ https://github.com/fxpby/llm-mcp-rag-demo
 
 ## 3. 创建知识库问答工作流
 
+这个工作流是基于向量存储来进行问答的，首先先完成对相关文档的检索，再基于文档分块，由大模型完成推理
+
 我们新创建一个工作流，并添加一个聊天触发器节点
 
 ![n8n-rag-supabase-33](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-33.jpg)
@@ -154,7 +170,7 @@ https://github.com/fxpby/llm-mcp-rag-demo
 
 ![n8n-rag-supabase-34](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-34.jpg)
 
-这里模型结合手头有的自行选择，笔者选择的是 openrouter
+这里模型结合手头有的自行选择，笔者选择的是 ~~openrouter~~也换成 cohere 了，openrouter 后面接其他节点工具用不了会报错 `No endpoints found that support tool use. To learn more about provider routing, visit: https://openrouter.ai/docs/provider-routing`，很可惜吧，没有适配 n8n
 
 ![n8n-rag-supabase-35](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-35.jpg)
 
@@ -172,4 +188,22 @@ https://github.com/fxpby/llm-mcp-rag-demo
 
 配置如图，选择 documents。limit 表示检索多少份文档，可以根据自己的需要来调整参数，这里保持默认
 
-![n8n-rag-supabase-39](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-39.jpg)
+![n8n-rag-supabase-41](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-41.jpg)
+
+至此这个工作流就构建完成了，我们将 supabase 作为向量存储工具集成到 AI Agent
+
+![n8n-rag-supabase-42](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-42.jpg)
+
+工作流流转中
+
+![n8n-rag-supabase-43](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-43.jpg)
+
+流转执行完成，可以看到聊天窗口展示的内容和前面提交存储到数据库中的文案一致
+
+![n8n-rag-supabase-44](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-44.jpg)
+
+点击下方的 LLM 模型调用可以看到 Tool 中，Supabase Vector Store 给我们的文档分块的引用，LLM 模型把这些文档分块作为了输入
+
+![n8n-rag-supabase-45](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-45.jpg)
+
+至此我们的知识库问答工作流也完成了~🥳
