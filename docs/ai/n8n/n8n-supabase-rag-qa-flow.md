@@ -48,6 +48,8 @@ https://github.com/fxpby/llm-mcp-rag-demo
 
 ## 2. 创建导入文档工作流
 
+这个文档工作流主要负责的是将文档数据提交，并将其插入到 supabase 向量存储中
+
 首先来到我们的 n8n 项目，`create credential`
 
 ![n8n-rag-supabase-8](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/n8n-rag-supabase-8.jpg)
