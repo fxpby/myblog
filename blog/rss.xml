@@ -4,55 +4,10 @@
         <title>邂逅大大小小陆 Blog</title>
         <link>https://serendipityhaven.com/myblog/blog</link>
         <description>邂逅大大小小陆 Blog</description>
-        <lastBuildDate>Fri, 10 Oct 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 19 Sep 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
-        <item>
-            <title><![CDATA[post-10/10]]></title>
-            <link>https://serendipityhaven.com/myblog/blog/post-10/10</link>
-            <guid>https://serendipityhaven.com/myblog/blog/post-10/10</guid>
-            <pubDate>Fri, 10 Oct 2025 00:00:00 GMT</pubDate>
-            <description><![CDATA[{/ truncate /}]]></description>
-            <content:encoded><![CDATA[
-<div><input type="text" value=""><button>校验</button><p>请输入暗号</p></div>]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[post-10/06]]></title>
-            <link>https://serendipityhaven.com/myblog/blog/post-10/06</link>
-            <guid>https://serendipityhaven.com/myblog/blog/post-10/06</guid>
-            <pubDate>Mon, 06 Oct 2025 00:00:00 GMT</pubDate>
-            <description><![CDATA[{/ truncate /}]]></description>
-            <content:encoded><![CDATA[
-<div><input type="text" value=""><button>校验</button><p>请输入暗号</p></div>]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[post-10/01]]></title>
-            <link>https://serendipityhaven.com/myblog/blog/post-10/01</link>
-            <guid>https://serendipityhaven.com/myblog/blog/post-10/01</guid>
-            <pubDate>Wed, 01 Oct 2025 00:00:00 GMT</pubDate>
-            <description><![CDATA[{/ truncate /}]]></description>
-            <content:encoded><![CDATA[
-<div><input type="text" value=""><button>校验</button><p>请输入暗号</p></div>]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[post-9/29]]></title>
-            <link>https://serendipityhaven.com/myblog/blog/post-9/29</link>
-            <guid>https://serendipityhaven.com/myblog/blog/post-9/29</guid>
-            <pubDate>Mon, 29 Sep 2025 00:00:00 GMT</pubDate>
-            <description><![CDATA[{/ truncate /}]]></description>
-            <content:encoded><![CDATA[
-<div><input type="text" value=""><button>校验</button><p>请输入暗号</p></div>]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[post-9/24]]></title>
-            <link>https://serendipityhaven.com/myblog/blog/post-9/24</link>
-            <guid>https://serendipityhaven.com/myblog/blog/post-9/24</guid>
-            <pubDate>Wed, 24 Sep 2025 00:00:00 GMT</pubDate>
-            <description><![CDATA[{/ truncate /}]]></description>
-            <content:encoded><![CDATA[
-<div><input type="text" value=""><button>校验</button><p>请输入暗号</p></div>]]></content:encoded>
-        </item>
         <item>
             <title><![CDATA[post-9/19]]></title>
             <link>https://serendipityhaven.com/myblog/blog/post-9/19</link>
@@ -184,6 +139,33 @@
             <link>https://serendipityhaven.com/myblog/blog/post-5/13</link>
             <guid>https://serendipityhaven.com/myblog/blog/post-5/13</guid>
             <pubDate>Tue, 13 May 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[{/ truncate /}]]></description>
+            <content:encoded><![CDATA[
+<div><input type="text" value=""><button>校验</button><p>请输入暗号</p></div>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[post-5/7]]></title>
+            <link>https://serendipityhaven.com/myblog/blog/post-5/7</link>
+            <guid>https://serendipityhaven.com/myblog/blog/post-5/7</guid>
+            <pubDate>Wed, 07 May 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[{/ truncate /}]]></description>
+            <content:encoded><![CDATA[
+<div><input type="text" value=""><button>校验</button><p>请输入暗号</p></div>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[post-5/2]]></title>
+            <link>https://serendipityhaven.com/myblog/blog/post-5/2</link>
+            <guid>https://serendipityhaven.com/myblog/blog/post-5/2</guid>
+            <pubDate>Fri, 02 May 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[{/ truncate /}]]></description>
+            <content:encoded><![CDATA[
+<div><input type="text" value=""><button>校验</button><p>请输入暗号</p></div>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[post-4/16]]></title>
+            <link>https://serendipityhaven.com/myblog/blog/post-4/16</link>
+            <guid>https://serendipityhaven.com/myblog/blog/post-4/16</guid>
+            <pubDate>Wed, 16 Apr 2025 00:00:00 GMT</pubDate>
             <description><![CDATA[{/ truncate /}]]></description>
             <content:encoded><![CDATA[
 <div><input type="text" value=""><button>校验</button><p>请输入暗号</p></div>]]></content:encoded>
