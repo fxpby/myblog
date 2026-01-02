@@ -23,6 +23,8 @@ AI 工具现在多得离谱，天天都能看见新名字，眼花缭乱。选�
 
 ### 2.1 Antigravity Tools 初识
 
+> Antigravity Tools 为此工具链非必须元素，使用只为薅反重力额度谷歌大善人羊毛
+
 [官网地址 https://github.com/lbjlaq/Antigravity-Manager](https://github.com/lbjlaq/Antigravity-Manager)
 
 Antigravity Tools 是专业的 Antigravity 账号管理与切换工具。为 Antigravity 提供一键无缝账号切换功能
@@ -59,7 +61,7 @@ Antigravity Tools 是专业的 Antigravity 账号管理与切换工具。为 Ant
 - 终端需要开启代理配置
 
 ```bash
- # 在 ~/.zshrc 或 ~/.bashrc 中添加,7 890 换成你的
+ # 在 ~/.zshrc 或 ~/.bashrc 中添加,7890 换成你的
  export http_proxy=http://127.0.0.1:7890
  export https_proxy=http://127.0.0.1:7890
 ```
@@ -96,13 +98,13 @@ curl http://ifconfig.me
 
 ### 3.2 核心网关 ccNexus 上手
 
-### 3.3 客户端配置
+### 3.3 客户端配置（举例）
 
-### 3.3.1 cherry studio
+### 3.3.1 cherry studio 对接网关
 
-### 3.3.2 cc-switch
+### 3.3.2 cc-switch 对接网关
 
-### 3.3.3 浏览器插件举例
+### 3.3.3 浏览器插件对接网关
 
 ```
 
