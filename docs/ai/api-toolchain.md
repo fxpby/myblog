@@ -23,7 +23,7 @@ AI 工具现在多得离谱，天天都能看见新名字，眼花缭乱。选�
 
 ### 2.1 Antigravity Tools 初识
 
-<https://github.com/lbjlaq/Antigravity-Manager>
+[官网地址 https://github.com/lbjlaq/Antigravity-Manager](https://github.com/lbjlaq/Antigravity-Manager)
 
 Antigravity Tools 是专业的 Antigravity 账号管理与切换工具。为 Antigravity 提供一键无缝账号切换功能
 
@@ -79,7 +79,7 @@ curl http://ifconfig.me
 
 如果遇到 ”Your current account is not eligible for Antigravity, because it is not currently available in your location.“
 
-- 修改 Google 账号地区 <https://policies.google.com/country-association-form>
+- 修改 Google 账号地区 [https://policies.google.com/country-association-form](https://policies.google.com/country-association-form)
 - 选择美国、日本、新加坡、台湾等
 - 理由选择非 VPN 相关
 - 等待 1-2 小时审核后邮件通知
