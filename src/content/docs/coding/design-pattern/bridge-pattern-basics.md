@@ -2,8 +2,6 @@
 title: "桥接模式 Bridge Pattern"
 ---
 
-# 桥接模式 Bridge Pattern
-
 ## 介绍
 
 - 用于把抽象化与实现化解耦

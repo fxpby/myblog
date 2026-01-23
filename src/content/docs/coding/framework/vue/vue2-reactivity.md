@@ -2,8 +2,6 @@
 title: "响应式原理"
 ---
 
-# 响应式原理
-
 上篇文章中提到 `/src/core/instance/init.js` 中有个 `_init` 方法，这里有 `initState` 方法
 
 ```js

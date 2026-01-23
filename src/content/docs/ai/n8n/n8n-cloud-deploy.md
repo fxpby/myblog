@@ -3,8 +3,6 @@ title: "n8n 云端部署（无需信用卡）"
 sidebar_position: 1
 ---
 
-# n8n 云端部署（无需信用卡）
-
 ## 1. 🤲 huggingface 注册
 
 来到 https://huggingface.co/ 官网注册个账号~

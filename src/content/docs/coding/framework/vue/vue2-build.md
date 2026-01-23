@@ -2,8 +2,6 @@
 title: "源码学习 - 构建"
 ---
 
-# 源码学习 - 构建
-
 ## 构建过程
 
 克隆项目后，来到 package.json 文件中，我们看 script 脚本部分, 有下面这几个 build 命令，执行完 `npm run build` 命令之后，`dist` 目录下方会生成很多特殊命名的 `vue.*.js` 文件

@@ -2,8 +2,6 @@
 title: "状态模式 State Pattern"
 ---
 
-# 状态模式 State Pattern
-
 ## 介绍
 
 - 一个对象有状态变化

@@ -3,8 +3,6 @@ title: "维生素 B5"
 sidebar_position: 6
 ---
 
-# 维生素 B5
-
 ## 什么是维生素 B5
 
 - 泛酸，Pantothenic Acid

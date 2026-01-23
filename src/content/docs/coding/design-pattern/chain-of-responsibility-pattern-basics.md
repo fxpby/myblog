@@ -2,8 +2,6 @@
 title: "责任链模式 Chain of Responsibility Pattern"
 ---
 
-# 责任链模式 Chain of Responsibility Pattern
-
 ## 介绍
 
 - 使多个对象都有机会处理请求，从而避免请求的发送者和接收者直接的耦合关系

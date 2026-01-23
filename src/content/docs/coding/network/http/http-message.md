@@ -1,8 +1,6 @@
 ---
-title: "HTTP 报文"
+title: "HTTP 报文"
 ---
-
-# HTTP 报文
 
 ## 请求报文
 

@@ -1,8 +1,6 @@
 ---
-title: "favicon 相关粗略总结"
+title: "favicon 相关粗略总结"
 ---
-
-# favicon 相关粗略总结
 
 ## favicon 是什么？
 

@@ -2,8 +2,6 @@
 title: "外观模式 Facade Pattern"
 ---
 
-# 外观模式 Facade Pattern
-
 ## 介绍
 
 - 为子系统中的一组接口提供了一个高层接口

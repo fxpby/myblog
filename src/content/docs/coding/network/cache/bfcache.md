@@ -2,8 +2,6 @@
 title: "往返缓存(Back/forward cache)"
 ---
 
-# 往返缓存(Back/forward cache)
-
 ## bfcache 是什么
 
 bfcache 是内存缓存，可在用户离开网页时存储网页（包括 JavaScript 堆）的完整快照。将整个页面保存在内存中后，用户决定返回时，浏览器可以迅速恢复页面

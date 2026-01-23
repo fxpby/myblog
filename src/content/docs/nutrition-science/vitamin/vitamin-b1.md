@@ -3,8 +3,6 @@ title: "维生素 B1"
 sidebar_position: 3
 ---
 
-# 维生素 B1
-
 ## 什么是维生素 B1
 
 硫胺素，又称抗神经炎素

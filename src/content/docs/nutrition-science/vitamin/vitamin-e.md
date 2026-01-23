@@ -3,8 +3,6 @@ title: "维生素 E"
 sidebar_position: 13
 ---
 
-# 维生素 E
-
 ## 维生素 E 的种类
 
 - 生育酚

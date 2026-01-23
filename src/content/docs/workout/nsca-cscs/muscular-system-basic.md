@@ -3,8 +3,6 @@ title: "肌肉系统基础知识"
 id: muscular-system-basic
 ---
 
-# 肌肉系统基础知识
-
 ## 肌肉组织分类
 
 - 非主动肌：

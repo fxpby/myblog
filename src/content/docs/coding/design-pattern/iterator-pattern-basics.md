@@ -2,8 +2,6 @@
 title: "迭代器模式 Iterator Pattern"
 ---
 
-# 迭代器模式 Iterator Pattern
-
 ## 介绍
 
 - 按顺序访问一个集合

@@ -3,8 +3,6 @@ title: "抗阻训练生物力学基础"
 id: biomechanical-fundamentals-of-resistance-training
 ---
 
-# 抗阻训练生物力学基础
-
 ## 生物力学的基本概念
 
 ### 基础公式

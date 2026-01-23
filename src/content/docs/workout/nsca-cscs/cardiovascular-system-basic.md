@@ -3,8 +3,6 @@ title: "心血管系统基础知识"
 id: cardiovascular-system-basic
 ---
 
-# 心血管系统基础知识
-
 ## 心血管/循环系统
 
 由心脏、动脉、毛细血管、静脉和血液等组成

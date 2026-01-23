@@ -3,8 +3,6 @@ title: "SSE MCP Server playground"
 sidebar_position: 1
 ---
 
-# SSE MCP Server playground
-
 ## 🎯 1. 功能目标
 
 - 从 0 实现一个 SSE 传输的 MCP 服务器

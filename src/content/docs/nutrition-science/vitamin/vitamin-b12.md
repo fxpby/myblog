@@ -3,8 +3,6 @@ title: "维生素 B12"
 sidebar_position: 10
 ---
 
-# 维生素 B12
-
 ## 什么是维生素 B12
 
 钴胺素，Cobalamin

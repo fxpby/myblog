@@ -4,8 +4,6 @@ title: "初探 Travis CI: 实现 VuePress 自动化部署"
 sidebar_position: 1
 ---
 
-# 初探 Travis CI: 实现 VuePress 自动化部署
-
 ## 背景
 
 之前使用 VuePress 写博客是 `写md文档` => `提交github` => `使用配好的deploy.sh文件发布`这样一个流程。

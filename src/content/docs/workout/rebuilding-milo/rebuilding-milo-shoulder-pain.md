@@ -4,8 +4,6 @@ sidebar_position: 2
 id: rebuilding-milo-shoulder-pain
 ---
 
-# 肩关节疼痛
-
 ## 肩关节解剖结构
 
 - 是一个**球窝关节**

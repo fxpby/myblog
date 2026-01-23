@@ -2,8 +2,6 @@
 title: "中介者模式 Mediator Pattern"
 ---
 
-# 中介者模式 Mediator Pattern
-
 ## 介绍
 
 - 解除对象与对象之间紧耦合的关系

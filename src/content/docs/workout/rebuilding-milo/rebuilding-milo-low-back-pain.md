@@ -4,8 +4,6 @@ sidebar_position: 2
 id: rebuilding-milo-low-back-pain
 ---
 
-# 腰背损伤
-
 ## 例子 - 似曾相识的故事
 
 ### 背景

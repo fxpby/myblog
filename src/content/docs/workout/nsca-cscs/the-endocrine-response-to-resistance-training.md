@@ -3,8 +3,6 @@ title: "阻力训练的内分泌反应"
 id: the-endocrine-response-to-resistance-training
 ---
 
-# 阻力训练的内分泌反应
-
 ## 荷尔蒙的合成、存储与分泌
 
 ### 荷尔蒙

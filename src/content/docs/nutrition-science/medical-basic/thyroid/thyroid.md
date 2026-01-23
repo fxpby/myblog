@@ -2,8 +2,6 @@
 title: "甲状腺激素（thyroid hormones）"
 ---
 
-# 甲状腺激素（thyroid hormones）
-
 由甲状腺滤泡上皮细胞合成的酪氨酸碘化物
 
 ## 相关甲功指标

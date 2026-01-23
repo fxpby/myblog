@@ -3,8 +3,6 @@ title: "supabase 旅程启航 - 表设计"
 sidebar_position: 2
 ---
 
-# supabase 旅程启航 - 表设计
-
 前面我们自部署了相关服务，进入了管理面板，我们用 supabase 的很重要一点就是用它来 CURD~
 
 CURD 之前，我们还莫得表结构，需要设计一下~

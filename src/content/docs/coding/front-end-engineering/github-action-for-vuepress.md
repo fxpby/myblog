@@ -4,8 +4,6 @@ title: "初探 GitHub Actions: 实现 VuePress 自动化部署"
 sidebar_position: 2
 ---
 
-# 初探 GitHub Actions: 实现 VuePress 自动化部署
-
 ## 背景
 
 之前写了篇介绍用 Travis CI 自动化部署的，谁知。。。他竟然、竟然收费了 😭, 静茹姐姐给我的勇气看了一眼费用, 没眼看, 我不配 😥

@@ -3,8 +3,6 @@ title: "supabase 旅程预备 - 自部署"
 sidebar_position: 1
 ---
 
-# supabase 旅程预备 - 自部署
-
 ## 1. 什么是 supabase
 
 Supabase 是一个基于 PostgreSQL 的开源开发平台

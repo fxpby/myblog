@@ -3,8 +3,6 @@ title: "bilibili 字幕文本提取及处理"
 sidebar_position: 3
 ---
 
-# bilibili 字幕文本提取及处理
-
 ## 🔖 1. 提取字幕文本
 
 ### 🛠 1.1 安装 tampermonkey

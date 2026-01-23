@@ -3,8 +3,6 @@ title: "维生素 B6"
 sidebar_position: 7
 ---
 
-# 维生素 B6
-
 ## 什么是维生素 B6
 
 是 100 多种酶的辅酶

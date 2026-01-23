@@ -2,8 +2,6 @@
 title: "单例模式 Singleton Pattern"
 ---
 
-# 单例模式 Singleton Pattern
-
 ## 🎺介绍
 
 - 系统中唯一被使用

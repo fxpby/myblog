@@ -3,8 +3,6 @@ title: "B 族维生素"
 sidebar_position: 2
 ---
 
-# B 族维生素
-
 ## 成员介绍
 
 - B1 硫胺素（Thiamine）

@@ -2,8 +2,6 @@
 title: "工厂模式 Factory Pattern"
 ---
 
-# 工厂模式 Factory Pattern
-
 ## 🎺介绍
 
 - 将 `new` 操作单独封装

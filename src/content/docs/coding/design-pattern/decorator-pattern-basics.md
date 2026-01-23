@@ -2,8 +2,6 @@
 title: "装饰器模式 Decorator Pattern"
 ---
 
-# 装饰器模式 Decorator Pattern
-
 ## 介绍
 
 - 为对象添加新功能

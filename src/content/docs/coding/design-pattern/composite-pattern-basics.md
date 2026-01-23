@@ -2,8 +2,6 @@
 title: "组合模式 Composite Pattern"
 ---
 
-# 组合模式 Composite Pattern
-
 ## 介绍
 
 - 将对象组合成树形结构，表示 “整体-部分” 关系

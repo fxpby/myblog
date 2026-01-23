@@ -1,8 +1,6 @@
 ---
-title: "typeof/instanceof/{}.toString 检查类型"
+title: "typeof/instanceof/{}.toString 检查类型"
 ---
-
-# typeof/instanceof/{}.toString 检查类型
 
 ## typeof
 

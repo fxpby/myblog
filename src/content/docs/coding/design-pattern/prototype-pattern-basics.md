@@ -2,8 +2,6 @@
 title: "原型模式 Prototype Pattern"
 ---
 
-# 原型模式 Prototype Pattern
-
 ## 介绍
 
 - clone 自己，生成一个新对象

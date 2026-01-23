@@ -3,8 +3,6 @@ title: "设计原则 SOLID"
 sidebar_position: 3
 ---
 
-# 设计原则 SOLID
-
 ## S - 单一职责原则
 
 - 一个程序只做好一件事

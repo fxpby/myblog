@@ -3,8 +3,6 @@ title: "维生素 B7"
 sidebar_position: 8
 ---
 
-# 维生素 B7
-
 ## 什么是维生素 B7
 
 维生素 B7，Biotin 又称**维生素 H** 或**生物素**

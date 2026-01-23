@@ -2,8 +2,6 @@
 title: "tsconfig.json"
 ---
 
-# tsconfig.json
-
 ## 创建
 
 在项目根目录创建一个空的 JSON 文件

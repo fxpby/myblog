@@ -4,8 +4,6 @@ title: "浏览器 HTTP 缓存机制"
 sidebar_position: 1
 ---
 
-# 浏览器 HTTP 缓存机制
-
 ## HTTP 缓存 - 前置知识点
 
 了解一些和缓存相关的首部字段名

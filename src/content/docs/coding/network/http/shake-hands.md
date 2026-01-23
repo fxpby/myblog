@@ -1,8 +1,6 @@
 ---
-title: "HTTP 三次握手"
+title: "HTTP 三次握手"
 ---
-
-# HTTP 三次握手
 
 ## 三次握手
 

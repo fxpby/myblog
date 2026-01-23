@@ -2,8 +2,6 @@
 title: "代理模式 Proxy Pattern"
 ---
 
-# 代理模式 Proxy Pattern
-
 ## 介绍
 
 - 使用者无权访问目标对象

@@ -2,8 +2,6 @@
 title: "观察者模式 Observer Pattern"
 ---
 
-# 观察者模式 Observer Pattern
-
 ## 介绍
 
 - 发布 & 订阅

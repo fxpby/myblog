@@ -62,6 +62,37 @@
   cursor: pointer;
 }
 
+/* Fix header height to show docs-nav */
+header.header {
+  height: auto !important;
+  min-height: var(--sl-nav-height);
+  flex-direction: column;
+  padding-bottom: 0;
+  overflow: visible !important;
+}
+
+header.header > .header {
+  height: var(--sl-nav-height);
+}
+
+/* Ensure dropdown menu is visible */
+.page {
+  overflow: visible !important;
+}
+
+nav.docs-nav {
+  overflow: visible !important;
+}
+
+/* Dropdown menu - active state */
+.nav-dropdown[data-active="true"] > .nav-dropdown-menu {
+  display: grid !important;
+  position: fixed !important;
+  top: auto !important;
+  margin-top: 0.5rem;
+  z-index: 9999 !important;
+}
+
 /* Code highlighting */
 .astro-code {
   font-size: 95%;

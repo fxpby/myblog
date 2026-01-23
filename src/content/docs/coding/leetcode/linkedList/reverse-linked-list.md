@@ -2,8 +2,6 @@
 title: "206. 反转单链表 Reverse Linked List"
 ---
 
-# 206. 反转单链表 Reverse Linked List
-
 ## 题目描述
 
 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。

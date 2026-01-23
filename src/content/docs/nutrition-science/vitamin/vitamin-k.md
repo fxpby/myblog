@@ -3,8 +3,6 @@ title: "维生素 K"
 sidebar_position: 14
 ---
 
-# 维生素 K
-
 ## 什么是维生素 K
 
 - K1，叶绿醌，来源绿色蔬菜

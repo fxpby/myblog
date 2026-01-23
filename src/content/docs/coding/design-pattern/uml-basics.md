@@ -3,8 +3,6 @@ title: "UML 类图"
 sidebar_position: 1
 ---
 
-# UML 类图
-
 ## ✏️ 概述
 
 To specify the visibility of a class member (i.e. any attribute or method), these notations may be placed before the member's name, but it is optional:

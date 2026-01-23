@@ -1,8 +1,6 @@
 ---
-title: "HTTP 协议的发展历史"
+title: "HTTP 协议的发展历史"
 ---
-
-# HTTP 协议的发展历史
 
 ## HTTP/0.9
 

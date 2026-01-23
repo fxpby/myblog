@@ -1,8 +1,6 @@
 ---
-title: "块级格式化上下文 block formatting context"
+title: "块级格式化上下文 block formatting context"
 ---
-
-# 块级格式化上下文 block formatting context
 
 一个只有`块级盒子`参与的独立块级渲染区域，规定了内部的`块级盒子`如何布局，且与区域外部无关
 

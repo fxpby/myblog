@@ -2,8 +2,6 @@
 title: "typeof 类型守卫"
 ---
 
-# typeof 类型守卫
-
 `typeof` 返回字符串
 
 - object

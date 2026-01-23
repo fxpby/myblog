@@ -2,8 +2,6 @@
 title: "HTML 属性和 DOM 属性关系"
 ---
 
-# HTML 属性和 DOM 属性关系
-
 ## 两种属性名的关系
 
 ```html

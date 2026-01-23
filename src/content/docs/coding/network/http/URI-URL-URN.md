@@ -1,8 +1,6 @@
 ---
-title: "URI、URL、URN、Data URI 和 Object URL/Blob URL"
+title: "URI、URL、URN、Data URI 和 Object URL/Blob URL"
 ---
-
-# URI、URL、URN、Data URI 和 Object URL/Blob URL
 
 ## URI
 

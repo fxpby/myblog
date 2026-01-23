@@ -3,8 +3,6 @@ title: "维生素 B9"
 sidebar_position: 9
 ---
 
-# 维生素 B9
-
 ## 什么是维生素 B9
 
 Folic Acid, Folate, 叶酸，维生素 M，维生素 Bc, 蝶酰谷氨酸

@@ -2,8 +2,6 @@
 title: "适配器模式 Adapter Pattern"
 ---
 
-# 适配器模式 Adapter Pattern
-
 ## 介绍
 
 - 旧接口格式和使用者不兼容

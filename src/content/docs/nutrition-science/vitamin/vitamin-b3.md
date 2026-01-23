@@ -3,8 +3,6 @@ title: "维生素 B3"
 sidebar_position: 5
 ---
 
-# 维生素 B3
-
 ## 什么是维生素 B3
 
 - 烟酸，Niacin

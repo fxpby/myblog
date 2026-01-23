@@ -2,8 +2,6 @@
 title: "Babel"
 ---
 
-# Babel
-
 ## 1. 什么是 Babel
 
 Babel 是 **JavaScript 编译器**，可以让开发人员在开发过程中直接使用各类方言（如 TS、Flow、JSX）或新的语法特性，不需要考虑运行环境（按需转换为低版本支持的代码）

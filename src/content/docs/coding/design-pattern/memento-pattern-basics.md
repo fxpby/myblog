@@ -2,8 +2,6 @@
 title: "备忘录模式 Memento Pattern"
 ---
 
-# 备忘录模式 Memento Pattern
-
 ## 介绍
 
 - 随时记录一个对象的状态变化

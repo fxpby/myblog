@@ -3,8 +3,6 @@ title: "n8n 工作流 - supabase & RAG 知识库"
 sidebar_position: 2
 ---
 
-# n8n 工作流 - supabase & RAG 知识库
-
 之前有学习实践写过一个 `LLM + MCP + RAG` 实现极简 Agent 客户端（不依赖框架）的项目
 
 https://github.com/fxpby/llm-mcp-rag-demo

@@ -2,8 +2,6 @@
 title: "策略模式 Strategy Pattern"
 ---
 
-# 策略模式 Strategy Pattern
-
 ## 介绍
 
 - 不同策略分开处理

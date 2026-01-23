@@ -4,8 +4,6 @@ sidebar_position: 1
 id: rebuilding-milo-intro
 ---
 
-# 序、前言
-
 ## 优秀模型的特征
 
 - 是否解释了正在发生的事情
