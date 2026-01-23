@@ -2,6 +2,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
+import Nav from '../../components/Nav.astro';
 import PostContent from '../../components/PostBlogs/PostContent';
 
 export async function getStaticPaths() {
@@ -52,14 +53,7 @@ const dateStr = post.id.slice(0, 10);
     <BaseHead title={post.data.title} description={`博客文章 - ${post.data.title}`} />
   </head>
   <body>
-    <header class="blog-header">
-      <nav>
-        <a href="/" class="logo">邂逅大大小小陆</a>
-        <a href="/coding/javascript/apply-call-bind">文档</a>
-        <a href="/blog">博客</a>
-        <a href="/heart">魔法小陆</a>
-      </nav>
-    </header>
+    <Nav />
     <main class="blog-main">
       <article class="blog-article">
         <header class="article-header">
@@ -90,29 +84,6 @@ const dateStr = post.id.slice(0, 10);
     color: #333;
     margin: 0;
     padding: 0;
-  }
-
-  .blog-header {
-    background: #2e8555;
-    padding: 1rem 2rem;
-  }
-
-  .blog-header nav {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-  }
-
-  .blog-header a {
-    color: white;
-    text-decoration: none;
-  }
-
-  .blog-header .logo {
-    font-weight: bold;
-    font-size: 1.25rem;
   }
 
   .blog-main {
