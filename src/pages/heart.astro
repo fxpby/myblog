@@ -1,0 +1,80 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import HeartPage from '../components/HeartPage';
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <BaseHead title="魔法小陆" description="欢迎来到爱心小小陆" />
+  </head>
+  <body>
+    <header class="page-header">
+      <nav>
+        <a href="/" class="logo">邂逅大大小小陆</a>
+        <div class="nav-links">
+          <a href="/coding/javascript/apply-call-bind">文档</a>
+          <a href="/blog">博客</a>
+          <a href="/heart">魔法小陆</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <HeartPage client:only="react" />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-header {
+    background: #2e8555;
+    padding: 1rem 2rem;
+  }
+
+  .page-header nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .page-header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.9;
+  }
+
+  .nav-links a:hover {
+    opacity: 1;
+  }
+
+  main {
+    flex: 1;
+  }
+</style>

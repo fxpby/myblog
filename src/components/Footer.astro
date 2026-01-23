@@ -1,0 +1,75 @@
+---
+const year = new Date().getFullYear();
+const isGitHub = import.meta.env.DEPLOY_SERVER === 'deploygithub';
+const baseUrl = isGitHub ? '/myblog' : '';
+---
+
+<footer class="sl-footer">
+  <div class="footer-content">
+    <p>
+      Copyright &copy; {year} 邂逅大大小小陆 serendipityhaven.com |
+      <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">津ICP备2021008930号-2</a>
+    </p>
+    <div class="beian">
+      <a
+        target="_blank"
+        href="https://beian.mps.gov.cn/#/query/webSearch?code=12011602300553"
+        rel="noopener noreferrer"
+      >
+        <img src={`${baseUrl}/img/beian.png`} alt="公安备案" />
+        <span>津公网安备12011602300553号</span>
+      </a>
+      <a href="mailto:1037345919@qq.com">举报投诉 1037345919@qq.com</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .sl-footer {
+    padding: 2rem 1rem;
+    text-align: center;
+    border-top: 1px solid var(--sl-color-gray-5);
+    background: var(--sl-color-bg-nav);
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-content p {
+    margin: 0;
+    color: var(--sl-color-gray-2);
+    font-size: 0.875rem;
+  }
+
+  .footer-content a {
+    color: var(--sl-color-text-accent);
+    text-decoration: none;
+  }
+
+  .footer-content a:hover {
+    text-decoration: underline;
+  }
+
+  .beian {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .beian a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+  }
+
+  .beian img {
+    height: 20px;
+    width: auto;
+  }
+</style>

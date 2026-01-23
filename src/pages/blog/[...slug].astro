@@ -1,0 +1,158 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import PostContent from '../../components/PostBlogs/PostContent';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.data.slug || post.slug },
+    props: { post },
+  }));
+}
+
+type Props = {
+  post: CollectionEntry<'blog'>;
+};
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+// Map post slugs to environment variable names
+const envVarMap: Record<string, string | undefined> = {
+  'post-4/16': import.meta.env.BLOG_POST250416,
+  'post-5/2': import.meta.env.BLOG_POST250502,
+  'post-5/7': import.meta.env.BLOG_POST250507,
+  'post-5/13': import.meta.env.BLOG_POST250513,
+  'post-5/19': import.meta.env.BLOG_POST250519,
+  'post-5/20': import.meta.env.BLOG_POST250520,
+  'post-5/21': import.meta.env.BLOG_POST250521,
+  'post-5/22': import.meta.env.BLOG_POST250522,
+  'post-5/25': import.meta.env.BLOG_POST250525,
+  'post-5/29': import.meta.env.BLOG_POST250529,
+  'post-6/4': import.meta.env.BLOG_POST250604,
+  'post-7/27': import.meta.env.BLOG_POST250727,
+  'post-8/1': import.meta.env.BLOG_POST250801,
+  'post-8/6': import.meta.env.BLOG_POST250806,
+  'post-8/24': import.meta.env.BLOG_POST250824,
+  'post-9/19': import.meta.env.BLOG_POST250919,
+  'post-10/26': import.meta.env.BLOG_POST251026,
+
+};
+
+const slug = post.data.slug || post.slug;
+const blogContent = envVarMap[slug] || '';
+const dateStr = post.id.slice(0, 10);
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <BaseHead title={post.data.title} description={`博客文章 - ${post.data.title}`} />
+  </head>
+  <body>
+    <header class="blog-header">
+      <nav>
+        <a href="/" class="logo">邂逅大大小小陆</a>
+        <a href="/coding/javascript/apply-call-bind">文档</a>
+        <a href="/blog">博客</a>
+        <a href="/heart">魔法小陆</a>
+      </nav>
+    </header>
+    <main class="blog-main">
+      <article class="blog-article">
+        <header class="article-header">
+          <h1>{post.data.title}</h1>
+          <time>{dateStr}</time>
+          {post.data.authors && <span class="author">作者: {post.data.authors}</span>}
+        </header>
+        <div class="article-content">
+          {blogContent ? (
+            <PostContent blogPostId={blogContent} client:load />
+          ) : (
+            <div class="no-content">
+              <p>此文章内容需要通过环境变量加载。</p>
+              <p>本地开发时，请创建 <code>.env</code> 文件并设置相应的环境变量。</p>
+            </div>
+          )}
+        </div>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+
+  .blog-header {
+    background: #2e8555;
+    padding: 1rem 2rem;
+  }
+
+  .blog-header nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .blog-header a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .blog-header .logo {
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+
+  .blog-main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .article-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  .article-header h1 {
+    margin: 0 0 0.5rem 0;
+  }
+
+  .article-header time,
+  .article-header .author {
+    color: #666;
+    font-size: 0.875rem;
+    margin-right: 1rem;
+  }
+
+  .article-content {
+    font-size: 1.1rem;
+  }
+
+  .no-content {
+    background: #f5f5f5;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    color: #666;
+  }
+
+  .no-content code {
+    background: #e0e0e0;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+  }
+</style>

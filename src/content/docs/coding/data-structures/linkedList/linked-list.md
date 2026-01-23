@@ -1,0 +1,4 @@
+---
+title: "linked list"
+---
+

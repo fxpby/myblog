@@ -1,0 +1,238 @@
+---
+title: "supabase 旅程目的地 - 权限认证"
+sidebar_position: 4
+---
+
+# supabase 旅程目的地 - 权限认证
+
+看到认证两字就想起几年前的一个登录重构需求，当时是把一个技术栈为 PHP+jQuery 上万行代码的盘古级别旧项目重构为 Vue 的新项目，涉及到桌面 web 端、移动设备 web 端、桌面客户端（Mac+PC+盘符）嵌套 web 页面（端别通信、数据结构、版本等需特殊处理），14 种不同维度的登录场景（基础账号、手机号、邮箱、扫码、口令、企业专属、单点、第三方对接等等）
+
+当时光梳理业务逻辑整理业务流程图就输出 30 余张，这还只是前端业务。自己带着 3 个前端同事一起从需求分析、旧项目业务梳理、概要设计、详细设计、开发编码提测到第一批次白名单用户上线加班做了快 3 个月。很难想象吧，一个登录需求可能在别人眼里几天最多一周的工作量，但是企业级项目的复杂程度和历史包袱就是如此冗杂沉重
+
+supabase 的认证体系虽然没有那么复杂，但普通场景是都满足覆盖到的，个人项目或者普通企业项目够用的，而且这 SDK 用起来真的很爽，全新的开发体验，让开发者把精力更多着眼于页面渲染交互处理，而非业务逻辑封装，让人耳目一新~
+
+## 注册
+
+注册功能涉及到邮箱密码和确认密码，我们需要实现一个 `apiSignup`，来到 supabase 的控制面板 API Docs 中，有一个 `User Management`，这里的 Sign up 模块可以看到是有提供一个使用邮箱注册的方法
+
+![supabase-self-hosting20](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting20.jpg)
+
+我们把这个方法复制下来，粘贴到我们的 `vue-version/src/services/apiSignup.js` 中，修改为传参形式并返回 data
+
+```js
+import supabase from "@/utils/supabase";
+
+export async function signup(email, password) {
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+  });
+
+  if (error) {
+    throw new Error(error?.message);
+  }
+
+  return data;
+}
+```
+
+在 https://supabase.com/docs/reference/javascript/auth-signup 文档中我们可以找到添加额外元数据信息的参数，即 options，我们需要利用这个参数去获取用户头像
+
+![supabase-self-hosting21](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting21.jpg)
+
+修改`vue-version/src/services/apiSignup.js`代码如下
+
+```js
+import { getFakeAvatar } from "@/utils/employeeFakeHelper";
+import supabase from "@/utils/supabase";
+
+export async function signup(email, password) {
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: {
+        avatar: getFakeAvatar(),
+      },
+    },
+  });
+
+  if (error) {
+    throw new Error(error?.message);
+  }
+
+  return data;
+}
+```
+
+我们可以从 https://temp-mail.org/ 这个网址获取临时邮箱
+
+![supabase-self-hosting22](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting22.jpg)
+
+此时来到我们项目的注册窗口，使用这个临时邮箱来注册一个账号
+
+![supabase-self-hosting23](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting23.jpg)
+
+点击注册后，来到面板，会看到 user 这里新增了一条记录，是有 email 标识的
+
+![supabase-self-hosting24](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting24.jpg)
+
+此时再来到获取邮箱的网址，会看到下方收到了邮件提示，点击去确认，会看到我们的校验码
+
+![supabase-self-hosting25](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting25.jpg)
+
+![supabase-self-hosting26](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting26.jpg)
+
+有了校验码后，我们继续来完成 apiVerifyEmail 邮箱验证部分的函数逻辑。在文档中找到这个 OTP 验证部分，复制注册一次性密码这一项代码至`vue-version/src/services/apiVerifyEmail.js`，不是 SMS 短信验证哦
+
+![supabase-self-hosting27](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting27.jpg)
+
+```js
+import supabase from "@/utils/supabase";
+
+export async function verifyEmail(email, token) {
+  const { data, error } = await supabase.auth.verifyOtp({
+    email,
+    token,
+    type: "email",
+  });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+}
+```
+
+restart 项目后，我们在面板中删除之前的用户，按照上面流程重新注册一个账号，并使用验证码进行验证
+
+## 检索用户
+
+验证完成后，在 localstorage 中我们会看到这样的数据结构，是我们刚校验完成的用户数据，我们需要获取到这个数据
+
+![supabase-self-hosting28](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting28.jpg)
+
+在文档 https://supabase.com/docs/reference/javascript/auth-getuser 中，我们可以查到通过 `jwt` 来获取数据的方法，复制过来~
+
+我们可以看到有一个参数 `jwt`，这个 `jwt` 其实就是我们前面 `localstorage` 里的 `access_token`，也就是说我们现在要做的是获取到这个`access_token`，所以我们修改配置文件中`VITE_SUPABASE_AUTH_KEY`的值为 `localstorage` 里的 Key
+
+```env
+# SUPABASE config
+VITE_SUPABASE_URL=http://localhost:8000
+VITE_SUPABASE_KEY=xxxxxxxxxxx
+VITE_SUPABASE_AUTH_KEY=sb-localhost-auth-token
+```
+
+`vue-version/src/services/apiRetrieveUser.js` 代码如下
+
+```js
+import { getConfig } from "@/utils/configHelper";
+import { getItem } from "@/utils/localstorageHelper";
+import supabase from "@/utils/supabase";
+
+const SUPABASE_AUTH_KEY = getConfig("SUPABASE_AUTH_KEY");
+
+export async function retrieveUser() {
+  const jwt = getItem(SUPABASE_AUTH_KEY).access_token;
+
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser(jwt);
+
+  if (error) {
+    throw new Error(error?.message);
+  }
+  return user;
+}
+```
+
+## 登录
+
+下面我们完成登录逻辑，在控制面板 API Docs 中可以获取登录代码
+
+![supabase-self-hosting30](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting30.jpg)
+
+来到`vue-version/src/services/apiLogin.js`中修改一下后即可尝试用之前的邮箱进行登录
+
+```js
+import supabase from "@/utils/supabase";
+
+export async function login(email, password) {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+}
+```
+
+![supabase-self-hosting31](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting31.jpg)
+
+登录成功后即可看到提示，以及右上角的头像（头像回显有点问题无伤大雅，登录状态过来就行）
+
+![supabase-self-hosting32](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting32.jpg)
+
+localstorage 中也可以看到登录信息带过来了，至此登录功能完成~
+
+![supabase-self-hosting33](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting33.jpg)
+
+## 退出登录
+
+来到官方文档 https://supabase.com/docs/reference/javascript/auth-signout 找到签出的方法，复制过来修改一番到`vue-version/src/services/apiLogout.js`中
+
+```js
+import supabase from "@/utils/supabase";
+export async function logout() {
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    throw new Error(error.message);
+  }
+}
+```
+
+来到右上角头像点击退出登录
+
+![supabase-self-hosting35](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting35.jpg)
+
+退出登录后我们的按钮已经回到初始状态，同时 `localstorage` 中对应的认证信息也已经智能清除掉了，重新登录的话认证信息又会回来，无需我们操心这块逻辑处理，心智负担--
+
+![supabase-self-hosting36](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting36.jpg)
+
+## 重新发送
+
+在前面的注册功能中，邮箱验证码处有一个重新发送按钮，这个功能也是很常见必备的，下面我们来实现一下
+
+来到官网文档 https://supabase.com/docs/reference/javascript/auth-resend 中，复制代码到`vue-version/src/services/apiResend.js`文件后修改一番如下
+
+![supabase-self-hosting37](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting37.jpg)
+
+```js
+import supabase from "@/utils/supabase";
+
+export async function resend(email) {
+  const { data, error } = await supabase.auth.resend({
+    type: "signup",
+    email,
+  });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+}
+```
+
+写好后我们来到控制面板，在 Authentication user 中把前面的用户删掉，重新来一遍邮箱注册操作即可
+
+![supabase-self-hosting39](https://fxpby.oss-cn-beijing.aliyuncs.com/blogImg/framework/supabase/supabase-self-hosting39.jpg)
+
+至此，我们的鉴权相关功能就实现好咯~

@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const isGitHub = import.meta.env.DEPLOY_SERVER === 'deploygithub';
+const baseUrl = isGitHub ? '/myblog' : '';
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/jpeg" href={`${baseUrl}/img/favicon1.jpg`} />
+<meta name="generator" content={Astro.generator} />
+<meta name="description" content={description} />
+<title>{title} | 邂逅大大小小陆</title>
+
+<!-- Open Graph / Social -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:site_name" content="邂逅大大小小陆" />
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GTM-TSG5B2CH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GTM-TSG5B2CH', { anonymize_ip: true });
+  gtag('config', 'UA-217600182-1', { anonymize_ip: true });
+</script>

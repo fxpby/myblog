@@ -1,0 +1,87 @@
+/* Custom styles for Starlight theme */
+
+/* Color theme - matching original Docusaurus theme */
+:root {
+  --sl-color-accent: 46 133 85; /* #2e8555 */
+  --sl-color-accent-low: 41 120 76;
+  --sl-color-accent-high: 51 146 93;
+  --sl-color-text-accent: 46 133 85;
+}
+
+[data-theme='dark'] {
+  --sl-color-accent: 37 194 160; /* #25c2a0 */
+  --sl-color-accent-low: 33 175 144;
+  --sl-color-accent-high: 41 213 176;
+  --sl-color-text-accent: 37 194 160;
+}
+
+/* Custom navbar dropdown styles (for custom navigation) */
+.navbar-wrapper {
+  display: flex;
+}
+
+.navbar-col {
+  display: flex;
+  row-gap: 2px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.navbar-first-level {
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.has-child {
+  border: 1px solid rgb(245 246 247);
+}
+
+.navbar-first-level-title {
+  display: block;
+  white-space: nowrap;
+  padding: 4px 4px;
+  font-weight: 700;
+  border-radius: 6px;
+}
+
+.can-mouse-over:hover {
+  background-color: rgb(245 246 247);
+  cursor: pointer;
+}
+
+.second-level-item {
+  display: block;
+  padding: 6px 4px;
+  font-weight: 400;
+  font-size: 14px;
+  border-radius: 6px;
+}
+
+.second-level-item:hover {
+  background-color: rgb(245 246 247);
+  cursor: pointer;
+}
+
+/* Code highlighting */
+.astro-code {
+  font-size: 95%;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sl-color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sl-color-gray-4);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sl-color-gray-3);
+}
