@@ -116,3 +116,18 @@ nav.docs-nav {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--sl-color-gray-3);
 }
+
+/* Override Starlight's default margin for Chakra UI components */
+.sl-markdown-content .chakra-stack,
+.sl-markdown-content .chakra-form-control,
+.sl-markdown-content .chakra-input,
+.sl-markdown-content .chakra-number-input,
+.sl-markdown-content [class*="chakra-"] {
+  margin-top: 0 !important;
+}
+
+/* Ensure Chakra UI components don't inherit Starlight spacing */
+.sl-markdown-content > div[style*="display: flex"],
+.sl-markdown-content > div[style*="flexDirection"] {
+  margin-top: 0 !important;
+}

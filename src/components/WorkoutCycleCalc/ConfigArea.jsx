@@ -707,8 +707,8 @@ export default function ConfigArea(props) {
                       )
                         .fill()
                         .map((x, i) => (
-                          <VStack key={i} align="normal">
-                            <span>
+                          <VStack key={i} align="normal" minW="120px" spacing={0}>
+                            <span style={{ whiteSpace: 'nowrap' }}>
                               {`循环${cIdx + 1}`}-{getWeekLabel(i)}
                             </span>
                             <NumberInput
@@ -777,8 +777,8 @@ export default function ConfigArea(props) {
                       )
                         .fill()
                         .map((x, i) => (
-                          <VStack key={i} align="normal">
-                            <span>
+                          <VStack key={i} align="normal" minW="120px" spacing={0}>
+                            <span style={{ whiteSpace: 'nowrap' }}>
                               {`循环${cIdx + 1}`}-{getWeekLabel(i)}
                             </span>
 
@@ -864,8 +864,8 @@ export default function ConfigArea(props) {
                   ? new Array(rules.progressiveOverloadWeekCount.value)
                       .fill()
                       .map((x, i) => (
-                        <VStack key={i} align="normal">
-                          <span>
+                        <VStack key={i} align="normal" minW="120px">
+                          <span style={{ whiteSpace: 'nowrap' }}>
                             {`循环${cIdx + 1}`}-{getWeekLabel(i)}
                           </span>
                           <NumberInput
@@ -915,8 +915,8 @@ export default function ConfigArea(props) {
                   ? new Array(rules.deloadWeekCount.value)
                       .fill()
                       .map((x, i) => (
-                        <VStack key={i} align="normal">
-                          <span>
+                        <VStack key={i} align="normal" minW="120px" spacing={0}>
+                          <span style={{ whiteSpace: 'nowrap' }}>
                             {`循环${cIdx + 1}`}-
                             {getWeekLabel(
                               i + rules.progressiveOverloadWeekCount.value
