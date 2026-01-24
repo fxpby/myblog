@@ -1,10 +1,10 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Nav from '../../components/Nav.astro';
+import { getCollection } from "astro:content";
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import Nav from "../../components/Nav.astro";
 
-const posts = await getCollection('blog');
+const posts = await getCollection("blog");
 const sortedPosts = posts.sort((a, b) => {
   const dateA = a.data.date || new Date(a.id.slice(0, 10));
   const dateB = b.data.date || new Date(b.id.slice(0, 10));
@@ -15,25 +15,27 @@ const sortedPosts = posts.sort((a, b) => {
 <!doctype html>
 <html lang="zh-CN">
   <head>
-    <BaseHead title="博客" description="邂逅大大小小陆的博客文章" />
+    <BaseHead title="post" description="秘密基地" />
   </head>
   <body>
     <Nav />
     <main class="blog-list">
-      <h1>博客文章</h1>
+      <h1>秘密基地</h1>
       <ul class="posts">
-        {sortedPosts.map((post) => {
-          const dateStr = post.id.slice(0, 10);
-          const slug = post.data.slug || post.slug;
-          return (
-            <li>
-              <a href={`/blog/${slug}`}>
-                <span class="date">{dateStr}</span>
-                <span class="title">{post.data.title}</span>
-              </a>
-            </li>
-          );
-        })}
+        {
+          sortedPosts.map((post) => {
+            const dateStr = post.id.slice(0, 10);
+            const slug = post.data.slug || post.slug;
+            return (
+              <li>
+                <a href={`/blog/${slug}`}>
+                  <span class="date">{dateStr}</span>
+                  <span class="title">{post.data.title}</span>
+                </a>
+              </li>
+            );
+          })
+        }
       </ul>
     </main>
     <Footer />
@@ -42,7 +44,10 @@ const sortedPosts = posts.sort((a, b) => {
 
 <style>
   body {
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
     line-height: 1.6;
     color: #333;
     margin: 0;
