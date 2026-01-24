@@ -7,17 +7,30 @@ import PostContent from "../../components/PostBlogs/PostContent";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
-  return posts.map((post) => ({
+  // 按日期排序
+  const sortedPosts = posts.sort((a, b) => {
+    const dateA = a.data.date || new Date(a.id.slice(0, 10));
+    const dateB = b.data.date || new Date(b.id.slice(0, 10));
+    return dateB.getTime() - dateA.getTime();
+  });
+
+  return sortedPosts.map((post, index) => ({
     params: { slug: post.data.slug || post.slug },
-    props: { post },
+    props: {
+      post,
+      prevPost: index < sortedPosts.length - 1 ? sortedPosts[index + 1] : null,
+      nextPost: index > 0 ? sortedPosts[index - 1] : null,
+    },
   }));
 }
 
 type Props = {
   post: CollectionEntry<"blog">;
+  prevPost: CollectionEntry<"blog"> | null;
+  nextPost: CollectionEntry<"blog"> | null;
 };
 
-const { post } = Astro.props;
+const { post, prevPost, nextPost } = Astro.props;
 const { Content } = await post.render();
 
 // Map post slugs to environment variable names
@@ -72,6 +85,25 @@ const dateStr = post.id.slice(0, 10);
           <Content />
         </div>
       </article>
+
+      <nav class="pagination">
+        <div class="pagination-prev">
+          {prevPost && (
+            <a href={`/blog/${prevPost.data.slug || prevPost.slug}`}>
+              <span class="pagination-label">← 上一篇</span>
+              <span class="pagination-title">{prevPost.data.title}</span>
+            </a>
+          )}
+        </div>
+        <div class="pagination-next">
+          {nextPost && (
+            <a href={`/blog/${nextPost.data.slug || nextPost.slug}`}>
+              <span class="pagination-label">下一篇 →</span>
+              <span class="pagination-title">{nextPost.data.title}</span>
+            </a>
+          )}
+        </div>
+      </nav>
     </main>
     <Footer />
   </body>
@@ -128,5 +160,52 @@ const dateStr = post.id.slice(0, 10);
     background: #e0e0e0;
     padding: 0.2rem 0.4rem;
     border-radius: 4px;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+    gap: 1rem;
+  }
+
+  .pagination-prev,
+  .pagination-next {
+    flex: 1;
+    max-width: 45%;
+  }
+
+  .pagination-next {
+    text-align: right;
+  }
+
+  .pagination a {
+    display: block;
+    padding: 1rem;
+    border-radius: 8px;
+    background: #f9f9f9;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .pagination a:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+  }
+
+  .pagination-label {
+    display: block;
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 0.25rem;
+  }
+
+  .pagination-title {
+    display: block;
+    font-weight: 500;
+    color: #2e8555;
   }
 </style>

@@ -1,10 +1,38 @@
 ---
+import type { Props } from '@astrojs/starlight/props';
+
 const year = new Date().getFullYear();
 const isGitHub = import.meta.env.DEPLOY_SERVER === 'deploygithub';
 const baseUrl = isGitHub ? '/myblog' : '';
+
+// 检查是否在 Starlight 文档页面中（有 pagination props）
+const isStarlightPage = Astro.props.pagination !== undefined;
 ---
 
-<footer class="sl-footer">
+{isStarlightPage && (
+  <div class="pagination-wrapper">
+    <nav class="pagination" aria-label="分页">
+      <div class="pagination-prev">
+        {Astro.props.pagination?.prev && (
+          <a href={Astro.props.pagination.prev.href}>
+            <span class="pagination-label">← 上一篇</span>
+            <span class="pagination-title">{Astro.props.pagination.prev.label}</span>
+          </a>
+        )}
+      </div>
+      <div class="pagination-next">
+        {Astro.props.pagination?.next && (
+          <a href={Astro.props.pagination.next.href}>
+            <span class="pagination-label">下一篇 →</span>
+            <span class="pagination-title">{Astro.props.pagination.next.label}</span>
+          </a>
+        )}
+      </div>
+    </nav>
+  </div>
+)}
+
+<footer class="custom-footer">
   <div class="footer-content">
     <p>
       Copyright &copy; {year} 邂逅大大小小陆 serendipityhaven.com |
@@ -25,7 +53,59 @@ const baseUrl = isGitHub ? '/myblog' : '';
 </footer>
 
 <style>
-  .sl-footer {
+  .pagination-wrapper {
+    padding: 0 1rem;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    max-width: var(--sl-content-width);
+    margin: 0 auto;
+    padding: 1.5rem 0;
+    gap: 1rem;
+  }
+
+  .pagination-prev,
+  .pagination-next {
+    flex: 1;
+    max-width: 45%;
+  }
+
+  .pagination-next {
+    text-align: right;
+    margin-left: auto;
+  }
+
+  .pagination a {
+    display: block;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--sl-color-gray-5);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .pagination a:hover {
+    border-color: var(--sl-color-text-accent);
+    background: var(--sl-color-gray-7, rgba(0,0,0,0.025));
+  }
+
+  .pagination-label {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--sl-color-gray-2);
+    margin-bottom: 0.25rem;
+  }
+
+  .pagination-title {
+    display: block;
+    font-weight: 600;
+    color: var(--sl-color-text-accent);
+  }
+
+  .custom-footer {
     padding: 2rem 1rem;
     text-align: center;
     border-top: 1px solid var(--sl-color-gray-5);

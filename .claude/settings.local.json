@@ -10,7 +10,9 @@
       "Bash(pkill:*)",
       "Bash(chmod:*)",
       "Bash(/Users/fxpby/code/my-code/web/myblog/sync-blog.sh)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "WebSearch",
+      "Bash(ls:*)"
     ]
   }
 }
