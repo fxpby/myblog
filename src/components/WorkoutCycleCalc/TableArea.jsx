@@ -1,12 +1,20 @@
 import React, {useEffect} from 'react';
 import BaseTable from './BaseTable';
-import s from './styles.module.css';
+
+const styles = {
+  tableArea: {
+    padding: '10px',
+    display: 'flex',
+    gap: '8px',
+    flexDirection: 'column',
+  },
+};
 
 export default function TableArea(props) {
   const {tableDataList, tableColumn, unit} = props;
 
   return (
-    <div className={s.tableArea}>
+    <div style={styles.tableArea}>
       {tableDataList?.map((table, index) => (
         <BaseTable
           key={index}

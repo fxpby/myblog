@@ -258,8 +258,25 @@ export default defineConfig({
   ],
 
   vite: {
+    resolve: {
+      alias: {
+        "@babel/runtime/helpers/extends": "@babel/runtime/helpers/esm/extends",
+        "@babel/runtime/helpers/objectWithoutPropertiesLoose": "@babel/runtime/helpers/esm/objectWithoutPropertiesLoose",
+        "@babel/runtime/helpers/inheritsLoose": "@babel/runtime/helpers/esm/inheritsLoose",
+        "@babel/runtime/helpers/assertThisInitialized": "@babel/runtime/helpers/esm/assertThisInitialized",
+        "@babel/runtime/helpers/defineProperty": "@babel/runtime/helpers/esm/defineProperty",
+      },
+    },
     ssr: {
       noExternal: [
+        "@chakra-ui/react",
+        "@emotion/react",
+        "@emotion/styled",
+        "framer-motion",
+      ],
+    },
+    optimizeDeps: {
+      include: [
         "@chakra-ui/react",
         "@emotion/react",
         "@emotion/styled",
