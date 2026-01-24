@@ -1,0 +1,96 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Nav from '../../components/Nav.astro';
+
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => {
+  const dateA = a.data.date || new Date(a.id.slice(0, 10));
+  const dateB = b.data.date || new Date(b.id.slice(0, 10));
+  return dateB.getTime() - dateA.getTime();
+});
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <BaseHead title="博客" description="邂逅大大小小陆的博客文章" />
+  </head>
+  <body>
+    <Nav />
+    <main class="blog-list">
+      <h1>博客文章</h1>
+      <ul class="posts">
+        {sortedPosts.map((post) => {
+          const dateStr = post.id.slice(0, 10);
+          const slug = post.data.slug || post.slug;
+          return (
+            <li>
+              <a href={`/blog/${slug}`}>
+                <span class="date">{dateStr}</span>
+                <span class="title">{post.data.title}</span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+
+  .blog-list {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .blog-list h1 {
+    margin-bottom: 2rem;
+  }
+
+  .posts {
+    list-style: none;
+    padding: 0;
+  }
+
+  .posts li {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background: #f9f9f9;
+    transition: background 0.2s;
+  }
+
+  .posts li:hover {
+    background: #f0f0f0;
+  }
+
+  .posts a {
+    display: flex;
+    gap: 1rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .posts .date {
+    color: #666;
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+
+  .posts .title {
+    color: #2e8555;
+    font-weight: 500;
+  }
+</style>

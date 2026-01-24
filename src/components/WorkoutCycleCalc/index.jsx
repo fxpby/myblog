@@ -3,13 +3,20 @@ import ConfigArea from './ConfigArea';
 import TableArea from './TableArea';
 import useConfigInitData from './useConfigInitData';
 import {ChakraProvider} from '@chakra-ui/react';
-import s from './styles.module.css';
+
+const styles = {
+  workoutCycleCalculatorWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: '20px',
+  },
+};
 
 export default function Calculator() {
   const props = useConfigInitData();
   return (
     <ChakraProvider resetCSS={false} disableGlobalStyle={true}>
-      <div className={s.workoutCycleCalculatorWrapper}>
+      <div style={styles.workoutCycleCalculatorWrapper}>
         <ConfigArea {...props} />
         <TableArea {...props} />
       </div>

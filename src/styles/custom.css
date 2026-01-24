@@ -1,0 +1,133 @@
+/* Custom styles for Starlight theme */
+
+/* Color theme - matching original Docusaurus theme */
+:root {
+  --sl-color-accent: 46 133 85; /* #2e8555 */
+  --sl-color-accent-low: 41 120 76;
+  --sl-color-accent-high: 51 146 93;
+  --sl-color-text-accent: 46 133 85;
+}
+
+[data-theme='dark'] {
+  --sl-color-accent: 37 194 160; /* #25c2a0 */
+  --sl-color-accent-low: 33 175 144;
+  --sl-color-accent-high: 41 213 176;
+  --sl-color-text-accent: 37 194 160;
+}
+
+/* Custom navbar dropdown styles (for custom navigation) */
+.navbar-wrapper {
+  display: flex;
+}
+
+.navbar-col {
+  display: flex;
+  row-gap: 2px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.navbar-first-level {
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.has-child {
+  border: 1px solid rgb(245 246 247);
+}
+
+.navbar-first-level-title {
+  display: block;
+  white-space: nowrap;
+  padding: 4px 4px;
+  font-weight: 700;
+  border-radius: 6px;
+}
+
+.can-mouse-over:hover {
+  background-color: rgb(245 246 247);
+  cursor: pointer;
+}
+
+.second-level-item {
+  display: block;
+  padding: 6px 4px;
+  font-weight: 400;
+  font-size: 14px;
+  border-radius: 6px;
+}
+
+.second-level-item:hover {
+  background-color: rgb(245 246 247);
+  cursor: pointer;
+}
+
+/* Fix header height to show docs-nav */
+header.header {
+  height: auto !important;
+  min-height: var(--sl-nav-height);
+  flex-direction: column;
+  padding-bottom: 0;
+  overflow: visible !important;
+}
+
+header.header > .header {
+  height: var(--sl-nav-height);
+}
+
+/* Ensure dropdown menu is visible */
+.page {
+  overflow: visible !important;
+}
+
+nav.docs-nav {
+  overflow: visible !important;
+}
+
+/* Dropdown menu - active state */
+.nav-dropdown[data-active="true"] > .nav-dropdown-menu {
+  display: grid !important;
+  position: fixed !important;
+  top: auto !important;
+  margin-top: 0.5rem;
+  z-index: 9999 !important;
+}
+
+/* Code highlighting */
+.astro-code {
+  font-size: 95%;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sl-color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sl-color-gray-4);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sl-color-gray-3);
+}
+
+/* Override Starlight's default margin for Chakra UI components */
+.sl-markdown-content .chakra-stack,
+.sl-markdown-content .chakra-form-control,
+.sl-markdown-content .chakra-input,
+.sl-markdown-content .chakra-number-input,
+.sl-markdown-content [class*="chakra-"] {
+  margin-top: 0 !important;
+}
+
+/* Ensure Chakra UI components don't inherit Starlight spacing */
+.sl-markdown-content > div[style*="display: flex"],
+.sl-markdown-content > div[style*="flexDirection"] {
+  margin-top: 0 !important;
+}

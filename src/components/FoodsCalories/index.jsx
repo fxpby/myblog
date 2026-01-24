@@ -10,8 +10,19 @@ import {
   UnorderedList,
   Box,
 } from "@chakra-ui/react";
-import s from "./styles.module.css";
 import data from "./../../metadata/food-calories.json";
+
+const styles = {
+  foodItemWrap: {
+    padding: '10px',
+  },
+  foodItem: {
+    padding: '6px',
+    display: 'flex',
+    columnGap: '10px',
+    alignItems: 'center',
+  },
+};
 
 export default function Calculator(props = {}) {
   const { foods: displayFoods, extra } = props;
@@ -61,8 +72,8 @@ export default function Calculator(props = {}) {
   return (
     <ChakraProvider resetCSS={false} disableGlobalStyle={true}>
       {basicData.map((item, i) => (
-        <div className={s.foodItemWrap} key={i}>
-          <div className={s.foodItem}>
+        <div style={styles.foodItemWrap} key={i}>
+          <div style={styles.foodItem}>
             {item.name} -{" "}
             <NumberInput
               defaultValue={0}
@@ -120,9 +131,9 @@ export default function Calculator(props = {}) {
           </UnorderedList>
         </div>
       ))}
-      <div className={s.foodItemWrap}>
+      <div style={styles.foodItemWrap}>
         <div>额外数据</div>
-        <div className={s.foodItem}>
+        <div style={styles.foodItem}>
           c:
           <NumberInput
             defaultValue={0}
@@ -145,7 +156,7 @@ export default function Calculator(props = {}) {
             </NumberInputStepper>
           </NumberInput>
         </div>
-        <div className={s.foodItem}>
+        <div style={styles.foodItem}>
           p:
           <NumberInput
             defaultValue={0}
@@ -168,7 +179,7 @@ export default function Calculator(props = {}) {
             </NumberInputStepper>
           </NumberInput>
         </div>
-        <div className={s.foodItem}>
+        <div style={styles.foodItem}>
           f:
           <NumberInput
             defaultValue={0}
@@ -193,7 +204,7 @@ export default function Calculator(props = {}) {
         </div>
       </div>
       <Box>
-        <div className={s.foodItemWrap}>
+        <div style={styles.foodItemWrap}>
           <p>总数据一览</p>
           <UnorderedList>
             <ListItem>c: {totalData.c?.toFixed(1)}g</ListItem>

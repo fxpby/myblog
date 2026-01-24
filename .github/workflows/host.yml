@@ -1,82 +1,62 @@
-name: Deploy to tencent host
+# Tencent Cloud host deployment workflow for Astro
+
+name: Deploy to Tencent Host
+
 on:
-  #监听push操作
   push:
     branches:
-      # master分支，你也可以改成其他分支
       - master
+
 jobs:
   build:
-    # runs-on 指定job任务运行所需要的虚拟机环境(必填字段)
     runs-on: ubuntu-latest
     steps:
-      # 使用action库  actions/checkout获取源码
-      - name: Checkout 🐤
-        uses: actions/checkout@v2
-      # 安装 Node 20
-      - name: use Node.js 20.10.0 🐣
-        # 使用action库  actions/setup-node安装node
-        uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: "20.10.0"
+          node-version: "20"
+          cache: "npm"
 
-      # 缓存 npm node_modules
-      - name: Cache dependencies 🐤
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-cache-
+      - name: Install dependencies
+        run: npm ci
 
-      # 安装依赖 npm
-      - name: Install dependencies 🐥
-        # 如果没有命中缓存才执行 npm install
-        if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: npm install
-
-      # 打包
-      - name: npm build 🎄
+      - name: Build
         env:
+          DEPLOY_SERVER: deployhost
           BLOG_POST250416: ${{ secrets.BLOG_POST250416 }}
           BLOG_POST250502: ${{ secrets.BLOG_POST250502 }}
           BLOG_POST250507: ${{ secrets.BLOG_POST250507 }}
-          BLOG_POST250513: ${{ secrets.BLOG_POST250513}}
-          BLOG_POST250519: ${{ secrets.BLOG_POST250519}}
-          BLOG_POST250520: ${{ secrets.BLOG_POST250520}}
-          BLOG_POST250521: ${{ secrets.BLOG_POST250521}}
-          BLOG_POST250522: ${{ secrets.BLOG_POST250522}}
-          BLOG_POST250525: ${{ secrets.BLOG_POST250525}}
-          BLOG_POST250529: ${{ secrets.BLOG_POST250529}}
-          BLOG_POST250604: ${{ secrets.BLOG_POST250604}}
-          BLOG_POST250727: ${{ secrets.BLOG_POST250727}}
-          BLOG_POST250801: ${{ secrets.BLOG_POST250801}}
-          BLOG_POST250806: ${{ secrets.BLOG_POST250806}}
-          BLOG_POST250824: ${{ secrets.BLOG_POST250824}}
-          BLOG_POST250919: ${{ secrets.BLOG_POST250919}}
-          BLOG_POST250924: ${{ secrets.BLOG_POST250924}}
-          BLOG_POST250929: ${{ secrets.BLOG_POST250929}}
-          BLOG_POST251001: ${{ secrets.BLOG_POST251001}}
-          BLOG_POST251004: ${{ secrets.BLOG_POST251004}}
-          BLOG_POST251006: ${{ secrets.BLOG_POST251006}}
-          BLOG_POST251010: ${{ secrets.BLOG_POST251010}}
-          BLOG_POST251026: ${{ secrets.BLOG_POST251026}}
-
+          BLOG_POST250513: ${{ secrets.BLOG_POST250513 }}
+          BLOG_POST250519: ${{ secrets.BLOG_POST250519 }}
+          BLOG_POST250520: ${{ secrets.BLOG_POST250520 }}
+          BLOG_POST250521: ${{ secrets.BLOG_POST250521 }}
+          BLOG_POST250522: ${{ secrets.BLOG_POST250522 }}
+          BLOG_POST250525: ${{ secrets.BLOG_POST250525 }}
+          BLOG_POST250529: ${{ secrets.BLOG_POST250529 }}
+          BLOG_POST250604: ${{ secrets.BLOG_POST250604 }}
+          BLOG_POST250727: ${{ secrets.BLOG_POST250727 }}
+          BLOG_POST250801: ${{ secrets.BLOG_POST250801 }}
+          BLOG_POST250806: ${{ secrets.BLOG_POST250806 }}
+          BLOG_POST250824: ${{ secrets.BLOG_POST250824 }}
+          BLOG_POST250919: ${{ secrets.BLOG_POST250919 }}
+          BLOG_POST250924: ${{ secrets.BLOG_POST250924 }}
+          BLOG_POST250929: ${{ secrets.BLOG_POST250929 }}
+          BLOG_POST251001: ${{ secrets.BLOG_POST251001 }}
+          BLOG_POST251004: ${{ secrets.BLOG_POST251004 }}
+          BLOG_POST251006: ${{ secrets.BLOG_POST251006 }}
+          BLOG_POST251010: ${{ secrets.BLOG_POST251010 }}
+          BLOG_POST251026: ${{ secrets.BLOG_POST251026 }}
         run: npm run build-host
 
-      # 部署到阿里云
-      - name: Deploy to Host 🚀
-        uses: easingthemes/ssh-deploy@v2.1.5
+      - name: Deploy to Host
+        uses: easingthemes/ssh-deploy@v4
         env:
-          # 私钥
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-          # scp参数
           ARGS: "-avzr --delete"
-          # 源目录，编译后生成的文件目录
-          SOURCE: "/build"
-          # 服务器ip：换成你的服务器IP
+          SOURCE: "dist/"
           REMOTE_HOST: "150.158.100.135"
-          # 用户
           REMOTE_USER: "root"
-          # 目标地址 你在服务器上部署代码的地方
           TARGET: "/home/webapps/myblog"

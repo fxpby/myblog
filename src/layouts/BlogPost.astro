@@ -1,0 +1,104 @@
+---
+import type { Props } from 'astro';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+
+interface FrontMatter {
+  title: string;
+  description?: string;
+  date?: Date;
+  authors?: string;
+}
+
+const { frontmatter } = Astro.props as { frontmatter: FrontMatter };
+const { title, description, date, authors } = frontmatter;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <BaseHead title={title} description={description || '邂逅大大小小陆'} />
+  </head>
+  <body>
+    <header class="blog-header">
+      <nav>
+        <a href="/" class="logo">邂逅大大小小陆</a>
+        <a href="/docs">文档</a>
+        <a href="/blog">博客</a>
+      </nav>
+    </header>
+    <main class="blog-main">
+      <article class="blog-article">
+        <header class="article-header">
+          <h1>{title}</h1>
+          {date && <time datetime={date.toISOString()}>{date.toLocaleDateString('zh-CN')}</time>}
+          {authors && <span class="author">作者: {authors}</span>}
+        </header>
+        <div class="article-content">
+          <slot />
+        </div>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+
+  .blog-header {
+    background: #2e8555;
+    padding: 1rem 2rem;
+  }
+
+  .blog-header nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .blog-header a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .blog-header .logo {
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+
+  .blog-main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .article-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  .article-header h1 {
+    margin: 0 0 0.5rem 0;
+  }
+
+  .article-header time,
+  .article-header .author {
+    color: #666;
+    font-size: 0.875rem;
+    margin-right: 1rem;
+  }
+
+  .article-content {
+    font-size: 1.1rem;
+  }
+</style>
