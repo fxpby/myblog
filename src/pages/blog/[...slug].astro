@@ -52,6 +52,7 @@ const envVarMap: Record<string, string | undefined> = {
   "post-8/24": import.meta.env.BLOG_POST250824,
   "post-9/19": import.meta.env.BLOG_POST250919,
   "post-10/26": import.meta.env.BLOG_POST251026,
+  "post-26/04/16": import.meta.env.BLOG_POST260416,
 };
 
 const slug = post.data.slug || post.slug;
@@ -88,20 +89,24 @@ const dateStr = post.id.slice(0, 10);
 
       <nav class="pagination">
         <div class="pagination-prev">
-          {prevPost && (
-            <a href={`/blog/${prevPost.data.slug || prevPost.slug}`}>
-              <span class="pagination-label">← 上一篇</span>
-              <span class="pagination-title">{prevPost.data.title}</span>
-            </a>
-          )}
+          {
+            prevPost && (
+              <a href={`/blog/${prevPost.data.slug || prevPost.slug}`}>
+                <span class="pagination-label">← 上一篇</span>
+                <span class="pagination-title">{prevPost.data.title}</span>
+              </a>
+            )
+          }
         </div>
         <div class="pagination-next">
-          {nextPost && (
-            <a href={`/blog/${nextPost.data.slug || nextPost.slug}`}>
-              <span class="pagination-label">下一篇 →</span>
-              <span class="pagination-title">{nextPost.data.title}</span>
-            </a>
-          )}
+          {
+            nextPost && (
+              <a href={`/blog/${nextPost.data.slug || nextPost.slug}`}>
+                <span class="pagination-label">下一篇 →</span>
+                <span class="pagination-title">{nextPost.data.title}</span>
+              </a>
+            )
+          }
         </div>
       </nav>
     </main>
@@ -188,7 +193,9 @@ const dateStr = post.id.slice(0, 10);
     background: #f9f9f9;
     text-decoration: none;
     color: inherit;
-    transition: background 0.2s, transform 0.2s;
+    transition:
+      background 0.2s,
+      transform 0.2s;
   }
 
   .pagination a:hover {
