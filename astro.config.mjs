@@ -341,20 +341,67 @@ export default defineConfig({
         {
           label: "阅读",
           collapsed: true,
-          autogenerate: { directory: "reading" },
-        },
-        {
-          label: "摄影",
-          collapsed: true,
           items: [
             {
-              label: "《iPhone手机摄影指南》",
+              label: "情绪调节与应对机制",
               autogenerate: {
-                directory: "photography/iPhone-photography-guide",
+                directory:
+                  "reading/00-emotional-regulation-and-coping-mechanisms",
               },
+            },
+            {
+              label: "情绪识别与自我慈悲",
+              autogenerate: {
+                directory: "reading/01-emotion-recognition-and-self-compassion",
+              },
+            },
+            {
+              label: "创伤与修复",
+              autogenerate: { directory: "reading/02-trauma-and-recovery" },
+            },
+            {
+              label: "亲密关系与依恋模式",
+              autogenerate: {
+                directory:
+                  "reading/03-intimate-relationships-and-attachment-styles",
+              },
+            },
+            {
+              label: "思维训练与行为改变",
+              autogenerate: {
+                directory:
+                  "reading/04-cognitive-training-and-behavioral-change",
+              },
+            },
+            // {
+            //   label: "Workbooks（练习手册）",
+            //   autogenerate: { directory: "reading" },
+            // },
+            {
+              label: "摄影",
+              items: [
+                {
+                  label: "《iPhone手机摄影指南》",
+                  autogenerate: {
+                    directory: "photography/iPhone-photography-guide",
+                  },
+                },
+              ],
             },
           ],
         },
+        // {
+        //   label: "摄影",
+        //   collapsed: true,
+        //   items: [
+        //     {
+        //       label: "《iPhone手机摄影指南》",
+        //       autogenerate: {
+        //         directory: "photography/iPhone-photography-guide",
+        //       },
+        //     },
+        //   ],
+        // },
         {
           label: "AI",
           collapsed: true,
