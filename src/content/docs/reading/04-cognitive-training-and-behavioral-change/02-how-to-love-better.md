@@ -174,14 +174,21 @@ Once you embrace your growth, the new harmony that starts flowing within you wil
 
 ---
 
-> Love is not static; it flows. Love loves change. When you can each accept that you are ever-changing beings, it makes it easier to adapt when your preferences and understandings
-evolve as you spend time together. Who you are when you first start your relationship is not who you will be as your relationship moves forward in the river of time. Change is bound
-to happen, and if you let it, it can make your love even stronger.
+> Love is not static; it flows. Love loves change. When you can each accept that you are ever-changing beings, it makes it easier to adapt when your preferences and understandings evolve as you spend time together. Who you are when you first start your relationship is not who you will be as your relationship moves forward in the river of time. Change is bound to happen, and if you let it, it can make your love even stronger.
+>
+> 爱不是一成不变、静止的；它是流动的。当你们都能接受自己是一直在变化的个体时，随着相处时间的推移，当你们的喜好和认知理解会发生变化，适应起来也会更加容易。彼此初识时的你，不是在时间长河中前行的你。变化是不可避免的，如果你愿意接纳它，它反而能让你们的爱变得更加坚固。
 
 ---
 
-> This makes sense when you realize that your relationship will go through different chapters and how you love each other in one chapter may shift in another. Your commitment to growth
-will smooth the transition from one way of loving each other into another. Especially if you are together for years or decades, the way you show love to each other will need to adapt to meet your evolving preferences. Human beings are innately change oriented; whether the changes are small or large, they are always happening.
+> This makes sense when you realize that your relationship will go through different chapters and how you love each other in one chapter may shift in another. Your commitment to growth will smooth the transition from one way of loving each other into another. Especially if you are together for years or decades, the way you show love to each other will need to adapt to meet your evolving preferences. Human beings are innately change oriented; whether the changes are small or large, they are always happening.
+>
+> 当你意识到你们的关系将经历不同的篇章，而且在某一个篇章中彼此相爱的方式可能会在另一个篇章中发生转变时，这一点就显得很有意义了。你们对共同成长的承诺，将使彼此相爱的方式从一种转变转为一种更自然顺畅的方式。特别是如果你们在一起多年或者数十年，你们表达爱意的方式就需要调整，来适应你们不断变化的偏好。人类天生就倾向于发展变化；无论这些变化是微小还是重大，它们都在时刻发生着。
+
+---
+
+> So much of the media and fairy tales around love hide the reality that love takes a lot of intentional work to make it vibrant.Two people can feel love for each other, but more of us are understanding that it takes time to really learn how to care for each other. We are also learning how important it is to know ourselves more deeply so our past doesn’t stop us from loving our partner fully. Love doesn’t immediately create a home; it has to be carefully and intentionally constructed by two patient people who feel safe to be their most real selves with each other. Love is a journey.
+>
+> 媒体和童话故事中关于爱的诸多描述，往往掩盖了一个事实：要让爱充满活力，需要付出大量有意识的努力。两个人可以彼此相爱，但越来越多的人开始明白，真正学会如何关爱对方需要时间。我们也在领悟，更深入地了解自己有多么重要，这样我们的过去才不会阻碍我们全心全意地爱伴侣。爱不会立刻筑起一个家；它必须由两个耐心的人精心且有意识地去构建，他们彼此之间感到安全，可以展示最真实的自己。爱是一段旅程。
 
 
 ## 02 The Relationship Between You and Yourself 你与自我的关系
