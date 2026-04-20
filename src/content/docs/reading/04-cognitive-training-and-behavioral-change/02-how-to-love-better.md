@@ -89,6 +89,56 @@ Even when the connection is strong you still have to intentionally learn how to 
 
 ## 01 How to Help Love Flow 如何让爱流动
 
+> The deep truth is that most human beings do not arrive into a relationship unscathed from the ups and downs of life. Fromchildhood to adulthood, life leaves its mark on your mind many times over,and these marks morph into patterns that are often coping mechanisms or defensive tactics you picked up while you were in survival mode. The hurt you have accumulated ultimately shapes the way you perceive reality and can even form walls that have to be broken down so you can fully love yourself and others.
+>
+> 一个深刻的真相是：绝大多数人在步入一段关系时，都已经经历人生的起起落落，身上带着伤痕。从童年到成年，生活在你的心灵上留下了无数印记，这些印记逐渐演变成某种模式——往往是你处于生存模式时习得的应对机制或防御策略。你积累的伤痛最终塑造了你感知现实的方式，甚至可能筑起高墙，而要真正爱自己和他人，就必须打破这些高墙。
+
+---
+
+> To be able to love your partner well, a deep reckoning needs to
+happen where you realize that how you love and heal yourself has a
+direct connection to how you show up in your relationship. The
+relationship between you and yourself has a clear impact on the
+relationship between you and your partner. If you want to love your
+partner better, then you need to develop a two-pronged approach:
+>
+> 1. Improving your relationship with yourself by letting go of the
+heaviness that your mind carries
+> 2. Working to outwardly shift your behaviors so they can be more
+conducive to a harmonious relationship
+>
+> 要想好好爱你的伴侣，你需要进行一次深刻的自我审视，意识到你如何爱自己、治愈自己，与你在关系中展现出的样子有着直接的联系。你与自己的关系，显然会影响你与伴侣的关系。如果你想更好地爱你的伴侣，那么你需要采取双管齐下的方法：
+> 1. 通过放下心中沉重的负担，改善你与自我的关系
+> 2. 努力改变外在行为，使其更有利于建立和谐的关系
+
+---
+
+> Love is not easy, and it is honestly a lot of work. Love is a powerful mirror where you cannot help but see yourself clearly; it will show you how you have grown, and it will show you in which direction you need to grow next. Being in a relationship is not about living in a constant stream of pleasure. Even the healthiest relationships will be full of ups and downs and unforeseen challenges. A relationship should certainly provide comfort, joy, and a sense of safety, but it should also become fuel for your evolution.
+Once you embrace your growth, the new harmony that starts flowing within you will help support the harmony in your relationship. 
+>
+> 爱并非易事，说实话，它需要付出很多努力。爱是一面强大的镜子，让你不由自主地看清自己；它会让你看到自己的成长，也会指引你接下来该朝哪个方向成长。恋爱并非意味着沉浸在无尽的欢愉之中。即便的最健康的关心，也会充满起起落落和意想不到的挑战。一段关系固然应该带来慰藉、喜悦和安全感，但同时也应当成为你成长的动力。一旦你拥抱这种成长，内心涌现出的全新和谐，将有助于维系你们关系中的和谐。
+
+---
+
+> The key to harmony in a relationship is finding a balance between making sure that your genuine needs are met, and establishing clear and voluntary commitments that help support each other’s happiness. You both know that you cannot directly make the other happy because happiness is something that emerges from your personal mindset, but together you can create the conditions and environment where it is easier to feel joy and fulfillment in each other’s presence. A partnership can bring so much delight into your life, but only you can clarify your perspective so you can let joy in and experience happiness more often.
+>
+> 关系和谐的关键在于，在确保自身真实需求得到满足的同时，建立清醒且自愿的承诺，以此共同维护彼此的幸福。你们都明白，无法直接让对方感到快乐，因为幸福源于你个人的心态，但你们可以共同营造一种氛围和环境，让彼此在对方身边更容易感受到喜悦与满足。一段伴侣关系能为你的生活带来无尽的喜悦，但唯有你自己才能厘清自己的心态，从而敞开心扉迎接喜悦，并更频繁地体验幸福。
+
+---
+
+> If you think a relationship is meant to be an escape or that it should only be blissful, then you’re missing the point.Love is soft and nourishing,but it is also hard and revealing. It will show you the sides ofyourself that you need to work on.
+>
+> 如果你认为一段关系知识为了逃避，或者认为它理应只有幸福，那么你就误解了它的意义。爱是温柔而滋养的，但同时也是充满挑战且发人深省。它会让你看到自己需要改进的一面。
+
+> When an argument is happening, you may have to remind yourself that your partner is not your enemy, it is not you versus them, it is actually the two of you versus your different understandings or miscommunication.
+
+
+> It is easy to get stuck in a mode where we often give our partners the hardest parts of ourselves. They see us when we are most angry or upset, and really this is because we feel so comfortable around them that we can finally put our guard down and be the realest version of ourselves. Our partners see us when we are dejected and exhausted, they see the toughest parts of our character, and this is actually a beautiful thing, that we can be vulnerable with them, but it needs to be balanced so they can enjoy the best parts of us too.
+
+> In the same way that we can show our partner the rawest parts of our emotions, we should be intentional about treating them with kindness so that the relationship isn’t overwhelmed
+with down moments.
+
+
 ## 02 The Relationship Between You and Yourself 你与自我的关系
 
 ## 03 How to Thrive 如何茁壮成长
