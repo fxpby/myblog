@@ -130,13 +130,58 @@ Once you embrace your growth, the new harmony that starts flowing within you wil
 >
 > 如果你认为一段关系知识为了逃避，或者认为它理应只有幸福，那么你就误解了它的意义。爱是温柔而滋养的，但同时也是充满挑战且发人深省。它会让你看到自己需要改进的一面。
 
-> When an argument is happening, you may have to remind yourself that your partner is not your enemy, it is not you versus them, it is actually the two of you versus your different understandings or miscommunication.
+---
 
+> When an argument is happening, you may have to remind yourself that your partner is not your enemy, it is not you versus them, it is actually the two of you versus your different understandings or miscommunication.
+>
+> 当争执发生时，你或许需要提醒自己，伴侣并不是敌人，这不是你与他对立，而是你们两人共同面对理解差异或沟通障碍的挑战。
+
+---
 
 > It is easy to get stuck in a mode where we often give our partners the hardest parts of ourselves. They see us when we are most angry or upset, and really this is because we feel so comfortable around them that we can finally put our guard down and be the realest version of ourselves. Our partners see us when we are dejected and exhausted, they see the toughest parts of our character, and this is actually a beautiful thing, that we can be vulnerable with them, but it needs to be balanced so they can enjoy the best parts of us too.
+>
+> 我们很容易陷入一种模式，即总是向伴侣展现自己最艰难的一面。他们看到的是我们最愤怒或最沮丧时的样子，而这其实是我们在他们身边感到无比自在，终于能够卸下防备，展现最真实的自己。当我们沮丧疲惫时的样子，目睹我们性格中最坚韧的一面。这其实是一件美好的事情，我们能在他们面前展现脆弱，但这需要保持平衡，让他们也能欣赏到我们最美好的一面。
 
-> In the same way that we can show our partner the rawest parts of our emotions, we should be intentional about treating them with kindness so that the relationship isn’t overwhelmed
-with down moments.
+---
+
+> In the same way that we can show our partner the rawest parts of our emotions, we should be intentional about treating them with kindness so that the relationship isn’t overwhelmed with down moments.
+>
+> 正如我们可以向伴侣展现最原始的情感一样，我们也应当有意识地以善意对待对方，以免关心被消极情绪所淹没。
+
+---
+
+> One of the best ways to love your partner better is by embracing growth and development as a lifelong journey. When you have the humility to realize that there is so much for you to learn and that you can benefit greatly from stepping outside of your comfort zone, your personal evolution will come more naturally.
+>
+> 更好地爱伴侣的最好方式之一，就是拥抱成长与发展视为一生的旅程。当你怀着谦逊的态度意识到自己还有太多需要学习，并且明白走出舒适区可以受益良多时，你的个人成长便会水到渠成。
+
+---
+
+> This ability to welcome growth into your life is one of the greatest gifts you can give yourself and your partner. No one enters a relationship fully healed, completely wise, or perfect in their ability to love. Real love requires learning, adapting, letting go, and reaching new levels of peace and understanding.
+>
+> 这种接纳成长的能力，是你能送给自己和伴侣的最珍贵的礼物之一。没有人能够带着完全治愈、完全睿智或者完美无缺的爱的能力进入一段关系。真正的爱需要学习、适应、放下，达到新的平和与理解的境界。
+
+---
+
+> Especially when you are looking for a serious relationship, this quality is the greenest of green flags. No one is perfect and everyone makes mistakes, but finding someone who takes responsibility and is open to correcting their mistakes and expanding beyond their old limits shows they are more likely to have the inner strength and skills to get through the hard moments of a relationship.
+>
+> 尤其是当你在寻找一段认真的关系时，这种品质是最积极的信号。没有人是完美的，每个人都会犯错，但找到一个愿意承担责任、乐于改正错误并突破旧有局限的人，往往意味着对方更可能具备内在力量与能力，能够度过关系中的艰难时刻。
+
+---
+
+> When both partners embrace growth, the real magic of a relationship flourishes. Without this quality, moments of difficulty in the relationship become roadblocks that you can’t get around. With this quality you can see the difficulty, examine why it is there, understand your separate roles in this challenge,and cultivate new qualities that can help you persevere and reach a new level.
+>
+> 当双方都拥抱成长时，一段关系的真正魔力便会绽放。若缺乏这种特质，关系中的困难时刻便会成为无法逾越的障碍，拥有这种特质，你们就能正视困难，探究其根源，理解彼此在挑战中的角色，并培养新的品质，帮助你们坚持不懈，迈向新的高度。
+
+---
+
+> Love is not static; it flows. Love loves change. When you can each accept that you are ever-changing beings, it makes it easier to adapt when your preferences and understandings
+evolve as you spend time together. Who you are when you first start your relationship is not who you will be as your relationship moves forward in the river of time. Change is bound
+to happen, and if you let it, it can make your love even stronger.
+
+---
+
+> This makes sense when you realize that your relationship will go through different chapters and how you love each other in one chapter may shift in another. Your commitment to growth
+will smooth the transition from one way of loving each other into another. Especially if you are together for years or decades, the way you show love to each other will need to adapt to meet your evolving preferences. Human beings are innately change oriented; whether the changes are small or large, they are always happening.
 
 
 ## 02 The Relationship Between You and Yourself 你与自我的关系
