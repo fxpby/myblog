@@ -190,6 +190,33 @@ Once you embrace your growth, the new harmony that starts flowing within you wil
 >
 > 媒体和童话故事中关于爱的诸多描述，往往掩盖了一个事实：要让爱充满活力，需要付出大量有意识的努力。两个人可以彼此相爱，但越来越多的人开始明白，真正学会如何关爱对方需要时间。我们也在领悟，更深入地了解自己有多么重要，这样我们的过去才不会阻碍我们全心全意地爱伴侣。爱不会立刻筑起一个家；它必须由两个耐心的人精心且有意识地去构建，他们彼此之间感到安全，可以展示最真实的自己。爱是一段旅程。
 
+> Everyone enters relationships with a multitude of imperfections.Depending on the person and their emotional history, there can be a wide range of internal matters that are unresolved: hurt from the past, negative behavior patterns, unrealistic expectations, fears— there are so many things that can form blockages in the flow of love and make it more difficult for us to connect deeply.
+>
+> 每个人在进入一段关系时，都带着诸多不完美。根据个人的不同及其情感经历，内心可能存在着各种各样未解决的问题：过去的伤痛、消极的行为模式、不切实际的期望、恐惧——有太多东西会阻碍爱的流动，使我们难以建立深层的联结。
+
+> In many ways, a relationship is an opportunity to learn how to love better. When we accept this framework, it becomes easier to use the lessons that arise to transform our behavior, for our own benefit and for the benefit of our partner. Even though love comes with its challenges, the depth of the connection creates an immediate incentive to try to work on ourselves so that we can treat our partners better and give the relationship a better chance to thrive.
+>
+> 从许多方面来看，一段关系正是学习如何更好地去爱的契机。当我们接受这一框架时，便更容易利用其中浮现的启示来转变自己的行为，这既有益于我们自身，也有益于伴侣。尽管爱伴随着种种挑战，但这种深厚的联结会立即激励我们努力完善自我，从而更好地对待伴侣，并为这段关系创造更美好的发展机会。
+
+> Nine Strategies That Can Help You Love Better
+> 1. When both of you take your healing seriously, the relationship wins.You both carry baggage from the past.Even if you haven’t experienced deep trauma, there are still tendencies and patterns that have developed over time because the way you react accumulates in the mind. Through learning how to let go, you can stop past unproductive patterns from taking over. Developing your self-love is the necessary foundation that will support all relationships in your life. It is not selfish to learn what you need to do to take care of yourself and consistently put it into action so you can show up as the best version of yourself. Remember, you and your partner may need different healing tools, but make sure that you are using something that is genuinely making you more self-aware and mentally lighter. 
+> 1. 当你们双方都认真对待自我疗愈时，这段关系会受益。你们都背负着过去的包袱。即使没有经历过深刻的创伤，随着时间的推移，某些倾向和模式依然会逐渐形成，因为你们的反应会在心中不断累积。通过学习如何放下，可以阻止过去那些无益的模式占据上风。培养自爱是支撑你生命中所有关系的必要基石。了解自己需要做什么来照顾自己
+> 
+> 2. Enter the relationship knowing that you will have to grow to make it work. Embracing your imperfections is a superpower that opens the door to personal evolution.
+> 3. Everything is not always their fault. Tension can easily twist your reasoning and make you place all the blame on your partner whenever conflict arises. 
+> 4. In the midst of an argument, remember that this is the person you love, and they are not your enemy. Your past can cloud your perception and make you become hyper defensive. Learn how to pull yourself out of survival mode.
+Being able to ground yourself can help you let go of anger and move from having an argument to simply hearing each other’s side of the story so you can find a healthy middle ground.
+Reframe your idea of an argument from a battle to an opportunity that helps you understand each other better.
+> 5. If you both focus on giving, you will each receive more.
+This one only works if both people are truly committed to taking care of their partner in multiple ways. Only with open hands can you give and receive; love is an active expression of this sentiment. The way you give to each other may not always look the same because each individual has different strengths and preferences.
+> 6. Move with honesty and gentleness. The truth, even when it is hard to give or receive, will ultimately bring you closer together. Lies and withheld truths create blockages in your connection. Truth should be delivered in a compassionate and skillful manner. Speaking to each other with gentleness, even when you are in a tense moment, will help keep you both levelheaded.
+> 7. Ask each other “How can I love you better?” and act on it. It is helpful to get new information from your partner directly because, just like you, they are an ever-changing being. Their preferences will slowly shift over time and knowing them can help you better offer support as they move through their ups and downs. Relationships go through seasons, so it’s good to check in regularly.
+> 8. View each other as best friends; this will help with deep and enjoyable communication.
+> 9. Love will always be about freedom. Healthy relationships will keep the feeling of freedom vibrant. Of course, you will design your life together and voluntarily commit to each other in ways that feel good to both
+of you, but neither partner should ever feel coerced or like they don’t have a say in how they live their life. Ultimately, you are two individuals who are creating a home together, but you both still have your own lives to tend to. You are two streams that have chosen to flow together side by side. Loving each other better is about supporting each other’s happiness.
+> 
+> 
+
 
 ## 02 The Relationship Between You and Yourself 你与自我的关系
 
