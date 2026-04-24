@@ -3,44 +3,55 @@ title: "书单"
 sidebar_position: 1
 ---
 
-## 情绪调节与应对机制
+## 1. 心理、个人成长（自用）
 
-怎么稳住自己、怎么扛住情绪、怎么不被情绪带跑
+### level 1 - 稳定化与自我调节
 
-- The Gift: 12 Lessons to Save Your Life
-- DBT 相关
-- ACT 相关
+先让自己更稳，不急着深挖，安全感重建
 
-## 情绪识别与自我慈悲
+- The Dialectical Behavior Therapy Skills Workbook（情绪调节）
+- 幸福的陷阱（解钩/接纳）
+- 自我关怀的力量（自我慈悲）
+- 过犹不及（边界）
+- The Complex PTSD Workbook（创伤自助）
+- 伯恩斯焦虑自助疗法（焦虑和认知修正）
+- 登天之梯（创伤与大脑/发展性影响）
 
-我现在到底是什么感觉、怎么对自己温柔一点
+### level 2 - 理解自己为什么会这样
 
-- 自我关怀的力量
+把羞耻和自责，慢慢转化成理解
+
+- 不原谅也没关系
+- 不成熟的父母
+- 没有不好的你
+- 隐秘的羞耻感
+- 创伤与复原
+- 我的骨头没有忘记
+- 关系的重建
+- 心理治疗中的依恋
+
+### level 3 - 情绪细化与关系成长
+
+学会更细地看见自己，也更成熟地理解关系
+
 - Atlas of the Heart
-
-## 创伤与修复
-
-创伤怎么形成、怎么影响人、怎么修复
-
-- From Surviving to Thriving
-- Healing the Fragmented Selves of Trauma Survivors
-- The Choice
-- The Gift: 12 Lessons to Save Your Life
-
-## 亲密关系与依恋模式
-
-爱、依恋、关系沟通、亲密模式
-
 - How to Love Better
 - Conversations on Love
-- 《爱情这门课你可别挂科》
+- 爱的对谈
+- 亲密关系
+- 依恋的修复
+- 早安，怪物
+- 你的敏感，就是你的天赋
 
-## 思维训练与行为改变
+### level 4 - 意义与存在
 
-识别脑内剧情、调整想法、改变行为模式
+在更大的生命视角里，安放自己
 
-- CBT 相关
-- ACT 相关
+- 活出生命的意义
+- 当呼吸化为空气
+- 成为我自己
+- 存在主义心理治疗
+
 
 ## 摄影
 
