@@ -10,11 +10,11 @@ const usePostHooks = ({ blogPostId } = {}) => {
   };
 
   const handleVerify = () => {
-    if (inputValue.trim() === "imaimauo") {
+    if (inputValue.trim() === "facethetruth") {
       setMessage("太棒啦，校验通过！✌️");
       setIsShow(true);
     } else {
-      setMessage("嘤嘤校验失败，请重新输入暗号。🤧（暗号是您用户名）");
+      setMessage("暗号不对哦");
       setInputValue("");
       setIsShow(false);
     }
