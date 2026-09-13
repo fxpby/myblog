@@ -50,7 +50,7 @@ export default function HeartPage() {
   };
 
   const inputOnComplete = (value: string) => {
-    if (value !== "imaimauo") {
+    if (value !== "facethetruth") {
       setIsShowInputTip(true);
     } else {
       setIsShowHeart(true);
@@ -96,7 +96,9 @@ export default function HeartPage() {
         {!isShowHeart && (
           <div style={{ maxWidth: 400 }}>
             <p>Hello~欢迎来到这个爱心小小陆~ 🥳</p>
-            <p style={{ marginBottom: "1rem" }}>小小陆的隐藏魔法需要口令开启哦，欢迎尝试魔法口令</p>
+            <p style={{ marginBottom: "1rem" }}>
+              小小陆的隐藏魔法需要口令开启哦，欢迎尝试魔法口令
+            </p>
             <div
               style={{
                 columnGap: "10px",
