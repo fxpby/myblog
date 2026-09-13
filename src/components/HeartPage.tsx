@@ -117,6 +117,10 @@ export default function HeartPage() {
                 <PinInputField />
                 <PinInputField />
                 <PinInputField />
+                <PinInputField />
+                <PinInputField />
+                <PinInputField />
+                <PinInputField />
               </PinInput>
             </div>
             {isShowInputTip && (
@@ -136,7 +140,6 @@ export default function HeartPage() {
               rowGap: "40px",
             }}
           >
-            <p>口令正确~小心心只给您看，您可以点击拍拍哦~</p>
             <div className="heart" onClick={() => handleClickHeart()}></div>
           </div>
         )}
